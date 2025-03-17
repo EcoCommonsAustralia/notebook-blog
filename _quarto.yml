@@ -22,6 +22,8 @@ website:
         menu:
           - href: notebooks/EC_GLM/EC_GLM.qmd
             text: GLM
+          - href: notebooks/EOO_AOO/eoo_aoo.qmd
+            text: Extent and Area of Ocurrence / Occupancy
       - text: Visualisation
         menu:
           - href: notebooks/visual1.qmd
