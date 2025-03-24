@@ -12,24 +12,12 @@ website:
         menu:
           - href: notebooks/dataprep.qmd
             text: Data Preparation
-          - href: notebooks/modelling.qmd
-            text: Modelling
-          - href: notebooks/predicting.qmd
-            text: Prediction
-          - href: notebooks/evaluation.qmd
-            text: Evaluation
       - text: SDMs
         menu:
           - href: notebooks/EC_GLM/EC_GLM.qmd
             text: GLM
           - href: notebooks/EOO_AOO/eoo_aoo.qmd
             text: Extent and Area of Ocurrence / Occupancy
-      - text: Visualisation
-        menu:
-          - href: notebooks/visual1.qmd
-            text: Visualisation 1
-          - href: notebooks/visual2.qmd
-            text: Visualisation 2
       - text: Spatial Prioritization
         menu:
           - href: notebooks/sp/ecocommons-marxan-integration-poc.qmd

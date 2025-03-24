@@ -166,18 +166,6 @@ div.csl-indent {
     <a class="dropdown-item" href="../../notebooks/dataprep.html">
  <span class="dropdown-text">Data Preparation</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/modelling.qmd">
- <span class="dropdown-text">Modelling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/predicting.qmd">
- <span class="dropdown-text">Prediction</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/evaluation.qmd">
- <span class="dropdown-text">Evaluation</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -192,21 +180,6 @@ div.csl-indent {
         <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-visualisation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Visualisation</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-visualisation">    
-        <li>
-    <a class="dropdown-item" href="../../notebooks/visual1.qmd">
- <span class="dropdown-text">Visualisation 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/visual2.qmd">
- <span class="dropdown-text">Visualisation 2</span></a>
   </li>  
     </ul>
   </li>
@@ -494,7 +467,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <pre><code>Downloading zipped file...</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/Documents/Documents - QCIF’s MacBook Pro (2)/github/notebook-blog/notebooks/data_prep/imbalanced_data.zip </code></pre>
+<pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep/imbalanced_data.zip </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip the downloaded file</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipping the file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -504,7 +477,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(zip_file_path, <span class="at">exdir =</span> datafolder_path)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipped files to folder:"</span>, datafolder_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/Documents/Documents - QCIF’s MacBook Pro (2)/github/notebook-blog/notebooks/data_prep </code></pre>
+<pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep </code></pre>
 </div>
 </div>
 </section>
@@ -650,7 +623,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>gang_gang_act <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"imbalanced_data/gang_gang_ACT.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `gang_gang_ACT' from data source 
-  `/Users/xiangzhaoqcif/Documents/Documents - QCIF’s MacBook Pro (2)/github/notebook-blog/notebooks/data_prep/imbalanced_data/gang_gang_ACT.shp' 
+  `/Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep/imbalanced_data/gang_gang_ACT.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 918 features and 1 field
 Geometry type: POINT
@@ -662,7 +635,7 @@ Geodetic CRS:  GDA94</code></pre>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ACT <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"imbalanced_data/ACT_4283.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `ACT_4283' from data source 
-  `/Users/xiangzhaoqcif/Documents/Documents - QCIF’s MacBook Pro (2)/github/notebook-blog/notebooks/data_prep/imbalanced_data/ACT_4283.shp' 
+  `/Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep/imbalanced_data/ACT_4283.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 1 feature and 0 fields
 Geometry type: POLYGON

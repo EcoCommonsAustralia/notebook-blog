@@ -132,18 +132,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../notebooks/dataprep.html">
  <span class="dropdown-text">Data Preparation</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/modelling.qmd">
- <span class="dropdown-text">Modelling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/predicting.qmd">
- <span class="dropdown-text">Prediction</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/evaluation.qmd">
- <span class="dropdown-text">Evaluation</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -158,21 +146,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-visualisation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Visualisation</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-visualisation">    
-        <li>
-    <a class="dropdown-item" href="../../notebooks/visual1.qmd">
- <span class="dropdown-text">Visualisation 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../notebooks/visual2.qmd">
- <span class="dropdown-text">Visualisation 2</span></a>
   </li>  
     </ul>
   </li>
@@ -410,11 +383,11 @@ The following objects are masked from 'package:base':
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(basisOfRecord, <span class="at">group =</span> <span class="st">"basic"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Request for 10075 occurrences placed in queue
+<pre><code>Request for 10083 occurrences placed in queue
 Current queue length: 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>----</code></pre>
+<pre><code>--</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading</code></pre>
@@ -478,12 +451,12 @@ A BibTeX entry for LaTeX users is
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(species_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 10075 features and 1 field
+<pre><code>Simple feature collection with 10083 features and 1 field
 Geometry type: POINT
 Dimension:     XY
 Bounding box:  xmin: 140.9672 ymin: -39.12958 xmax: 149.9317 ymax: -35.96943
 Geodetic CRS:  WGS 84
-# A tibble: 10,075 × 2
+# A tibble: 10,083 × 2
    Species                      geometry
  * &lt;chr&gt;                     &lt;POINT [°]&gt;
  1 Vombatus ursinus (145.4908 -37.67752)
@@ -496,7 +469,7 @@ Geodetic CRS:  WGS 84
  8 Vombatus ursinus (147.0542 -37.46073)
  9 Vombatus ursinus   (146.165 -36.8437)
 10 Vombatus ursinus (147.7134 -37.51464)
-# ℹ 10,065 more rows</code></pre>
+# ℹ 10,073 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -569,7 +542,7 @@ Geodetic CRS:  WGS 84
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"The AOO value is:"</span>, AOO_result<span class="sc">$</span>aoo, <span class="st">"km²"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The AOO value is: 10868 km²"</code></pre>
+<pre><code>[1] "The AOO value is: 10876 km²"</code></pre>
 </div>
 </div>
 <div class="cell">
