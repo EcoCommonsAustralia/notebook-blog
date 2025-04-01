@@ -36,15 +36,15 @@ When a new Notebook QMD approved, before merge your branch to the main, we need 
 
 5.  Open terminal, locate to the notebook-blog folder. **Type 'quarto render' and run.** Make sure you are in the level of the notebook-blog folder. If you have not installed quarto, install it first <https://quarto.org/docs/download/>.
 
-<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/ec-notebook_site_materials/main/images/clipboard-3747770271.png" style="display: block; margin: 0 auto;"/>
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-3747770271.png" style="display: block; margin: 0 auto;"/>
 
 6.  Quarto will render each QMD file and generate a ‘docs’ folder to store all the HTML files that make up the blog site. In general, older notebook QMD files render without issues. If a problem does occur, it is usually caused by a newly added notebook QMD.
 
-<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/ec-notebook_site_materials/main/images/clipboard-3172458001.png" style="display: block; margin: 0 auto;" width="123"/>
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-3172458001.png" style="display: block; margin: 0 auto;" width="123"/>
 
 6.  After rendering is complete, go to notebook-blog/notebook/the-name-of-the-new-notebook folder, add a .gitignore file and add files and folders that you don't want to upload to the Github Repo. For example, large dataset downloaded.
 
-<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/ec-notebook_site_materials/main/images/clipboard-2679938499.png" style="display: block; margin: 0 auto;" width="170"/>
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-2679938499.png" style="display: block; margin: 0 auto;" width="170"/>
 
 7.  Then you can git all changes to your branch. Make make a PR request.
 
@@ -56,4 +56,4 @@ When a new Notebook QMD approved, before merge your branch to the main, we need 
 
 3.  The setting of the Github Pages of the blog site
 
-<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/ec-notebook_site_materials/main/images/clipboard-3897898201" style="display: block; margin: 0 auto;"/>
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-3897898201.png" style="display: block; margin: 0 auto;"/>
