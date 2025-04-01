@@ -40,27 +40,23 @@ When a new Notebook QMD approved, before merge your branch to the main, we need 
 
 6.  Quarto will render each QMD file and generate a ‘docs’ folder to store all the HTML files that make up the blog site. In general, older notebook QMD files render without issues. If a problem does occur, it is usually caused by a newly added notebook QMD.
 
-<p align="center">
 
-![](https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-3172458001.png){fig-align="center" width="157"}
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-3172458001.png" fig-align="center" width="157"/>
 
-</p>
 
 7.  After rendering is complete, go to notebook-blog/notebook/the-name-of-the-new-notebook folder, add a .gitignore file and add files and folders that you don't want to upload to the Github Repo. For example, large dataset downloaded.
 
-<p align="center">
 
-![](https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-2679938499.png){fig-align="center" width="234"}
+<img src="https://raw.githubusercontent.com/EcoCommonsAustralia/notebook-blog/main/images/clipboard-2679938499.png" fig-align="center" width="234"/>
 
-</p>
 
 8.  Then you can git all changes to your branch. Make make a PR request.
 
 ## Tips
 
-1.  If you want to change the foot.html, please go to the https://github.com/EcoCommonsAustralia/ec-notebook_site_materials/blob/main/footer.qmd to download it, make change, and render it to footer.html and replace the old one in this repo.
+1.  If you want to change the foot.html, please go to the https://github.com/EcoCommonsAustralia/ec-notebook_site_materials/blob/main/footer.qmd to download it, make changes, and render it to footer.html and replace the old one in this repo.
 
-2.  Try to avoid using/downloading large size of dataset in notebook.
+2.  Try to avoid using/downloading large size of dataset in the notebook.
 
 3.  The setting of the Github Pages of the blog site
 
