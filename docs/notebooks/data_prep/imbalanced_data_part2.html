@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>imbalanced_data_part2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles/ec_html_template.css">
+</head>
+
+<body class="fullcontent nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text"><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EcoCommons%20Logo%20White.png" alt="EcoCommons Logo" style="height:40px; vertical-align: middle; margin-right: 5px;"> <span style="font-size: 25px; position: relative; top: 7px;">EcoNotebooks</span></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modelling-steps" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modelling Steps</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modelling-steps">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/dataprep.html">
+ <span class="dropdown-text">Data Preparation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sdms" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SDMs</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-sdms">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/EC_GLM/EC_GLM.html">
+ <span class="dropdown-text">GLM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
+ <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-spatial-prioritization" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Spatial Prioritization</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-spatial-prioritization">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/sp/ecocommons-marxan-integration-poc.html">
+ <span class="dropdown-text">Connecting Marxan</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#imbalanced-species-data-background-points-and-weighting-methods---part-2" id="toc-imbalanced-species-data-background-points-and-weighting-methods---part-2" class="nav-link active" data-scroll-target="#imbalanced-species-data-background-points-and-weighting-methods---part-2">Imbalanced species data, background points, and weighting methods - Part 2</a></li>
+  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info">Script and data info</a></li>
+  <li><a href="#abstract-part-1-and-part-2" id="toc-abstract-part-1-and-part-2" class="nav-link" data-scroll-target="#abstract-part-1-and-part-2">Abstract (Part 1 and Part 2)</a></li>
+  <li><a href="#objectives-part-2" id="toc-objectives-part-2" class="nav-link" data-scroll-target="#objectives-part-2">Objectives (Part 2)</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><strong>Workflow Overview</strong></a></li>
+  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R Environment and Packages</a>
+  <ul class="collapse">
+  <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</a></li>
+  <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</a></li>
+  <li><a href="#s.3-download-case-study-datasets" id="toc-s.3-download-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-case-study-datasets">S.3 Download case study datasets</a></li>
+  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#background-points-and-pseudo-absence-points" id="toc-background-points-and-pseudo-absence-points" class="nav-link" data-scroll-target="#background-points-and-pseudo-absence-points">1.1 Background points and Pseudo-absence points</a></li>
+  </ul></li>
+  <li><a href="#background-points-and-pseudo-absence-points-1" id="toc-background-points-and-pseudo-absence-points-1" class="nav-link" data-scroll-target="#background-points-and-pseudo-absence-points-1">2. Background points and pseudo-absence points</a>
+  <ul class="collapse">
+  <li><a href="#random-background-points" id="toc-random-background-points" class="nav-link" data-scroll-target="#random-background-points">2.1 Random background points</a>
+  <ul class="collapse">
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">2.1.1 Results</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">2.1.2 Summary</a></li>
+  </ul></li>
+  <li><a href="#the-disk-approach" id="toc-the-disk-approach" class="nav-link" data-scroll-target="#the-disk-approach">2.2 The ‘disk’ approach</a>
+  <ul class="collapse">
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">2.2.1 Results</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">2.2.3 Summary</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">3. Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#comparison-across-all-models" id="toc-comparison-across-all-models" class="nav-link" data-scroll-target="#comparison-across-all-models">3.1 Comparison across all models</a></li>
+  </ul></li>
+  <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2">4. Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons"><strong>How to Cite EcoCommons</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
+<section id="imbalanced-species-data-background-points-and-weighting-methods---part-2" class="level1">
+<h1>Imbalanced species data, background points, and weighting methods - Part 2</h1>
+<p>Author details: Xiang Zhao</p>
+<p>Editor details: Dr Sebastian Lopez Marcano</p>
+<p>Contact details: support@ecocommons.org.au</p>
+<p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: <a href="https://www.ecocommons.org.au/" class="uri">https://www.ecocommons.org.au/</a></p>
+<p>Date: April 2025</p>
+</section>
+<section id="script-and-data-info" class="level1">
+<h1>Script and data info</h1>
+<p>This notebook is the continuation of the notebook <a href="https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/imbalanced_data_part1.html#objectives-part-1">’<strong>Part 1: Imbalanced species data, background points, and weighting methods’</strong></a><strong>.</strong></p>
+<p>These two notebooks, developed by the EcoCommons team, showcases how to deal with imbalanced species datasets (presence and absence data) with weighting methods.</p>
+</section>
+<section id="abstract-part-1-and-part-2" class="level1">
+<h1>Abstract (Part 1 and Part 2)</h1>
+<p>When building species distribution models, it is common to encounter imbalanced datasets. This may involve a large number of presence records and relatively few absence records, or, in the case of rare species, a substantial number of absence records but only a limited number of presence records.</p>
+<p>When working with imbalanced datasets, models and predictions can be prone to several issues, including bias towards the majority class, misleading performance metrics, and reduced sensitivity to the minority class. This occurs because the model learns predominantly from the more frequent class, leading to poor generalisation for rare events <span class="citation" data-cites="menardi2014training">(<a href="#ref-menardi2014training" role="doc-biblioref">Menardi &amp; Torelli, 2014</a>)</span>. Therefore, it is essential to address dataset imbalance to ensure fair and reliable predictions.</p>
+<p>This notebook explores strategies to address the challenges posed by imbalanced species data in ecological modeling, particularly in Species Distribution Models (SDMs). It focuses on the use of background points and weighting methods to improve model performance when presence and absence data are disproportionate. This notebook examines the effectiveness of different pseudo-absence generation techniques, including random and buffered-random background point sampling, and applies weighting schemes to mitigate class imbalance. Using the Gang-gang Cockatoo (<em>Callocephalon fimbriatum</em>) as a case study, the analysis demonstrates the impact of these methods on model evaluation metrics such as AUROC, AUPR, F1-score, and TSS. This guide aims to equip ecologists and data scientists with practical approaches for handling imbalanced datasets, ensuring more accurate and reliable SDMs within the EcoCommons platform.</p>
+</section>
+<section id="objectives-part-2" class="level1">
+<h1>Objectives (Part 2)</h1>
+<ol type="1">
+<li>Learn how to generate background points using two methods: completely random and buffered-random.</li>
+<li>Learn how to compare model performance using different methods for generating background points and pseudo-absence data.</li>
+</ol>
+</section>
+<section id="workflow-overview" class="level1">
+<h1><strong>Workflow Overview</strong></h1>
+<ul>
+<li><p>Set the working directory and load the necessary R packages. Create directories to store raw data files.</p></li>
+<li><p>Data Download: Download prepared imbalanced dataset(s) from the EcoCommons Google Drive.</p></li>
+<li><p>Produce background points and pseudo-absence points</p></li>
+<li><p>Model evaluation and comparison.</p></li>
+</ul>
+</section>
+<section id="set-up-r-environment-and-packages" class="level1">
+<h1>Set-up: R Environment and Packages</h1>
+<p>Some housekeeping before we start. This process might take some time as many packages needed to be installed.</p>
+<section id="s.1-set-the-working-directory-and-create-a-folder-for-data." class="level2">
+<h2 class="anchored" data-anchor-id="s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</h2>
+<p>Save the Quarto Markdown file (.QMD) to a folder of your choice, and then set the path to your folder as your working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the workspace to the current working directory</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>workspace <span class="ot">&lt;-</span> <span class="fu">getwd</span>()  <span class="co"># Get the current working directory and store it in 'workspace'</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase the plot size by adjusting the options for plot dimensions in the notebook output</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width =</span> <span class="dv">16</span>, <span class="at">repr.plot.height =</span> <span class="dv">8</span>)  <span class="co"># Sets width to 16 and height to 8 for larger plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ideally, you would use the <strong><code>renv</code></strong> package to create an isolated environment for installing all the required R packages used in this notebook. However, since installing <strong><code>renv</code></strong> and its dependencies can be time-consuming, we recommend trying this after the workshop.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Ensure "renv" package is installed</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!requireNamespace("renv", quietly = TRUE)) {</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   install.packages("renv")</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># # Check if renv has been initialised in the project</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!file.exists("renv/activate.R")) {</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   message("renv has not been initiated in this project. Initializing now...")</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   renv::init()  # Initialise renv if not already set up</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># } else {</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   source("renv/activate.R")  # Activate the renv environment</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   message("renv is activated.")</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># # Check for the existence of renv.lock and restore the environment</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># if (file.exists("renv.lock")) {</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   message("Restoring renv environment from renv.lock...")</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   renv::restore()</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># } else {</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   message("No renv.lock file found in the current directory. Skipping restore.")</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="s.2-install-and-load-essential-libraries." class="level2">
+<h2 class="anchored" data-anchor-id="s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</h2>
+<p>Install and load R packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set CRAN mirror</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cran.rstudio.com/"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List of packages to check, install if needed, and load</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dplyr"</span>, <span class="st">"reshape2"</span>, <span class="st">"terra"</span>, <span class="st">"sf"</span>, <span class="st">"googledrive"</span>, <span class="st">"ggplot2"</span>, <span class="st">"corrplot"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">"pROC"</span>, <span class="st">"dismo"</span>, <span class="st">"spatstat.geom"</span>, <span class="st">"patchwork"</span>, <span class="st">"biomod2"</span>, <span class="st">"PRROC"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">"leaflet"</span>, <span class="st">"car"</span>, <span class="st">"gridExtra"</span>, <span class="st">"htmltools"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"kableExtra"</span>, <span class="st">"tibble"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to display a cat message</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>cat_message <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg, message_type) {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (message_type <span class="sc">==</span> <span class="st">"installed"</span>) {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste0</span>(pkg, <span class="st">" has been installed successfully!</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (message_type <span class="sc">==</span> <span class="st">"loading"</span>) {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste0</span>(pkg, <span class="st">" is already installed and has been loaded!</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Install missing packages and load them</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> packages) {</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat_message</span>(pkg, <span class="st">"installed"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat_message</span>(pkg, <span class="st">"loading"</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dplyr is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>reshape2 is already installed and has been loaded!
+terra is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sf is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>googledrive is already installed and has been loaded!
+ggplot2 is already installed and has been loaded!
+corrplot is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>pROC is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dismo is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spatstat.geom is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>patchwork is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>biomod2 is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PRROC is already installed and has been loaded!
+leaflet is already installed and has been loaded!
+car is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gridExtra is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>htmltools is already installed and has been loaded!
+RColorBrewer is already installed and has been loaded!
+kableExtra is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble is already installed and has been loaded!</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you are using renv, you can snapshot the renv after loading all the packages.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::snapshot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="s.3-download-case-study-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="s.3-download-case-study-datasets">S.3 Download case study datasets</h2>
+<p>We have prepared the following data and uploaded them to our Google Drive for your use:</p>
+<ul>
+<li><p><strong>Species occurrence data:</strong> Shapefile format (.shp)</p></li>
+<li><p><strong>Environmental variables:</strong> Stacked Raster format (.tif)</p></li>
+<li><p><strong>Study area boundary:</strong> Shapefile format (.shp)</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De-authenticate Google Drive to access public files</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_deauth</span>()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Google Drive file ID and the path for downloading</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>zip_file_id <span class="ot">&lt;-</span> <span class="st">"1GXOA330Ow2F7NqxdhuBfbz0a-CMT8DTb"</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>datafolder_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(workspace)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a local path for the zipped file</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>zip_file_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(datafolder_path, <span class="st">"imbalanced_data.zip"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to download a file with progress messages</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>download_zip_file <span class="ot">&lt;-</span> <span class="cf">function</span>(file_id, file_path) {</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloading zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> file_path, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloaded zipped file to:"</span>, file_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create local directory if it doesn't exist</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(datafolder_path)) {</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(datafolder_path, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the zipped file</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Starting to download the zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting to download the zipped file...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_zip_file</span>(zip_file_id, zip_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading zipped file...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep/imbalanced_data.zip </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip the downloaded file</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipping the file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unzipping the file...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(zip_file_path, <span class="at">exdir =</span> datafolder_path)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipped files to folder:"</span>, datafolder_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<section id="background-points-and-pseudo-absence-points" class="level2">
+<h2 class="anchored" data-anchor-id="background-points-and-pseudo-absence-points">1.1 Background points and Pseudo-absence points</h2>
+<p>When working with presence-only records for your study species, a common approach is to sample a relatively large number of random points from the study area. These random points are referred to as <strong>background</strong> or <strong>pseudo-absence points</strong> <span class="citation" data-cites="valavi2022predictive">(<a href="#ref-valavi2022predictive" role="doc-biblioref">Valavi et al., 2022</a>)</span>.</p>
+<p>There are two common approaches to generating background points. The first involves <strong>randomly selecting background points</strong> from the entire extent of the study area, allowing observations to be compared against the full range of environmental conditions within that area <span class="citation" data-cites="elith2006novel phillips2006maximum">(<a href="#ref-elith2006novel" role="doc-biblioref">Elith* et al., 2006</a>; <a href="#ref-phillips2006maximum" role="doc-biblioref">Phillips et al., 2006</a>)</span>. The second approach generates background points within a specified minimum-maximum radius around presence points—a method referred to as the <strong>“disk” approach</strong> in the EcoCommons platform.</p>
+<p>For more information about background points and pseudo-absence data, please check out our support article: <a href="https://support.ecocommons.org.au/support/solutions/articles/6000255789-absence-data"><strong>Absence Data</strong></a>.</p>
+<p>Load the imbalanced_data.RData so that we can get all variables produced by the ‘<strong>Imbalanced Data Notebook Part 1</strong>’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the saved workspace</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>file_id <span class="ot">&lt;-</span> <span class="st">"1ZlUJml6kqO1jgAU7y1NmXi2iN5IDvUr-"</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> <span class="st">"imbalanceddata_part1.RData"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>File downloaded:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'imbalanceddata_part1.RData' &lt;id: 1ZlUJml6kqO1jgAU7y1NmXi2iN5IDvUr-&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saved locally as:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'imbalanceddata_part1.RData'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"imbalanceddata_part1.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="background-points-and-pseudo-absence-points-1" class="level1">
+<h1>2. Background points and pseudo-absence points</h1>
+<p>In Chapter 3, we examined the scenario where true-absence data is included in the training dataset. However, researchers often lack access to true-absence data when training models, or they may opt to reserve this valuable data for cross-validation purposes, as demonstrated by Elith et al. <span class="citation" data-cites="elith2006novel">(<a href="#ref-elith2006novel" role="doc-biblioref">Elith* et al., 2006</a>)</span> and Valavi et al. <span class="citation" data-cites="valavi2022predictive">(<a href="#ref-valavi2022predictive" role="doc-biblioref">Valavi et al., 2022</a>)</span>.</p>
+<p>So, what alternatives do we have when true-absence data is unavailable for training? One common approach is to generate background or pseudo-absence points and include them in the training dataset as substitutes for true-absence data.</p>
+<p>For instance, if we allocate all true-absence data, along with an equal number of presence records, to the test dataset, and use the remaining data for training, we would have 272 rows in the test dataset (136 true absences and 136 presences) and 646 rows in the training dataset. This results in an approximate 30/70 split between test and training data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Identify indices for ABSENCE and PRESENCE rows</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  abs_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"ABSENT"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  pres_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Number of ABSENCE rows</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  n_abs <span class="ot">&lt;-</span> <span class="fu">length</span>(abs_idx)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set seed for reproducibility and sample PRESENCE rows</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  pres_sample_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pres_idx, n_abs)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 1: all ABSENCE rows + sampled PRESENCE rows</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> gang_gang_act[<span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 2: the remaining rows</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> gang_gang_act[<span class="sc">-</span><span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get bounding box from the ACT boundary</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>act_bbox <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_bbox</span>(ACT)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of points in train and test datasets</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>n_train <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>n_test <span class="ot">&lt;-</span> <span class="fu">nrow</span>(test_data)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the training data with count annotation</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>p_train <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> train_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Training Data (n ="</span>, n_train, <span class="st">")"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the test data with count annotation</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>p_test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Test Data (n ="</span>, n_test, <span class="st">", 1:1)"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the two plots side-by-side</span></span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p_train <span class="sc">+</span> p_test <span class="sc">+</span> patchwork<span class="sc">::</span><span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="imbalanced_data_part2_files/figure-html/plot_training_test-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="random-background-points" class="level2">
+<h2 class="anchored" data-anchor-id="random-background-points">2.1 Random background points</h2>
+<p>Many studies suggest that the number of background points should be sufficient to comprehensively sample and represent all environments in the study area, or at least a range of background point sizes should be tested. For example, Valavi et al. <span class="citation" data-cites="valavi2022predictive">(<a href="#ref-valavi2022predictive" role="doc-biblioref">Valavi et al., 2022</a>)</span> tested their models with 100 to 100,000 background points. Barbet-Massin et al. <span class="citation" data-cites="barbet2012selecting">(<a href="#ref-barbet2012selecting" role="doc-biblioref">Barbet-Massin et al., 2012</a>)</span> tested 100, 300, 1000, 3000 or 10000 background points.</p>
+<p>We here will also test the effect of different sizes of background points on the performance of models. We will test the ratio of background points to true presences from 1:1, 5:1, 10:1, 15:1, 20:1, 30:1, and 50:1 with and without weighting methods.</p>
+<p>This is the function generating required number of random background points within the extent of the study area.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert SpatRaster to Raster</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the stacked raster layers</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>env_var_stack <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"imbalanced_data/ACT_raster.tif"</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the desired layers by their names</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>selected_layers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AusClim_bioclim_03_9s_1976-2005"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_06_9s_1976-2005"</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_09_9s_1976-2005"</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_15_9s_1976-2005"</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_24_9s_1976-2005"</span>,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_27_9s_1976-2005"</span>,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_29_9s_1976-2005"</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the raster stack</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>selected_rasters <span class="ot">&lt;-</span> env_var_stack[[selected_layers]]</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>studyarea <span class="ot">&lt;-</span> <span class="fu">raster</span>(env_var_stack<span class="sc">$</span><span class="st">`</span><span class="at">AusClim_bioclim_01_9s_1976-2005</span><span class="st">`</span>)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of presence points in train_data (assuming presence is coded as 1)</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>n_pres <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1963</span>)</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 1:1 ratio</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 5:1 ratio</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">5</span>)</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 10:1 ratio</span></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">10</span>)</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 15:1 ratio</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">15</span>)</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 20:1 ratio</span></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">20</span>)</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 30:1 ratio</span></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">30</span>)</span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 100:1 ratio</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>combine_bg_with_presence <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_points, train_data, raster_obj, <span class="at">target_crs =</span> <span class="dv">4283</span>, <span class="at">occ_label =</span> <span class="st">"bg"</span>) {</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the background points matrix to a data frame</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  bg_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(bg_points)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the occrrnS column with the specified label (e.g., "bg")</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  bg_df<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> occ_label</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the data frame to an sf object using the raster's projection</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  bg_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(bg_df, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="at">crs =</span> <span class="fu">projection</span>(raster_obj))</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transform the sf object to the target CRS (default is EPSG:4283)</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  bg_sf_target <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bg_sf, <span class="at">crs =</span> target_crs)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the original (presence) data with the background points</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(train_data, bg_sf_target)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then combine the generated background points with true present data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>combined_random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_1to1, train_data, studyarea)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>combined_random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_5to1, train_data, studyarea)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>combined_random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_10to1, train_data, studyarea)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>combined_random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_15to1, train_data, studyarea)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>combined_random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_20to1, train_data, studyarea)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>combined_random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_30to1, train_data, studyarea)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>combined_random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_50to1, train_data, studyarea)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>create_map_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_sf, title, <span class="at">point_size =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure correct factor levels</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  bg_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="fu">factor</span>(bg_sf<span class="sc">$</span>occrrnS, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span>, <span class="st">"bg"</span>))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Split the data into background and present points</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  bg_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"bg"</span>, ]</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  present_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the ACT polygon layer (without including it in the legend)</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot background points first with mapped color</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bg_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Background Points"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot present points on top with mapped color</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> present_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Present"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Manual color mapping</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"Group"</span>,</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Present"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"Background Points"</span> <span class="ot">=</span> <span class="st">"grey"</span>)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Legend with larger points</span></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(title) <span class="sc">+</span></span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">lims_method =</span> <span class="st">"geometry_bbox"</span>) <span class="sc">+</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio</span></span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_1to1, <span class="st">"1:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_5to1, <span class="st">"5:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_10to1, <span class="st">"10:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_15to1, <span class="st">"15:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_20to1, <span class="st">"20:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_30to1, <span class="st">"30:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_50to1, <span class="st">"50:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the plots with a shared legend at the bottom</span></span>
+<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> p5 <span class="sc">+</span> p6 <span class="sc">+</span> p7) <span class="sc">+</span></span>
+<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span>  <span class="co"># Collects the legend into one</span></span>
+<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
+<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="imbalanced_data_part2_files/figure-html/plot_ratio-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Then, we combine occurrence data with environmental variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_1to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_5to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_10to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_15to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_10to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_20to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_30to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_50to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_50to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When the ratio of background points to true presences exceeds 1:1—such as 5:1, 10:1, 15:1, 20:1, 30:1, and 50:1—an imbalanced dataset issue is introduced. To address this imbalance, we need to use weighting methods.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Fit weighted models and extract results</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>results_list_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_wt</span>(train_data, test_data_env)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Print the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> results_table_wt_random <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="sc">%&gt;%</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Model Evaluation Metrics</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUC</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUPR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CORR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Accuracy</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Specificity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Precision</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Threshold</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max_TSS</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Specificity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_1to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_5to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_10to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_15to1_env</td>
+<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">0.563</td>
+<td style="text-align: right;">0.090</td>
+<td style="text-align: right;">0.537</td>
+<td style="text-align: right;">0.669</td>
+<td style="text-align: right;">0.404</td>
+<td style="text-align: right;">0.529</td>
+<td style="text-align: right;">0.591</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.176</td>
+<td style="text-align: right;">0.324</td>
+<td style="text-align: right;">0.853</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_20to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_30to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_50to1_env</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">0.559</td>
+<td style="text-align: right;">0.097</td>
+<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">0.662</td>
+<td style="text-align: right;">0.404</td>
+<td style="text-align: right;">0.526</td>
+<td style="text-align: right;">0.586</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.162</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">0.831</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">2.1.1 Results</h3>
+<p><strong>(1) Background Ratios up to 10:1</strong></p>
+<ul>
+<li>Metrics remain stable with minimal changes, indicating the model is robust to moderate increases in background points.</li>
+</ul>
+<p><strong>(2)</strong> <strong>High Background Ratios (15:1 and 50:1)</strong></p>
+<ul>
+<li><p>Sensitivity and precision decline, leading to lower F1 scores.</p></li>
+<li><p>Specificity improves, but at the cost of missing more true positives.</p></li>
+</ul>
+<p><strong>(3)</strong> <strong>Overall Performance:</strong></p>
+<ul>
+<li><p>Increasing background points beyond <strong>10:1</strong> introduces diminishing returns and eventually harms model balance.</p></li>
+<li><p>A ratio of <strong>5:1 to 10:1</strong> appears to be a sweet spot, maintaining good sensitivity and specificity without introducing severe imbalances.</p></li>
+</ul>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">2.1.2 Summary</h3>
+<p><strong>(1)</strong> <strong>Increasing background points beyond a 10:1 ratio does not consistently improve model performance</strong> and may even reduce sensitivity and overall balance.</p>
+<p><strong>(2)</strong> <strong>Moderate background ratios (5:1 to 10:1)</strong> provide a balance between sufficient background sampling and maintaining model sensitivity.</p>
+<p><strong>(3)</strong> <strong>At very high ratios (15:1 and 50:1)</strong>, the model starts favoring background points, leading to poorer detection of presences.</p>
+</section>
+</section>
+<section id="the-disk-approach" class="level2">
+<h2 class="anchored" data-anchor-id="the-disk-approach">2.2 The ‘disk’ approach</h2>
+<p>Besides completely random background points, we will also test a ‘disk’ approach to generate random background point methods within a defined range around present records. As the below figure shown, these rings indicate potential areas where <strong>pseudo-absence points</strong> can be sampled, simulating <strong>absence data</strong> when real absences are unavailable.</p>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/Gang_gang_buffer.png" class="img-fluid"></p>
+<p>First, we extract present data from the training dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>presence_in_train_data <span class="ot">&lt;-</span> train_data[train_data<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function generating background points in a defined disk round the presence data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Generate random-buffer pseudo-absences within a study area</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>generate_pseudo_absences_random_buffer <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                                                   study_area,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                                                   min_buffer, max_buffer, </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>                                                   n_points_per_presence, </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">seed =</span> <span class="dv">123</span>) {</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  pseudo_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(presence_in_train_data)), <span class="cf">function</span>(i) {</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Random distance for this presence point</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    random_buffer <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> min_buffer, <span class="at">max =</span> max_buffer)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the buffer polygon</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    buffer_poly <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(presence_in_train_data[i, ], <span class="at">dist =</span> random_buffer)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Intersect buffer with study_area, so we only sample inside it</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    intersection_poly <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(buffer_poly, study_area)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If there's no overlap, return NULL</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">st_is_empty</span>(intersection_poly)) {</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Sample points inside the intersection</span></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_sample</span>(intersection_poly, <span class="at">size =</span> n_points_per_presence, <span class="at">type =</span> <span class="st">"random"</span>)</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine into an sfc</span></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>  pseudo_sfc <span class="ot">&lt;-</span> <span class="fu">do.call</span>(c, pseudo_list)</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If all overlaps were empty, pseudo_sfc is NULL</span></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sfc)) {</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert sfc to sf</span></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">geometry =</span> pseudo_sfc)</span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label them as "bg"</span></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>  pseudo_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="st">"bg"</span></span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only the occrrnS column</span></span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> pseudo_sf[, <span class="st">"occrrnS"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pseudo_sf)</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Combine pseudo-absences with original data</span></span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>generate_and_combine_pseudo_absences <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>                                                 train_data,</span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>                                                 study_area,</span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>                                                 min_buffer, max_buffer, </span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a>                                                 n_points_per_presence, </span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">seed =</span> <span class="dv">123</span>, </span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">target_crs =</span> <span class="dv">4283</span>) {</span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make sure everything is in the same CRS before buffering/intersecting</span></span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a>  presence_in_train_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(presence_in_train_data, target_crs)</span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>  study_area <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(study_area, target_crs)</span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate pseudo-absence points</span></span>
+<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">generate_pseudo_absences_random_buffer</span>(</span>
+<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data, </span>
+<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a>    study_area,</span>
+<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a>    min_buffer, max_buffer, </span>
+<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a>    n_points_per_presence, </span>
+<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a>    seed</span>
+<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert and combine</span></span>
+<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>  original_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(train_data, target_crs)</span>
+<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If pseudo_sf is NULL (no overlap found), just return original</span></span>
+<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sf)) {</span>
+<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"No pseudo-absence points generated (buffers might lie outside the study area)."</span>)</span>
+<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(original_data)</span>
+<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(original_data, pseudo_sf)</span>
+<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
+<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Generate background points within these ranges around present records of Gang-gang Cockatoo in the training dataset:</p>
+<ul>
+<li><p><strong>Within 500m</strong></p></li>
+<li><p><strong>500 - 1000m</strong></p></li>
+<li><p><strong>1000 - 1500m</strong></p></li>
+<li><p><strong>1500 - 2000m</strong></p></li>
+<li><p><strong>More than 2000m</strong></p></li>
+</ul>
+<p>⚠️ Note: producing random points take few minus. ⚠️</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">0</span>, </span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">500</span>, </span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500_1000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">500</span>, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1000</span>, </span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1000_1500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1000</span>, </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1500</span>, </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1500_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1500</span>, </span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">2000</span>, </span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">2000</span>, </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">10000</span>, </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s plot the generated disk background points.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio with smaller points</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500, <span class="st">"Buffer &lt; 500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500_1000, <span class="st">"Buffer 500-1000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1000_1500, <span class="st">"Buffer 1000-1500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1500_2000, <span class="st">"Buffer 1500-2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_2000, <span class="st">"Buffer &gt; 2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the three plots in one row and collect a common legend at the bottom</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3<span class="sc">+</span> p4 <span class="sc">+</span> p5) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="imbalanced_data_part2_files/figure-html/plot_disk-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the above figure, we can see that as the range increases, the grey points (background points) move farther away from the present points.</p>
+<p>Now, let’s combine the occurrence data with environmental variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_1000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500_1000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1000_1500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1000_1500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1500_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1500_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now run the GLM models with these datasets and generate the evaluation metrics. Please note that we created an equal number of background points and present points, so there is no imbalance issue in this case. Thus, we are not using ‘wt’ in the GLM function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>results_list_no_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_no_wt</span>(train_data, test_data_env)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Print the results of models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Model Evaluation Metrics</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUC</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUPR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CORR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Accuracy</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Specificity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Precision</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Threshold</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max_TSS</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Specificity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">disk_bg_500_env</td>
+<td style="text-align: right;">0.536</td>
+<td style="text-align: right;">0.541</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.529</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.059</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.588</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">disk_bg_500_1000_env</td>
+<td style="text-align: right;">0.582</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.156</td>
+<td style="text-align: right;">0.574</td>
+<td style="text-align: right;">0.625</td>
+<td style="text-align: right;">0.522</td>
+<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">0.594</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.147</td>
+<td style="text-align: right;">0.625</td>
+<td style="text-align: right;">0.522</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disk_bg_1000_1500_env</td>
+<td style="text-align: right;">0.560</td>
+<td style="text-align: right;">0.526</td>
+<td style="text-align: right;">0.096</td>
+<td style="text-align: right;">0.540</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.610</td>
+<td style="text-align: right;">0.547</td>
+<td style="text-align: right;">0.506</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.088</td>
+<td style="text-align: right;">0.801</td>
+<td style="text-align: right;">0.287</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">disk_bg_1500_2000_env</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.495</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.507</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.544</td>
+<td style="text-align: right;">0.508</td>
+<td style="text-align: right;">0.489</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right;">0.838</td>
+<td style="text-align: right;">0.346</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disk_bg_2000_env</td>
+<td style="text-align: right;">0.538</td>
+<td style="text-align: right;">0.453</td>
+<td style="text-align: right;">-0.049</td>
+<td style="text-align: right;">0.478</td>
+<td style="text-align: right;">0.463</td>
+<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.477</td>
+<td style="text-align: right;">0.470</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.735</td>
+<td style="text-align: right;">0.309</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="results-1" class="level3">
+<h3 class="anchored" data-anchor-id="results-1">2.2.1 Results</h3>
+<p><strong>(1) Moderate Buffers Perform Best:</strong></p>
+<ul>
+<li>500 - 1000m buffer had the best AUC (0.582) and F1 (0.594), indicating a good balance between ecological similarity and separation.</li>
+</ul>
+<p><strong>(2)</strong> <strong>Too Close or Too Far Decreases Performance</strong>:</p>
+<ul>
+<li><p>Within 500m: Pseudo-absences too close to presences make it hard for the model to distinguish the two.</p></li>
+<li><p>Beyond 2000m: Pseudo-absences too far may not represent relevant environmental contrasts, leading to poor predictions.</p></li>
+</ul>
+<p><strong>(3)</strong> <strong>Sensitivity vs.&nbsp;Specificity Trade-off:</strong></p>
+<ul>
+<li>As background points move farther away, Specificity tends to improve, but Sensitivity decreases, leading to a trade-off between detecting presences and absences.</li>
+</ul>
+<p><strong>(4)</strong> <strong>Correlation Decreases With Distance:</strong></p>
+<ul>
+<li>The CORR metric peaks around 500 - 1000m and then declines, even becoming negative beyond 2000m, indicating the model struggles with very distant background points.</li>
+</ul>
+</section>
+<section id="summary-1" class="level3">
+<h3 class="anchored" data-anchor-id="summary-1">2.2.3 Summary</h3>
+<p><strong>(1) Optimal Buffer Distance:</strong></p>
+<ul>
+<li>A moderate buffer (e.g., 500 - 1000m) seems to strike the best balance for pseudo-absence sampling in this context.</li>
+</ul>
+<p><strong>(2)</strong> <strong>Avoid Extremes:</strong></p>
+<ul>
+<li>Sampling too close or too far from presence points degrades model performance.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>3. Conclusion</h1>
+<section id="comparison-across-all-models" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-across-all-models">3.1 Comparison across all models</h2>
+<p>Let’s also compare the performance of all good models</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine three tables</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_including_true_absence_table_wt, results_table_no_wt_disk, results_table_wt_random)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Display the combined table with kable</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="sc">%&gt;%</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Combined Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="fu">ncol</span>(combined_results_table), <span class="at">bold =</span> <span class="cn">TRUE</span>)  <span class="co"># Highlight the Source column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Combined Model Evaluation Metrics</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUC</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AUPR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CORR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Accuracy</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Specificity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Precision</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Threshold</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max_TSS</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Sensitivity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Best_Specificity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">split_90_train</td>
+<td style="text-align: right;">0.679</td>
+<td style="text-align: right;">0.678</td>
+<td style="text-align: right;">0.281</td>
+<td style="text-align: right;">0.607</td>
+<td style="text-align: right;">0.779</td>
+<td style="text-align: right;">0.434</td>
+<td style="text-align: right;">0.579</td>
+<td style="text-align: right;">0.664</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.295</td>
+<td style="text-align: right; font-weight: bold;">0.557</td>
+<td style="text-align: right;">0.738</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">split_70_train</td>
+<td style="text-align: right;">0.697</td>
+<td style="text-align: right;">0.690</td>
+<td style="text-align: right;">0.336</td>
+<td style="text-align: right;">0.647</td>
+<td style="text-align: right;">0.674</td>
+<td style="text-align: right;">0.621</td>
+<td style="text-align: right;">0.640</td>
+<td style="text-align: right;">0.656</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.295</td>
+<td style="text-align: right; font-weight: bold;">0.705</td>
+<td style="text-align: right;">0.589</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">split_50_train</td>
+<td style="text-align: right;">0.670</td>
+<td style="text-align: right;">0.647</td>
+<td style="text-align: right;">0.297</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.324</td>
+<td style="text-align: right; font-weight: bold;">0.838</td>
+<td style="text-align: right;">0.485</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">disk_bg_500_env</td>
+<td style="text-align: right;">0.536</td>
+<td style="text-align: right;">0.541</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.529</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.588</td>
+<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.059</td>
+<td style="text-align: right; font-weight: bold;">0.471</td>
+<td style="text-align: right;">0.588</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disk_bg_500_1000_env</td>
+<td style="text-align: right;">0.582</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.156</td>
+<td style="text-align: right;">0.574</td>
+<td style="text-align: right;">0.625</td>
+<td style="text-align: right;">0.522</td>
+<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">0.594</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.147</td>
+<td style="text-align: right; font-weight: bold;">0.625</td>
+<td style="text-align: right;">0.522</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">disk_bg_1000_1500_env</td>
+<td style="text-align: right;">0.560</td>
+<td style="text-align: right;">0.526</td>
+<td style="text-align: right;">0.096</td>
+<td style="text-align: right;">0.540</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.610</td>
+<td style="text-align: right;">0.547</td>
+<td style="text-align: right;">0.506</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.088</td>
+<td style="text-align: right; font-weight: bold;">0.801</td>
+<td style="text-align: right;">0.287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">disk_bg_1500_2000_env</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.495</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.507</td>
+<td style="text-align: right;">0.471</td>
+<td style="text-align: right;">0.544</td>
+<td style="text-align: right;">0.508</td>
+<td style="text-align: right;">0.489</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.184</td>
+<td style="text-align: right; font-weight: bold;">0.838</td>
+<td style="text-align: right;">0.346</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">disk_bg_2000_env</td>
+<td style="text-align: right;">0.538</td>
+<td style="text-align: right;">0.453</td>
+<td style="text-align: right;">-0.049</td>
+<td style="text-align: right;">0.478</td>
+<td style="text-align: right;">0.463</td>
+<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.477</td>
+<td style="text-align: right;">0.470</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right; font-weight: bold;">0.735</td>
+<td style="text-align: right;">0.309</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_1to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right; font-weight: bold;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_5to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right; font-weight: bold;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_10to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right; font-weight: bold;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_15to1_env</td>
+<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">0.563</td>
+<td style="text-align: right;">0.090</td>
+<td style="text-align: right;">0.537</td>
+<td style="text-align: right;">0.669</td>
+<td style="text-align: right;">0.404</td>
+<td style="text-align: right;">0.529</td>
+<td style="text-align: right;">0.591</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.176</td>
+<td style="text-align: right; font-weight: bold;">0.324</td>
+<td style="text-align: right;">0.853</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_20to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right; font-weight: bold;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">combined_random_bg_30to1_env</td>
+<td style="text-align: right;">0.580</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.562</td>
+<td style="text-align: right;">0.713</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">0.620</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right; font-weight: bold;">0.456</td>
+<td style="text-align: right;">0.699</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">combined_random_bg_50to1_env</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">0.559</td>
+<td style="text-align: right;">0.097</td>
+<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">0.662</td>
+<td style="text-align: right;">0.404</td>
+<td style="text-align: right;">0.526</td>
+<td style="text-align: right;">0.586</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.162</td>
+<td style="text-align: right; font-weight: bold;">0.331</td>
+<td style="text-align: right;">0.831</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><strong>(1)</strong> <strong>Best Overall Performance:</strong></p>
+<ul>
+<li><p><strong>Split Models</strong> show the highest <strong>AUC</strong> scores.</p></li>
+<li><p><strong>split_70_train</strong> has the best AUC (<strong>0.697</strong>) and CORR (<strong>0.336</strong>), indicating strong predictive performance.</p></li>
+<li><p><strong>split_90_train</strong> and <strong>split_50_train</strong> follow closely with AUCs of <strong>0.679</strong> and <strong>0.670</strong>, respectively.</p></li>
+</ul>
+<p><strong>(2)</strong> <strong>Disk Strategy Performance:</strong></p>
+<ul>
+<li><p>Best AUC (<strong>0.582</strong>) achieved with <strong>500–1000m</strong> buffer.</p></li>
+<li><p><strong>Closer buffers (500m)</strong> result in weaker performance (<strong>AUC = 0.536</strong>), likely due to environmental similarity between presence and background points.</p></li>
+<li><p><strong>Farther buffers (&gt;2000m)</strong> degrade performance (<strong>AUC = 0.538</strong>) due to irrelevant background sampling.</p></li>
+</ul>
+<p><strong>(3)</strong> <strong>Random Strategy Performance:</strong></p>
+<ul>
+<li><p>Stable <strong>AUC (~0.580)</strong> across most background-to-presence ratios (1:1 to 30:1).</p></li>
+<li><p>Slight performance drop at <strong>50:1 ratio</strong> (<strong>AUC = 0.571</strong>) suggests diminishing returns from adding more background points.</p></li>
+<li><p><strong>Sensitivity</strong> remains high (~0.713) across most ratios but at the expense of <strong>Specificity (~0.412)</strong>.</p></li>
+</ul>
+<p><strong>(4)</strong> <strong>Best Trade-offs (Max_TSS):</strong></p>
+<ul>
+<li><p><strong>split_50_train</strong> shows the highest <strong>Max_TSS (0.324)</strong>, indicating the best balance between Sensitivity and Specificity.</p></li>
+<li><p>In Random Strategy, <strong>15:1 ratio</strong> yields the highest <strong>Max_TSS (0.176)</strong>.</p></li>
+</ul>
+<p><strong>(5)</strong> <strong>Key Insights:</strong></p>
+<ul>
+<li><p><strong>Split models</strong> outperform both Disk and Random background strategies in terms of AUC and overall predictive ability.</p></li>
+<li><p><strong>Disk strategy</strong> performs best at moderate buffer distances (<strong>500–1000m</strong>), balancing environmental similarity and separation.</p></li>
+<li><p><strong>Random strategy</strong> shows stable performance across most ratios, but excessive background points (50:1) can reduce effectiveness.</p></li>
+</ul>
+</section>
+</section>
+<section id="summary-2" class="level1">
+<h1>4. Summary</h1>
+<p>Including true-absence data in models is always beneficial when available. However, simply adding more absence data does not necessarily lead to better model performance.</p>
+<p>An imbalance between presence and absence records can negatively impact model accuracy. In such cases, it is important to apply weighting techniques to address this issue and improve predictive performance.</p>
+<p>When true absence data is unavailable, pseudo-absence points serve as a useful alternative. The selection strategy for these pseudo-absences should be informed by the ecological characteristics and distribution patterns of the target species.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p><em>for both parts</em></p>
+<p>Barbet-Massin, M., Jiguet, F., Albert, C., &amp; Thuiller, W. (2012). <em>Selecting pseudo-absences for species distribution models: How, where and how many? Methods ecol evol 3: 327–338</em>.</p>
+<p>Benkendorf, D. J., Schwartz, S. D., Cutler, D. R., &amp; Hawkins, C. P. (2023). Correcting for the effects of class imbalance improves the performance of machine-learning based species distribution models. <em>Ecological Modelling</em>, <em>483</em>, 110414.</p>
+<p>Chawla, N. V., Bowyer, K. W., Hall, L. O., &amp; Kegelmeyer, W. P. (2002). SMOTE: Synthetic minority over-sampling technique. <em>Journal of Artificial Intelligence Research</em>, <em>16</em>, 321–357.</p>
+<p>Chen, C., Liaw, A., Breiman, L., et al.&nbsp;(2004). Using random forest to learn imbalanced data. <em>University of California, Berkeley</em>, <em>110</em>(1-12), 24.</p>
+<p>Elith*, J., H. Graham*, C., P. Anderson, R., Dudı́k, M., Ferrier, S., Guisan, A., J. Hijmans, R., Huettmann, F., R. Leathwick, J., Lehmann, A., et al.&nbsp;(2006). Novel methods improve prediction of species’ distributions from occurrence data. <em>Ecography</em>, <em>29</em>(2), 129–151.</p>
+<p>Gaul, W., Sadykova, D., White, H. J., León-Sánchez, L., Caplat, P., Emmerson, M. C., &amp; Yearsley, J. M. (2022). Modelling the distribution of rare invertebrates by correcting class imbalance and spatial bias. <em>Diversity and Distributions</em>, <em>28</em>(10), 2171–2186.</p>
+<p>Johnson, R. A., Chawla, N. V., &amp; Hellmann, J. J. (2012). Species distribution modeling and prediction: A class imbalance problem. <em>2012 Conference on Intelligent Data Understanding</em>, 9–16.</p>
+<p>Menardi, G., &amp; Torelli, N. (2014). Training and assessing classification rules with imbalanced data. <em>Data Mining and Knowledge Discovery</em>, <em>28</em>, 92–122.</p>
+<p>Phillips, S. J., Anderson, R. P., &amp; Schapire, R. E. (2006). Maximum entropy modeling of species geographic distributions. <em>Ecological Modelling</em>, <em>190</em>(3-4), 231–259.</p>
+<p>Václavı́k, T., &amp; Meentemeyer, R. K. (2009). Invasive species distribution modeling (iSDM): Are absence data and dispersal constraints needed to predict actual distributions? <em>Ecological Modelling</em>, <em>220</em>(23), 3248–3258.</p>
+<p>Valavi, R., Guillera-Arroita, G., Lahoz-Monfort, J. J., &amp; Elith, J. (2022). Predictive performance of presence-only species distribution models: A benchmark study with reproducible code. <em>Ecological Monographs</em>, <em>92</em>(1), e01486.</p>
+<p>Zhang, Z., Mammola, S., &amp; Zhang, H. (2020). Does weighting presence records improve the performance of species distribution models? A test using fish larval stages in the yangtze estuary. <em>Science of The Total Environment</em>, <em>741</em>, 140393.</p>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
+<p>EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).</p>
+<div data-align="center">
+<p><strong>Our partners</strong></p>
+</div>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/partners_logos.png" class="img-fluid"></p>
+</section>
+<section id="how-to-cite-ecocommons" class="level1">
+<h1><strong>How to Cite EcoCommons</strong></h1>
+<p>If you use EcoCommons in your research, please cite the platform as follows:</p>
+<blockquote class="blockquote">
+<p>EcoCommons Australia 2024. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/" class="uri">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a></p>
+</blockquote>
+<p>You can download the citation file for EcoCommons Australia here: <a href="reference.bib">Download the BibTeX file</a></p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-barbet2012selecting" class="csl-entry" role="listitem">
+Barbet-Massin, M., Jiguet, F., Albert, C., &amp; Thuiller, W. (2012). <em>Selecting pseudo-absences for species distribution models: How, where and how many? Methods ecol evol 3: 327–338</em>.
+</div>
+<div id="ref-elith2006novel" class="csl-entry" role="listitem">
+Elith*, J., H. Graham*, C., P. Anderson, R., Dudı́k, M., Ferrier, S., Guisan, A., J. Hijmans, R., Huettmann, F., R. Leathwick, J., Lehmann, A., et al. (2006). Novel methods improve prediction of species’ distributions from occurrence data. <em>Ecography</em>, <em>29</em>(2), 129–151.
+</div>
+<div id="ref-menardi2014training" class="csl-entry" role="listitem">
+Menardi, G., &amp; Torelli, N. (2014). Training and assessing classification rules with imbalanced data. <em>Data Mining and Knowledge Discovery</em>, <em>28</em>, 92–122.
+</div>
+<div id="ref-phillips2006maximum" class="csl-entry" role="listitem">
+Phillips, S. J., Anderson, R. P., &amp; Schapire, R. E. (2006). Maximum entropy modeling of species geographic distributions. <em>Ecological Modelling</em>, <em>190</em>(3-4), 231–259.
+</div>
+<div id="ref-valavi2022predictive" class="csl-entry" role="listitem">
+Valavi, R., Guillera-Arroita, G., Lahoz-Monfort, J. J., &amp; Elith, J. (2022). Predictive performance of presence-only species distribution models: A benchmark study with reproducible code. <em>Ecological Monographs</em>, <em>92</em>(1), e01486.
+</div>
+</div></section></div></main> <!-- /main -->
+
+
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>footer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="footer_files/libs/clipboard/clipboard.min.js"></script>
+<script src="footer_files/libs/quarto-html/quarto.js"></script>
+<script src="footer_files/libs/quarto-html/popper.min.js"></script>
+<script src="footer_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="footer_files/libs/quarto-html/anchor.min.js"></script>
+<link href="footer_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="footer_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="footer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="footer_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div style="text-align: center;">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EC_section_break.png" alt="Section Break" width="750"></p>
+</div>
+<div style="max-width: 1000px; margin: 45; text-align: center; padding: 10px;">
+<p>
+EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
+</p>
+<div style="text-align: center;">
+<h3 class="no-anchor" style="text-align: center;">
+Our Partner
+</h3>
+</div>
+<div style="text-align: center;">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/partners_logos.png" alt="Partners Logos" width="750"></p>
+</div>
+<h3 class="no-anchor" style="text-align: center;">
+How to Cite EcoCommons
+</h3>
+<p style="text-align: center;">
+</p><p>If you use EcoCommons in your research, please cite the platform as follows:</p>
+<p></p>
+<blockquote style="text-align: center;" class="blockquote">
+<p>EcoCommons Australia 2024. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
+</blockquote>
+<p style="text-align: center;">
+</p><p>You can download the citation file for EcoCommons Australia here: <a href="reference.bib">Download the BibTeX file</a></p>
+<p></p>
+<p style="text-align: center;">
+</p><p>© 2024 EcoCommons. All rights reserved.</p>
+<p></p>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

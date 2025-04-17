@@ -21,6 +21,7 @@ This guide will help you prepare environmental variables such as bioclimatic dat
 ### 2. Imbalanced dataset Part 1 and 2
 
 [Imbalanced dataset Part 1](data_prep/imbalanced_data_part1.qmd)\
+[Imbalanced dataset Part 2](data_prep/imbalanced_data_part2.qmd)\
 Learn how to deal with the issue of imbalanced dataset.
 
 ### 3. Raster Processing
