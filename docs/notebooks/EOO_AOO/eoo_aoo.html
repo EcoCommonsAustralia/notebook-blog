@@ -144,6 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">GLM</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../notebooks/EC_RF/EC_RF.html">
+ <span class="dropdown-text">Random Forest</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
   </li>  
@@ -308,7 +312,7 @@ The following object is masked from 'package:stats':
 <pre><code>lwgeom is already installed and has been loaded!</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to liblwgeom 3.0.0beta1 r16016, GEOS 3.11.0, PROJ 9.1.0</code></pre>
+<pre><code>Linking to liblwgeom 3.0.0beta1 r16016, GEOS 3.13.0, PROJ 9.5.1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ggplot2 is already installed and has been loaded!
@@ -316,13 +320,13 @@ ggspatial is already installed and has been loaded!
 sf is already installed and has been loaded!</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE
+<pre><code>Linking to GEOS 3.13.0, GDAL 3.8.5, PROJ 9.5.1; sf_use_s2() is TRUE
 
 Attaching package: 'sf'
 
-The following object is masked from 'package:lwgeom':
+The following objects are masked from 'package:lwgeom':
 
-    st_perimeter</code></pre>
+    st_minimum_bounding_circle, st_perimeter</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>devtools is already installed and has been loaded!</code></pre>
@@ -383,11 +387,11 @@ The following objects are masked from 'package:base':
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(basisOfRecord, <span class="at">group =</span> <span class="st">"basic"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Request for 10127 occurrences placed in queue
+<pre><code>Request for 10198 occurrences placed in queue
 Current queue length: 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>-------</code></pre>
+<pre><code>-----</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading</code></pre>
@@ -451,12 +455,12 @@ A BibTeX entry for LaTeX users is
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(species_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 10127 features and 1 field
+<pre><code>Simple feature collection with 10198 features and 1 field
 Geometry type: POINT
 Dimension:     XY
 Bounding box:  xmin: 140.9672 ymin: -39.12958 xmax: 149.9317 ymax: -35.96943
 Geodetic CRS:  WGS 84
-# A tibble: 10,127 × 2
+# A tibble: 10,198 × 2
    Species                      geometry
  * &lt;chr&gt;                     &lt;POINT [°]&gt;
  1 Vombatus ursinus (145.4908 -37.67752)
@@ -469,7 +473,7 @@ Geodetic CRS:  WGS 84
  8 Vombatus ursinus (147.0542 -37.46073)
  9 Vombatus ursinus   (146.165 -36.8437)
 10 Vombatus ursinus (147.7134 -37.51464)
-# ℹ 10,117 more rows</code></pre>
+# ℹ 10,188 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -542,7 +546,7 @@ Geodetic CRS:  WGS 84
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"The AOO value is:"</span>, AOO_result<span class="sc">$</span>aoo, <span class="st">"km²"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The AOO value is: 10908 km²"</code></pre>
+<pre><code>[1] "The AOO value is: 10992 km²"</code></pre>
 </div>
 </div>
 <div class="cell">

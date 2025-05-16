@@ -16,6 +16,8 @@ website:
         menu:
           - href: notebooks/EC_GLM/EC_GLM.qmd
             text: GLM
+          - href: notebooks/EC_RF/EC_RF.qmd
+            text: Random Forest
           - href: notebooks/EOO_AOO/eoo_aoo.qmd
             text: Extent and Area of Ocurrence / Occupancy
       - text: Spatial Prioritization

@@ -166,6 +166,10 @@ div.csl-indent {
  <span class="dropdown-text">GLM</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../notebooks/EC_RF/EC_RF.html">
+ <span class="dropdown-text">Random Forest</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
   </li>  
@@ -383,8 +387,10 @@ corrplot is already installed and has been loaded!</code></pre>
 <pre><code>biomod2 is already installed and has been loaded!</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>PRROC is already installed and has been loaded!
-leaflet is already installed and has been loaded!
+<pre><code>PRROC is already installed and has been loaded!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>leaflet is already installed and has been loaded!
 car is already installed and has been loaded!</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -398,9 +404,9 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble is already installed and has been loaded!</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you are using renv, you can snapshot the renv after loading all the packages.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::snapshot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you are using renv, you can snapshot the renv after loading all the packages.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::snapshot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="s.3-download-case-study-datasets" class="level2">
@@ -412,48 +418,48 @@ kableExtra is already installed and has been loaded!</code></pre>
 <li><p><strong>Study area boundary:</strong> Shapefile format (.shp)</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De-authenticate Google Drive to access public files</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_deauth</span>()</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Google Drive file ID and the path for downloading</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>zip_file_id <span class="ot">&lt;-</span> <span class="st">"1GXOA330Ow2F7NqxdhuBfbz0a-CMT8DTb"</span> </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>datafolder_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(workspace)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a local path for the zipped file</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>zip_file_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(datafolder_path, <span class="st">"imbalanced_data.zip"</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to download a file with progress messages</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>download_zip_file <span class="ot">&lt;-</span> <span class="cf">function</span>(file_id, file_path) {</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloading zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> file_path, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloaded zipped file to:"</span>, file_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create local directory if it doesn't exist</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(datafolder_path)) {</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(datafolder_path, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the zipped file</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Starting to download the zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De-authenticate Google Drive to access public files</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_deauth</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Google Drive file ID and the path for downloading</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>zip_file_id <span class="ot">&lt;-</span> <span class="st">"1GXOA330Ow2F7NqxdhuBfbz0a-CMT8DTb"</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>datafolder_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(workspace)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a local path for the zipped file</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>zip_file_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(datafolder_path, <span class="st">"imbalanced_data.zip"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to download a file with progress messages</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>download_zip_file <span class="ot">&lt;-</span> <span class="cf">function</span>(file_id, file_path) {</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloading zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> file_path, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Downloaded zipped file to:"</span>, file_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create local directory if it doesn't exist</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(datafolder_path)) {</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(datafolder_path, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the zipped file</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Starting to download the zipped file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Starting to download the zipped file...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_zip_file</span>(zip_file_id, zip_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_zip_file</span>(zip_file_id, zip_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Downloading zipped file...</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep/imbalanced_data.zip </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip the downloaded file</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipping the file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip the downloaded file</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipping the file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unzipping the file...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(zip_file_path, <span class="at">exdir =</span> datafolder_path)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipped files to folder:"</span>, datafolder_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(zip_file_path, <span class="at">exdir =</span> datafolder_path)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipped files to folder:"</span>, datafolder_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog/notebooks/data_prep </code></pre>
 </div>
@@ -469,10 +475,10 @@ kableExtra is already installed and has been loaded!</code></pre>
 <p>For more information about background points and pseudo-absence data, please check out our support article: <a href="https://support.ecocommons.org.au/support/solutions/articles/6000255789-absence-data"><strong>Absence Data</strong></a>.</p>
 <p>Load the imbalanced_data.RData so that we can get all variables produced by the ‘<strong>Imbalanced Data Notebook Part 1</strong>’.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the saved workspace</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>file_id <span class="ot">&lt;-</span> <span class="st">"1ZlUJml6kqO1jgAU7y1NmXi2iN5IDvUr-"</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> <span class="st">"imbalanceddata_part1.RData"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the saved workspace</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>file_id <span class="ot">&lt;-</span> <span class="st">"1ZlUJml6kqO1jgAU7y1NmXi2iN5IDvUr-"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_download</span>(<span class="fu">as_id</span>(file_id), <span class="at">path =</span> <span class="st">"imbalanceddata_part1.RData"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>File downloaded:</code></pre>
 </div>
@@ -485,7 +491,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>• 'imbalanceddata_part1.RData'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"imbalanceddata_part1.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"imbalanceddata_part1.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -495,68 +501,68 @@ kableExtra is already installed and has been loaded!</code></pre>
 <p>So, what alternatives do we have when true-absence data is unavailable for training? One common approach is to generate background or pseudo-absence points and include them in the training dataset as substitutes for true-absence data.</p>
 <p>For instance, if we allocate all true-absence data, along with an equal number of presence records, to the test dataset, and use the remaining data for training, we would have 272 rows in the test dataset (136 true absences and 136 presences) and 646 rows in the training dataset. This results in an approximate 30/70 split between test and training data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Identify indices for ABSENCE and PRESENCE rows</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  abs_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"ABSENT"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  pres_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Number of ABSENCE rows</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  n_abs <span class="ot">&lt;-</span> <span class="fu">length</span>(abs_idx)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set seed for reproducibility and sample PRESENCE rows</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  pres_sample_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pres_idx, n_abs)</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 1: all ABSENCE rows + sampled PRESENCE rows</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> gang_gang_act[<span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 2: the remaining rows</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> gang_gang_act[<span class="sc">-</span><span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Identify indices for ABSENCE and PRESENCE rows</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  abs_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"ABSENT"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  pres_idx <span class="ot">&lt;-</span> <span class="fu">which</span>(gang_gang_act<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Number of ABSENCE rows</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  n_abs <span class="ot">&lt;-</span> <span class="fu">length</span>(abs_idx)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set seed for reproducibility and sample PRESENCE rows</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  pres_sample_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pres_idx, n_abs)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 1: all ABSENCE rows + sampled PRESENCE rows</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> gang_gang_act[<span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create subdataframe 2: the remaining rows</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> gang_gang_act[<span class="sc">-</span><span class="fu">c</span>(abs_idx, pres_sample_idx), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get bounding box from the ACT boundary</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>act_bbox <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_bbox</span>(ACT)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of points in train and test datasets</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>n_train <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>n_test <span class="ot">&lt;-</span> <span class="fu">nrow</span>(test_data)</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the training data with count annotation</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>p_train <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> train_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Training Data (n ="</span>, n_train, <span class="st">")"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the test data with count annotation</span></span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>p_test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
-<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
-<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Test Data (n ="</span>, n_test, <span class="st">", 1:1)"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
-<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
-<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the two plots side-by-side</span></span>
-<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p_train <span class="sc">+</span> p_test <span class="sc">+</span> patchwork<span class="sc">::</span><span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get bounding box from the ACT boundary</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>act_bbox <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_bbox</span>(ACT)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of points in train and test datasets</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>n_train <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>n_test <span class="ot">&lt;-</span> <span class="fu">nrow</span>(test_data)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the training data with count annotation</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>p_train <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> train_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Training Data (n ="</span>, n_train, <span class="st">")"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ggplot for the test data with count annotation</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>p_test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">color =</span> occrrnS)) <span class="sc">+</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"ABSENT"</span> <span class="ot">=</span> <span class="st">"#f6aa70"</span>)) <span class="sc">+</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste</span>(<span class="st">"Test Data (n ="</span>, n_test, <span class="st">", 1:1)"</span>)) <span class="sc">+</span>  <span class="co"># Add count to title</span></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"xmin"</span>], act_bbox[<span class="st">"xmax"</span>]), </span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(act_bbox[<span class="st">"ymin"</span>], act_bbox[<span class="st">"ymax"</span>])</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the two plots side-by-side</span></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p_train <span class="sc">+</span> p_test <span class="sc">+</span> patchwork<span class="sc">::</span><span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -571,131 +577,131 @@ kableExtra is already installed and has been loaded!</code></pre>
 <p>We here will also test the effect of different sizes of background points on the performance of models. We will test the ratio of background points to true presences from 1:1, 5:1, 10:1, 15:1, 20:1, 30:1, and 50:1 with and without weighting methods.</p>
 <p>This is the function generating required number of random background points within the extent of the study area.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert SpatRaster to Raster</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the stacked raster layers</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>env_var_stack <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"imbalanced_data/ACT_raster.tif"</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the desired layers by their names</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>selected_layers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AusClim_bioclim_03_9s_1976-2005"</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_06_9s_1976-2005"</span>,</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_09_9s_1976-2005"</span>,</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_15_9s_1976-2005"</span>,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_24_9s_1976-2005"</span>,</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_27_9s_1976-2005"</span>,</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_29_9s_1976-2005"</span>)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the raster stack</span></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>selected_rasters <span class="ot">&lt;-</span> env_var_stack[[selected_layers]]</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>studyarea <span class="ot">&lt;-</span> <span class="fu">raster</span>(env_var_stack<span class="sc">$</span><span class="st">`</span><span class="at">AusClim_bioclim_01_9s_1976-2005</span><span class="st">`</span>)</span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of presence points in train_data (assuming presence is coded as 1)</span></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>n_pres <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1963</span>)</span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 1:1 ratio</span></span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres)</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 5:1 ratio</span></span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">5</span>)</span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 10:1 ratio</span></span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">10</span>)</span>
-<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 15:1 ratio</span></span>
-<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">15</span>)</span>
-<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 20:1 ratio</span></span>
-<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">20</span>)</span>
-<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 30:1 ratio</span></span>
-<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">30</span>)</span>
-<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 100:1 ratio</span></span>
-<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert SpatRaster to Raster</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the stacked raster layers</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>env_var_stack <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"imbalanced_data/ACT_raster.tif"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the desired layers by their names</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>selected_layers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AusClim_bioclim_03_9s_1976-2005"</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_06_9s_1976-2005"</span>,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_09_9s_1976-2005"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_15_9s_1976-2005"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_24_9s_1976-2005"</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_27_9s_1976-2005"</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"AusClim_bioclim_29_9s_1976-2005"</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the raster stack</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>selected_rasters <span class="ot">&lt;-</span> env_var_stack[[selected_layers]]</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>studyarea <span class="ot">&lt;-</span> <span class="fu">raster</span>(env_var_stack<span class="sc">$</span><span class="st">`</span><span class="at">AusClim_bioclim_01_9s_1976-2005</span><span class="st">`</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of presence points in train_data (assuming presence is coded as 1)</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>n_pres <span class="ot">&lt;-</span> <span class="fu">nrow</span>(train_data)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1963</span>)</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 1:1 ratio</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres)</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 5:1 ratio</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">5</span>)</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 10:1 ratio</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">10</span>)</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 15:1 ratio</span></span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">15</span>)</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 20:1 ratio</span></span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">20</span>)</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 30:1 ratio</span></span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">30</span>)</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate background points with a 100:1 ratio</span></span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">randomPoints</span>(studyarea, n_pres <span class="sc">*</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>combine_bg_with_presence <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_points, train_data, raster_obj, <span class="at">target_crs =</span> <span class="dv">4283</span>, <span class="at">occ_label =</span> <span class="st">"bg"</span>) {</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the background points matrix to a data frame</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  bg_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(bg_points)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the occrrnS column with the specified label (e.g., "bg")</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  bg_df<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> occ_label</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the data frame to an sf object using the raster's projection</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  bg_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(bg_df, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="at">crs =</span> <span class="fu">projection</span>(raster_obj))</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transform the sf object to the target CRS (default is EPSG:4283)</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  bg_sf_target <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bg_sf, <span class="at">crs =</span> target_crs)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the original (presence) data with the background points</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(train_data, bg_sf_target)</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>combine_bg_with_presence <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_points, train_data, raster_obj, <span class="at">target_crs =</span> <span class="dv">4283</span>, <span class="at">occ_label =</span> <span class="st">"bg"</span>) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the background points matrix to a data frame</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  bg_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(bg_points)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the occrrnS column with the specified label (e.g., "bg")</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  bg_df<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> occ_label</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the data frame to an sf object using the raster's projection</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  bg_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(bg_df, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="at">crs =</span> <span class="fu">projection</span>(raster_obj))</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transform the sf object to the target CRS (default is EPSG:4283)</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  bg_sf_target <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bg_sf, <span class="at">crs =</span> target_crs)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the original (presence) data with the background points</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(train_data, bg_sf_target)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We then combine the generated background points with true present data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>combined_random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_1to1, train_data, studyarea)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>combined_random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_5to1, train_data, studyarea)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>combined_random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_10to1, train_data, studyarea)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>combined_random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_15to1, train_data, studyarea)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>combined_random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_20to1, train_data, studyarea)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>combined_random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_30to1, train_data, studyarea)</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>combined_random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_50to1, train_data, studyarea)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>combined_random_bg_1to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_1to1, train_data, studyarea)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>combined_random_bg_5to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_5to1, train_data, studyarea)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>combined_random_bg_10to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_10to1, train_data, studyarea)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>combined_random_bg_15to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_15to1, train_data, studyarea)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>combined_random_bg_20to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_20to1, train_data, studyarea)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>combined_random_bg_30to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_30to1, train_data, studyarea)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>combined_random_bg_50to1 <span class="ot">&lt;-</span> <span class="fu">combine_bg_with_presence</span>(random_bg_50to1, train_data, studyarea)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>create_map_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_sf, title, <span class="at">point_size =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure correct factor levels</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  bg_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="fu">factor</span>(bg_sf<span class="sc">$</span>occrrnS, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span>, <span class="st">"bg"</span>))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Split the data into background and present points</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  bg_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"bg"</span>, ]</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  present_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the ACT polygon layer (without including it in the legend)</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot background points first with mapped color</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bg_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Background Points"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot present points on top with mapped color</span></span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> present_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Present"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Manual color mapping</span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"Group"</span>,</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Present"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"Background Points"</span> <span class="ot">=</span> <span class="st">"grey"</span>)</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Legend with larger points</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(title) <span class="sc">+</span></span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">lims_method =</span> <span class="st">"geometry_bbox"</span>) <span class="sc">+</span></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio</span></span>
-<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_1to1, <span class="st">"1:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_5to1, <span class="st">"5:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_10to1, <span class="st">"10:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_15to1, <span class="st">"15:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_20to1, <span class="st">"20:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_30to1, <span class="st">"30:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_50to1, <span class="st">"50:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the plots with a shared legend at the bottom</span></span>
-<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> p5 <span class="sc">+</span> p6 <span class="sc">+</span> p7) <span class="sc">+</span></span>
-<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span>  <span class="co"># Collects the legend into one</span></span>
-<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
-<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>create_map_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(bg_sf, title, <span class="at">point_size =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure correct factor levels</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  bg_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="fu">factor</span>(bg_sf<span class="sc">$</span>occrrnS, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRESENT"</span>, <span class="st">"bg"</span>))</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Split the data into background and present points</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  bg_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"bg"</span>, ]</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  present_only <span class="ot">&lt;-</span> bg_sf[bg_sf<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the ACT polygon layer (without including it in the legend)</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> ACT, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot background points first with mapped color</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bg_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Background Points"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot present points on top with mapped color</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> present_only, <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Present"</span>), <span class="at">size =</span> point_size, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Manual color mapping</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"Group"</span>,</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Present"</span> <span class="ot">=</span> <span class="st">"#11aa96"</span>, <span class="st">"Background Points"</span> <span class="ot">=</span> <span class="st">"grey"</span>)</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Legend with larger points</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(title) <span class="sc">+</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">lims_method =</span> <span class="st">"geometry_bbox"</span>) <span class="sc">+</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_1to1, <span class="st">"1:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_5to1, <span class="st">"5:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_10to1, <span class="st">"10:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_15to1, <span class="st">"15:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_20to1, <span class="st">"20:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_30to1, <span class="st">"30:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(combined_random_bg_50to1, <span class="st">"50:1"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the plots with a shared legend at the bottom</span></span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4 <span class="sc">+</span> p5 <span class="sc">+</span> p6 <span class="sc">+</span> p7) <span class="sc">+</span></span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span>  <span class="co"># Collects the legend into one</span></span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
+<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -706,51 +712,51 @@ kableExtra is already installed and has been loaded!</code></pre>
 </div>
 <p>Then, we combine occurrence data with environmental variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_1to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_5to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_10to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_15to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_10to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_20to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_30to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_50to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_50to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_1to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_5to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_10to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_15to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_10to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_20to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_30to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_1to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined_random_bg_50to1_env =</span> <span class="fu">get_occurrence_data</span>(combined_random_bg_50to1, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When the ratio of background points to true presences exceeds 1:1—such as 5:1, 10:1, 15:1, 20:1, 30:1, and 50:1—an imbalanced dataset issue is introduced. To address this imbalance, we need to use weighting methods.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Fit weighted models and extract results</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>results_list_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_wt</span>(train_data, test_data_env)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Fit weighted models and extract results</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>results_list_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_wt</span>(train_data, test_data_env)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Print the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> results_table_wt_random <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="sc">%&gt;%</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="ot">&lt;-</span> results_table_wt_random <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>results_table_wt_random <span class="sc">%&gt;%</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Model Evaluation Metrics</caption>
@@ -913,89 +919,89 @@ kableExtra is already installed and has been loaded!</code></pre>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/Gang_gang_buffer.png" class="img-fluid"></p>
 <p>First, we extract present data from the training dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>presence_in_train_data <span class="ot">&lt;-</span> train_data[train_data<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>presence_in_train_data <span class="ot">&lt;-</span> train_data[train_data<span class="sc">$</span>occrrnS <span class="sc">==</span> <span class="st">"PRESENT"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function generating background points in a defined disk round the presence data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Generate random-buffer pseudo-absences within a study area</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>generate_pseudo_absences_random_buffer <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                                                   study_area,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                                                   min_buffer, max_buffer, </span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>                                                   n_points_per_presence, </span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">seed =</span> <span class="dv">123</span>) {</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  pseudo_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(presence_in_train_data)), <span class="cf">function</span>(i) {</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Random distance for this presence point</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    random_buffer <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> min_buffer, <span class="at">max =</span> max_buffer)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the buffer polygon</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    buffer_poly <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(presence_in_train_data[i, ], <span class="at">dist =</span> random_buffer)</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Intersect buffer with study_area, so we only sample inside it</span></span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    intersection_poly <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(buffer_poly, study_area)</span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If there's no overlap, return NULL</span></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">st_is_empty</span>(intersection_poly)) {</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Sample points inside the intersection</span></span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_sample</span>(intersection_poly, <span class="at">size =</span> n_points_per_presence, <span class="at">type =</span> <span class="st">"random"</span>)</span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine into an sfc</span></span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>  pseudo_sfc <span class="ot">&lt;-</span> <span class="fu">do.call</span>(c, pseudo_list)</span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If all overlaps were empty, pseudo_sfc is NULL</span></span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sfc)) {</span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert sfc to sf</span></span>
-<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">geometry =</span> pseudo_sfc)</span>
-<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label them as "bg"</span></span>
-<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>  pseudo_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="st">"bg"</span></span>
-<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only the occrrnS column</span></span>
-<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> pseudo_sf[, <span class="st">"occrrnS"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pseudo_sf)</span>
-<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Combine pseudo-absences with original data</span></span>
-<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>generate_and_combine_pseudo_absences <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
-<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>                                                 train_data,</span>
-<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>                                                 study_area,</span>
-<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>                                                 min_buffer, max_buffer, </span>
-<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a>                                                 n_points_per_presence, </span>
-<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">seed =</span> <span class="dv">123</span>, </span>
-<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">target_crs =</span> <span class="dv">4283</span>) {</span>
-<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make sure everything is in the same CRS before buffering/intersecting</span></span>
-<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a>  presence_in_train_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(presence_in_train_data, target_crs)</span>
-<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>  study_area <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(study_area, target_crs)</span>
-<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate pseudo-absence points</span></span>
-<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">generate_pseudo_absences_random_buffer</span>(</span>
-<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data, </span>
-<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a>    study_area,</span>
-<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a>    min_buffer, max_buffer, </span>
-<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a>    n_points_per_presence, </span>
-<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a>    seed</span>
-<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert and combine</span></span>
-<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>  original_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(train_data, target_crs)</span>
-<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If pseudo_sf is NULL (no overlap found), just return original</span></span>
-<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sf)) {</span>
-<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"No pseudo-absence points generated (buffers might lie outside the study area)."</span>)</span>
-<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(original_data)</span>
-<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(original_data, pseudo_sf)</span>
-<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
-<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Generate random-buffer pseudo-absences within a study area</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>generate_pseudo_absences_random_buffer <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                                                   study_area,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                                                   min_buffer, max_buffer, </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                                                   n_points_per_presence, </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">seed =</span> <span class="dv">123</span>) {</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  pseudo_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(presence_in_train_data)), <span class="cf">function</span>(i) {</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Random distance for this presence point</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    random_buffer <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> min_buffer, <span class="at">max =</span> max_buffer)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the buffer polygon</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    buffer_poly <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(presence_in_train_data[i, ], <span class="at">dist =</span> random_buffer)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Intersect buffer with study_area, so we only sample inside it</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    intersection_poly <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(buffer_poly, study_area)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If there's no overlap, return NULL</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">st_is_empty</span>(intersection_poly)) {</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Sample points inside the intersection</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_sample</span>(intersection_poly, <span class="at">size =</span> n_points_per_presence, <span class="at">type =</span> <span class="st">"random"</span>)</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine into an sfc</span></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>  pseudo_sfc <span class="ot">&lt;-</span> <span class="fu">do.call</span>(c, pseudo_list)</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If all overlaps were empty, pseudo_sfc is NULL</span></span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sfc)) {</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert sfc to sf</span></span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">geometry =</span> pseudo_sfc)</span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label them as "bg"</span></span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  pseudo_sf<span class="sc">$</span>occrrnS <span class="ot">&lt;-</span> <span class="st">"bg"</span></span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only the occrrnS column</span></span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> pseudo_sf[, <span class="st">"occrrnS"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pseudo_sf)</span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Combine pseudo-absences with original data</span></span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>generate_and_combine_pseudo_absences <span class="ot">&lt;-</span> <span class="cf">function</span>(presence_in_train_data, </span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>                                                 train_data,</span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>                                                 study_area,</span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>                                                 min_buffer, max_buffer, </span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>                                                 n_points_per_presence, </span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">seed =</span> <span class="dv">123</span>, </span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">target_crs =</span> <span class="dv">4283</span>) {</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make sure everything is in the same CRS before buffering/intersecting</span></span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a>  presence_in_train_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(presence_in_train_data, target_crs)</span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>  study_area <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(study_area, target_crs)</span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate pseudo-absence points</span></span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a>  pseudo_sf <span class="ot">&lt;-</span> <span class="fu">generate_pseudo_absences_random_buffer</span>(</span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data, </span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a>    study_area,</span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a>    min_buffer, max_buffer, </span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>    n_points_per_presence, </span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a>    seed</span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert and combine</span></span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>  original_data <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(train_data, target_crs)</span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If pseudo_sf is NULL (no overlap found), just return original</span></span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(pseudo_sf)) {</span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"No pseudo-absence points generated (buffers might lie outside the study area)."</span>)</span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(original_data)</span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>  combined <span class="ot">&lt;-</span> <span class="fu">rbind</span>(original_data, pseudo_sf)</span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(combined)</span>
+<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Generate background points within these ranges around present records of Gang-gang Cockatoo in the training dataset:</p>
 <ul>
@@ -1007,29 +1013,13 @@ kableExtra is already installed and has been loaded!</code></pre>
 </ul>
 <p>⚠️ Note: producing random points take few minus. ⚠️</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">0</span>, </span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">500</span>, </span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500_1000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">500</span>, </span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1000</span>, </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">0</span>, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">500</span>, </span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
 <span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
@@ -1041,11 +1031,11 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1000_1500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_500_1000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1000</span>, </span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1500</span>, </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">500</span>, </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1000</span>, </span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
@@ -1057,11 +1047,11 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1500_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1000_1500 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1500</span>, </span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">2000</span>, </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1000</span>, </span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">1500</span>, </span>
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
 <span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
 <span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
@@ -1073,11 +1063,11 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_1500_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">2000</span>, </span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">10000</span>, </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">1500</span>, </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">2000</span>, </span>
 <span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
 <span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
 <span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
@@ -1086,21 +1076,37 @@ kableExtra is already installed and has been loaded!</code></pre>
 <span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>({ <span class="co"># We want to suppress some irrelevant warnings</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  disk_bg_2000 <span class="ot">&lt;-</span> <span class="fu">generate_and_combine_pseudo_absences</span>(</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    presence_in_train_data,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    train_data, </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_buffer =</span> <span class="dv">2000</span>, </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_buffer =</span> <span class="dv">10000</span>, </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_points_per_presence =</span> <span class="dv">1</span>,</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">123</span>,</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_area =</span> ACT,</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_crs =</span> <span class="dv">4283</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Let’s plot the generated disk background points.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio with smaller points</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500, <span class="st">"Buffer &lt; 500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500_1000, <span class="st">"Buffer 500-1000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1000_1500, <span class="st">"Buffer 1000-1500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1500_2000, <span class="st">"Buffer 1500-2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_2000, <span class="st">"Buffer &gt; 2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the three plots in one row and collect a common legend at the bottom</span></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3<span class="sc">+</span> p4 <span class="sc">+</span> p5) <span class="sc">+</span></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots for each background ratio with smaller points</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500, <span class="st">"Buffer &lt; 500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_500_1000, <span class="st">"Buffer 500-1000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1000_1500, <span class="st">"Buffer 1000-1500m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_1500_2000, <span class="st">"Buffer 1500-2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">create_map_plot</span>(disk_bg_2000, <span class="st">"Buffer &gt; 2000m"</span>, <span class="at">point_size =</span> <span class="fl">0.01</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the three plots in one row and collect a common legend at the bottom</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> (p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3<span class="sc">+</span> p4 <span class="sc">+</span> p5) <span class="sc">+</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>))</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>combined_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1112,49 +1118,49 @@ kableExtra is already installed and has been loaded!</code></pre>
 <p>From the above figure, we can see that as the range increases, the grey points (background points) move farther away from the present points.</p>
 <p>Now, let’s combine the occurrence data with environmental variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_1000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500_1000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1000_1500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1000_1500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1500_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1500_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>train_data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_500_1000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_500_1000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1000_1500_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1000_1500, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_1500_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_1500_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">disk_bg_2000_env =</span> <span class="fu">get_occurrence_data</span>(disk_bg_2000, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>test_data_env <span class="ot">&lt;-</span> <span class="fu">get_occurrence_data</span>(test_data, env_var_stack, <span class="at">dropCols =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now run the GLM models with these datasets and generate the evaluation metrics. Please note that we created an equal number of background points and present points, so there is no imbalance issue in this case. Thus, we are not using ‘wt’ in the GLM function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>results_list_no_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_no_wt</span>(train_data, test_data_env)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>results_list_no_wt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(train_data_list, <span class="cf">function</span>(train_data) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_model_and_get_perf_no_wt</span>(train_data, test_data_env)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a data frame by extracting each metric from the results_list_wt</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUC              =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>auc),                    <span class="co"># AUROC</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">AUPR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>aupr),                   <span class="co"># Area Under Precision-Recall Curve</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">CORR             =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>corr),                   <span class="co"># Correlation</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Accuracy         =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Accuracy),   <span class="co"># Accuracy at threshold 0.5</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sensitivity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Sensitivity),<span class="co"># Sensitivity (Recall)</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Specificity      =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Specificity),<span class="co"># Specificity</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Precision        =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>Precision),  <span class="co"># Precision</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">F1               =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>metrics_0<span class="fl">.5</span><span class="sc">$</span>F1),         <span class="co"># F1 Score</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Threshold   =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_threshold),         <span class="co"># Best threshold based on TSS</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Max_TSS          =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>max_tss),                <span class="co"># Maximum TSS</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Sensitivity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_sensitivity),       <span class="co"># Sensitivity at Best Threshold</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Best_Specificity =</span> <span class="fu">sapply</span>(results_list_no_wt, <span class="cf">function</span>(x) x<span class="sc">$</span>best_specificity)        <span class="co"># Specificity at Best Threshold</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Print the results of models.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round numeric values to 3 decimal places</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="ot">&lt;-</span> results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">3</span>)))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table with smaller font</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>results_table_no_wt_disk <span class="sc">%&gt;%</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Model Evaluation Metrics</caption>
@@ -1296,14 +1302,14 @@ kableExtra is already installed and has been loaded!</code></pre>
 <h2 class="anchored" data-anchor-id="comparison-across-all-models">3.1 Comparison across all models</h2>
 <p>Let’s also compare the performance of all good models</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine three tables</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_including_true_absence_table_wt, results_table_no_wt_disk, results_table_wt_random)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Display the combined table with kable</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="sc">%&gt;%</span></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Combined Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="fu">ncol</span>(combined_results_table), <span class="at">bold =</span> <span class="cn">TRUE</span>)  <span class="co"># Highlight the Source column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine three tables</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_including_true_absence_table_wt, results_table_no_wt_disk, results_table_wt_random)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Display the combined table with kable</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>combined_results_table <span class="sc">%&gt;%</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Combined Model Evaluation Metrics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">12</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="fu">ncol</span>(combined_results_table), <span class="at">bold =</span> <span class="cn">TRUE</span>)  <span class="co"># Highlight the Source column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Combined Model Evaluation Metrics</caption>
