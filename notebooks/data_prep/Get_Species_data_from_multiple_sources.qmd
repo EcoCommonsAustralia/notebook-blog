@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
-# Getting Shorebirds Data in Australia Using Open Data and `spocc`
+# Getting Shorebirds Data in Australia Using Open Data and `spocc` R package
 
 Author details: Abhimanyu Raj Singh
 
@@ -14,15 +14,17 @@ Date: June 2025
 
 ## 🚀 Before You Start
 
-> -   Ensure you have a **stable internet connection**, as species data is fetched live from biodiversity data portals using `spocc`.
+> -   Ensure you have a **stable internet connection**, as species data is fetched live from biodiversity data portals using `spocc` R package.
 > -   This notebook may take a few minutes when downloading large datasets or installing missing packages.
 > -   Recommended to run in **RStudio** or **Posit Workbench/VS Code** with **Quarto** installed for best experience.
 
 # Introduction
 
-This notebook was developed by the EcoCommons team to support researchers and conservationists in gathering shorebird distribution data using open data sources. It demonstrates how to query, clean, visualise, and save species occurrence data using the `spocc` package [@spocc] (Chamberlain et al., 2024), in R.
+This notebook was developed by the EcoCommons team to support researchers and conservationists in gathering shorebird distribution data using open data sources. It demonstrates how to query, clean, visualise, and save species occurrence data using the `spocc` R package [@spocc] (Chamberlain et al., 2024), in R.
 
-**`spocc`** – Species Occurrence Data Aggregator The spocc package provides a unified interface to search and retrieve species occurrence data from multiple biodiversity data sources into a single workflow. It streamlines data acquisition for ecological modelling and biodiversity analysis by handling different APIs in one place.
+**`spocc`** – Species Occurrence Data Aggregator
+
+The spocc package provides a unified interface to search and retrieve species occurrence data from multiple biodiversity data sources into a single workflow. It streamlines data acquisition for ecological modelling and biodiversity analysis by handling different APIs in one place.
 
 We will introduce three of the most popular and largest biodiversity data portals that provide users with the ability to download their data via their platforms or several R packages.
 
@@ -71,7 +73,7 @@ workspace <- getwd()
 options(repr.plot.width = 16, repr.plot.height = 8)
 
 options(repos = c(CRAN = "https://cran.rstudio.com/"))
-packages <- c("spocc", "tidyverse", "leaflet", "sf", "rnaturalearth", "rnaturalearthdata")
+packages <- c("spocc", "tidyverse", "pbapply", "leaflet", "sf", "rnaturalearth", "rnaturalearthdata")
 
 for (pkg in packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
@@ -88,8 +90,8 @@ We define the target species and retrieve occurrence data from GBIF, iNaturalist
 ```{r get-data}
 species_list <- c("Limosa lapponica", "Calidris ruficollis", "Calidris ferruginea")
 
-species_data <- lapply(species_list, function(species) {
-  invisible(occ(query = species, from = c("gbif", "inat", "obis"), limit = 500))
+species_data <- pblapply(species_list, function(species) {
+  occ(query = species, from = c("gbif", "inat", "obis"), limit = 500)
 })
 
 species_dfs <- lapply(species_data, function(data) {
