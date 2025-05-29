@@ -24,15 +24,11 @@ This guide will help you prepare environmental variables such as bioclimatic dat
 [Imbalanced dataset Part 2](data_prep/imbalanced_data_part2.qmd)\
 Learn how to deal with the issue of imbalanced dataset.
 
-### 3. Raster Processing
+### 3. Get species data from multiple sources
 
-[Raster Processing](data_prep/raster_processing.qmd)\
-Step-by-step instructions on how to handle raster data, including reprojecting, cropping, and masking.
+[Get species data from multiple sources](data_prep/Get_Species_data_from_multiple_sources.qmd)\
+How to get speceis data from different biodiversity data portals using spocc r package.
 
-### 4. Data Cleaning Techniques
-
-[Data Cleaning Techniques](data_prep/data_cleaning.qmd)\
-A guide on the best practices for cleaning both environmental and occurrence datasets.
 
 ------------------------------------------------------------------------
 
