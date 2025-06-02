@@ -5,3 +5,9 @@
 /.quarto/
 .DS_Store
 
+notebooks/data_prep/data/shorebird_occurrences_AUS.dbf
+notebooks/data_prep/data/shorebird_occurrences_AUS.prj
+notebooks/data_prep/data/shorebird_occurrences_AUS.shp
+notebooks/data_prep/data/shorebird_occurrences_AUS.shx
+notebooks/data_prep/imbalanceddata_part1.RData
+notebooks/EC_RF/__MACOSX/._mountain_ash_centralhighlands_RF
