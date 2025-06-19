@@ -8,6 +8,10 @@ website:
       - href: index.qmd
         text: "<img src='https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EcoCommons%20Logo%20White.png' alt='EcoCommons Logo' style='height:40px; vertical-align: middle; margin-right: 5px;'> <span style='font-size: 25px; position: relative; top: 7px;'>EcoNotebooks</span>"
     right:
+      - text: Ecological Analysis
+        menu:
+          - href: notebooks/Rich_Div/richness_shannon_notebook.qmd
+            text: Species Richness and Shannon Diversity
       - text: Modelling Steps
         menu:
           - href: notebooks/dataprep.qmd
