@@ -24,11 +24,10 @@ This guide will help you prepare environmental variables such as bioclimatic dat
 [Imbalanced dataset Part 2](data_prep/imbalanced_data_part2.qmd)\
 Learn how to deal with the issue of imbalanced dataset.
 
-### 3. Get species data from multiple sources
+### 3. Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via `spocc` R Package
 
-[Get species data from multiple sources](data_prep/Get_Species_data_from_multiple_sources.qmd)\
+[Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via \`spocc\` R Package](data_prep/Get_Species_data_from_multiple_sources.qmd)\
 How to get speceis data from different biodiversity data portals using spocc r package.
-
 
 ------------------------------------------------------------------------
 
