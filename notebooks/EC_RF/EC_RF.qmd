@@ -1018,21 +1018,3 @@ Harwood, Tom (2019): 9s climatology for continental Australia 1976-2005: BIOCLIM
 3 second SRTM Derived Digital Elevation Model (DEM) Version 1.0, Geoscience Australia, 2018, <https://dev.ecat.ga.gov.au/geonetwork/srv/api/records/a05f7892-ef04-7506-e044-00144fdd4fa6>
 
 Searle, R. (2021): Australian Soil Classification Map. Version 1. Terrestrial Ecosystem Research Network. (Dataset). [**https://doi.org/10.25901/edyr-wg85**](https://doi.org/10.25901/edyr-wg85)
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
-
-EcoCommons received investment (<https://doi.org/10.3565/chbq-mr75>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
-
-::: {align="center"}
-**Our partner**
-:::
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/partners_logos.png)
-
-# **How to Cite EcoCommons**
-
-If you use EcoCommons in your research, please cite the platform as follows:
-
-> EcoCommons Australia 2024. *EcoCommons Australia – a collaborative commons for ecological and environmental modelling*, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <https://data–explorer.app.ecocommons.org.au/> (Accessed: MM DD, YYYY). <https://doi.org/10.3565/chbq-mr75>
-
-You can download the citation file for EcoCommons Australia here: [Download the BibTeX file](reference.bib)

@@ -247,15 +247,5 @@ Rivers, M.C., Taylor, L., Brummitt, N.A., Meagher, T.R., Roberts, D.L. and Lugha
 
 Westgate, M., Kellie, D., Stevenson, M., Newman, P., 2025. galah: Biodiversity Data from the GBIF Node Network. R package version 2.1.1, https://CRAN.R-project.org/package=galah.
 
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
-
-EcoCommons received investment (<https://doi.org/10.3565/chbq-mr75>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
-
-::: {align="center"}
-**Our partners**
-:::
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/partners_logos.png)
-
 
   
