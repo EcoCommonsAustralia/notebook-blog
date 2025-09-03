@@ -4,6 +4,7 @@
 .Ruserdata
 /.quarto/
 .DS_Store
+data/
 
 raster_preparation.zip
 

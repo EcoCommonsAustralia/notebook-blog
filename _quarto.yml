@@ -7,6 +7,8 @@ website:
     left:
       - href: index.qmd
         text: "<img src='https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EcoCommons%20Logo%20White.png' alt='EcoCommons Logo' style='height:40px; vertical-align: middle; margin-right: 5px;'> <span style='font-size: 25px; position: relative; top: 7px;'>EcoNotebooks</span>"
+      - href: https://github.com/EcoCommonsAustralia/notebooks
+        text: "<img src='https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg' alt='GitHub' style='height:32px; vertical-align: middle; position: relative; top: 6px;'>"
     right:
       - text: Ecological Analysis
         menu:
@@ -19,7 +21,7 @@ website:
       - text: SDMs
         menu:
           - href: notebooks/EC_GLM/EC_GLM.qmd
-            text: GLM
+            text: GLM with R     
           - href: notebooks/EC_RF/EC_RF.qmd
             text: Random Forest
           - href: notebooks/EOO_AOO/eoo_aoo.qmd

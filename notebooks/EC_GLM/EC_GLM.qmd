@@ -368,8 +368,6 @@ We generated pseudo-absence data using the EcoCommons platform with the followin
 
     -   The range of 1000–5000 meters should be carefully reviewed since it must balance avoiding areas within the species' potential dispersal kernel (150 meters) and including areas beyond the likely range of colonization.
 
-![](https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/raw/main/images/Disk_pseudo_absence.png){alt="Mountain Ash, " width="200"}
-
 ```{r pseudo_absent, warning=FALSE}
 
 # Filter the data to include only ABSENT points
