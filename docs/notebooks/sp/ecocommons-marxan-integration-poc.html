@@ -150,10 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sdms" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">SDMs</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ecological-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ecological Models</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-sdms">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-models">    
         <li>
     <a class="dropdown-item" href="../../notebooks/EC_GLM/EC_GLM.html">
  <span class="dropdown-text">GLM with R</span></a>
@@ -165,6 +165,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/Occupancy/EC_Occupancy_conceptual.html">
+ <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Conceptual</span></a>
   </li>  
     </ul>
   </li>
@@ -747,7 +751,7 @@ pryr is already installed and has been loaded!</code></pre>
 
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -774,10 +778,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="footer_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="footer_files/libs/quarto-html/anchor.min.js"></script>
 <link href="footer_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="footer_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="footer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="footer_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="footer_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 
@@ -800,26 +804,31 @@ EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75">http
 </p>
 <div style="text-align: center;">
 <h3 class="no-anchor" style="text-align: center;">
-Our Partner
+<p>Our Partner</p>
 </h3>
 </div>
 <div style="text-align: center;">
-<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/partners_logos.png" alt="Partners Logos" width="750"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/updated_ourpartner_2025.png" class="img-fluid figure-img"></p>
+<figcaption>Partners Logos</figcaption>
+</figure>
+</div>
 </div>
 <h3 class="no-anchor" style="text-align: center;">
-How to Cite EcoCommons
+<p>How to Cite EcoCommons</p>
 </h3>
 <p style="text-align: center;">
 </p><p>If you use EcoCommons in your research, please cite the platform as follows:</p>
 <p></p>
 <blockquote style="text-align: center;" class="blockquote">
-<p>EcoCommons Australia 2024. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
+<p>EcoCommons Australia 2025. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
 </blockquote>
 <p style="text-align: center;">
 </p><p>You can download the citation file for EcoCommons Australia here: <a href="reference.bib">Download the BibTeX file</a></p>
 <p></p>
 <p style="text-align: center;">
-</p><p>© 2024 EcoCommons. All rights reserved.</p>
+</p><p>© 2025 EcoCommons. All rights reserved.</p>
 <p></p>
 </div>
 
@@ -907,8 +916,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1019,7 +1026,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

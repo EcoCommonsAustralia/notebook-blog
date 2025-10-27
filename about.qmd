@@ -63,3 +63,15 @@ With over seven years in the IT and software industry, he has developed web and 
 Before joining QCIF, Nauman played key roles in startups and tech firms, where he developed intelligent systems, CRM platforms, and integrated infrastructure solutions. His background includes co-founding multiple products, working in multicultural teams, and driving innovation through agile methodologies and user-focused design.
 
 At QCIF, Nauman brings a passion for automation, intelligent systems, and creating seamless user experiences to support environmental research outcomes.
+
+### Michael Mallon
+
+**Senior Software Developer**
+
+Michael has joined QCIF as a Senior Software Developer. He is no stranger to QCIF, having worked for over a decade with the Research Computing Centre at The University of Queensland as a System Administrator. His focus was on supporting the infrastructure for QRIScloud.\
+\
+He obtained both a Bachelor of Science (Hons) in Physics and a Bachelor of Engineering (Hons) in software engineering from The University of Queensland. His thesis for Physics involved the hypersonic test facility at UQ where he investigated fluid flow imaging techniques using high-speed cameras. His Engineering thesis involved building tools for interacting with the OptiPortal (a distributed tiled display system).\
+\
+Michael is passionate about helping researchers get the most out of digital infrastructure. Parallel filesystems, cloud platforms and high-performance computing systems are all tools that Michael has helped researchers navigate. He’s passionate about solving problems with code; be that in python, C/C++ or even a wicked bash 1-liner with way too much sed\|awk\|grep.\
+\
+In his spare time, he enjoys sudoku, coffee, fantasy/sci fi books, and video games with good stories.

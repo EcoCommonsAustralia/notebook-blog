@@ -150,10 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sdms" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">SDMs</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ecological-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ecological Models</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-sdms">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-models">    
         <li>
     <a class="dropdown-item" href="../../notebooks/EC_GLM/EC_GLM.html">
  <span class="dropdown-text">GLM with R</span></a>
@@ -165,6 +165,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/Occupancy/EC_Occupancy_conceptual.html">
+ <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Conceptual</span></a>
   </li>  
     </ul>
   </li>
@@ -402,11 +406,11 @@ The following objects are masked from 'package:base':
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(basisOfRecord, <span class="at">group =</span> <span class="st">"basic"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Request for 10949 occurrences placed in queue
+<pre><code>Request for 12162 occurrences placed in queue
 Current queue length: 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>-----</code></pre>
+<pre><code>---</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading</code></pre>
@@ -416,12 +420,12 @@ Current queue length: 1</code></pre>
 <pre><code># A tibble: 6 × 9
   recordID        scientificName taxonConceptID decimalLatitude decimalLongitude
   &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;                    &lt;dbl&gt;            &lt;dbl&gt;
-1 0006b8df-16da-… Vombatus ursi… https://biodi…           -37.4             148.
-2 00094a3b-9a6c-… Vombatus ursi… https://biodi…           -37.7             145.
-3 001466ef-8f9a-… Vombatus ursi… https://biodi…           -37.5             144.
-4 0016ead2-dabb-… Vombatus ursi… https://biodi…           -37.4             144.
-5 00184c9a-6769-… Vombatus ursi… https://biodi…           -38.1             145.
-6 001ce4dc-9244-… Vombatus ursi… https://biodi…           -38.6             146.
+1 0005b20c-f49b-… Vombatus ursi… https://biodi…           -36.1             148.
+2 0006b8df-16da-… Vombatus ursi… https://biodi…           -37.4             148.
+3 00094a3b-9a6c-… Vombatus ursi… https://biodi…           -37.7             145.
+4 001466ef-8f9a-… Vombatus ursi… https://biodi…           -37.5             144.
+5 0016ead2-dabb-… Vombatus ursi… https://biodi…           -37.4             144.
+6 00184c9a-6769-… Vombatus ursi… https://biodi…           -38.1             145.
 # ℹ 4 more variables: eventDate &lt;dttm&gt;, occurrenceStatus &lt;chr&gt;,
 #   dataResourceName &lt;chr&gt;, basisOfRecord &lt;chr&gt;</code></pre>
 </div>
@@ -470,25 +474,25 @@ A BibTeX entry for LaTeX users is
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(species_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 10949 features and 1 field
+<pre><code>Simple feature collection with 12162 features and 1 field
 Geometry type: POINT
 Dimension:     XY
 Bounding box:  xmin: 140.9672 ymin: -39.12958 xmax: 149.9317 ymax: -35.96943
 Geodetic CRS:  WGS 84
-# A tibble: 10,949 × 2
+# A tibble: 12,162 × 2
    Species                      geometry
  * &lt;chr&gt;                     &lt;POINT [°]&gt;
- 1 Vombatus ursinus   (147.601 -37.3527)
- 2 Vombatus ursinus (145.4908 -37.67752)
- 3 Vombatus ursinus  (144.2599 -37.5146)
- 4 Vombatus ursinus  (144.2405 -37.3892)
- 5 Vombatus ursinus  (145.2701 -38.1358)
- 6 Vombatus ursinus   (145.57 -38.62757)
- 7 Vombatus ursinus (148.3121 -37.33037)
- 8 Vombatus ursinus (148.6383 -36.99493)
- 9 Vombatus ursinus (147.0542 -37.46073)
-10 Vombatus ursinus   (146.165 -36.8437)
-# ℹ 10,939 more rows</code></pre>
+ 1 Vombatus ursinus (147.6821 -36.13289)
+ 2 Vombatus ursinus   (147.601 -37.3527)
+ 3 Vombatus ursinus (145.4908 -37.67752)
+ 4 Vombatus ursinus  (144.2599 -37.5146)
+ 5 Vombatus ursinus  (144.2405 -37.3892)
+ 6 Vombatus ursinus  (145.2701 -38.1358)
+ 7 Vombatus ursinus   (145.57 -38.62757)
+ 8 Vombatus ursinus (148.3121 -37.33037)
+ 9 Vombatus ursinus (148.6383 -36.99493)
+10 Vombatus ursinus (147.0542 -37.46073)
+# ℹ 12,152 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -557,11 +561,11 @@ Geodetic CRS:  WGS 84
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the EOO and AOO values</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"The EOO value is:"</span>, EOO_polygon<span class="sc">$</span>eoo, <span class="st">"km²"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The EOO value is: 187858 km²"</code></pre>
+<pre><code>[1] "The EOO value is: 193549 km²"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"The AOO value is:"</span>, AOO_result<span class="sc">$</span>aoo, <span class="st">"km²"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The AOO value is: 11744 km²"</code></pre>
+<pre><code>[1] "The AOO value is: 11908 km²"</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -640,7 +644,7 @@ Geodetic CRS:  WGS 84
 
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -667,10 +671,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="footer_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="footer_files/libs/quarto-html/anchor.min.js"></script>
 <link href="footer_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="footer_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="footer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="footer_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="footer_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 
@@ -693,26 +697,31 @@ EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75">http
 </p>
 <div style="text-align: center;">
 <h3 class="no-anchor" style="text-align: center;">
-Our Partner
+<p>Our Partner</p>
 </h3>
 </div>
 <div style="text-align: center;">
-<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/partners_logos.png" alt="Partners Logos" width="750"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/updated_ourpartner_2025.png" class="img-fluid figure-img"></p>
+<figcaption>Partners Logos</figcaption>
+</figure>
+</div>
 </div>
 <h3 class="no-anchor" style="text-align: center;">
-How to Cite EcoCommons
+<p>How to Cite EcoCommons</p>
 </h3>
 <p style="text-align: center;">
 </p><p>If you use EcoCommons in your research, please cite the platform as follows:</p>
 <p></p>
 <blockquote style="text-align: center;" class="blockquote">
-<p>EcoCommons Australia 2024. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
+<p>EcoCommons Australia 2025. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
 </blockquote>
 <p style="text-align: center;">
 </p><p>You can download the citation file for EcoCommons Australia here: <a href="reference.bib">Download the BibTeX file</a></p>
 <p></p>
 <p style="text-align: center;">
-</p><p>© 2024 EcoCommons. All rights reserved.</p>
+</p><p>© 2025 EcoCommons. All rights reserved.</p>
 <p></p>
 </div>
 
@@ -800,8 +809,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -912,7 +919,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

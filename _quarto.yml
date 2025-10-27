@@ -18,7 +18,7 @@ website:
         menu:
           - href: notebooks/dataprep.qmd
             text: Data Preparation
-      - text: SDMs
+      - text: Ecological Models
         menu:
           - href: notebooks/EC_GLM/EC_GLM.qmd
             text: GLM with R     
@@ -26,6 +26,8 @@ website:
             text: Random Forest
           - href: notebooks/EOO_AOO/eoo_aoo.qmd
             text: Extent and Area of Ocurrence / Occupancy
+          - href: notebooks/Occupancy/EC_Occupancy_conceptual.qmd
+            text: Single-Species Single-Season Occupancy Model - Conceptual
       - text: Spatial Prioritization
         menu:
           - href: notebooks/sp/ecocommons-marxan-integration-poc.qmd
