@@ -235,6 +235,7 @@ window.Quarto = {
   <li><a href="#single-species-single-season-occupancy-model---conceptual" id="toc-single-species-single-season-occupancy-model---conceptual" class="nav-link active" data-scroll-target="#single-species-single-season-occupancy-model---conceptual">Single-Species Single-Season Occupancy Model - Conceptual</a></li>
   <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#wildlife-observatory-of-australia" id="toc-wildlife-observatory-of-australia" class="nav-link" data-scroll-target="#wildlife-observatory-of-australia">Wildlife Observatory of Australia</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><strong>Workflow Overview</strong></a></li>
   <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R Environment and Packages</a>
@@ -278,17 +279,24 @@ window.Quarto = {
 <p>Author details: Xiang Zhao, Dr Zachary Amir</p>
 <p>Editor details: Dr Zachary Amir</p>
 <p>Contact details: support@ecocommons.org.au</p>
-<p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
+<p>Copyright statement: This script is the product of the EcoCommons and WildObs team. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
+<p>For more information about WildObs, please visit <a href="https://wildobs.org.au/#about">https://wildobs.org.au</a> and <a href="https://github.com/WildObs" class="uri">https://github.com/WildObs</a></p>
 <p>Date: October 2025</p>
 </section>
 <section id="script-information" class="level1">
 <h1>Script information</h1>
-<p>There are two notebooks about Single-Species Single-Season Occupancy Model, one is conceptual, and another is pratical. This one is the <strong>conceptual</strong> one which gives a brief introduction to the concepts of Single-Species Single-Season Occupancy Model with some simulated data.</p>
-<p>This notebook, developed by the EcoCommons team, showcases how to build Single-Species Single-Season Occupancy Model with camera trapping data with ’unmarked” R package.</p>
+<p>There are two notebooks about Single-Species Single-Season Occupancy Model, one is conceptual, and another is practical. This one is the <strong>conceptual</strong> one which gives a brief introduction to the concepts of Single-Species Single-Season Occupancy Model with some simulated data.</p>
+<p>This notebook, developed by the EcoCommons and WildObs team, showcases how to build Single-Species Single-Season Occupancy Model with camera trapping data with ’unmarked” R package.</p>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>It explains the fundamental theory behind occupancy modelling — estimating the probability that a species occupies a site while accounting for imperfect detection. Through clear explanations and simulated examples, it demonstrates how occupancy and detection processes are modelled using R and the unmarked package.</p>
+</section>
+<section id="wildlife-observatory-of-australia" class="level1">
+<h1>Wildlife Observatory of Australia</h1>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/WildObs%20Logo(cropped+transparent).png" class="img-fluid" width="303"></p>
+<p>Wildlife Observatory of Australia - Australia’s national platform for processing and sharing wildlife camera data. WildObs will transform how Australia handles wildlife camera data by creating a national platform powered by AI. It will streamline biodiversity monitoring, break down data silos, and support effective conservation strategies by providing researchers and policymakers with easy access to consistent, high-quality data for informed decision-making. The WildObs researcher network is supported by Australia’s National Research Infrastructure. TERN supports the field observatory and standard protocols, ALA hosts the tagged image repository and ARDC Planet Research Data Commons, through QCIF, is building a user-friendly data management and access platform.</p>
+<p>For more information about WildObs, please visit <a href="https://wildobs.org.au/#about">https://wildobs.org.au</a> and <a href="https://github.com/WildObs" class="uri">https://github.com/WildObs</a></p>
 </section>
 <section id="objectives" class="level1">
 <h1>Objectives</h1>
@@ -607,11 +615,11 @@ window.Quarto = {
 <p>We can compare the results from two methods:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 9%">
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 4%">
-<col style="width: 78%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -852,12 +860,12 @@ m3     4 364.93  7.56 0.0094     1.00</code></pre>
 </div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 25%">
-<col style="width: 47%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
