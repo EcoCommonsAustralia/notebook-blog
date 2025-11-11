@@ -6,19 +6,21 @@ editor: visual
 
 ## Our team
 
-![](images/team_photo.png)
+![](images/clipboard-2178607091.png)
 
 ### **Dr Jenna Wraith**
-
-***(she/her)***
 
 **Head of Sustainable Futures, Program Manager, Principal Data Scientist**
 
 Jenna is a Conservation Scientist specialising in ecological modelling, species distribution modelling and using biodiversity data to inform policy. As an Adjunct Research Fellow at the Australian Rivers Institute, she uses spatial analyses and conservation planning to drive environmental strategies. Her work bridges science and technology, advancing biodiversity conservation and ecological research. In her free time, you can find Jenna growing food and flowers in the garden, hiking or getting crafty.
 
-### **Abhimanyu Raj Singh**
+### Rob Cosgrove
 
-***(he/him)***
+**Senior Development Engineer**
+
+Rob is a Senior Development Engineer with extensive experience developing specialised software in higher education and research, having worked for over 20 years across a range of disciplines and technologies at Griffith University and the University of Melbourne. Rob is the technical lead for the Biosecurity Commons project and is also a contributor to the EcoCommons project.
+
+### **Abhimanyu Raj Singh**
 
 **Data Ecologist**
 
@@ -26,23 +28,17 @@ Abhimanyu is a Zoologist who metamorphosed into an Environmental Scientist focus
 
 ### **Dr Ryan Newis**
 
-***(he/him)***
-
 **Data Scientist (Ecological Modelling)**
 
 Ryan joined QCIF in 2024 as a Software Developer and R Specialist, with a focus on developing an ‘Integrated Ecological Data Service’ for State of Environment reporting in Queensland and working on the EcoCommons platform. His research background encompasses various aspects of the environmental sciences including landscape ecology, ecological network analysis, chemical ecology and pollination biology and ecology. His PhD studies focused on critical but unexplored aspects of stingless bee foraging ecology and colony propagation. When not entrenched in scientific exploration, you can find Ryan in the mountains somewhere searching for secret waterfalls and adding to his birding list.
 
 ### **Dr Renuka Sharma**
 
-***(she/her)***
-
 **Data Scientist (Computer Vision & Ecological Modelling)**
 
 Renuka is a Data Scientist specializing in Computer Vision and Multi-modal Sensing, and she has worked on developing behavior recognition systems for animal welfare and elderly care. Her PhD in Computer Vision centered on anomaly detection in images and included an industrial collaboration with Woodside, where she designed a corrosion detection system. Over the years, Renuka has worked extensively with diverse datasets and is now eager to apply her expertise in Computer Vision to the field of Ecology through the EcoCommons projects. In her free time, Renuka enjoys reading and exploring nature through walks and hikes.
 
 ### **Xiang Zhao**
-
-***(he/him)***
 
 **Software Developer & R Specialist**
 
@@ -51,8 +47,6 @@ Xiang Zhao (Zhao) joined QCIF in 2024 as a Software Developer and R Specialist, 
 Zhao spent two years traveling across Australia as a backpacker. Prior to this, he worked on a conservation project in Southwest China aimed at protecting giant panda habitats from the threat of free-ranging livestock. This project earned him the BirdLife International Young Conservation Leaders Award.
 
 ### **Nauman Khattak**
-
-***(he/him)***
 
 **Software Engineer**
 

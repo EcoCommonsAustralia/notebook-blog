@@ -10,9 +10,13 @@ EcoCommons Notebooks represent an exciting expansion of the platform’s capabil
 
 # Publications used EcoCommons Platform
 
+Young, David A., Steve Harwin, and Jamie B. Kirkpatrick. "Regional-scale predictive model identifies restricted nesting habitat of the Grey Goshawk'Tachyspiza novaehollandiae'in Tasmania." *Australian Field Ornithology* 42 (2025): 93-106.
+
 Bayraktarov, E., Low-Choy, S., Singh, A. R., Beaumont, L. J., Williams, K. J., Baumgartner, J. B., ... & Mackey, B. (2025). EcoCommons Australia virtual laboratories with cloud computing: Meeting diverse user needs for ecological modeling and decision-making. *Environmental Modelling & Software*, *183*, 106255.
 
 Humaida, N., Wahab, L., Saputra, M. H., Kurniawati, F., Atmaja, M. B., Pujiono, E., ... & Wahyuningtyas, R. S. (2025). Species Distribution Model and Conservation of Mentaok (Wrightia javanica) in Indonesia. *Jurnal Manajemen Hutan Tropika*, *31*(1), 1-11.
+
+Newton, Peter, et al. "Digital Innovations for City Sustainability Analysis and Decision-Making." *Future Cities Making: Mission-oriented Research for Urban Sustainability Transitions in Australia*. Singapore: Springer Nature Singapore, 2024. 215-240.
 
 Norman, Patrick, and Brendan Mackey. "A decision support tool for habitat connectivity in Australia." *Pacific Conservation Biology* 30, no. 5 (2024).
 
@@ -25,3 +29,7 @@ Saputra, M. H., Humaida, N., & Hadiyan, Y. (2023). Smart farming: modeling distr
 Saputra, M. H., & Humaida, N. (2023, June). Potential future distribution of Scirpophaga incertulas (Walker) in Indonesia. In *IOP Conference Series: Earth and Environmental Science* (Vol. 1182, No. 1, p. 012007). IOP Publishing.
 
 Levett, Kerry, Jonathan Smillie, and Andrew Treloar. "Putting the R into PlatfoRms." *International Journal of Digital Curation* 17, no. 1 (2023): 12-12.
+
+Newton, Peter, et al. "Digital Innovations for City Sustainability Analysis and Decision-Making." *Future Cities Making: Mission-oriented Research for Urban Sustainability Transitions in Australia*. Singapore: Springer Nature Singapore, 2024. 215-240.
+
+Young, David A., Steve Harwin, and Jamie B. Kirkpatrick. "Regional-scale predictive model identifies restricted nesting habitat of the Grey Goshawk'Tachyspiza novaehollandiae'in Tasmania." *Australian Field Ornithology* 42 (2025): 93-106.
