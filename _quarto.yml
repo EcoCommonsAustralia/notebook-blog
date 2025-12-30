@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - files/**
 
 website:
   navbar:
@@ -40,6 +42,7 @@ format:
     css: styles/ec_html_template.css
     toc: true
     include-after-body: footer.html
+    include-in-header: files/includes/_msclarity.html
 
 editor: visual
 
