@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key concepts</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#k.1-random-forests" id="toc-k.1-random-forests" class="nav-link" data-scroll-target="#k.1-random-forests"><strong>K.1 Random forests</strong></a></li>
   <li><a href="#k.2-decision-tree" id="toc-k.2-decision-tree" class="nav-link" data-scroll-target="#k.2-decision-tree"><strong>K.2 Decision tree</strong></a></li>
   <li><a href="#k.3-bootstrap-sampling-and-out-of-bag-oob" id="toc-k.3-bootstrap-sampling-and-out-of-bag-oob" class="nav-link" data-scroll-target="#k.3-bootstrap-sampling-and-out-of-bag-oob"><strong>K.3 Bootstrap sampling and out-of-bag (OOB)</strong></a></li>
@@ -233,20 +233,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><strong>Workflow overview</strong></a></li>
   <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R environment and packages</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</a></li>
   <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</a></li>
   <li><a href="#s.3-download-case-study-datasets" id="toc-s.3-download-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-case-study-datasets">S.3 Download case study datasets</a></li>
   </ul></li>
   <li><a href="#overview-and-conceptualisation" id="toc-overview-and-conceptualisation" class="nav-link" data-scroll-target="#overview-and-conceptualisation">1 Overview and Conceptualisation</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#taxon-location-and-scale" id="toc-taxon-location-and-scale" class="nav-link" data-scroll-target="#taxon-location-and-scale">1.1 Taxon, location, and scale</a></li>
   <li><a href="#biodiversity-data" id="toc-biodiversity-data" class="nav-link" data-scroll-target="#biodiversity-data">1.2 Biodiversity data</a></li>
   <li><a href="#environmental-data" id="toc-environmental-data" class="nav-link" data-scroll-target="#environmental-data">1.3 Environmental Data</a></li>
   <li><a href="#combine-species-occurrence-data-and-environmental-variables" id="toc-combine-species-occurrence-data-and-environmental-variables" class="nav-link" data-scroll-target="#combine-species-occurrence-data-and-environmental-variables">1.4 Combine species occurrence data and environmental variables</a></li>
   </ul></li>
   <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">2. Model fitting</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting">2.1 Data splitting</a></li>
   <li><a href="#model-fitting-1" id="toc-model-fitting-1" class="nav-link" data-scroll-target="#model-fitting-1">2.2 Model fitting</a>
   <ul class="collapse">
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">3. Model evaluation</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#model-interpretation" id="toc-model-interpretation" class="nav-link" data-scroll-target="#model-interpretation">3.1 Model interpretation</a>
   <ul class="collapse">
   <li><a href="#random-forest-1" id="toc-random-forest-1" class="nav-link" data-scroll-target="#random-forest-1">3.1.1 Random Forest</a></li>
@@ -265,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mapping-and-interpolation" id="toc-mapping-and-interpolation" class="nav-link" data-scroll-target="#mapping-and-interpolation">3.3 Mapping and Interpolation</a></li>
   </ul></li>
   <li><a href="#model-comparison" id="toc-model-comparison" class="nav-link" data-scroll-target="#model-comparison">4. Model comparison</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#number-of-trees" id="toc-number-of-trees" class="nav-link" data-scroll-target="#number-of-trees">4.1 Number of trees</a></li>
   <li><a href="#random-forest-and-glm" id="toc-random-forest-and-glm" class="nav-link" data-scroll-target="#random-forest-and-glm">4.2 Random Forest and GLM</a>
   <ul class="collapse">
