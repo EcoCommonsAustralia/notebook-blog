@@ -65,41 +65,41 @@ Random Forest uses these OOB samples as a built-in validation set: For each obse
 3.  Get accustomed to the style of the EcoCommons Notebooks.
 4.  Know the differences between GLM and RF.
 
-# **Workflow overview**
+# Workflow overview
 
 Following a standard protocol for species distribution models proposed by Zurell et al., (2020), a R environment set-up step and five main modelling steps are demonstrated in this notebook:
 
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step         | Main Step                      | Sub-steps                                                  |
-+==============+================================+============================================================+
-| Set-up       | Set-up                         | S.1 Set up the working directory                           |
-|              |                                |                                                            |
-|              |                                | S.2 Install and load required R packages for this notebook |
-|              |                                |                                                            |
-|              |                                | S.3 Download the case study datasets                       |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 1       | Overview and Conceptualisation | 1.1 Taxon, location, predictors, scale                     |
-|              |                                |                                                            |
-|              | Data                           | 1.2 Biodiversity data                                      |
-|              |                                |                                                            |
-|              |                                | 1.3 Environmental data                                     |
-|              |                                |                                                            |
-|              |                                | 1.4 Combine data                                           |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 2       | Model fitting                  | 2.1 Data splitting                                         |
-|              |                                |                                                            |
-|              |                                | 2.2 Model fitting                                          |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 3       | Evaluation                     | 3.1 Model interpretation                                   |
-|              |                                |                                                            |
-|              |                                | 3.2 Cross-validation                                       |
-|              |                                |                                                            |
-|              |                                | 3.3 Mapping and Interpolation                              |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 4       | Model comparison               | 4.1 Number of trees of Random Forest                       |
-|              |                                |                                                            |
-|              |                                | 4.2 Random Forest and GLM                                  |
-+--------------+--------------------------------+------------------------------------------------------------+
++--------+--------------------------------+------------------------------------------------------------+
+| Step   | Main Step                      | Sub-steps                                                  |
++========+================================+============================================================+
+| Set-up | Set-up                         | S.1 Set up the working directory                           |
+|        |                                |                                                            |
+|        |                                | S.2 Install and load required R packages for this notebook |
+|        |                                |                                                            |
+|        |                                | S.3 Download the case study datasets                       |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 1 | Overview and Conceptualisation | 1.1 Taxon, location, predictors, scale                     |
+|        |                                |                                                            |
+|        | Data                           | 1.2 Biodiversity data                                      |
+|        |                                |                                                            |
+|        |                                | 1.3 Environmental data                                     |
+|        |                                |                                                            |
+|        |                                | 1.4 Combine data                                           |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 2 | Model fitting                  | 2.1 Data splitting                                         |
+|        |                                |                                                            |
+|        |                                | 2.2 Model fitting                                          |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 3 | Evaluation                     | 3.1 Model interpretation                                   |
+|        |                                |                                                            |
+|        |                                | 3.2 Cross-validation                                       |
+|        |                                |                                                            |
+|        |                                | 3.3 Mapping and Interpolation                              |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 4 | Model comparison               | 4.1 Number of trees of Random Forest                       |
+|        |                                |                                                            |
+|        |                                | 4.2 Random Forest and GLM                                  |
++--------+--------------------------------+------------------------------------------------------------+
 
 In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please [contact the EcoCommons](mailto:support@ecocommons.org.au) team.
 

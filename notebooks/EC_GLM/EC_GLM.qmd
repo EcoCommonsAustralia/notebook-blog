@@ -27,7 +27,7 @@ Using **Mountain Ash** (*Eucalyptus regnans*), a very tall and straight tree spe
 3.  Learn how to adjust this Quarto Markdown notebook to run your own GLM-based SDM.
 4.  Get accustomed to the style of the EcoCommons Notebooks.
 
-# **Workflow Overview**
+# Workflow Overview
 
 Following a standard protocol for species distribution models proposed by Zurell et al., (2020), a R environment set-up step and five main modelling steps are demonstrated in this notebook:
 

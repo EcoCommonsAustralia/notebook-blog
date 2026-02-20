@@ -6,7 +6,7 @@ reference-location: block
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
-# Part 1: Imbalanced species data, background points, and weighting methods
+# **Part 1: Imbalanced species data, background points, and weighting methods**
 
 Author details: Xiang Zhao
 
@@ -35,7 +35,7 @@ This notebook explores strategies to address the challenges posed by imbalanced 
 1.  Understand what imbalanced datasets are and their influence on model performance
 2.  Understand how weighting methods can help address the issue of imbalanced datasets.
 
-# **Workflow Overview**:
+# Workflow Overview
 
 -   Set the working directory and load the necessary R packages. Create directories to store raw data files.
 
@@ -1098,7 +1098,7 @@ We should always consider weighting methods when the species binary dataset has 
 
 Addressing imbalanced species data is crucial for producing reliable and accurate Species Distribution Models. In part 1 we showcased, via the Gang-gang Cockatoo case study, how to used weighted models to improve the performance of SDMs. While for some metrics the differences between weighted and unweighted models were not substantial, the weighted models better addressed the class imbalance issue, leading to more balanced and interpretable results. Ultimately, integrating these techniques into ecological modeling workflows supports better conservation planning and decision-making, ensuring more robust and interpretable SDMs within platforms like EcoCommons.
 
-# Part 2: Imbalanced species data, background points, and weighting methods
+# **Part 2: Imbalanced species data, background points, and weighting methods**
 
 Author details: Xiang Zhao
 

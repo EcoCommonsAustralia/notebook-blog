@@ -17,7 +17,7 @@ Then we adjusted the probability distribution maps of these three species with t
 1.  Species records pulled from GBIF, ALA, EcoPlots, OBIS
 2.  Species distribution modelling output: [Species distribution Probability maps]{style="color:red;"} (This is the input tested in this project).
 
-## **Marxan MaPP Inputs**
+## Marxan MaPP Inputs
 
 1.  Shapefile of planning area and units.
 2.  Shapefile of cost.

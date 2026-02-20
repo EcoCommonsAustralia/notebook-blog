@@ -44,7 +44,7 @@ For more information about WildObs, please visit [https://wildobs.org.au](https:
 
 -   To prepare readers for the accompanying *Practical Notebook*, which applies these concepts to real camera trap data.
 
-# **Workflow Overview**
+# Workflow Overview
 
 +---------------------------------------------------------------+-----------------------------------+-------------------------------------------------------------------+
 | Notebooks                                                     | Main Content                      | Sub-content                                                       |
@@ -339,12 +339,17 @@ cat("P(>=1 detection | occupied): ",
 
 We can compare the results from two methods:
 
-| Metric | Hand | unmarked | Difference | **Interpretation** |
-|----|----|----|----|----|
-| Naïve occupancy | 0.667 | 0.667 | – | Two of the three sites had at least one detection, so the raw proportion of occupied sites is 66.7%. Both methods agree exactly because this is a simple count. |
-| Detection probability (p) | 0.625 | 0.611 | +0.014 | If a site is truly occupied, the chance of detecting the species on a single survey is about 61–63%. The hand calculation pooled detections, while unmarked used the full likelihood of the detection histories. Both are very close. |
-| P(≥1 detection \| occupied) | 0.980 | 0.977 | +0.003 | With four surveys per site, an occupied site has about a 98% chance of being detected at least once. This shows repeated surveys almost guarantee detection when the species is present. |
-| Model-based occupancy (ψ) | 0.680 | 0.682 | –0.002 | After adjusting for imperfect detection, the estimated true occupancy probability is \~68%. This is slightly higher than the naïve 67%, because the model accounts for the possibility that Site 3 might actually be occupied but undetected. |
++-----------------------------+-------------+-------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Metric                      | Hand        | unmarked    | Difference  | **Interpretation**                                                                                                                                                                                                                            |
++=============================+=============+=============+=============+===============================================================================================================================================================================================================================================+
+| Naïve occupancy             | 0.667       | 0.667       | –           | Two of the three sites had at least one detection, so the raw proportion of occupied sites is 66.7%. Both methods agree exactly because this is a simple count.                                                                               |
++-----------------------------+-------------+-------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Detection probability (p)   | 0.625       | 0.611       | +0.014      | If a site is truly occupied, the chance of detecting the species on a single survey is about 61–63%. The hand calculation pooled detections, while unmarked used the full likelihood of the detection histories. Both are very close.         |
++-----------------------------+-------------+-------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| P(≥1 detection \| occupied) | 0.980       | 0.977       | +0.003      | With four surveys per site, an occupied site has about a 98% chance of being detected at least once. This shows repeated surveys almost guarantee detection when the species is present.                                                      |
++-----------------------------+-------------+-------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Model-based occupancy (ψ)   | 0.680       | 0.682       | –0.002      | After adjusting for imperfect detection, the estimated true occupancy probability is \~68%. This is slightly higher than the naïve 67%, because the model accounts for the possibility that Site 3 might actually be occupied but undetected. |
++-----------------------------+-------------+-------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ## 1.3 **Single-species, single-season occupancy model** with covariates
 
@@ -543,13 +548,19 @@ modSel(fitList)
 
 ```
 
-| **Rank** | **Model** | **ΔAIC** | **AIC Weight** | **Key predictors** | **Interpretation** |
-|----|----|----|----|----|----|
-| 1 | m6 | 0.00 | 0.41 | Detection: Effort + TimeOfDayOccupancy: constant | Best-supported model — detection varies with both Effort and Time of Day; occupancy doesn’t vary across sites. |
-| 2 | m4 | 0.45 | 0.33 | Detection: Effort only | Nearly as good — Effort alone explains detection almost as well. |
-| 3 | m7 | 3.00 | 0.09 | Detection: Effort + TimeOfDayOccupancy: Elevation + Forest | Moderate support — adding site covariates slightly worsens fit. |
-| 4 | m0 | 4.22 | 0.05 | No covariates (constant ψ, p) | Much poorer fit — covariates clearly improve detection explanation. |
-| 5-9 | m5, m8, m1, m2, m3 | \>4.8 | \<0.04 | Various combinations | Little to no support. |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| **Rank** | **Model**          | **ΔAIC** | **AIC Weight** | **Key predictors**                                         | **Interpretation**                                                                                             |
++==========+====================+==========+================+============================================================+================================================================================================================+
+| 1        | m6                 | 0.00     | 0.41           | Detection: Effort + TimeOfDayOccupancy: constant           | Best-supported model — detection varies with both Effort and Time of Day; occupancy doesn’t vary across sites. |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| 2        | m4                 | 0.45     | 0.33           | Detection: Effort only                                     | Nearly as good — Effort alone explains detection almost as well.                                               |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| 3        | m7                 | 3.00     | 0.09           | Detection: Effort + TimeOfDayOccupancy: Elevation + Forest | Moderate support — adding site covariates slightly worsens fit.                                                |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| 4        | m0                 | 4.22     | 0.05           | No covariates (constant ψ, p)                              | Much poorer fit — covariates clearly improve detection explanation.                                            |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| 5-9      | m5, m8, m1, m2, m3 | \>4.8    | \<0.04         | Various combinations                                       | Little to no support.                                                                                          |
++----------+--------------------+----------+----------------+------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 ### **1.3.7 Interpretation**
 
@@ -615,19 +626,3 @@ MacKenzie, D. I., Nichols, J. D., Royle, J. A., Pollock, K. H., Bailey, L., & Hi
 Bailey, L. L., MacKenzie, D. I., & Nichols, J. D. (2014). Advances and applications of occupancy models. *Methods in Ecology and Evolution*, *5*(12), 1269-1279.
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
-
-EcoCommons received investment (<https://doi.org/10.3565/chbq-mr75>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
-
-::: {align="center"}
-**Our partner**
-:::
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/updated_ourpartner_2025.png)
-
-# **How to Cite EcoCommons**
-
-If you use EcoCommons in your research, please cite the platform as follows:
-
-> EcoCommons Australia 2025. *EcoCommons Australia – a collaborative commons for ecological and environmental modelling*, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <https://data–explorer.app.ecocommons.org.au/> (Accessed: MM DD, YYYY). <https://doi.org/10.3565/chbq-mr75>
-
-You can download the citation file for EcoCommons Australia here: [Download the BibTeX file](reference.bib)
