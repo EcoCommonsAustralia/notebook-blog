@@ -167,7 +167,7 @@ We have prepared the following data and uploaded them to our Google Drive for yo
 
 -   **Study area boundary:** Shapefile format (.shp)
 
-```{r download_data}
+```{r download_data, cache=TRUE}
 
 # De-authenticate Google Drive to access public files
 drive_deauth()

@@ -6,7 +6,7 @@ editor: visual
 
 ## Our team
 
-![](images/clipboard-2178607091.png)
+![](images/our_team.jpeg)
 
 ### **Dr Jenna Wraith**
 
@@ -69,3 +69,25 @@ He obtained both a Bachelor of Science (Hons) in Physics and a Bachelor of Engin
 Michael is passionate about helping researchers get the most out of digital infrastructure. Parallel filesystems, cloud platforms and high-performance computing systems are all tools that Michael has helped researchers navigate. He’s passionate about solving problems with code; be that in python, C/C++ or even a wicked bash 1-liner with way too much sed\|awk\|grep.\
 \
 In his spare time, he enjoys sudoku, coffee, fantasy/sci fi books, and video games with good stories.
+
+### Angelo Maynes
+
+**Software Developer - Full Stack**
+
+Angelo joined QCIF as a Full Stack Software Developer in 2025 after extensive experience in software engineering across backend, frontend, DevOps, and cloud, with strong Kubernetes, Docker and microservices expertise.\
+\
+He obtained Bachelors degree in Computer Science where he a had thesis in helping young kids with speech impairment to visualise the mouth sagittal section as words are uttered.\
+\
+He is passionate in developing highly scalable and event-driven applications using several tools including gRPC and protobuf in various cloud environments. He is interested in emerging tech adoption and delivering high-performance custom enterprise software across several type of industries.\
+\
+Outside of work, Angelo likes to hang out with friends either to play badminton, go out camping, hiking or off-road driving.
+
+### Ooroosa Ali
+
+**Software Tester**
+
+Ooroosa joined QCIF as a Software Tester after gaining three and a half years of experience in the same role. Her expertise lies in Functional, End-to-End, and Regression testing across multiple platforms, including mobile and web applications. \
+\
+She holds a Bachelor's degree in Computer Science and Electronics from Mysore University, India. Ooroosa is passionate about learning new technologies, designing and executing test cases, identifying critical bugs, and applying SDLC and Agile methodologies to ensure exceptional software quality. \
+\
+Outside of work, she enjoys hiking and experimenting with cooking.

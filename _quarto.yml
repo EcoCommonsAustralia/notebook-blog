@@ -3,6 +3,12 @@ project:
   output-dir: docs
   resources:
     - files/**
+  preview:
+    watch-inputs: true
+
+execute:
+  freeze: auto
+  cache: true
 
 website:
   navbar:
@@ -12,10 +18,12 @@ website:
       - href: https://github.com/EcoCommonsAustralia/notebooks
         text: "<img src='https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg' alt='GitHub' style='height:32px; vertical-align: middle; position: relative; top: 6px;'>"
     right:
-      - text: Ecological Analysis
+      - text: Ecological and Spatial Tools
         menu:
           - href: notebooks/Rich_Div/richness_shannon_notebook.qmd
             text: Species Richness and Shannon Diversity
+          - href: notebooks/sp/ecocommons-marxan-integration-poc.qmd
+            text: Spatial Prioritization - Connecting Marxan
       - text: Modelling Steps
         menu:
           - href: notebooks/dataprep.qmd
@@ -28,12 +36,10 @@ website:
             text: Random Forest
           - href: notebooks/EOO_AOO/eoo_aoo.qmd
             text: Extent and Area of Ocurrence / Occupancy
-          - href: notebooks/Occupancy/EC_Occupancy_conceptual.qmd
+          - href: notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.qmd
             text: Single-Species Single-Season Occupancy Model - Conceptual
-      - text: Spatial Prioritization
-        menu:
-          - href: notebooks/sp/ecocommons-marxan-integration-poc.qmd
-            text: Connecting Marxan
+          - href: notebooks/Occupancy_practical/EC_Occupancy_practical.qmd
+            text: Single-Species Single-Season Occupancy Model - Practical
       - href: about.qmd
         text: About
 
