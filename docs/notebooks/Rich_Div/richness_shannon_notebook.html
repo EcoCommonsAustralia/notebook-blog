@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#k.1-species-richness" id="toc-k.1-species-richness" class="nav-link" data-scroll-target="#k.1-species-richness">K.1 Species richness</a></li>
   <li><a href="#k.2-shannon-diversity" id="toc-k.2-shannon-diversity" class="nav-link" data-scroll-target="#k.2-shannon-diversity">K.2 Shannon diversity</a></li>
   <li><a href="#k.3-landscape-comparisons-in-ecology" id="toc-k.3-landscape-comparisons-in-ecology" class="nav-link" data-scroll-target="#k.3-landscape-comparisons-in-ecology">K.3 Landscape comparisons in ecology</a></li>
@@ -219,13 +219,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
   <li><a href="#step-1-set-up-r-environment-and-packages" id="toc-step-1-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#step-1-set-up-r-environment-and-packages">Step 1: Set-up R environment and packages</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#set-the-working-directory-and-create-a-folder-for-data." id="toc-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#set-the-working-directory-and-create-a-folder-for-data.">1.1 Set the working directory and create a folder for data.</a></li>
   <li><a href="#install-and-load-required-packages" id="toc-install-and-load-required-packages" class="nav-link" data-scroll-target="#install-and-load-required-packages">1.2 Install and load required packages</a></li>
   </ul></li>
   <li><a href="#step-2-downloading-and-preparing-data" id="toc-step-2-downloading-and-preparing-data" class="nav-link" data-scroll-target="#step-2-downloading-and-preparing-data">Step 2: Downloading and preparing data</a></li>
   <li><a href="#step-3-species-richness" id="toc-step-3-species-richness" class="nav-link" data-scroll-target="#step-3-species-richness">Step 3: Species richness</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#check-data-structure-before-calculating-species-richness" id="toc-check-data-structure-before-calculating-species-richness" class="nav-link" data-scroll-target="#check-data-structure-before-calculating-species-richness">3.1 Check data structure before calculating species richness</a></li>
   <li><a href="#pivot-data-to-wide-format-and-to-do-species-richness-calculations" id="toc-pivot-data-to-wide-format-and-to-do-species-richness-calculations" class="nav-link" data-scroll-target="#pivot-data-to-wide-format-and-to-do-species-richness-calculations">3.2 Pivot data to wide format and to do species richness calculations</a></li>
   <li><a href="#species-richness-calculations" id="toc-species-richness-calculations" class="nav-link" data-scroll-target="#species-richness-calculations">3.3 Species richness calculations</a></li>
@@ -237,12 +237,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." id="toc-plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." class="nav-link" data-scroll-target="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event.">3.8 Plot temporal trends of landscape species richness. This displays the mean bird species rich of sites within each landscape for each sampling event.</a></li>
   </ul></li>
   <li><a href="#step-4-shannon-diversity" id="toc-step-4-shannon-diversity" class="nav-link" data-scroll-target="#step-4-shannon-diversity">Step 4: Shannon diversity</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#shannon-diversity-index-calculations" id="toc-shannon-diversity-index-calculations" class="nav-link" data-scroll-target="#shannon-diversity-index-calculations">4.1 Shannon diversity index calculations</a></li>
   <li><a href="#shannon-diversity-statistical-comparisons-by-landscape" id="toc-shannon-diversity-statistical-comparisons-by-landscape" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-by-landscape">4.2 Shannon diversity statistical comparisons by landscape</a></li>
   </ul></li>
   <li><a href="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" id="toc-run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" class="nav-link" data-scroll-target="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes">Run a t-test (Welch) to check for significant differences in Shannon diversity between landscapes</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#plot-shannon-diversity-by-landscape" id="toc-plot-shannon-diversity-by-landscape" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-landscape">4.3 Plot Shannon diversity by landscape</a></li>
   <li><a href="#shannon-diversity-statistical-comparisons-anova-by-site" id="toc-shannon-diversity-statistical-comparisons-anova-by-site" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-anova-by-site">4.4 Shannon diversity statistical comparisons (ANOVA) by site</a></li>
   <li><a href="#plot-shannon-diversity-by-site" id="toc-plot-shannon-diversity-by-site" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-site">4.5 Plot Shannon diversity by site</a></li>
@@ -1354,11 +1354,6 @@ Urban_Site3-Urban_Site2   -0.51884773 -1.3213638  0.2836684 0.3167198</code></pr
 <p>Turner, M. G. (1989). Landscape ecology: the effect of pattern on process.&nbsp;<em>Annual Review of Ecology and Systematics</em>,&nbsp;<em>20</em>, 171–197.&nbsp;https://doi.org/10.1146/annurev.es.20.110189.001131</p>
 <p>Turner, M. G., Gardner, R. H., &amp; O’Neill, R. V. (2001).&nbsp;<em>Landscape Ecology in Theory and Practice: Pattern and Process</em>. Springer.&nbsp;https://doi.org/10.1007/978-1-4419-7402-5</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
-<p>EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).</p>
-<div data-align="center">
-<p><strong>Our partner</strong></p>
-</div>
-<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/partners_logos.png" class="img-fluid"></p>
 </section>
 <section id="how-to-cite-ecocommons" class="level1">
 <h1><strong>How to Cite EcoCommons</strong></h1>

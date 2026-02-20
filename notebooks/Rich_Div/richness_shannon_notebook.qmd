@@ -740,14 +740,6 @@ Turner, M. G., Gardner, R. H., & O’Neill, R. V. (2001). *Landscape Ecology in
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
 
-EcoCommons received investment (<https://doi.org/10.3565/chbq-mr75>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
-
-::: {align="center"}
-**Our partner**
-:::
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/partners_logos.png)
-
 # **How to Cite EcoCommons**
 
 If you use EcoCommons in your research, please cite the platform as follows:
