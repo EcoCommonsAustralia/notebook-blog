@@ -11,3 +11,16 @@ notebooks/data_prep/data/shorebird_occurrences_AUS.shp
 notebooks/data_prep/data/shorebird_occurrences_AUS.shx
 notebooks/data_prep/imbalanceddata_part1.RData
 notebooks/EC_RF/__MACOSX/._mountain_ash_centralhighlands_RF
+
+
+# Quarto
+_freeze/
+*_cache/
+*_files/
+
+# R
+.Rproj.user/
+
+
+# Temporary duplicates
+docs/site_libs 2/
