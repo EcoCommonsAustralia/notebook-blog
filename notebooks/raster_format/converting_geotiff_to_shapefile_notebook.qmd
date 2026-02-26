@@ -299,21 +299,3 @@ This notebook demonstrated a simple, reproducible workflow for converting a GeoT
 A companion notebook (link below) demonstrates the reverse workflow, converting a shapefile (.shp) to GeoTIFF format.
 
 [Converting Shapefile (.shp) to GeoTIFF (.tif) Format](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_shapefile_to_geotiff_notebook.html)
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png)
-
-EcoCommons received investment (<https://doi.org/10.3565/chbq-mr75>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
-
-::: {align="center"}
-**Our Partners**
-:::
-
-![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/updated_ourpartner_2025.png)
-
-# How to Cite EcoCommons
-
-If you use EcoCommons in your research, please cite the platform as follows:
-
-> EcoCommons Australia 2026. *EcoCommons Australia – a collaborative commons for ecological and environmental modelling*, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <https://data–explorer.app.ecocommons.org.au/> (Accessed: MM DD, YYYY). <https://doi.org/10.3565/chbq-mr75>
-
-You can download the citation file for EcoCommons Australia here: [Download the BibTeX file](reference.bib)

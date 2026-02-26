@@ -223,17 +223,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" id="toc-getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" class="nav-link active" data-scroll-target="#getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package"><span class="header-section-number">1</span> Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via <code>spocc</code> R Package</a>
+  <li><a href="#getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" id="toc-getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" class="nav-link active" data-scroll-target="#getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package">Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via <code>spocc</code> R Package</a>
   <ul>
-  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start"><span class="header-section-number">1.1</span> 🚀 Before You Start</a></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start">🚀 Before You Start</a></li>
   </ul></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2</span> Introduction</a></li>
-  <li><a href="#step-1-set-the-working-directory" id="toc-step-1-set-the-working-directory" class="nav-link" data-scroll-target="#step-1-set-the-working-directory"><span class="header-section-number">3</span> Step 1: Set the working directory</a></li>
-  <li><a href="#step-2-get-data" id="toc-step-2-get-data" class="nav-link" data-scroll-target="#step-2-get-data"><span class="header-section-number">4</span> Step 2: Get Data</a></li>
-  <li><a href="#step-3-data-cleaning-and-filtering" id="toc-step-3-data-cleaning-and-filtering" class="nav-link" data-scroll-target="#step-3-data-cleaning-and-filtering"><span class="header-section-number">5</span> Step 3: Data Cleaning and Filtering</a></li>
-  <li><a href="#step-4-data-visualisation" id="toc-step-4-data-visualisation" class="nav-link" data-scroll-target="#step-4-data-visualisation"><span class="header-section-number">6</span> Step 4: Data Visualisation</a></li>
-  <li><a href="#step-5-save-data" id="toc-step-5-save-data" class="nav-link" data-scroll-target="#step-5-save-data"><span class="header-section-number">7</span> Step 5: Save Data</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#step-1-set-the-working-directory" id="toc-step-1-set-the-working-directory" class="nav-link" data-scroll-target="#step-1-set-the-working-directory">Step 1: Set the working directory</a></li>
+  <li><a href="#step-2-get-data" id="toc-step-2-get-data" class="nav-link" data-scroll-target="#step-2-get-data">Step 2: Get Data</a></li>
+  <li><a href="#step-3-data-cleaning-and-filtering" id="toc-step-3-data-cleaning-and-filtering" class="nav-link" data-scroll-target="#step-3-data-cleaning-and-filtering">Step 3: Data Cleaning and Filtering</a></li>
+  <li><a href="#step-4-data-visualisation" id="toc-step-4-data-visualisation" class="nav-link" data-scroll-target="#step-4-data-visualisation">Step 4: Data Visualisation</a></li>
+  <li><a href="#step-5-save-data" id="toc-step-5-save-data" class="nav-link" data-scroll-target="#step-5-save-data">Step 5: Save Data</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -244,15 +244,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via <code>spocc</code> R Package</h1>
+<section id="getting-shorebird-data-in-australia-using-global-biodiversity-data-portals-via-spocc-r-package" class="level1">
+<h1>Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via <code>spocc</code> R Package</h1>
 <p>Author details: Abhimanyu Raj Singh</p>
 <p>Editor details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
 <p>Date: June 2025</p>
-<section id="before-you-start" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="before-you-start"><span class="header-section-number">1.1</span> 🚀 Before You Start</h2>
+<section id="before-you-start" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-start">🚀 Before You Start</h2>
 <blockquote class="blockquote">
 <ul>
 <li>Ensure you have a <strong>stable internet connection</strong>, as species data is fetched live from biodiversity data portals using <code>spocc</code> R package.</li>
@@ -262,8 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 </section>
 </section>
-<section id="introduction" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>This notebook was developed by the EcoCommons team to support researchers and conservationists in gathering shorebird distribution data using open data sources. It demonstrates how to query, clean, visualise, and save species occurrence data using the <code>spocc</code> R package <span class="citation" data-cites="spocc">[@spocc]</span> (Chamberlain et al., 2024), in R.</p>
 <p><strong><code>spocc</code></strong> – Species Occurrence Data Aggregator</p>
 <p>The spocc package provides a unified interface to search and retrieve species occurrence data from multiple biodiversity data sources into a single workflow. It streamlines data acquisition for ecological modelling and biodiversity analysis by handling different APIs in one place.</p>
@@ -332,8 +332,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please <a href="mailto:support@ecocommons.org.au">contact the EcoCommons</a> team.</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png" class="img-fluid"></p>
 </section>
-<section id="step-1-set-the-working-directory" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Step 1: Set the working directory</h1>
+<section id="step-1-set-the-working-directory" class="level1">
+<h1>Step 1: Set the working directory</h1>
 <p>Set the working directory and prepare the environment. Install necessary packages if missing and load them.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>workspace <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
@@ -398,8 +398,8 @@ The following object is masked from 'package:rnaturalearth':
 </div>
 </div>
 </section>
-<section id="step-2-get-data" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Step 2: Get Data</h1>
+<section id="step-2-get-data" class="level1">
+<h1>Step 2: Get Data</h1>
 <p>We define the target species and retrieve occurrence data from GBIF, iNaturalist, and OBIS. We combine all sources together into a single tidy data-frame for further processing.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>species_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Limosa lapponica"</span>, <span class="st">"Calidris ruficollis"</span>, <span class="st">"Calidris ferruginea"</span>)</span>
@@ -495,8 +495,8 @@ Preview of Calidris ferruginea data:
 </div>
 </div>
 </section>
-<section id="step-3-data-cleaning-and-filtering" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Step 3: Data Cleaning and Filtering</h1>
+<section id="step-3-data-cleaning-and-filtering" class="level1">
+<h1>Step 3: Data Cleaning and Filtering</h1>
 <p>We clean the data by removing missing coordinates and converting points into spatial format. We then filter records to only those falling within Australia’s political boundaries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>occurrences_clean <span class="ot">&lt;-</span> occurrences <span class="sc">%&gt;%</span></span>
@@ -537,8 +537,8 @@ Geodetic CRS:  WGS 84
 </div>
 </div>
 </section>
-<section id="step-4-data-visualisation" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Step 4: Data Visualisation</h1>
+<section id="step-4-data-visualisation" class="level1">
+<h1>Step 4: Data Visualisation</h1>
 <p>We use Leaflet to plot the cleaned occurrences on an interactive map. Each species is colour-coded by directly mapping species names to specific colours.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>species_color_map <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -569,8 +569,8 @@ Geodetic CRS:  WGS 84
 </div>
 </div>
 </section>
-<section id="step-5-save-data" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Step 5: Save Data</h1>
+<section id="step-5-save-data" class="level1">
+<h1>Step 5: Save Data</h1>
 <p>We save the final occurrence data-set as both CSV and Shape-file. The files are stored in a “data” folder to support further analysis or GIS integration.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data"</span>)) {</span>
@@ -591,8 +591,8 @@ Writing 1998 features with 4 fields and geometry type Point.</code></pre>
 </div>
 </div>
 </section>
-<section id="references" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> References</h1>
+<section id="references" class="level1">
+<h1>References</h1>
 <ul>
 <li>Owens, H., Barve, V., Chamberlain, S. (2025). <em>spocc: Interface to Species Occurrence Data Sources</em>. R package version 1.2.3. Available at: <a href="https://docs.ropensci.org/spocc/" class="uri">https://docs.ropensci.org/spocc/</a> and <a href="https://github.com/ropensci/spocc" class="uri">https://github.com/ropensci/spocc</a></li>
 <li>Chamberlain, S., Barve, V., Mcglinn, D., Oldoni, D., Desmet, P., Geffert, L., &amp; Ram, K. (2024). <em>spocc: Interface to Species Occurrence Data Sources</em>. R package version 1.2.4. Available at: <a href="https://CRAN.R-project.org/package=spocc" class="uri">https://CRAN.R-project.org/package=spocc</a></li>
