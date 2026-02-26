@@ -137,14 +137,28 @@
     "href": "notebooks/raster_format.html",
     "title": "Convert Raster and Spatial File Formats",
     "section": "",
-    "text": "This section provides practical guides for converting between commonly used raster and spatial file formats in ecological modelling workflows.\nThese tutorials are designed to support species distribution modelling (SDM), environmental variable preparation, and spatial data interoperability within EcoCommons workflows.\n\n\n\n\n\nConvert ASCII (.asc) to GeoTIFF (.tif)\nConverting Rasters from ASCII to GeoTIFF\nConvert environmental raster layers such as bioclimatic variables into GeoTIFF format for compatibility with modern spatial workflows.\nConvert GeoTIFF (.tif) to ASCII (.asc)\nConverting Rasters from GeoTIFF to ASCII\nExport GeoTIFF rasters into ASCII format for legacy modelling tools or data sharing requirements.\n\n\n\n\nConvert GeoTIFF (.tif) to Shapefile (.shp)\nConverting GeoTIFF to Shapefile\nTransform raster data into vector polygons for spatial analysis and boundary extraction.\nConvert Shapefile (.shp) to GeoTIFF (.tif)\nConverting Shapefile to GeoTIFF\nRasterise vector data for integration with environmental predictors in SDM workflows.\n\n\n\n\nConvert GeoTIFF (.tif) to NetCDF (.nc)\nConverting GeoTIFF to NetCDF\nTransform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.\nConvert NetCDF (.nc) to GeoTIFF (.tif)\nConverting NetCDF to GeoTIFF\nExtract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis.\n\n\n\n\n\nIf you have questions or suggestions, please contact the\nEcoCommons Support Team."
+    "text": "This section provides practical guides for converting between commonly used raster and spatial file formats in ecological modelling workflows.\nThese tutorials are designed to support species distribution modelling (SDM), environmental variable preparation, and spatial data interoperability within EcoCommons workflows.\n\n\n\n\n\n\nConvert ASCII (.asc) to GeoTIFF (.tif)\nConverting Rasters from ASCII to GeoTIFF\nConvert environmental raster layers such as bioclimatic variables into GeoTIFF format for compatibility with modern spatial workflows.\nConvert GeoTIFF (.tif) to ASCII (.asc)\nConverting Rasters from GeoTIFF to ASCII\nExport GeoTIFF rasters into ASCII format for legacy modelling tools or data sharing requirements.\n\n\n\n\nConvert GeoTIFF (.tif) to Shapefile (.shp)\nConverting GeoTIFF to Shapefile\nTransform raster data into vector polygons for spatial analysis and boundary extraction.\nConvert Shapefile (.shp) to GeoTIFF (.tif)\nConverting Shapefile to GeoTIFF\nRasterise vector data for integration with environmental predictors in SDM workflows.\n\n\n\n\nConvert GeoTIFF (.tif) to NetCDF (.nc)\nConverting GeoTIFF to NetCDF\nTransform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.\nConvert NetCDF (.nc) to GeoTIFF (.tif)\nConverting NetCDF to GeoTIFF\nExtract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis.\n\n\n\n\nIf you have questions or suggestions, please contact the\nEcoCommons Support Team."
   },
   {
-    "objectID": "notebooks/raster_format.html#available-conversion-guides",
-    "href": "notebooks/raster_format.html#available-conversion-guides",
+    "objectID": "notebooks/raster_format.html#ascii-geotiff",
+    "href": "notebooks/raster_format.html#ascii-geotiff",
     "title": "Convert Raster and Spatial File Formats",
     "section": "",
-    "text": "Convert ASCII (.asc) to GeoTIFF (.tif)\nConverting Rasters from ASCII to GeoTIFF\nConvert environmental raster layers such as bioclimatic variables into GeoTIFF format for compatibility with modern spatial workflows.\nConvert GeoTIFF (.tif) to ASCII (.asc)\nConverting Rasters from GeoTIFF to ASCII\nExport GeoTIFF rasters into ASCII format for legacy modelling tools or data sharing requirements.\n\n\n\n\nConvert GeoTIFF (.tif) to Shapefile (.shp)\nConverting GeoTIFF to Shapefile\nTransform raster data into vector polygons for spatial analysis and boundary extraction.\nConvert Shapefile (.shp) to GeoTIFF (.tif)\nConverting Shapefile to GeoTIFF\nRasterise vector data for integration with environmental predictors in SDM workflows.\n\n\n\n\nConvert GeoTIFF (.tif) to NetCDF (.nc)\nConverting GeoTIFF to NetCDF\nTransform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.\nConvert NetCDF (.nc) to GeoTIFF (.tif)\nConverting NetCDF to GeoTIFF\nExtract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis."
+    "text": "Convert ASCII (.asc) to GeoTIFF (.tif)\nConverting Rasters from ASCII to GeoTIFF\nConvert environmental raster layers such as bioclimatic variables into GeoTIFF format for compatibility with modern spatial workflows.\nConvert GeoTIFF (.tif) to ASCII (.asc)\nConverting Rasters from GeoTIFF to ASCII\nExport GeoTIFF rasters into ASCII format for legacy modelling tools or data sharing requirements."
+  },
+  {
+    "objectID": "notebooks/raster_format.html#shapefile-geotiff",
+    "href": "notebooks/raster_format.html#shapefile-geotiff",
+    "title": "Convert Raster and Spatial File Formats",
+    "section": "",
+    "text": "Convert GeoTIFF (.tif) to Shapefile (.shp)\nConverting GeoTIFF to Shapefile\nTransform raster data into vector polygons for spatial analysis and boundary extraction.\nConvert Shapefile (.shp) to GeoTIFF (.tif)\nConverting Shapefile to GeoTIFF\nRasterise vector data for integration with environmental predictors in SDM workflows."
+  },
+  {
+    "objectID": "notebooks/raster_format.html#netcdf-geotiff",
+    "href": "notebooks/raster_format.html#netcdf-geotiff",
+    "title": "Convert Raster and Spatial File Formats",
+    "section": "",
+    "text": "Convert GeoTIFF (.tif) to NetCDF (.nc)\nConverting GeoTIFF to NetCDF\nTransform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.\nConvert NetCDF (.nc) to GeoTIFF (.tif)\nConverting NetCDF to GeoTIFF\nExtract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis."
   },
   {
     "objectID": "notebooks/raster_format.html#need-help",

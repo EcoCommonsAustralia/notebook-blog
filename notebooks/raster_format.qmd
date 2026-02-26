@@ -15,7 +15,7 @@ These tutorials are designed to support species distribution modelling (SDM), en
 
 ## Available Conversion Guides
 
-### 1. ASCII ⇄ GeoTIFF
+## 1. ASCII ⇄ GeoTIFF
 
 **Convert ASCII (.asc) to GeoTIFF (.tif)**\
 [Converting Rasters from ASCII to GeoTIFF](raster_format/converting_ascii_to_geotiff_notebook.qmd)\
@@ -27,7 +27,7 @@ Export GeoTIFF rasters into ASCII format for legacy modelling tools or data shar
 
 ------------------------------------------------------------------------
 
-### 2. Shapefile ⇄ GeoTIFF
+## 2. Shapefile ⇄ GeoTIFF
 
 **Convert GeoTIFF (.tif) to Shapefile (.shp)**\
 [Converting GeoTIFF to Shapefile](raster_format/converting_geotiff_to_shapefile_notebook.qmd)\
@@ -39,7 +39,7 @@ Rasterise vector data for integration with environmental predictors in SDM workf
 
 ------------------------------------------------------------------------
 
-### 3. NetCDF ⇄ GeoTIFF
+## 3. NetCDF ⇄ GeoTIFF
 
 **Convert GeoTIFF (.tif) to NetCDF (.nc)**  
 [Converting GeoTIFF to NetCDF](raster_format/converting_geotif_to_NetCDF_notebook.qmd)  
