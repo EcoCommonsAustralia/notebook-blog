@@ -18,11 +18,11 @@ These tutorials are designed to support species distribution modelling (SDM), en
 ### 1. ASCII ⇄ GeoTIFF
 
 **Convert ASCII (.asc) to GeoTIFF (.tif)**\
-[Converting Rasters from ASCII to GeoTIFF](converting_ascii_to_geotiff_notebook.qmd)\
+[Converting Rasters from ASCII to GeoTIFF](raster_format/converting_ascii_to_geotiff_notebook.qmd)\
 Convert environmental raster layers such as bioclimatic variables into GeoTIFF format for compatibility with modern spatial workflows.
 
 **Convert GeoTIFF (.tif) to ASCII (.asc)**\
-[Converting Rasters from GeoTIFF to ASCII](converting_geotif_to_ascii_notebook.qmd)\
+[Converting Rasters from GeoTIFF to ASCII](raster_format/converting_geotif_to_ascii_notebook.qmd)\
 Export GeoTIFF rasters into ASCII format for legacy modelling tools or data sharing requirements.
 
 ------------------------------------------------------------------------
@@ -30,11 +30,11 @@ Export GeoTIFF rasters into ASCII format for legacy modelling tools or data shar
 ### 2. Shapefile ⇄ GeoTIFF
 
 **Convert GeoTIFF (.tif) to Shapefile (.shp)**\
-[Converting GeoTIFF to Shapefile](converting_geotiff_to_shapefile_notebook.qmd)\
+[Converting GeoTIFF to Shapefile](raster_format/converting_geotiff_to_shapefile_notebook.qmd)\
 Transform raster data into vector polygons for spatial analysis and boundary extraction.
 
 **Convert Shapefile (.shp) to GeoTIFF (.tif)**\
-[Converting Shapefile to GeoTIFF](converting_shapefile_to_geotiff_notebook.qmd)\
+[Converting Shapefile to GeoTIFF](raster_format/converting_shapefile_to_geotiff_notebook.qmd)\
 Rasterise vector data for integration with environmental predictors in SDM workflows.
 
 ------------------------------------------------------------------------
@@ -42,11 +42,11 @@ Rasterise vector data for integration with environmental predictors in SDM workf
 ### 3. NetCDF ⇄ GeoTIFF
 
 **Convert GeoTIFF (.tif) to NetCDF (.nc)**  
-[Converting GeoTIFF to NetCDF](converting_geotif_to_NetCDF_notebook.qmd)  
+[Converting GeoTIFF to NetCDF](raster_format/converting_geotif_to_NetCDF_notebook.qmd)  
 Transform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.
 
 **Convert NetCDF (.nc) to GeoTIFF (.tif)**  
-[Converting NetCDF to GeoTIFF](converting_NetCDF_to_geotiff_notebook.qmd)  
+[Converting NetCDF to GeoTIFF](raster_format/converting_NetCDF_to_geotiff_notebook.qmd)  
 Extract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis.
 
 
