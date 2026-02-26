@@ -147,6 +147,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../notebooks/sp/ecocommons-marxan-integration-poc.html">
  <span class="dropdown-text">Spatial Prioritization - Connecting Marxan</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/raster_format.html">
+ <span class="dropdown-text">Raster file format convert</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -433,13 +437,13 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(basisOfRecord, <span class="at">group =</span> <span class="st">"basic"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Request for 12390 occurrences placed in queue.</code></pre>
+<pre><code>Request for 12407 occurrences placed in queue.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Current queue length: 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>---</code></pre>
+<pre><code>------</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a> Occurrences <span class="sc">|&gt;</span> <span class="fu">head</span>() <span class="co"># View the top rows of data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -500,12 +504,12 @@ A BibTeX entry for LaTeX users is
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
 <span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(species_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 12390 features and 1 field
+<pre><code>Simple feature collection with 12407 features and 1 field
 Geometry type: POINT
 Dimension:     XY
 Bounding box:  xmin: 140.9672 ymin: -39.12958 xmax: 149.9317 ymax: -35.96943
 Geodetic CRS:  WGS 84
-# A tibble: 12,390 × 2
+# A tibble: 12,407 × 2
    Species                      geometry
  * &lt;chr&gt;                     &lt;POINT [°]&gt;
  1 Vombatus ursinus (147.6821 -36.13289)
@@ -518,7 +522,7 @@ Geodetic CRS:  WGS 84
  8 Vombatus ursinus (148.3121 -37.33037)
  9 Vombatus ursinus (148.6383 -36.99493)
 10 Vombatus ursinus (147.0542 -37.46073)
-# ℹ 12,380 more rows</code></pre>
+# ℹ 12,397 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -591,7 +595,7 @@ Geodetic CRS:  WGS 84
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"The AOO value is:"</span>, AOO_result<span class="sc">$</span>aoo, <span class="st">"km²"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The AOO value is: 12132 km²"</code></pre>
+<pre><code>[1] "The AOO value is: 12148 km²"</code></pre>
 </div>
 </div>
 <div class="cell">

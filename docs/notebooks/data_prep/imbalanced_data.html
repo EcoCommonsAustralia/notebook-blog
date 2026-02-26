@@ -181,6 +181,10 @@ div.csl-indent {
     <a class="dropdown-item" href="../../notebooks/sp/ecocommons-marxan-integration-poc.html">
  <span class="dropdown-text">Spatial Prioritization - Connecting Marxan</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/raster_format.html">
+ <span class="dropdown-text">Raster file format convert</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -527,7 +531,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <pre><code>Downloading zipped file...</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog_revise/notebooks/data_prep/imbalanced_data.zip </code></pre>
+<pre><code>Downloaded zipped file to: /Users/xiangzhaoqcif/dev/notebook-blog/notebooks/data_prep/imbalanced_data.zip </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip the downloaded file</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipping the file...</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -537,7 +541,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(zip_file_path, <span class="at">exdir =</span> datafolder_path)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unzipped files to folder:"</span>, datafolder_path, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog_revise/notebooks/data_prep </code></pre>
+<pre><code>Unzipped files to folder: /Users/xiangzhaoqcif/dev/notebook-blog/notebooks/data_prep </code></pre>
 </div>
 </div>
 </section>
@@ -683,7 +687,7 @@ kableExtra is already installed and has been loaded!</code></pre>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>gang_gang_act <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"imbalanced_data/gang_gang_ACT.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `gang_gang_ACT' from data source 
-  `/Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog_revise/notebooks/data_prep/imbalanced_data/gang_gang_ACT.shp' 
+  `/Users/xiangzhaoqcif/dev/notebook-blog/notebooks/data_prep/imbalanced_data/gang_gang_ACT.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 918 features and 1 field
 Geometry type: POINT
@@ -695,7 +699,7 @@ Geodetic CRS:  GDA94</code></pre>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ACT <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"imbalanced_data/ACT_4283.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `ACT_4283' from data source 
-  `/Users/xiangzhaoqcif/Documents/QCIF_MacBook_Pro/github/notebook-blog_revise/notebooks/data_prep/imbalanced_data/ACT_4283.shp' 
+  `/Users/xiangzhaoqcif/dev/notebook-blog/notebooks/data_prep/imbalanced_data/ACT_4283.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 1 feature and 0 fields
 Geometry type: POLYGON

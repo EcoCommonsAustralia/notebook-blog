@@ -24,6 +24,8 @@ website:
             text: Species Richness and Shannon Diversity
           - href: notebooks/sp/ecocommons-marxan-integration-poc.qmd
             text: Spatial Prioritization - Connecting Marxan
+          - href: notebooks/raster_format.qmd
+            text: Raster file format convert
       - text: Modelling Steps
         menu:
           - href: notebooks/dataprep.qmd
