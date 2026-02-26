@@ -223,33 +223,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#species-distribution-analysis---environmental-data-preparation-raster" id="toc-species-distribution-analysis---environmental-data-preparation-raster" class="nav-link active" data-scroll-target="#species-distribution-analysis---environmental-data-preparation-raster">Species Distribution Analysis - Environmental Data Preparation (Raster)</a></li>
-  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info">Script and data info:</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#environmental-variables" id="toc-environmental-variables" class="nav-link" data-scroll-target="#environmental-variables">1. Environmental variables</a></li>
-  <li><a href="#raster" id="toc-raster" class="nav-link" data-scroll-target="#raster">2. Raster</a></li>
-  <li><a href="#categorical-and-continuous-data" id="toc-categorical-and-continuous-data" class="nav-link" data-scroll-target="#categorical-and-continuous-data">3. Categorical and Continuous data</a></li>
+  <li><a href="#species-distribution-analysis---environmental-data-preparation-raster" id="toc-species-distribution-analysis---environmental-data-preparation-raster" class="nav-link active" data-scroll-target="#species-distribution-analysis---environmental-data-preparation-raster"><span class="header-section-number">1</span> Species Distribution Analysis - Environmental Data Preparation (Raster)</a></li>
+  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info"><span class="header-section-number">2</span> Script and data info:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">4</span> Objectives</a></li>
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">5</span> Introduction</a>
+  <ul>
+  <li><a href="#environmental-variables" id="toc-environmental-variables" class="nav-link" data-scroll-target="#environmental-variables"><span class="header-section-number">5.1</span> 1. Environmental variables</a></li>
+  <li><a href="#raster" id="toc-raster" class="nav-link" data-scroll-target="#raster"><span class="header-section-number">5.2</span> 2. Raster</a></li>
+  <li><a href="#categorical-and-continuous-data" id="toc-categorical-and-continuous-data" class="nav-link" data-scroll-target="#categorical-and-continuous-data"><span class="header-section-number">5.3</span> 3. Categorical and Continuous data</a></li>
   </ul></li>
-  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R Environment and Packages</a>
-  <ul class="collapse">
-  <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</a></li>
-  <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</a></li>
-  <li><a href="#s.3-download-the-case-study-datasets" id="toc-s.3-download-the-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-the-case-study-datasets">S.3 Download the Case Study Datasets</a></li>
+  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages"><span class="header-section-number">6</span> Set-up: R Environment and Packages</a>
+  <ul>
+  <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">6.1</span> S.1 Set the working directory and create a folder for data.</a></li>
+  <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries."><span class="header-section-number">6.2</span> S.2 Install and load essential libraries.</a></li>
+  <li><a href="#s.3-download-the-case-study-datasets" id="toc-s.3-download-the-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-the-case-study-datasets"><span class="header-section-number">6.3</span> S.3 Download the Case Study Datasets</a></li>
   </ul></li>
-  <li><a href="#load-and-check-raster-files" id="toc-load-and-check-raster-files" class="nav-link" data-scroll-target="#load-and-check-raster-files">1. Load and Check Raster Files</a>
-  <ul class="collapse">
-  <li><a href="#study-area" id="toc-study-area" class="nav-link" data-scroll-target="#study-area">1.1 Study area</a></li>
-  <li><a href="#load-rasters" id="toc-load-rasters" class="nav-link" data-scroll-target="#load-rasters">1.2 Load Rasters</a></li>
-  <li><a href="#plot-rasters-to-understand-your-data" id="toc-plot-rasters-to-understand-your-data" class="nav-link" data-scroll-target="#plot-rasters-to-understand-your-data">1.3 Plot Rasters to Understand Your Data</a></li>
-  <li><a href="#check-crs-extent-and-resolution-of-each-raster" id="toc-check-crs-extent-and-resolution-of-each-raster" class="nav-link" data-scroll-target="#check-crs-extent-and-resolution-of-each-raster">1.4 Check CRS, Extent, and Resolution of Each Raster</a></li>
-  <li><a href="#unify-crs-and-resolution" id="toc-unify-crs-and-resolution" class="nav-link" data-scroll-target="#unify-crs-and-resolution">1.5 Unify CRS and Resolution</a></li>
-  <li><a href="#resample-rasters-to-match-the-finest-resolution" id="toc-resample-rasters-to-match-the-finest-resolution" class="nav-link" data-scroll-target="#resample-rasters-to-match-the-finest-resolution">1.6 Resample Rasters to Match the Finest Resolution</a></li>
+  <li><a href="#load-and-check-raster-files" id="toc-load-and-check-raster-files" class="nav-link" data-scroll-target="#load-and-check-raster-files"><span class="header-section-number">7</span> 1. Load and Check Raster Files</a>
+  <ul>
+  <li><a href="#study-area" id="toc-study-area" class="nav-link" data-scroll-target="#study-area"><span class="header-section-number">7.1</span> 1.1 Study area</a></li>
+  <li><a href="#load-rasters" id="toc-load-rasters" class="nav-link" data-scroll-target="#load-rasters"><span class="header-section-number">7.2</span> 1.2 Load Rasters</a></li>
+  <li><a href="#plot-rasters-to-understand-your-data" id="toc-plot-rasters-to-understand-your-data" class="nav-link" data-scroll-target="#plot-rasters-to-understand-your-data"><span class="header-section-number">7.3</span> 1.3 Plot Rasters to Understand Your Data</a></li>
+  <li><a href="#check-crs-extent-and-resolution-of-each-raster" id="toc-check-crs-extent-and-resolution-of-each-raster" class="nav-link" data-scroll-target="#check-crs-extent-and-resolution-of-each-raster"><span class="header-section-number">7.4</span> 1.4 Check CRS, Extent, and Resolution of Each Raster</a></li>
+  <li><a href="#unify-crs-and-resolution" id="toc-unify-crs-and-resolution" class="nav-link" data-scroll-target="#unify-crs-and-resolution"><span class="header-section-number">7.5</span> 1.5 Unify CRS and Resolution</a></li>
+  <li><a href="#resample-rasters-to-match-the-finest-resolution" id="toc-resample-rasters-to-match-the-finest-resolution" class="nav-link" data-scroll-target="#resample-rasters-to-match-the-finest-resolution"><span class="header-section-number">7.6</span> 1.6 Resample Rasters to Match the Finest Resolution</a></li>
   </ul></li>
-  <li><a href="#crop-and-mask-raster-to-the-extent-of-your-study-area" id="toc-crop-and-mask-raster-to-the-extent-of-your-study-area" class="nav-link" data-scroll-target="#crop-and-mask-raster-to-the-extent-of-your-study-area">2. Crop and Mask Raster to the Extent of your Study Area</a></li>
-  <li><a href="#stack-and-save-rasters" id="toc-stack-and-save-rasters" class="nav-link" data-scroll-target="#stack-and-save-rasters">3. Stack and Save Rasters</a></li>
+  <li><a href="#crop-and-mask-raster-to-the-extent-of-your-study-area" id="toc-crop-and-mask-raster-to-the-extent-of-your-study-area" class="nav-link" data-scroll-target="#crop-and-mask-raster-to-the-extent-of-your-study-area"><span class="header-section-number">8</span> 2. Crop and Mask Raster to the Extent of your Study Area</a></li>
+  <li><a href="#stack-and-save-rasters" id="toc-stack-and-save-rasters" class="nav-link" data-scroll-target="#stack-and-save-rasters"><span class="header-section-number">9</span> 3. Stack and Save Rasters</a></li>
   </ul>
 </nav>
     </div>
@@ -260,24 +260,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="species-distribution-analysis---environmental-data-preparation-raster" class="level1">
-<h1>Species Distribution Analysis - Environmental Data Preparation (Raster)</h1>
+<section id="species-distribution-analysis---environmental-data-preparation-raster" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Species Distribution Analysis - Environmental Data Preparation (Raster)</h1>
 <p>Author details: Xiang Zhao</p>
 <p>Editor details: Dr Sebastian Lopez Marcano</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: <a href="https://www.ecocommons.org.au/" class="uri">https://www.ecocommons.org.au/</a></p>
 <p>Date: December 2024</p>
 </section>
-<section id="script-and-data-info" class="level1">
-<h1>Script and data info:</h1>
+<section id="script-and-data-info" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Script and data info:</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to download, and process both continuous and categorical environmental datasets. The datasets are in the raster format and these are generally used to build Species Distribution Models (SDMs)</p>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
 <p>Raster data is a type of geo-spatial data represented by a grid of cells or pixels. Each cell contains a value representing information, such as temperature, elevation, land cover, or other spatially continuous variables. Raster data is commonly used in Geographic Information Systems (GIS) for analysing and visualizing spatial phenomena.</p>
 </section>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
+<section id="objectives" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Objectives</h1>
 <p><strong>Workflow Overview</strong>:</p>
 <ul>
 <li><p>Set the working directory and load the necessary R packages (<code>dismo</code>, <code>ggplot2</code>, <code>raster</code>, <code>googledrive</code>, <code>sp</code>, <code>dplyr</code>, <code>terra</code>). Create directories to store raw data files.</p></li>
@@ -288,10 +288,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you have any corrections or suggestions to improve the effeciengy, please <a href="mailto:support@ecocommons.org.au">contact the EcoCommons</a> team.</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
 </section>
-<section id="introduction-1" class="level1">
-<h1>Introduction</h1>
-<section id="environmental-variables" class="level2">
-<h2 class="anchored" data-anchor-id="environmental-variables">1. Environmental variables</h2>
+<section id="introduction-1" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Introduction</h1>
+<section id="environmental-variables" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="environmental-variables"><span class="header-section-number">5.1</span> 1. Environmental variables</h2>
 <p>In Species Distribution Modeling (SDM), <strong>environmental variables</strong> are factors that influence where a species can live. These include:</p>
 <ul>
 <li><p><strong>Climatic Variables</strong>: Temperature, precipitation.</p></li>
@@ -304,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>These variables help explain and predict a species’ habitat suitability based on environmental conditions.</p>
 </section>
-<section id="raster" class="level2">
-<h2 class="anchored" data-anchor-id="raster">2. Raster</h2>
+<section id="raster" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="raster"><span class="header-section-number">5.2</span> 2. Raster</h2>
 <p><strong>Raster data</strong> is a type of spatial data used to represent continuous surfaces, like environmental layers (e.g., elevation, temperature) in grids or cells. Each cell (pixel) has a value that represents information about that area.</p>
 <p><strong>Important Characteristics</strong>:</p>
 <ul>
@@ -319,8 +319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ideally, you should define a single CRS to be used consistently across all spatial files in a project, including shapefiles and raster files. This uniformity simplifies processing and ensures that all spatial data layers are accurately overlaid and compared.</p>
 <p>Read “<a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/raster-and-images/what-is-raster-data.htm#:~:text=Rasters%20are%20digital%20aerial%20photographs,land%2Duse%20or%20soils%20data.">What is raster data?</a>” by ArcMap for more detailed explanation.</p>
 </section>
-<section id="categorical-and-continuous-data" class="level2">
-<h2 class="anchored" data-anchor-id="categorical-and-continuous-data">3. Categorical and Continuous data</h2>
+<section id="categorical-and-continuous-data" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="categorical-and-continuous-data"><span class="header-section-number">5.3</span> 3. Categorical and Continuous data</h2>
 <p>In environmental modeling, <strong>environmental variables</strong> can be classified as <strong>categorical</strong> or <strong>continuous</strong>:</p>
 <p><strong>Categorical Data</strong></p>
 <ul>
@@ -346,11 +346,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="set-up-r-environment-and-packages" class="level1">
-<h1>Set-up: R Environment and Packages</h1>
+<section id="set-up-r-environment-and-packages" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Set-up: R Environment and Packages</h1>
 <p>Some housekeeping before we start. This process might take some time as many packages needed to be installed.</p>
-<section id="s.1-set-the-working-directory-and-create-a-folder-for-data." class="level2">
-<h2 class="anchored" data-anchor-id="s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</h2>
+<section id="s.1-set-the-working-directory-and-create-a-folder-for-data." class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="s.1-set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">6.1</span> S.1 Set the working directory and create a folder for data.</h2>
 <p>Save the Quarto Markdown file (.QMD) to a folder of your choice, and then set the path to your folder as your working directory.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the workspace to the current working directory</span></span>
@@ -388,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="s.2-install-and-load-essential-libraries." class="level2">
-<h2 class="anchored" data-anchor-id="s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</h2>
+<section id="s.2-install-and-load-essential-libraries." class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="s.2-install-and-load-essential-libraries."><span class="header-section-number">6.2</span> S.2 Install and load essential libraries.</h2>
 <p>Install and load R packages. Terra and sf are essential for working with raster and vector data, respectively. Other packages like dplyr, ggplot2, and leaflet are useful for data manipulation, visualization, and interactive mapping.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set CRAN mirror</span></span>
@@ -445,8 +445,8 @@ shiny is already installed and has been loaded!</code></pre>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::snapshot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="s.3-download-the-case-study-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="s.3-download-the-case-study-datasets">S.3 Download the Case Study Datasets</h2>
+<section id="s.3-download-the-case-study-datasets" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="s.3-download-the-case-study-datasets"><span class="header-section-number">6.3</span> S.3 Download the Case Study Datasets</h2>
 <p>Environmental variables are downloaded from both WorldClim and Google Drive, and stored in GeoTIFF format.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Google Drive file ID and the path for downloading</span></span>
@@ -506,10 +506,10 @@ shiny is already installed and has been loaded!</code></pre>
 </div>
 </section>
 </section>
-<section id="load-and-check-raster-files" class="level1">
-<h1>1. Load and Check Raster Files</h1>
-<section id="study-area" class="level2">
-<h2 class="anchored" data-anchor-id="study-area">1.1 Study area</h2>
+<section id="load-and-check-raster-files" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 1. Load and Check Raster Files</h1>
+<section id="study-area" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="study-area"><span class="header-section-number">7.1</span> 1.1 Study area</h2>
 <p>Before processing raster or any other spatial data, it’s important to understand your study area. This helps you determine the spatial extent of the environmental variables to collect, whether it’s nationwide data (e.g., all of Australia) or localised data for a smaller area.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your shapefile</span></span>
@@ -592,8 +592,8 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
 </div>
 <p>This light blue area called Central Highlands in Victoria, Australia is our study area.</p>
 </section>
-<section id="load-rasters" class="level2">
-<h2 class="anchored" data-anchor-id="load-rasters">1.2 Load Rasters</h2>
+<section id="load-rasters" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="load-rasters"><span class="header-section-number">7.2</span> 1.2 Load Rasters</h2>
 <p>We prepared 15 environmental raster files for this practice.</p>
 <table class="caption-top table">
 <colgroup>
@@ -837,8 +837,8 @@ nsg-2011-250m_asc is categorical.</code></pre>
 </div>
 <p>Now, it looks correct.</p>
 </section>
-<section id="plot-rasters-to-understand-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="plot-rasters-to-understand-your-data">1.3 Plot Rasters to Understand Your Data</h2>
+<section id="plot-rasters-to-understand-your-data" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="plot-rasters-to-understand-your-data"><span class="header-section-number">7.3</span> 1.3 Plot Rasters to Understand Your Data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>layer_titles <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Bioclim 01: Annual Mean Temperature"</span>,</span>
@@ -971,8 +971,8 @@ nsg-2011-250m_asc is categorical.</code></pre>
 </div>
 <p>It is great that all raster layers are sufficiently larger (but not too large) than our study area. This means we won’t have any data gaps or overly large raster layers to manage.</p>
 </section>
-<section id="check-crs-extent-and-resolution-of-each-raster" class="level2">
-<h2 class="anchored" data-anchor-id="check-crs-extent-and-resolution-of-each-raster">1.4 Check CRS, Extent, and Resolution of Each Raster</h2>
+<section id="check-crs-extent-and-resolution-of-each-raster" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="check-crs-extent-and-resolution-of-each-raster"><span class="header-section-number">7.4</span> 1.4 Check CRS, Extent, and Resolution of Each Raster</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over the rasters to show resolution, extent, and CRS</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(rasters)) {</span>
@@ -1081,8 +1081,8 @@ CRS: ID["EPSG",4283] </code></pre>
 <p><strong>Resolution</strong>: Raster 1-11 and 15 have the same resolution, which is 0.0025 degree (9 seconds), the rest raster layers have different resolutions.</p>
 <p>We need to unify extent and resolutions.</p>
 </section>
-<section id="unify-crs-and-resolution" class="level2">
-<h2 class="anchored" data-anchor-id="unify-crs-and-resolution">1.5 Unify CRS and Resolution</h2>
+<section id="unify-crs-and-resolution" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="unify-crs-and-resolution"><span class="header-section-number">7.5</span> 1.5 Unify CRS and Resolution</h2>
 <p>As we know, the CRS of the shapefile of the study area and all the raster files is EPSG:4283 (unit in degree). What if I want to change the CRS of these files to <strong>EPSG: 28355</strong> (GDA94 / MAG Zone 55, unit in meter), a more precise CRS for our study area (why? read this <a href="https://parametricmonkey.com/2020/04/08/understanding-australias-coordinate-systems/">article</a> by Paul Wintour).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to check CRS and reproject to EPSG: 28355</span></span>
@@ -1286,8 +1286,8 @@ CRS: ID["EPSG",28355] </code></pre>
 </div>
 <p>As we can see, we unified the CRS of all raster files to EPSG:28355. We can also notice that the figures in resolution and extent have changed. That is because the unit of the CRS has changed from degree to meter.</p>
 </section>
-<section id="resample-rasters-to-match-the-finest-resolution" class="level2">
-<h2 class="anchored" data-anchor-id="resample-rasters-to-match-the-finest-resolution">1.6 Resample Rasters to Match the Finest Resolution</h2>
+<section id="resample-rasters-to-match-the-finest-resolution" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="resample-rasters-to-match-the-finest-resolution"><span class="header-section-number">7.6</span> 1.6 Resample Rasters to Match the Finest Resolution</h2>
 <p>There are two methods for unifying the resolutions of raster files: (1) resampling to the finest resolution or (2) resampling to the coarsest resolution. Resampling to the finest resolution preserves as much information as possible from the original raster files but increases the file size and processing time. On the other hand, resampling to the coarsest resolution significantly reduces the file size and processing time, though it may result in some loss of detail.</p>
 <p>In EcoCommons, we recommend using the finest resolution when the objective of the study is well known, and coarser resolutions for preliminary / pilot study. The decision of fine vs coarse also depends on your study area, species and data availability. For example, when studying large, mobile animals such as whales or elephants, resampling all your raster files—from, say, 1 km, 5 km, 250 m, and 5 m to 5 m—would result in an unnecessary computational burden and waste of resources.</p>
 <div class="cell">
@@ -1556,8 +1556,8 @@ CRS: ID["EPSG",28355] </code></pre>
 <p>Now, the resolution has been unified to 79.4 meters.</p>
 </section>
 </section>
-<section id="crop-and-mask-raster-to-the-extent-of-your-study-area" class="level1">
-<h1>2. Crop and Mask Raster to the Extent of your Study Area</h1>
+<section id="crop-and-mask-raster-to-the-extent-of-your-study-area" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 2. Crop and Mask Raster to the Extent of your Study Area</h1>
 <p>Now, we want to crop all raster files to the boundary of our study area. There are two steps: crop and mask.</p>
 <p>Crop can be used to reduce the extent of the original raster to match the extent of the shapefile (here is the central highland study area). This helps with reducing the size of the raster before applying the mask, which speeds up processing and reduces file size.</p>
 <p>Then, mask can be used to trim raster files to the exact shape of the study area.</p>
@@ -1616,8 +1616,8 @@ CRS: ID["EPSG",28355] </code></pre>
 <span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stack-and-save-rasters" class="level1">
-<h1>3. Stack and Save Rasters</h1>
+<section id="stack-and-save-rasters" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 3. Stack and Save Rasters</h1>
 <p>We can only stack rasters that have the same extent, CRS, and resolution. If stacking fails, it means that at least one of these properties do not match.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack the cropped and masked rasters together</span></span>

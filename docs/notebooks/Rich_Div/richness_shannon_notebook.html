@@ -211,49 +211,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" id="toc-calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" class="nav-link active" data-scroll-target="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data">Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</a></li>
-  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
-  <ul class="collapse">
-  <li><a href="#k.1-species-richness" id="toc-k.1-species-richness" class="nav-link" data-scroll-target="#k.1-species-richness">K.1 Species richness</a></li>
-  <li><a href="#k.2-shannon-diversity" id="toc-k.2-shannon-diversity" class="nav-link" data-scroll-target="#k.2-shannon-diversity">K.2 Shannon diversity</a></li>
-  <li><a href="#k.3-landscape-comparisons-in-ecology" id="toc-k.3-landscape-comparisons-in-ecology" class="nav-link" data-scroll-target="#k.3-landscape-comparisons-in-ecology">K.3 Landscape comparisons in ecology</a></li>
+  <li><a href="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" id="toc-calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" class="nav-link active" data-scroll-target="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data"><span class="header-section-number">1</span> Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</a></li>
+  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information"><span class="header-section-number">2</span> Script and Data Information</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">4</span> Key Concepts</a>
+  <ul>
+  <li><a href="#k.1-species-richness" id="toc-k.1-species-richness" class="nav-link" data-scroll-target="#k.1-species-richness"><span class="header-section-number">4.1</span> K.1 Species richness</a></li>
+  <li><a href="#k.2-shannon-diversity" id="toc-k.2-shannon-diversity" class="nav-link" data-scroll-target="#k.2-shannon-diversity"><span class="header-section-number">4.2</span> K.2 Shannon diversity</a></li>
+  <li><a href="#k.3-landscape-comparisons-in-ecology" id="toc-k.3-landscape-comparisons-in-ecology" class="nav-link" data-scroll-target="#k.3-landscape-comparisons-in-ecology"><span class="header-section-number">4.3</span> K.3 Landscape comparisons in ecology</a></li>
   </ul></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
-  <li><a href="#step-1-set-up-r-environment-and-packages" id="toc-step-1-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#step-1-set-up-r-environment-and-packages">Step 1: Set-up R environment and packages</a>
-  <ul class="collapse">
-  <li><a href="#set-the-working-directory-and-create-a-folder-for-data." id="toc-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#set-the-working-directory-and-create-a-folder-for-data.">1.1 Set the working directory and create a folder for data.</a></li>
-  <li><a href="#install-and-load-required-packages" id="toc-install-and-load-required-packages" class="nav-link" data-scroll-target="#install-and-load-required-packages">1.2 Install and load required packages</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">5</span> Objectives</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><span class="header-section-number">6</span> Workflow Overview</a></li>
+  <li><a href="#step-1-set-up-r-environment-and-packages" id="toc-step-1-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#step-1-set-up-r-environment-and-packages"><span class="header-section-number">7</span> Step 1: Set-up R environment and packages</a>
+  <ul>
+  <li><a href="#set-the-working-directory-and-create-a-folder-for-data." id="toc-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">7.1</span> 1.1 Set the working directory and create a folder for data.</a></li>
+  <li><a href="#install-and-load-required-packages" id="toc-install-and-load-required-packages" class="nav-link" data-scroll-target="#install-and-load-required-packages"><span class="header-section-number">7.2</span> 1.2 Install and load required packages</a></li>
   </ul></li>
-  <li><a href="#step-2-downloading-and-preparing-data" id="toc-step-2-downloading-and-preparing-data" class="nav-link" data-scroll-target="#step-2-downloading-and-preparing-data">Step 2: Downloading and preparing data</a></li>
-  <li><a href="#step-3-species-richness" id="toc-step-3-species-richness" class="nav-link" data-scroll-target="#step-3-species-richness">Step 3: Species richness</a>
-  <ul class="collapse">
-  <li><a href="#check-data-structure-before-calculating-species-richness" id="toc-check-data-structure-before-calculating-species-richness" class="nav-link" data-scroll-target="#check-data-structure-before-calculating-species-richness">3.1 Check data structure before calculating species richness</a></li>
-  <li><a href="#pivot-data-to-wide-format-and-to-do-species-richness-calculations" id="toc-pivot-data-to-wide-format-and-to-do-species-richness-calculations" class="nav-link" data-scroll-target="#pivot-data-to-wide-format-and-to-do-species-richness-calculations">3.2 Pivot data to wide format and to do species richness calculations</a></li>
-  <li><a href="#species-richness-calculations" id="toc-species-richness-calculations" class="nav-link" data-scroll-target="#species-richness-calculations">3.3 Species richness calculations</a></li>
-  <li><a href="#species-richness-statistical-comparisons-by-landscape" id="toc-species-richness-statistical-comparisons-by-landscape" class="nav-link" data-scroll-target="#species-richness-statistical-comparisons-by-landscape">3.4 Species richness statistical comparisons by landscape</a></li>
-  <li><a href="#plot-species-richness-by-landscape" id="toc-plot-species-richness-by-landscape" class="nav-link" data-scroll-target="#plot-species-richness-by-landscape">3.4 Plot species richness by landscape</a></li>
-  <li><a href="#species-richness-statistical-comparisons-by-site" id="toc-species-richness-statistical-comparisons-by-site" class="nav-link" data-scroll-target="#species-richness-statistical-comparisons-by-site">3.5 Species richness statistical comparisons by site</a></li>
-  <li><a href="#plot-species-richness-by-site" id="toc-plot-species-richness-by-site" class="nav-link" data-scroll-target="#plot-species-richness-by-site">3.6 Plot species richness by site</a></li>
-  <li><a href="#landscape-temporal-trend-comparison" id="toc-landscape-temporal-trend-comparison" class="nav-link" data-scroll-target="#landscape-temporal-trend-comparison">3.7 Landscape temporal trend comparison</a></li>
-  <li><a href="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." id="toc-plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." class="nav-link" data-scroll-target="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event.">3.8 Plot temporal trends of landscape species richness. This displays the mean bird species rich of sites within each landscape for each sampling event.</a></li>
+  <li><a href="#step-2-downloading-and-preparing-data" id="toc-step-2-downloading-and-preparing-data" class="nav-link" data-scroll-target="#step-2-downloading-and-preparing-data"><span class="header-section-number">8</span> Step 2: Downloading and preparing data</a></li>
+  <li><a href="#step-3-species-richness" id="toc-step-3-species-richness" class="nav-link" data-scroll-target="#step-3-species-richness"><span class="header-section-number">9</span> Step 3: Species richness</a>
+  <ul>
+  <li><a href="#check-data-structure-before-calculating-species-richness" id="toc-check-data-structure-before-calculating-species-richness" class="nav-link" data-scroll-target="#check-data-structure-before-calculating-species-richness"><span class="header-section-number">9.1</span> 3.1 Check data structure before calculating species richness</a></li>
+  <li><a href="#pivot-data-to-wide-format-and-to-do-species-richness-calculations" id="toc-pivot-data-to-wide-format-and-to-do-species-richness-calculations" class="nav-link" data-scroll-target="#pivot-data-to-wide-format-and-to-do-species-richness-calculations"><span class="header-section-number">9.2</span> 3.2 Pivot data to wide format and to do species richness calculations</a></li>
+  <li><a href="#species-richness-calculations" id="toc-species-richness-calculations" class="nav-link" data-scroll-target="#species-richness-calculations"><span class="header-section-number">9.3</span> 3.3 Species richness calculations</a></li>
+  <li><a href="#species-richness-statistical-comparisons-by-landscape" id="toc-species-richness-statistical-comparisons-by-landscape" class="nav-link" data-scroll-target="#species-richness-statistical-comparisons-by-landscape"><span class="header-section-number">9.4</span> 3.4 Species richness statistical comparisons by landscape</a></li>
+  <li><a href="#plot-species-richness-by-landscape" id="toc-plot-species-richness-by-landscape" class="nav-link" data-scroll-target="#plot-species-richness-by-landscape"><span class="header-section-number">9.5</span> 3.4 Plot species richness by landscape</a></li>
+  <li><a href="#species-richness-statistical-comparisons-by-site" id="toc-species-richness-statistical-comparisons-by-site" class="nav-link" data-scroll-target="#species-richness-statistical-comparisons-by-site"><span class="header-section-number">9.6</span> 3.5 Species richness statistical comparisons by site</a></li>
+  <li><a href="#plot-species-richness-by-site" id="toc-plot-species-richness-by-site" class="nav-link" data-scroll-target="#plot-species-richness-by-site"><span class="header-section-number">9.7</span> 3.6 Plot species richness by site</a></li>
+  <li><a href="#landscape-temporal-trend-comparison" id="toc-landscape-temporal-trend-comparison" class="nav-link" data-scroll-target="#landscape-temporal-trend-comparison"><span class="header-section-number">9.8</span> 3.7 Landscape temporal trend comparison</a></li>
+  <li><a href="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." id="toc-plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." class="nav-link" data-scroll-target="#plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event."><span class="header-section-number">9.9</span> 3.8 Plot temporal trends of landscape species richness. This displays the mean bird species rich of sites within each landscape for each sampling event.</a></li>
   </ul></li>
-  <li><a href="#step-4-shannon-diversity" id="toc-step-4-shannon-diversity" class="nav-link" data-scroll-target="#step-4-shannon-diversity">Step 4: Shannon diversity</a>
-  <ul class="collapse">
-  <li><a href="#shannon-diversity-index-calculations" id="toc-shannon-diversity-index-calculations" class="nav-link" data-scroll-target="#shannon-diversity-index-calculations">4.1 Shannon diversity index calculations</a></li>
-  <li><a href="#shannon-diversity-statistical-comparisons-by-landscape" id="toc-shannon-diversity-statistical-comparisons-by-landscape" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-by-landscape">4.2 Shannon diversity statistical comparisons by landscape</a></li>
+  <li><a href="#step-4-shannon-diversity" id="toc-step-4-shannon-diversity" class="nav-link" data-scroll-target="#step-4-shannon-diversity"><span class="header-section-number">10</span> Step 4: Shannon diversity</a>
+  <ul>
+  <li><a href="#shannon-diversity-index-calculations" id="toc-shannon-diversity-index-calculations" class="nav-link" data-scroll-target="#shannon-diversity-index-calculations"><span class="header-section-number">10.1</span> 4.1 Shannon diversity index calculations</a></li>
+  <li><a href="#shannon-diversity-statistical-comparisons-by-landscape" id="toc-shannon-diversity-statistical-comparisons-by-landscape" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-by-landscape"><span class="header-section-number">10.2</span> 4.2 Shannon diversity statistical comparisons by landscape</a></li>
   </ul></li>
-  <li><a href="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" id="toc-run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" class="nav-link" data-scroll-target="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes">Run a t-test (Welch) to check for significant differences in Shannon diversity between landscapes</a>
-  <ul class="collapse">
-  <li><a href="#plot-shannon-diversity-by-landscape" id="toc-plot-shannon-diversity-by-landscape" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-landscape">4.3 Plot Shannon diversity by landscape</a></li>
-  <li><a href="#shannon-diversity-statistical-comparisons-anova-by-site" id="toc-shannon-diversity-statistical-comparisons-anova-by-site" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-anova-by-site">4.4 Shannon diversity statistical comparisons (ANOVA) by site</a></li>
-  <li><a href="#plot-shannon-diversity-by-site" id="toc-plot-shannon-diversity-by-site" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-site">4.5 Plot Shannon diversity by site</a></li>
+  <li><a href="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" id="toc-run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" class="nav-link" data-scroll-target="#run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes"><span class="header-section-number">11</span> Run a t-test (Welch) to check for significant differences in Shannon diversity between landscapes</a>
+  <ul>
+  <li><a href="#plot-shannon-diversity-by-landscape" id="toc-plot-shannon-diversity-by-landscape" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-landscape"><span class="header-section-number">11.1</span> 4.3 Plot Shannon diversity by landscape</a></li>
+  <li><a href="#shannon-diversity-statistical-comparisons-anova-by-site" id="toc-shannon-diversity-statistical-comparisons-anova-by-site" class="nav-link" data-scroll-target="#shannon-diversity-statistical-comparisons-anova-by-site"><span class="header-section-number">11.2</span> 4.4 Shannon diversity statistical comparisons (ANOVA) by site</a></li>
+  <li><a href="#plot-shannon-diversity-by-site" id="toc-plot-shannon-diversity-by-site" class="nav-link" data-scroll-target="#plot-shannon-diversity-by-site"><span class="header-section-number">11.3</span> 4.5 Plot Shannon diversity by site</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons"><strong>How to Cite EcoCommons</strong></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12</span> Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">13</span> References</a></li>
+  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons"><span class="header-section-number">14</span> <strong>How to Cite EcoCommons</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -264,49 +264,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" class="level1">
-<h1>Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</h1>
+<section id="calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</h1>
 <p>Author details: Dr Ryan Newis</p>
 <p>Editor details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
 <p>Date: June 2025</p>
 </section>
-<section id="script-and-data-information" class="level1">
-<h1>Script and Data Information</h1>
+<section id="script-and-data-information" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Script and Data Information</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to calculate, analyse and compare species richness and species diversity (Shannon) across different landscapes and sites for bird survey data. This method can be applied to other animals, plants or biological communities that use a similar surveying method.</p>
 <p><img src="https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/raw/main/images/ph_rosella.jpeg" class="img-fluid"></p>
 <p>Pale-headed Rosella - <em>Platycercus adscitus</em>: Photographer: <a href="https://birdsoftheworld.org/bow/species/pahros1/cur/introduction?media=photos">Chris Murray</a></p>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
 <p>Understanding how to calculate species richness and Shannon diversity is essential for assessing baseline biodiversity in ecological studies (Hill 1973; Gotelli and Colwell 2001; Chao and Chiu 2016). These metrics provide valuable insights into both the number of species present (richness) and the evenness of species distribution (Shannon diversity), helping ecologists monitor ecosystem health, detect changes over time, and inform conservation and management decisions.</p>
 </section>
-<section id="key-concepts" class="level1">
-<h1>Key Concepts</h1>
-<section id="k.1-species-richness" class="level2">
-<h2 class="anchored" data-anchor-id="k.1-species-richness">K.1 Species richness</h2>
+<section id="key-concepts" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Key Concepts</h1>
+<section id="k.1-species-richness" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="k.1-species-richness"><span class="header-section-number">4.1</span> K.1 Species richness</h2>
 <p>Species richness is a fundamental measure of biodiversity, reflecting the total number of species within a defined area or ecological community. It serves as a key indicator of habitat complexity and ecosystem health, providing a baseline for understanding patterns of species distribution and the potential effects of environmental change (Gotelli &amp; Colwell 2001; Gotelli et al.&nbsp;2009).</p>
 </section>
-<section id="k.2-shannon-diversity" class="level2">
-<h2 class="anchored" data-anchor-id="k.2-shannon-diversity">K.2 Shannon diversity</h2>
+<section id="k.2-shannon-diversity" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="k.2-shannon-diversity"><span class="header-section-number">4.2</span> K.2 Shannon diversity</h2>
 <p>Shannon diversity (also known as the Shannon-Wiener Index) integrates both species richness and the relative abundance of each species within a community. It provides a quantitative measure of biodiversity that accounts for species evenness, offering deeper insights into community structure and the dominance or rarity of species across ecological gradients (Shannon 1948; Hill 1973; Magurran 2004).</p>
 </section>
-<section id="k.3-landscape-comparisons-in-ecology" class="level2">
-<h2 class="anchored" data-anchor-id="k.3-landscape-comparisons-in-ecology">K.3 Landscape comparisons in ecology</h2>
+<section id="k.3-landscape-comparisons-in-ecology" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="k.3-landscape-comparisons-in-ecology"><span class="header-section-number">4.3</span> K.3 Landscape comparisons in ecology</h2>
 <p>Landscape-level comparisons allow ecologists to assess how species assemblages and biodiversity metrics vary across different environmental contexts. By comparing landscapes — such as forests and urban areas — researchers can identify the influence of habitat type, land-use change, and human disturbance on ecological communities. These comparisons are critical for understanding patterns of biodiversity loss, informing conservation priorities, and guiding land management strategies aimed at maintaining ecosystem integrity (Turner 1989; Turner 2001; Fahrig 2003).</p>
 </section>
 </section>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
+<section id="objectives" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Objectives</h1>
 <ol type="1">
 <li>Learn how to prepare datasets for species richness and Shannon diversity calculations.</li>
 <li>Learn how to calculate, statistically compare, and visualise species richness.</li>
 <li>Learn how to calculate, statistically compare, and visualise Shannon diversity.</li>
 </ol>
 </section>
-<section id="workflow-overview" class="level1">
-<h1>Workflow Overview</h1>
+<section id="workflow-overview" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Workflow Overview</h1>
 <ul>
 <li>Step 1: Set-up - Install and load required R packages (libraries)</li>
 <li>Step 2: Loading and preparing data</li>
@@ -316,11 +316,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please <a href="mailto:support@ecocommons.org.au">contact the EcoCommons</a> team.</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png" class="img-fluid"></p>
 </section>
-<section id="step-1-set-up-r-environment-and-packages" class="level1">
-<h1>Step 1: Set-up R environment and packages</h1>
+<section id="step-1-set-up-r-environment-and-packages" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Step 1: Set-up R environment and packages</h1>
 <p>Some housekeeping before we start. This process might take some time as multiple packages may need to be installed.</p>
-<section id="set-the-working-directory-and-create-a-folder-for-data." class="level2">
-<h2 class="anchored" data-anchor-id="set-the-working-directory-and-create-a-folder-for-data.">1.1 Set the working directory and create a folder for data.</h2>
+<section id="set-the-working-directory-and-create-a-folder-for-data." class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">7.1</span> 1.1 Set the working directory and create a folder for data.</h2>
 <p>Save the Quarto Markdown file (.QMD) to a folder of your choice, and then set the path to your folder as your working directory.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the workspace to the current working directory</span></span>
@@ -329,8 +329,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Now your local working drive is set.</p>
 </section>
-<section id="install-and-load-required-packages" class="level2">
-<h2 class="anchored" data-anchor-id="install-and-load-required-packages">1.2 Install and load required packages</h2>
+<section id="install-and-load-required-packages" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="install-and-load-required-packages"><span class="header-section-number">7.2</span> 1.2 Install and load required packages</h2>
 <p>Install and load R packages and libraries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load required packages (if not already installed)</span></span>
@@ -404,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now all required packages have been installed and loaded.</p>
 </section>
 </section>
-<section id="step-2-downloading-and-preparing-data" class="level1">
-<h1>Step 2: Downloading and preparing data</h1>
+<section id="step-2-downloading-and-preparing-data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Step 2: Downloading and preparing data</h1>
 <p>If you’re using your own bird survey data, here’s how to prepare it. The analysis in this notebook expects your data to initially be structured as a <strong>“long format”</strong> CSV file (see Table 1 for example.).</p>
 <p>Table 1. Expected data structure (long format): Each row should represent one observation of species abundance at a specific study site and time, e.g.&nbsp;:</p>
 <table class="caption-top table">
@@ -521,11 +521,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check that the dataset you have uploaded is correct (e.g.&nbsp;number of observations, variable names).</li>
 </ul>
 </section>
-<section id="step-3-species-richness" class="level1">
-<h1>Step 3: Species richness</h1>
+<section id="step-3-species-richness" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Step 3: Species richness</h1>
 <p>This section will deal with Species richness calculations, comparisons and visualisations</p>
-<section id="check-data-structure-before-calculating-species-richness" class="level2">
-<h2 class="anchored" data-anchor-id="check-data-structure-before-calculating-species-richness">3.1 Check data structure before calculating species richness</h2>
+<section id="check-data-structure-before-calculating-species-richness" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="check-data-structure-before-calculating-species-richness"><span class="header-section-number">9.1</span> 3.1 Check data structure before calculating species richness</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>species_summary <span class="ot">&lt;-</span> species_data <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Species)) <span class="sc">%&gt;%</span></span>
@@ -550,8 +550,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check that your data is in the correct structure, as above. Note that the code block also added a column labelled SiteTime, as this will be a valuable variable for downstream analysis.</li>
 </ul>
 </section>
-<section id="pivot-data-to-wide-format-and-to-do-species-richness-calculations" class="level2">
-<h2 class="anchored" data-anchor-id="pivot-data-to-wide-format-and-to-do-species-richness-calculations">3.2 Pivot data to wide format and to do species richness calculations</h2>
+<section id="pivot-data-to-wide-format-and-to-do-species-richness-calculations" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="pivot-data-to-wide-format-and-to-do-species-richness-calculations"><span class="header-section-number">9.2</span> 3.2 Pivot data to wide format and to do species richness calculations</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert long format-data to wide format</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>abundance_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
@@ -596,8 +596,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check that the wide-pivoted dataset is correct.</li>
 </ul>
 </section>
-<section id="species-richness-calculations" class="level2">
-<h2 class="anchored" data-anchor-id="species-richness-calculations">3.3 Species richness calculations</h2>
+<section id="species-richness-calculations" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="species-richness-calculations"><span class="header-section-number">9.3</span> 3.3 Species richness calculations</h2>
 <p>Calculate bird species richness for each sampling event in each site and landscape</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>richness_df <span class="ot">&lt;-</span> abundance_wide <span class="sc">%&gt;%</span></span>
@@ -621,8 +621,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Checking each row of species ricnness calculations has been completed correctly.</li>
 </ul>
 </section>
-<section id="species-richness-statistical-comparisons-by-landscape" class="level2">
-<h2 class="anchored" data-anchor-id="species-richness-statistical-comparisons-by-landscape">3.4 Species richness statistical comparisons by landscape</h2>
+<section id="species-richness-statistical-comparisons-by-landscape" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="species-richness-statistical-comparisons-by-landscape"><span class="header-section-number">9.4</span> 3.4 Species richness statistical comparisons by landscape</h2>
 <p>Descriptive summary for Forest and Urban landscape bird species richness.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>landscape_summary <span class="ot">&lt;-</span> richness_df <span class="sc">%&gt;%</span></span>
@@ -665,8 +665,8 @@ mean in group Forest  mean in group Urban
 <li>The result of the t-test shows that the Forest landscape (41.11) has significantly higher bird species richness compared to the Urban landscape (11.44) (p &lt; 0.0001).</li>
 </ul>
 </section>
-<section id="plot-species-richness-by-landscape" class="level2">
-<h2 class="anchored" data-anchor-id="plot-species-richness-by-landscape">3.4 Plot species richness by landscape</h2>
+<section id="plot-species-richness-by-landscape" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="plot-species-richness-by-landscape"><span class="header-section-number">9.5</span> 3.4 Plot species richness by landscape</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> t_test_landscape_richness<span class="sc">$</span>p.value</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -738,8 +738,8 @@ mean in group Forest  mean in group Urban
 <li>Box-plot showing that the Forest landscape (41.11) has significantly higher bird species richness compared to the Urban landscape (11.44) (p &lt; 0.0001).</li>
 </ul>
 </section>
-<section id="species-richness-statistical-comparisons-by-site" class="level2">
-<h2 class="anchored" data-anchor-id="species-richness-statistical-comparisons-by-site">3.5 Species richness statistical comparisons by site</h2>
+<section id="species-richness-statistical-comparisons-by-site" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="species-richness-statistical-comparisons-by-site"><span class="header-section-number">9.6</span> 3.5 Species richness statistical comparisons by site</h2>
 <p>Calculate descriptive statistics for each site within each landscape.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics for species richness by site</span></span>
@@ -809,8 +809,8 @@ Urban_Site3-Urban_Site2    -6.3333333 -23.26423  10.597563 0.8018091487</code></
 <li>ANOVA results show a significant difference in landscape Shannon diversity but not sites within landscape. Further, output form the Tukey post-hoc test shows that there is significantly higher bird species richness in all Forest sites compared to all Urban sites. However, there is no significant difference in bird species richness between sites within the same landscape. Check table for exact significance levels for pairwise comparisons.</li>
 </ul>
 </section>
-<section id="plot-species-richness-by-site" class="level2">
-<h2 class="anchored" data-anchor-id="plot-species-richness-by-site">3.6 Plot species richness by site</h2>
+<section id="plot-species-richness-by-site" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="plot-species-richness-by-site"><span class="header-section-number">9.7</span> 3.6 Plot species richness by site</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>letters_df <span class="ot">&lt;-</span> multcompView<span class="sc">::</span><span class="fu">multcompLetters4</span>(anova_all_sites, tukey_all_sites)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>site_letters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Site =</span> <span class="fu">names</span>(letters_df<span class="sc">$</span>Site<span class="sc">$</span>Letters),</span>
@@ -880,8 +880,8 @@ Urban_Site3-Urban_Site2    -6.3333333 -23.26423  10.597563 0.8018091487</code></
 <li>Box-plot showing that there is significantly higher bird species richness in all Forest sites compared to all Urban sites. However, there is no significant difference in bird species richness between sites within the same landscape. Sites with the same letter (e.g.&nbsp;a + a) indicates no significant difference in species richness, sites with different letters (e.g.&nbsp;a + b) display significantly different bird species richness.</li>
 </ul>
 </section>
-<section id="landscape-temporal-trend-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="landscape-temporal-trend-comparison">3.7 Landscape temporal trend comparison</h2>
+<section id="landscape-temporal-trend-comparison" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="landscape-temporal-trend-comparison"><span class="header-section-number">9.8</span> 3.7 Landscape temporal trend comparison</h2>
 <p>Here we investigate (via linear mixed-effect model) and visualise potential differences in species richness over a temporal scale (each sampling event throughout the year)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Converts time into a categorical variable</span></span>
@@ -972,8 +972,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <li>Output from the linear mixed-effect model initially showed a significant difference in the mean species richness observed in the Forest landscape between Jan - May. However, no post-hoc pairwise comparisons were statistically significant after Tukey post-hoc correction.</li>
 </ul>
 </section>
-<section id="plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." class="level2">
-<h2 class="anchored" data-anchor-id="plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event.">3.8 Plot temporal trends of landscape species richness. This displays the mean bird species rich of sites within each landscape for each sampling event.</h2>
+<section id="plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event." class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="plot-temporal-trends-of-landscape-species-richness.-this-displays-the-mean-bird-species-rich-of-sites-within-each-landscape-for-each-sampling-event."><span class="header-section-number">9.9</span> 3.8 Plot temporal trends of landscape species richness. This displays the mean bird species rich of sites within each landscape for each sampling event.</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate mean species richness by Landscape and Time</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>richness_mean <span class="ot">&lt;-</span> richness_df <span class="sc">%&gt;%</span></span>
@@ -1075,12 +1075,12 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </ul>
 </section>
 </section>
-<section id="step-4-shannon-diversity" class="level1">
-<h1>Step 4: Shannon diversity</h1>
+<section id="step-4-shannon-diversity" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Step 4: Shannon diversity</h1>
 <p>This section will deal with Shannon diversity calculations, comparisons and visualisations.</p>
 <p>Shannon diversity is a valuable complement to species richness because it accounts for both the number of species and their relative abundances. While richness measures how many species are present, Shannon diversity also captures how evenly individuals are distributed among those species, providing a more nuanced view of community structure.</p>
-<section id="shannon-diversity-index-calculations" class="level2">
-<h2 class="anchored" data-anchor-id="shannon-diversity-index-calculations">4.1 Shannon diversity index calculations</h2>
+<section id="shannon-diversity-index-calculations" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="shannon-diversity-index-calculations"><span class="header-section-number">10.1</span> 4.1 Shannon diversity index calculations</h2>
 <p>Calculate Shannon diversity index for each sampling event in each site and landscape</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Shannon diversity for each site at each sampling event</span></span>
@@ -1106,8 +1106,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <li>Check each row of Shannon diversity calculations has been completed corrected.</li>
 </ul>
 </section>
-<section id="shannon-diversity-statistical-comparisons-by-landscape" class="level2">
-<h2 class="anchored" data-anchor-id="shannon-diversity-statistical-comparisons-by-landscape">4.2 Shannon diversity statistical comparisons by landscape</h2>
+<section id="shannon-diversity-statistical-comparisons-by-landscape" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="shannon-diversity-statistical-comparisons-by-landscape"><span class="header-section-number">10.2</span> 4.2 Shannon diversity statistical comparisons by landscape</h2>
 <p>Descriptive statistics summary for Forest and Urban landscape bird Shannon diversity</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>shannon_landscape_summary <span class="ot">&lt;-</span> shannon_df <span class="sc">%&gt;%</span></span>
@@ -1131,8 +1131,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </ul>
 </section>
 </section>
-<section id="run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" class="level1">
-<h1>Run a t-test (Welch) to check for significant differences in Shannon diversity between landscapes</h1>
+<section id="run-a-t-test-welch-to-check-for-significant-differences-in-shannon-diversity-between-landscapes" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Run a t-test (Welch) to check for significant differences in Shannon diversity between landscapes</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># T-test: Forest vs Urban</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>shannon_ttest_landscape <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Shannon <span class="sc">~</span> Landscape, <span class="at">data =</span> shannon_df)</span>
@@ -1154,8 +1154,8 @@ mean in group Forest  mean in group Urban
 <ul>
 <li>The result of the t-test shows that the Forest landscape (3.64) has significantly higher bird Shannon diversity compared to the Urban landscape (2.18) (p &lt; 0.0001).</li>
 </ul>
-<section id="plot-shannon-diversity-by-landscape" class="level2">
-<h2 class="anchored" data-anchor-id="plot-shannon-diversity-by-landscape">4.3 Plot Shannon diversity by landscape</h2>
+<section id="plot-shannon-diversity-by-landscape" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="plot-shannon-diversity-by-landscape"><span class="header-section-number">11.1</span> 4.3 Plot Shannon diversity by landscape</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>y_max <span class="ot">&lt;-</span> <span class="fu">max</span>(shannon_df<span class="sc">$</span>Shannon)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>y_breaks <span class="ot">&lt;-</span> <span class="fu">pretty</span>(<span class="fu">c</span>(<span class="dv">0</span>, y_max))</span>
@@ -1219,8 +1219,8 @@ mean in group Forest  mean in group Urban
 <li>Box plot showing that the Forest landscape (3.64) has significantly higher bird Shannon diversity compared to the Urban landscape (2.18) (p &lt; 0.0001).</li>
 </ul>
 </section>
-<section id="shannon-diversity-statistical-comparisons-anova-by-site" class="level2">
-<h2 class="anchored" data-anchor-id="shannon-diversity-statistical-comparisons-anova-by-site">4.4 Shannon diversity statistical comparisons (ANOVA) by site</h2>
+<section id="shannon-diversity-statistical-comparisons-anova-by-site" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="shannon-diversity-statistical-comparisons-anova-by-site"><span class="header-section-number">11.2</span> 4.4 Shannon diversity statistical comparisons (ANOVA) by site</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ANOVA: Sites within Landscapes</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>shannon_anova_nested <span class="ot">&lt;-</span> <span class="fu">aov</span>(Shannon <span class="sc">~</span> Landscape <span class="sc">+</span> Site <span class="sc">%in%</span> Landscape, <span class="at">data =</span> shannon_df)</span>
@@ -1266,8 +1266,8 @@ Urban_Site3-Urban_Site2   -0.51884773 -1.3213638  0.2836684 0.3167198</code></pr
 <li>ANOVA results show a significant difference in landscape Shannon diversity but not sites within landscape. Further, output from the Tukey post-hoc test shows that there is significantly higher bird Shannon diversity in all Forest sites compared to all Urban sites. However, there is no significant difference in bird Shannon diversity between sites within the same landscape. Check table for exact significance levels for pairwise comparisons.</li>
 </ul>
 </section>
-<section id="plot-shannon-diversity-by-site" class="level2">
-<h2 class="anchored" data-anchor-id="plot-shannon-diversity-by-site">4.5 Plot Shannon diversity by site</h2>
+<section id="plot-shannon-diversity-by-site" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="plot-shannon-diversity-by-site"><span class="header-section-number">11.3</span> 4.5 Plot Shannon diversity by site</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add significance letters</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>shannon_letters <span class="ot">&lt;-</span> multcompView<span class="sc">::</span><span class="fu">multcompLetters4</span>(shannon_anova_all_sites, shannon_tukey_all)</span>
@@ -1341,13 +1341,13 @@ Urban_Site3-Urban_Site2   -0.51884773 -1.3213638  0.2836684 0.3167198</code></pr
 </ul>
 </section>
 </section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
+<section id="summary" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Summary</h1>
 <p>In this notebook we explored how to calculate species richness and Shannon diversity. We then conducted statistical comparisons between Forest and Urban landscapes and for sites within and between these landscapes, to assess the potential impact of landscape and site on these metrics. Finally, we produced commonly used output plots to visualise the results of these comparisons.</p>
 <p>The methodology used in this notebook could be applied to flora, fauna or other biological communities in both terrestrial or aquatic environments as an effective baseline measurement of diversity, from which extended analysis could be performed. This may include for example, species distribution models (SDMs) to further ascertain key drivers impacting the diversity and geographic distribution of the target species.</p>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
+<section id="references" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> References</h1>
 <p>Chao, A., &amp; Chiu, C.-H. (2016). Species richness: Estimation and comparison. In&nbsp;<em>Wiley StatsRef: Statistics Reference Online</em>&nbsp;(pp.&nbsp;1–26). Wiley.&nbsp;https://doi.org/10.1002/9781118445112.stat03432.pub2</p>
 <p>Fahrig, L. (2003). Effects of habitat fragmentation on biodiversity.&nbsp;<em>Annual Review of Ecology, Evolution, and Systematics</em>,&nbsp;<em>34</em>, 487–515.&nbsp;https://doi.org/10.1146/annurev.ecolsys.34.011802.132419</p>
 <p>Gotelli, N. J., &amp; Colwell, R. K. (2001). Quantifying biodiversity: Procedures and pitfalls in the measurement and comparison of species richness. <em>Ecology Letters</em>, <em>4</em>(4), 379–391. https://doi.org/10.1046/j.1461-0248.2001.00230.x</p>
@@ -1359,8 +1359,8 @@ Urban_Site3-Urban_Site2   -0.51884773 -1.3213638  0.2836684 0.3167198</code></pr
 <p>Turner, M. G., Gardner, R. H., &amp; O’Neill, R. V. (2001).&nbsp;<em>Landscape Ecology in Theory and Practice: Pattern and Process</em>. Springer.&nbsp;https://doi.org/10.1007/978-1-4419-7402-5</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
 </section>
-<section id="how-to-cite-ecocommons" class="level1">
-<h1><strong>How to Cite EcoCommons</strong></h1>
+<section id="how-to-cite-ecocommons" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> <strong>How to Cite EcoCommons</strong></h1>
 <p>If you use EcoCommons in your research, please cite the platform as follows:</p>
 <blockquote class="blockquote">
 <p>EcoCommons Australia 2024. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/" class="uri">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a></p>

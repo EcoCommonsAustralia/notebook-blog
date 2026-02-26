@@ -1,10 +1,3 @@
----
-title: "Convert Raster and Spatial File Formats"
-format:
-  html:
-    toc: true
----
-
 # Overview
 
 This section provides practical guides for converting between commonly used raster and spatial file formats in ecological modelling workflows.
@@ -41,14 +34,13 @@ Rasterise vector data for integration with environmental predictors in SDM workf
 
 ## 3. NetCDF ⇄ GeoTIFF
 
-**Convert GeoTIFF (.tif) to NetCDF (.nc)**  
-[Converting GeoTIFF to NetCDF](raster_format/converting_geotif_to_NetCDF_notebook.qmd)  
+**Convert GeoTIFF (.tif) to NetCDF (.nc)**\
+[Converting GeoTIFF to NetCDF](raster_format/converting_geotif_to_NetCDF_notebook.qmd)\
 Transform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.
 
-**Convert NetCDF (.nc) to GeoTIFF (.tif)**  
-[Converting NetCDF to GeoTIFF](raster_format/converting_NetCDF_to_geotiff_notebook.qmd)  
+**Convert NetCDF (.nc) to GeoTIFF (.tif)**\
+[Converting NetCDF to GeoTIFF](raster_format/converting_NetCDF_to_geotiff_notebook.qmd)\
 Extract raster layers from NetCDF datasets and export them into GeoTIFF format for modelling and analysis.
-
 
 ------------------------------------------------------------------------
 

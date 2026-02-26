@@ -1,9 +1,3 @@
----
-title: "about"
-format: html
-editor: visual
----
-
 ## Our team
 
 ![](images/our_team.jpeg)

@@ -45,11 +45,13 @@ website:
       - href: about.qmd
         text: About
 
+
 format:
   html:
     css: styles/ec_html_template.css
     toc: true
-    toc-depth: 3
+    toc-depth: 5
+    number-sections: true 
     include-after-body: footer.html
     include-in-header: files/includes/_msclarity.html
 

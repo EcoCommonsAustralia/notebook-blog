@@ -278,7 +278,7 @@ This notebook demonstrated a simple, reproducible workflow for converting a GeoT
 
 A companion notebook (link below) demonstrates the reverse workflow, converting an ASCII grid (.asc) to GeoTIFF (.tif) format.
 
-LINK HERE!!!!!!!!
+[**Converting Rasters from GeoTIFF (.tif) to NetCDF (.nc) Format**](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotif_to_NetCDF_notebook.html)
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png)
 

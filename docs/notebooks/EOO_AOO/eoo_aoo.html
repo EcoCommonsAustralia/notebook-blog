@@ -211,37 +211,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" id="toc-how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" class="nav-link active" data-scroll-target="#how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species">How to determine extent of occurrence (EOO) and area of occupancy (AOO) for a species</a></li>
-  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info">Script and data info:</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#a-short-explanation-of-the-notebook" id="toc-a-short-explanation-of-the-notebook" class="nav-link" data-scroll-target="#a-short-explanation-of-the-notebook">A short explanation of the notebook</a></li>
-  <li><a href="#extent-of-occurrence-eoo" id="toc-extent-of-occurrence-eoo" class="nav-link" data-scroll-target="#extent-of-occurrence-eoo">Extent of occurrence (EOO)</a></li>
-  <li><a href="#area-of-occupancy-aoo" id="toc-area-of-occupancy-aoo" class="nav-link" data-scroll-target="#area-of-occupancy-aoo">Area of Occupancy (AOO)</a></li>
+  <li><a href="#how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" id="toc-how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" class="nav-link active" data-scroll-target="#how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species"><span class="header-section-number">1</span> How to determine extent of occurrence (EOO) and area of occupancy (AOO) for a species</a></li>
+  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info"><span class="header-section-number">2</span> Script and data info:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a>
+  <ul>
+  <li><a href="#a-short-explanation-of-the-notebook" id="toc-a-short-explanation-of-the-notebook" class="nav-link" data-scroll-target="#a-short-explanation-of-the-notebook"><span class="header-section-number">3.1</span> A short explanation of the notebook</a></li>
+  <li><a href="#extent-of-occurrence-eoo" id="toc-extent-of-occurrence-eoo" class="nav-link" data-scroll-target="#extent-of-occurrence-eoo"><span class="header-section-number">3.2</span> Extent of occurrence (EOO)</a></li>
+  <li><a href="#area-of-occupancy-aoo" id="toc-area-of-occupancy-aoo" class="nav-link" data-scroll-target="#area-of-occupancy-aoo"><span class="header-section-number">3.3</span> Area of Occupancy (AOO)</a></li>
   </ul></li>
-  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R Environment and Packages</a></li>
-  <li><a href="#access-the-data" id="toc-access-the-data" class="nav-link" data-scroll-target="#access-the-data">Access the data</a>
-  <ul class="collapse">
-  <li><a href="#species-of-interest-vombatus-ursinus" id="toc-species-of-interest-vombatus-ursinus" class="nav-link" data-scroll-target="#species-of-interest-vombatus-ursinus">Species of interest: <em>Vombatus ursinus</em></a></li>
+  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages"><span class="header-section-number">4</span> Set-up: R Environment and Packages</a></li>
+  <li><a href="#access-the-data" id="toc-access-the-data" class="nav-link" data-scroll-target="#access-the-data"><span class="header-section-number">5</span> Access the data</a>
+  <ul>
+  <li><a href="#species-of-interest-vombatus-ursinus" id="toc-species-of-interest-vombatus-ursinus" class="nav-link" data-scroll-target="#species-of-interest-vombatus-ursinus"><span class="header-section-number">5.1</span> Species of interest: <em>Vombatus ursinus</em></a></li>
   </ul></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a>
-  <ul class="collapse">
-  <li><a href="#load-the-data-and-convert-it-to-an-sf-object" id="toc-load-the-data-and-convert-it-to-an-sf-object" class="nav-link" data-scroll-target="#load-the-data-and-convert-it-to-an-sf-object">Load the data and convert it to an sf object</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">6</span> Data Preparation</a>
+  <ul>
+  <li><a href="#load-the-data-and-convert-it-to-an-sf-object" id="toc-load-the-data-and-convert-it-to-an-sf-object" class="nav-link" data-scroll-target="#load-the-data-and-convert-it-to-an-sf-object"><span class="header-section-number">6.1</span> Load the data and convert it to an sf object</a></li>
   </ul></li>
-  <li><a href="#calculate-extent-of-occurrence-eoo" id="toc-calculate-extent-of-occurrence-eoo" class="nav-link" data-scroll-target="#calculate-extent-of-occurrence-eoo">Calculate Extent of Occurrence (EOO)</a>
-  <ul class="collapse">
-  <li><a href="#calculate-the-eoo-using-the-eoo.computing-function" id="toc-calculate-the-eoo-using-the-eoo.computing-function" class="nav-link" data-scroll-target="#calculate-the-eoo-using-the-eoo.computing-function">Calculate the EOO using the EOO.computing function</a></li>
+  <li><a href="#calculate-extent-of-occurrence-eoo" id="toc-calculate-extent-of-occurrence-eoo" class="nav-link" data-scroll-target="#calculate-extent-of-occurrence-eoo"><span class="header-section-number">7</span> Calculate Extent of Occurrence (EOO)</a>
+  <ul>
+  <li><a href="#calculate-the-eoo-using-the-eoo.computing-function" id="toc-calculate-the-eoo-using-the-eoo.computing-function" class="nav-link" data-scroll-target="#calculate-the-eoo-using-the-eoo.computing-function"><span class="header-section-number">7.1</span> Calculate the EOO using the EOO.computing function</a></li>
   </ul></li>
-  <li><a href="#calculate-area-of-occupancy-aoo" id="toc-calculate-area-of-occupancy-aoo" class="nav-link" data-scroll-target="#calculate-area-of-occupancy-aoo">Calculate Area of Occupancy (AOO)</a>
-  <ul class="collapse">
-  <li><a href="#calculate-the-aoo-using-the-aoo.computing-function" id="toc-calculate-the-aoo-using-the-aoo.computing-function" class="nav-link" data-scroll-target="#calculate-the-aoo-using-the-aoo.computing-function">Calculate the AOO using the AOO.computing function</a></li>
+  <li><a href="#calculate-area-of-occupancy-aoo" id="toc-calculate-area-of-occupancy-aoo" class="nav-link" data-scroll-target="#calculate-area-of-occupancy-aoo"><span class="header-section-number">8</span> Calculate Area of Occupancy (AOO)</a>
+  <ul>
+  <li><a href="#calculate-the-aoo-using-the-aoo.computing-function" id="toc-calculate-the-aoo-using-the-aoo.computing-function" class="nav-link" data-scroll-target="#calculate-the-aoo-using-the-aoo.computing-function"><span class="header-section-number">8.1</span> Calculate the AOO using the AOO.computing function</a></li>
   </ul></li>
-  <li><a href="#visualise-and-analyse-the-results" id="toc-visualise-and-analyse-the-results" class="nav-link" data-scroll-target="#visualise-and-analyse-the-results">Visualise and analyse the results</a>
-  <ul class="collapse">
-  <li><a href="#visualise-the-eoo-aoo-and-species-occurrence-points" id="toc-visualise-the-eoo-aoo-and-species-occurrence-points" class="nav-link" data-scroll-target="#visualise-the-eoo-aoo-and-species-occurrence-points">Visualise the EOO, AOO, and species occurrence points</a></li>
+  <li><a href="#visualise-and-analyse-the-results" id="toc-visualise-and-analyse-the-results" class="nav-link" data-scroll-target="#visualise-and-analyse-the-results"><span class="header-section-number">9</span> Visualise and analyse the results</a>
+  <ul>
+  <li><a href="#visualise-the-eoo-aoo-and-species-occurrence-points" id="toc-visualise-the-eoo-aoo-and-species-occurrence-points" class="nav-link" data-scroll-target="#visualise-the-eoo-aoo-and-species-occurrence-points"><span class="header-section-number">9.1</span> Visualise the EOO, AOO, and species occurrence points</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">10</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -252,35 +252,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" class="level1">
-<h1>How to determine extent of occurrence (EOO) and area of occupancy (AOO) for a species</h1>
+<section id="how-to-determine-extent-of-occurrence-eoo-and-area-of-occupancy-aoo-for-a-species" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> How to determine extent of occurrence (EOO) and area of occupancy (AOO) for a species</h1>
 <p>Author details: Dr Jenna Wraith</p>
 <p>Editor details: Dr Sebastian Lopez Marcano</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: <a href="https://www.ecocommons.org.au/" class="uri">https://www.ecocommons.org.au/</a></p>
 <p>Date: March 2025</p>
 </section>
-<section id="script-and-data-info" class="level1">
-<h1>Script and data info:</h1>
+<section id="script-and-data-info" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Script and data info:</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to determine the extent of occurrence (EOO) and area of occupancy (AOO) for a species.</p>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<section id="a-short-explanation-of-the-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="a-short-explanation-of-the-notebook">A short explanation of the notebook</h2>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
+<section id="a-short-explanation-of-the-notebook" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="a-short-explanation-of-the-notebook"><span class="header-section-number">3.1</span> A short explanation of the notebook</h2>
 <p>This notebook calculates two important ecological metrics, the Extent of Occurrence (EOO) and the Area of Occupancy (AOO), for the common wombat: <em>Vombatus ursinus</em>. These metrics are commonly used to assess species conservation status by providing information on the geographic range and area occupied by the species.</p>
 </section>
-<section id="extent-of-occurrence-eoo" class="level2">
-<h2 class="anchored" data-anchor-id="extent-of-occurrence-eoo">Extent of occurrence (EOO)</h2>
+<section id="extent-of-occurrence-eoo" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="extent-of-occurrence-eoo"><span class="header-section-number">3.2</span> Extent of occurrence (EOO)</h2>
 <p>The EOO represents the geographic spread of a species. It’s defined as the area within the smallest convex polygon that encompasses the known occurrences of the species. Ecologically, EOO is a metric for assessing the geographic range of a species and is used in conservation to estimate risk. Species with a small EOO are potentially more likely to be susceptible to extinction because their populations are more likely to be impacted by habitat changes, climate fluctuations, and human activities across their limited range.</p>
 </section>
-<section id="area-of-occupancy-aoo" class="level2">
-<h2 class="anchored" data-anchor-id="area-of-occupancy-aoo">Area of Occupancy (AOO)</h2>
+<section id="area-of-occupancy-aoo" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="area-of-occupancy-aoo"><span class="header-section-number">3.3</span> Area of Occupancy (AOO)</h2>
 <p>The AOO is a more fine-scale measurement of where a species is actually found within its range. This metric accounts for the specific locations where the species occupies habitat within the broader EOO and is calculated using a grid-based approach, typically with cells sized to 2x2 km as per IUCN standards. Lower AOO values imply that the species is confined to smaller, often isolated patches, which could increase its vulnerability.</p>
 </section>
 </section>
-<section id="set-up-r-environment-and-packages" class="level1">
-<h1>Set-up: R Environment and Packages</h1>
+<section id="set-up-r-environment-and-packages" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Set-up: R Environment and Packages</h1>
 <p>For this notebook we are going to use <code>ConR</code>, which includes a <em>EOO.computing</em> and <em>AOO.computing</em> functions to calculate the EOO and AOO for a species. We will also be using the Atlas of Living Australia <code>galah</code> package to access species occurence records.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the workspace to the current working directory</span></span>
@@ -417,10 +417,10 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ConR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="access-the-data" class="level1">
-<h1>Access the data</h1>
-<section id="species-of-interest-vombatus-ursinus" class="level2">
-<h2 class="anchored" data-anchor-id="species-of-interest-vombatus-ursinus">Species of interest: <em>Vombatus ursinus</em></h2>
+<section id="access-the-data" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Access the data</h1>
+<section id="species-of-interest-vombatus-ursinus" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="species-of-interest-vombatus-ursinus"><span class="header-section-number">5.1</span> Species of interest: <em>Vombatus ursinus</em></h2>
 <p>The common wombat (<em>Vombatus ursinus</em>) is native to southeastern Australia and Tasmania. It is currently listed as ‘Least Concern’ on the IUCN Red List. The occurrence data for <em>Vombatus ursinus</em> is sourced from the Atlas of Living Australia (ALA) via the Galah Package. This dataset provides the coordinates for the species, which are used to calculate the Extent of Occurrence (EOO) and Area of Occupancy (AOO) metrics. For this example we are filtering records to include those recorded since 2015 and are located in Victoria.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure the Galah settings</span></span>
@@ -481,10 +481,10 @@ A BibTeX entry for LaTeX users is
 </div>
 </section>
 </section>
-<section id="data-preparation" class="level1">
-<h1>Data Preparation</h1>
-<section id="load-the-data-and-convert-it-to-an-sf-object" class="level2">
-<h2 class="anchored" data-anchor-id="load-the-data-and-convert-it-to-an-sf-object">Load the data and convert it to an sf object</h2>
+<section id="data-preparation" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Data Preparation</h1>
+<section id="load-the-data-and-convert-it-to-an-sf-object" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="load-the-data-and-convert-it-to-an-sf-object"><span class="header-section-number">6.1</span> Load the data and convert it to an sf object</h2>
 <p>The occurrence data for <em>Vombatus ursinus</em> is loaded from Galah package and converted to an sf object using the <code>st_as_sf</code> function from the <code>sf</code> package. The latitude and longitude columns are specified as the coordinates for the sf object. The coordinate reference system (CRS) is set to EPSG:4326 (WGS 84) to ensure the correct spatial representation of the data.</p>
 <p>Here we also process the data by removing records with missing coordinates, modify the data to keep only the necessary columns (latitude, longitude and species) and ensure all the species names match.</p>
 <div class="cell">
@@ -527,10 +527,10 @@ Geodetic CRS:  WGS 84
 </div>
 </section>
 </section>
-<section id="calculate-extent-of-occurrence-eoo" class="level1">
-<h1>Calculate Extent of Occurrence (EOO)</h1>
-<section id="calculate-the-eoo-using-the-eoo.computing-function" class="level2">
-<h2 class="anchored" data-anchor-id="calculate-the-eoo-using-the-eoo.computing-function">Calculate the EOO using the EOO.computing function</h2>
+<section id="calculate-extent-of-occurrence-eoo" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Calculate Extent of Occurrence (EOO)</h1>
+<section id="calculate-the-eoo-using-the-eoo.computing-function" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="calculate-the-eoo-using-the-eoo.computing-function"><span class="header-section-number">7.1</span> Calculate the EOO using the EOO.computing function</h2>
 <p>The EOO for <em>Vombatus ursinus</em> is calculated using the <code>EOO.computing</code> function from the <code>ConR</code> package. The function takes the species occurrence points as input and returns the EOO polygon and EOO value. If the EOO polygon is NULL, a convex hull is generated from the species points as an alternative representation of the EOO.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate EOO (Extent of Occurrence)</span></span>
@@ -555,10 +555,10 @@ Geodetic CRS:  WGS 84
 </div>
 </section>
 </section>
-<section id="calculate-area-of-occupancy-aoo" class="level1">
-<h1>Calculate Area of Occupancy (AOO)</h1>
-<section id="calculate-the-aoo-using-the-aoo.computing-function" class="level2">
-<h2 class="anchored" data-anchor-id="calculate-the-aoo-using-the-aoo.computing-function">Calculate the AOO using the AOO.computing function</h2>
+<section id="calculate-area-of-occupancy-aoo" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Calculate Area of Occupancy (AOO)</h1>
+<section id="calculate-the-aoo-using-the-aoo.computing-function" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="calculate-the-aoo-using-the-aoo.computing-function"><span class="header-section-number">8.1</span> Calculate the AOO using the AOO.computing function</h2>
 <p>The AOO for <em>Vombatus ursinus</em> is calculated using the <code>AOO.computing</code> function from the <code>ConR</code> package. The function takes the species occurrence points as input and returns the AOO value based on a 2x2 km grid. The AOO value represents the area actually occupied by the species within the grid cells.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate AOO (Area of Occupancy)</span></span>
@@ -582,10 +582,10 @@ Geodetic CRS:  WGS 84
 </div>
 </section>
 </section>
-<section id="visualise-and-analyse-the-results" class="level1">
-<h1>Visualise and analyse the results</h1>
-<section id="visualise-the-eoo-aoo-and-species-occurrence-points" class="level2">
-<h2 class="anchored" data-anchor-id="visualise-the-eoo-aoo-and-species-occurrence-points">Visualise the EOO, AOO, and species occurrence points</h2>
+<section id="visualise-and-analyse-the-results" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Visualise and analyse the results</h1>
+<section id="visualise-the-eoo-aoo-and-species-occurrence-points" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="visualise-the-eoo-aoo-and-species-occurrence-points"><span class="header-section-number">9.1</span> Visualise the EOO, AOO, and species occurrence points</h2>
 <p>Now, to conclude this short notebook, we will visualise the calculated EOO, AOO, and the species occurrence points on a map using <code>ggplot2</code>. The map will display the land area, species points, EOO polygon (or convex hull), and include annotations for the EOO and AOO values. The map will provide a visual representation of the species distribution and the extent of its occurrence.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the EOO and AOO values</span></span>
@@ -650,12 +650,12 @@ Ignoring unknown parameters: `label.size`</code></pre>
 </div>
 </section>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="conclusion" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Conclusion</h1>
 <p>In this notebook, we have demonstrated how to calculate the Extent of Occurrence (EOO) and Area of Occupancy (AOO) for the common wombat (<em>Vombatus ursinus</em>). This serves as a starting point for understanding a species’ distribution and provides a first glance at its potential extinction risk. While EOO and AOO are valuable, they are just the beginning of a more comprehensive assessment of a species’ conservation status. These metrics can guide further research and inform more detailed analyses, ultimately contributing to better-informed conservation strategies.</p>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
+<section id="references" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> References</h1>
 <p>Dauby, G., Stévart, T., Droissart, V., Cosiaux, A., Deblauwe, V., Simo‐Droissart, M., Sosef, M.S., Lowry, P.P., Schatz, G.E., Gereau, R.E. and Couvreur, T.L., 2017. ConR: An R package to assist large‐scale multispecies preliminary conservation assessments using distribution data. Ecology and evolution, 7(24), pp.11292-11303.</p>
 <p>Gaston, K.J. and Fuller, R.A., 2009. The sizes of species’ geographic ranges. Journal of applied ecology, 46(1), pp.1-9.</p>
 <p>Marsh, C.J., Syfert, M.M., Aletrari, E., Gavish, Y., Kunin, W.E. and Brummitt, N., 2023. The effect of sampling effort and methodology on range size estimates of poorly-recorded species for IUCN Red List assessments. Biodiversity and Conservation, 32(3), pp.1105-1123.</p>

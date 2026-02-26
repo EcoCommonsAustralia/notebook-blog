@@ -235,3 +235,39 @@ main {
   width: 300px; /* Adjust this value if needed */
 }
 
+/* =========================
+   Right TOC Hierarchy Fix
+   ========================= */
+
+/* Base TOC link style */
+#TOC a {
+  font-weight: 500;
+  display: block;
+  padding: 2px 0;
+}
+
+/* Level 2 (##) */
+#TOC ul ul > li {
+  margin-left: 1rem;
+}
+
+/* Level 3 (###) */
+#TOC ul ul ul > li {
+  margin-left: 2rem;
+}
+
+/* Optional: slightly smaller for deeper levels */
+#TOC ul ul a {
+  font-size: 0.95em;
+}
+
+#TOC ul ul ul a {
+  font-size: 0.9em;
+}
+
+/* Optional: make active section clearer */
+#TOC .active > a {
+  font-weight: 700;
+  color: #11aa96;
+}
+

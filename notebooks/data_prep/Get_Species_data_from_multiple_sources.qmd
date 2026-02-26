@@ -22,7 +22,7 @@ Date: June 2025
 
 This notebook was developed by the EcoCommons team to support researchers and conservationists in gathering shorebird distribution data using open data sources. It demonstrates how to query, clean, visualise, and save species occurrence data using the `spocc` R package [@spocc] (Chamberlain et al., 2024), in R.
 
-**`spocc`** – Species Occurrence Data Aggregator 
+**`spocc`** – Species Occurrence Data Aggregator
 
 The spocc package provides a unified interface to search and retrieve species occurrence data from multiple biodiversity data sources into a single workflow. It streamlines data acquisition for ecological modelling and biodiversity analysis by handling different APIs in one place.
 
@@ -53,7 +53,7 @@ Species such as the Bar-tailed Godwit, Red-necked Stint, and Curlew Sandpiper ar
 **Objectives:**
 
 | Step | Description |
-|:-----------------------------------|:-----------------------------------|
+|:---|:---|
 | **1. Set the Working Directory** | Prepare the environment and load necessary R packages. |
 | **2. Get Data** | Retrieve occurrence data for target shorebird species from GBIF, iNaturalist, and OBIS. Merge all sources together. |
 | **3. Data Cleaning and Filtering** | Clean the data, remove invalid points, and restrict to Australia’s boundary. |
@@ -203,4 +203,3 @@ st_write(occurrences_aus, "data/shorebird_occurrences_AUS.shp", delete_layer = T
 -   Pebesma, E. (2018). *Simple Features for R: Standardized Support for Spatial Vector Data*. The R Journal, 10(1), 439–446. <https://doi.org/10.32614/RJ-2018-009>
 -   South, A. (2017). *rnaturalearth: World Map Data from Natural Earth*. R package version 0.1.0.
 -   South, A. (2017). *rnaturalearthdata: World Vector Map Data from Natural Earth Used in 'rnaturalearth'*. R package version 0.1.0.
-

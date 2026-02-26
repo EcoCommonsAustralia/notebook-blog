@@ -211,25 +211,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#converting-geotiff-.tif-to-shapefile-.shp-format" id="toc-converting-geotiff-.tif-to-shapefile-.shp-format" class="nav-link active" data-scroll-target="#converting-geotiff-.tif-to-shapefile-.shp-format">Converting GeoTIFF (.tif) to Shapefile (.shp) Format</a></li>
-  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
-  <ul class="collapse">
-  <li><a href="#k.1-raster-data-structure" id="toc-k.1-raster-data-structure" class="nav-link" data-scroll-target="#k.1-raster-data-structure">K.1 Raster data structure</a></li>
-  <li><a href="#k.2-vector-data-and-shapefiles" id="toc-k.2-vector-data-and-shapefiles" class="nav-link" data-scroll-target="#k.2-vector-data-and-shapefiles">K.2 Vector data and shapefiles</a></li>
-  <li><a href="#k.3-raster-to-vector-conversion-polygonisation" id="toc-k.3-raster-to-vector-conversion-polygonisation" class="nav-link" data-scroll-target="#k.3-raster-to-vector-conversion-polygonisation">K.3 Raster-to-vector conversion (polygonisation)</a></li>
+  <li><a href="#converting-geotiff-.tif-to-shapefile-.shp-format" id="toc-converting-geotiff-.tif-to-shapefile-.shp-format" class="nav-link active" data-scroll-target="#converting-geotiff-.tif-to-shapefile-.shp-format"><span class="header-section-number">1</span> Converting GeoTIFF (.tif) to Shapefile (.shp) Format</a></li>
+  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information"><span class="header-section-number">2</span> Script and Data Information</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">4</span> Key Concepts</a>
+  <ul>
+  <li><a href="#k.1-raster-data-structure" id="toc-k.1-raster-data-structure" class="nav-link" data-scroll-target="#k.1-raster-data-structure"><span class="header-section-number">4.1</span> K.1 Raster data structure</a></li>
+  <li><a href="#k.2-vector-data-and-shapefiles" id="toc-k.2-vector-data-and-shapefiles" class="nav-link" data-scroll-target="#k.2-vector-data-and-shapefiles"><span class="header-section-number">4.2</span> K.2 Vector data and shapefiles</a></li>
+  <li><a href="#k.3-raster-to-vector-conversion-polygonisation" id="toc-k.3-raster-to-vector-conversion-polygonisation" class="nav-link" data-scroll-target="#k.3-raster-to-vector-conversion-polygonisation"><span class="header-section-number">4.3</span> K.3 Raster-to-vector conversion (polygonisation)</a></li>
   </ul></li>
-  <li><a href="#notebook-objectives" id="toc-notebook-objectives" class="nav-link" data-scroll-target="#notebook-objectives">Notebook Objectives</a></li>
-  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
-  <li><a href="#step-1.-install-and-load-required-packages" id="toc-step-1.-install-and-load-required-packages" class="nav-link" data-scroll-target="#step-1.-install-and-load-required-packages">Step 1. Install and load required packages</a></li>
-  <li><a href="#step-2.-define-the-path-to-the-input-geotiff-raster-file" id="toc-step-2.-define-the-path-to-the-input-geotiff-raster-file" class="nav-link" data-scroll-target="#step-2.-define-the-path-to-the-input-geotiff-raster-file">Step 2. Define the path to the input GeoTIFF raster file</a></li>
-  <li><a href="#step-3.-read-geotiff-raster-into-r" id="toc-step-3.-read-geotiff-raster-into-r" class="nav-link" data-scroll-target="#step-3.-read-geotiff-raster-into-r">Step 3. Read GeoTIFF raster into R</a></li>
-  <li><a href="#step-4.-plot-raster" id="toc-step-4.-plot-raster" class="nav-link" data-scroll-target="#step-4.-plot-raster">Step 4. Plot raster</a></li>
-  <li><a href="#step-5.-convert-raster-to-polygon-and-save-shapefile" id="toc-step-5.-convert-raster-to-polygon-and-save-shapefile" class="nav-link" data-scroll-target="#step-5.-convert-raster-to-polygon-and-save-shapefile">Step 5. Convert raster to polygon and save shapefile</a></li>
-  <li><a href="#step-6.-verify-spatial-metadata-after-writing-shapefile" id="toc-step-6.-verify-spatial-metadata-after-writing-shapefile" class="nav-link" data-scroll-target="#step-6.-verify-spatial-metadata-after-writing-shapefile">Step 6. Verify spatial metadata after writing shapefile</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons">How to Cite EcoCommons</a></li>
+  <li><a href="#notebook-objectives" id="toc-notebook-objectives" class="nav-link" data-scroll-target="#notebook-objectives"><span class="header-section-number">5</span> Notebook Objectives</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><span class="header-section-number">6</span> Workflow Overview</a></li>
+  <li><a href="#step-1.-install-and-load-required-packages" id="toc-step-1.-install-and-load-required-packages" class="nav-link" data-scroll-target="#step-1.-install-and-load-required-packages"><span class="header-section-number">7</span> Step 1. Install and load required packages</a></li>
+  <li><a href="#step-2.-define-the-path-to-the-input-geotiff-raster-file" id="toc-step-2.-define-the-path-to-the-input-geotiff-raster-file" class="nav-link" data-scroll-target="#step-2.-define-the-path-to-the-input-geotiff-raster-file"><span class="header-section-number">8</span> Step 2. Define the path to the input GeoTIFF raster file</a></li>
+  <li><a href="#step-3.-read-geotiff-raster-into-r" id="toc-step-3.-read-geotiff-raster-into-r" class="nav-link" data-scroll-target="#step-3.-read-geotiff-raster-into-r"><span class="header-section-number">9</span> Step 3. Read GeoTIFF raster into R</a></li>
+  <li><a href="#step-4.-plot-raster" id="toc-step-4.-plot-raster" class="nav-link" data-scroll-target="#step-4.-plot-raster"><span class="header-section-number">10</span> Step 4. Plot raster</a></li>
+  <li><a href="#step-5.-convert-raster-to-polygon-and-save-shapefile" id="toc-step-5.-convert-raster-to-polygon-and-save-shapefile" class="nav-link" data-scroll-target="#step-5.-convert-raster-to-polygon-and-save-shapefile"><span class="header-section-number">11</span> Step 5. Convert raster to polygon and save shapefile</a></li>
+  <li><a href="#step-6.-verify-spatial-metadata-after-writing-shapefile" id="toc-step-6.-verify-spatial-metadata-after-writing-shapefile" class="nav-link" data-scroll-target="#step-6.-verify-spatial-metadata-after-writing-shapefile"><span class="header-section-number">12</span> Step 6. Verify spatial metadata after writing shapefile</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">13</span> Summary</a></li>
+  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons"><span class="header-section-number">14</span> How to Cite EcoCommons</a></li>
   </ul>
 </nav>
     </div>
@@ -240,41 +240,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="converting-geotiff-.tif-to-shapefile-.shp-format" class="level1">
-<h1>Converting GeoTIFF (.tif) to Shapefile (.shp) Format</h1>
+<section id="converting-geotiff-.tif-to-shapefile-.shp-format" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Converting GeoTIFF (.tif) to Shapefile (.shp) Format</h1>
 <p>Author details: Dr Ryan Newis</p>
 <p>Editor details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: <a href="https://www.ecocommons.org.au/" class="uri">https://www.ecocommons.org.au/</a></p>
 <p>Date: Feb 2026</p>
 </section>
-<section id="script-and-data-information" class="level1">
-<h1>Script and Data Information</h1>
+<section id="script-and-data-information" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Script and Data Information</h1>
 <p>This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a vector shapefile (.shp) using the <code>terra</code> package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring vector outputs.</p>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
 <p>Raster and vector data represent two fundamental formats for storing spatial information. Raster datasets (e.g.&nbsp;GeoTIFF) store values in a grid of cells, while vector datasets (e.g.&nbsp;shapefile) represent spatial features as points, lines, or polygons. In many ecological and environmental workflows, it is necessary to convert raster data into vector polygons to enable integration with other vector-based datasets or modelling tools.</p>
 <p>Although format conversion is often treated as a straightforward technical step, preserving spatial metadata during this process is essential. Changes to the coordinate reference system (CRS) or spatial extent can introduce subtle spatial misalignment that may not be immediately visible but can affect downstream analyses and modelling results.</p>
 <p>This notebook demonstrates a structured and transparent approach to converting a GeoTIFF raster to a polygon shapefile while explicitly verifying that key spatial properties, including CRS, extent, and geometry validity are maintained.</p>
 </section>
-<section id="key-concepts" class="level1">
-<h1>Key Concepts</h1>
-<section id="k.1-raster-data-structure" class="level2">
-<h2 class="anchored" data-anchor-id="k.1-raster-data-structure">K.1 Raster data structure</h2>
+<section id="key-concepts" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Key Concepts</h1>
+<section id="k.1-raster-data-structure" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="k.1-raster-data-structure"><span class="header-section-number">4.1</span> K.1 Raster data structure</h2>
 <p>Raster datasets represent spatial information as a regular grid of cells, where each cell contains a value corresponding to a measured or modelled variable. Raster formats are well suited to continuous surfaces such as climate variables, elevation, or habitat suitability layers.</p>
 </section>
-<section id="k.2-vector-data-and-shapefiles" class="level2">
-<h2 class="anchored" data-anchor-id="k.2-vector-data-and-shapefiles">K.2 Vector data and shapefiles</h2>
+<section id="k.2-vector-data-and-shapefiles" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="k.2-vector-data-and-shapefiles"><span class="header-section-number">4.2</span> K.2 Vector data and shapefiles</h2>
 <p>Vector datasets represent spatial features as points, lines, or polygons. A shapefile (.shp) is a widely used vector format that stores geometric features alongside associated attribute information. Vector formats are commonly used for boundaries, administrative regions, and feature-based spatial analysis.</p>
 </section>
-<section id="k.3-raster-to-vector-conversion-polygonisation" class="level2">
-<h2 class="anchored" data-anchor-id="k.3-raster-to-vector-conversion-polygonisation">K.3 Raster-to-vector conversion (polygonisation)</h2>
+<section id="k.3-raster-to-vector-conversion-polygonisation" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="k.3-raster-to-vector-conversion-polygonisation"><span class="header-section-number">4.3</span> K.3 Raster-to-vector conversion (polygonisation)</h2>
 <p>Converting raster data to vector format involves transforming raster cells into polygon features. During this process, adjacent cells with the same value can be merged into single polygons to produce cleaner, more interpretable outputs. This transformation enables raster-derived information to be integrated with vector-based workflows and spatial analysis tools.</p>
 </section>
 </section>
-<section id="notebook-objectives" class="level1">
-<h1>Notebook Objectives</h1>
+<section id="notebook-objectives" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Notebook Objectives</h1>
 <ol type="1">
 <li>Demonstrate how to read a GeoTIFF (.tif) raster file into R as a SpatRaster using the <code>terra</code> package.</li>
 <li>Perform a basic visual check (plot) to confirm that the raster has been loaded correctly.</li>
@@ -282,8 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Verify that key spatial metadata (CRS, extent, and geometry validity) are preserved during the conversion process.</li>
 </ol>
 </section>
-<section id="workflow-overview" class="level1">
-<h1>Workflow Overview</h1>
+<section id="workflow-overview" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Workflow Overview</h1>
 <p>This notebook follows a simple, linear workflow to convert a GeoTIFF raster to a polygon shapefile (.shp) format via the following steps:</p>
 <ul>
 <li>Step 1: Set up the R environment and load the required packages (<code>terra</code>, <code>sf</code> and <code>googledrive</code>).</li>
@@ -297,8 +297,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please <a href="mailto:support@ecocommons.org.au">contact the EcoCommons</a> team.</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png" class="img-fluid"></p>
 </section>
-<section id="step-1.-install-and-load-required-packages" class="level1">
-<h1>Step 1. Install and load required packages</h1>
+<section id="step-1.-install-and-load-required-packages" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Step 1. Install and load required packages</h1>
 <p>Install and load R packages that are not already present in the working environment. For this notebook, the <code>terra</code>, <code>sf</code> and <code>googledrive</code> packages are required for converting a GeoTIFF (.tif) raster to a Shapefile (.shp) and for verifying spatial metadata during the workflow.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load required packages (if not already installed)</span></span>
@@ -330,8 +330,8 @@ Package loaded successfully: sf </code></pre>
 </div>
 </div>
 </section>
-<section id="step-2.-define-the-path-to-the-input-geotiff-raster-file" class="level1">
-<h1>Step 2. Define the path to the input GeoTIFF raster file</h1>
+<section id="step-2.-define-the-path-to-the-input-geotiff-raster-file" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Step 2. Define the path to the input GeoTIFF raster file</h1>
 <p>We have provided an example GeoTIFF (<code>.tif</code>) for this notebook via OPTION 2 – Google Drive. If you would like to use your own GeoTIFF, choose OPTION 1, commenting out this line:</p>
 <p><code>tif_file &lt;- NULL</code></p>
 <p>and uncomment this line with your updated path:</p>
@@ -393,8 +393,8 @@ Package loaded successfully: sf </code></pre>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>base_name <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(tif_file))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-3.-read-geotiff-raster-into-r" class="level1">
-<h1>Step 3. Read GeoTIFF raster into R</h1>
+<section id="step-3.-read-geotiff-raster-into-r" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Step 3. Read GeoTIFF raster into R</h1>
 <p>The rast() function reads the GeoTIFF (.tif) file into R as a SpatRaster object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the GeoTIFF into R as a SpatRaster object</span></span>
@@ -417,8 +417,8 @@ Package loaded successfully: sf </code></pre>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-4.-plot-raster" class="level1">
-<h1>Step 4. Plot raster</h1>
+<section id="step-4.-plot-raster" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Step 4. Plot raster</h1>
 <p>Plot the raster to confirm that it has been read correctly into R before proceeding with conversion. At this stage, the raster exists only as an in-memory SpatRaster object and has not yet been converted or written to disk.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(input_raster, main  = base_name)</span></span>
@@ -445,8 +445,8 @@ Package loaded successfully: sf </code></pre>
 </div>
 </div>
 </section>
-<section id="step-5.-convert-raster-to-polygon-and-save-shapefile" class="level1">
-<h1>Step 5. Convert raster to polygon and save shapefile</h1>
+<section id="step-5.-convert-raster-to-polygon-and-save-shapefile" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Step 5. Convert raster to polygon and save shapefile</h1>
 <p>Now convert the raster to a shapefile and also save and plot the converted file. By default, the output is written to the same directory as the input raster (.tif) file. We also produce a plot to visually check the GeoTIFF (.tif) to Shapefile (.shp) conversion.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert raster to polygons</span></span>
@@ -484,8 +484,8 @@ Package loaded successfully: sf </code></pre>
 </div>
 </div>
 </section>
-<section id="step-6.-verify-spatial-metadata-after-writing-shapefile" class="level1">
-<h1>Step 6. Verify spatial metadata after writing shapefile</h1>
+<section id="step-6.-verify-spatial-metadata-after-writing-shapefile" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Step 6. Verify spatial metadata after writing shapefile</h1>
 <p>Reload the shapefile and confirm that CRS, extent, and geometry integrity have been preserved.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reload written shapefile</span></span>
@@ -579,11 +579,11 @@ Use  showMethods(plot)  for currently available ones.</code></pre>
 </div>
 </div>
 </section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
+<section id="summary" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Summary</h1>
 <p>This notebook demonstrated a simple, reproducible workflow for converting a GeoTIFF (.tif) raster into a polygon shapefile (.shp) format using the <code>terra</code> and <code>sf</code> packages in R, while explicitly verifying that key spatial metadata and geometry integrity were preserved during conversion.</p>
 <p>A companion notebook (link below) demonstrates the reverse workflow, converting a shapefile (.shp) to GeoTIFF format.</p>
-<p>LINK HERE!!!!!!!!</p>
+<p><a href="https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_shapefile_to_geotiff_notebook.html">Converting Shapefile (.shp) to GeoTIFF (.tif) Format</a></p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png" class="img-fluid"></p>
 <p>EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).</p>
 <div data-align="center">
@@ -591,8 +591,8 @@ Use  showMethods(plot)  for currently available ones.</code></pre>
 </div>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/updated_ourpartner_2025.png" class="img-fluid"></p>
 </section>
-<section id="how-to-cite-ecocommons" class="level1">
-<h1>How to Cite EcoCommons</h1>
+<section id="how-to-cite-ecocommons" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> How to Cite EcoCommons</h1>
 <p>If you use EcoCommons in your research, please cite the platform as follows:</p>
 <blockquote class="blockquote">
 <p>EcoCommons Australia 2026. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/" class="uri">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a></p>

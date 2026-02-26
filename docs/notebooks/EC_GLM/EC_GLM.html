@@ -223,42 +223,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#species-distribution-analysis---generalised-linear-model-glm" id="toc-species-distribution-analysis---generalised-linear-model-glm" class="nav-link active" data-scroll-target="#species-distribution-analysis---generalised-linear-model-glm">Species Distribution Analysis - Generalised Linear Model (GLM)</a></li>
-  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
-  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages">Set-up: R Environment and Packages</a>
-  <ul class="collapse">
-  <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</a></li>
-  <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</a></li>
-  <li><a href="#s.3-download-case-study-datasets" id="toc-s.3-download-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-case-study-datasets">S.3 Download case study datasets</a></li>
+  <li><a href="#species-distribution-analysis---generalised-linear-model-glm" id="toc-species-distribution-analysis---generalised-linear-model-glm" class="nav-link active" data-scroll-target="#species-distribution-analysis---generalised-linear-model-glm"><span class="header-section-number">1</span> Species Distribution Analysis - Generalised Linear Model (GLM)</a></li>
+  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information"><span class="header-section-number">2</span> Script information</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">4</span> Objectives</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview"><span class="header-section-number">5</span> Workflow Overview</a></li>
+  <li><a href="#set-up-r-environment-and-packages" id="toc-set-up-r-environment-and-packages" class="nav-link" data-scroll-target="#set-up-r-environment-and-packages"><span class="header-section-number">6</span> Set-up: R Environment and Packages</a>
+  <ul>
+  <li><a href="#s.1-set-the-working-directory-and-create-a-folder-for-data." id="toc-s.1-set-the-working-directory-and-create-a-folder-for-data." class="nav-link" data-scroll-target="#s.1-set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">6.1</span> S.1 Set the working directory and create a folder for data.</a></li>
+  <li><a href="#s.2-install-and-load-essential-libraries." id="toc-s.2-install-and-load-essential-libraries." class="nav-link" data-scroll-target="#s.2-install-and-load-essential-libraries."><span class="header-section-number">6.2</span> S.2 Install and load essential libraries.</a></li>
+  <li><a href="#s.3-download-case-study-datasets" id="toc-s.3-download-case-study-datasets" class="nav-link" data-scroll-target="#s.3-download-case-study-datasets"><span class="header-section-number">6.3</span> S.3 Download case study datasets</a></li>
   </ul></li>
-  <li><a href="#overview-and-conceptualisation" id="toc-overview-and-conceptualisation" class="nav-link" data-scroll-target="#overview-and-conceptualisation">1 Overview and Conceptualisation</a>
-  <ul class="collapse">
-  <li><a href="#taxon-location-data-and-scale" id="toc-taxon-location-data-and-scale" class="nav-link" data-scroll-target="#taxon-location-data-and-scale">1.1 Taxon, location, data and scale</a></li>
-  <li><a href="#model-objective" id="toc-model-objective" class="nav-link" data-scroll-target="#model-objective">1.2 Model objective</a></li>
+  <li><a href="#overview-and-conceptualisation" id="toc-overview-and-conceptualisation" class="nav-link" data-scroll-target="#overview-and-conceptualisation"><span class="header-section-number">7</span> 1 Overview and Conceptualisation</a>
+  <ul>
+  <li><a href="#taxon-location-data-and-scale" id="toc-taxon-location-data-and-scale" class="nav-link" data-scroll-target="#taxon-location-data-and-scale"><span class="header-section-number">7.1</span> 1.1 Taxon, location, data and scale</a></li>
+  <li><a href="#model-objective" id="toc-model-objective" class="nav-link" data-scroll-target="#model-objective"><span class="header-section-number">7.2</span> 1.2 Model objective</a></li>
   </ul></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">2. Data</a>
-  <ul class="collapse">
-  <li><a href="#biodiversity-data" id="toc-biodiversity-data" class="nav-link" data-scroll-target="#biodiversity-data">2.1 Biodiversity data</a></li>
-  <li><a href="#pseudo-absence-data" id="toc-pseudo-absence-data" class="nav-link" data-scroll-target="#pseudo-absence-data">2.2 Pseudo Absence Data</a></li>
-  <li><a href="#environmental-data" id="toc-environmental-data" class="nav-link" data-scroll-target="#environmental-data">2.3 Environmental Data</a></li>
-  <li><a href="#combine-species-occurrence-data-and-environmental-variables" id="toc-combine-species-occurrence-data-and-environmental-variables" class="nav-link" data-scroll-target="#combine-species-occurrence-data-and-environmental-variables">2.4 Combine species occurrence data and environmental variables</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">8</span> 2. Data</a>
+  <ul>
+  <li><a href="#biodiversity-data" id="toc-biodiversity-data" class="nav-link" data-scroll-target="#biodiversity-data"><span class="header-section-number">8.1</span> 2.1 Biodiversity data</a></li>
+  <li><a href="#pseudo-absence-data" id="toc-pseudo-absence-data" class="nav-link" data-scroll-target="#pseudo-absence-data"><span class="header-section-number">8.2</span> 2.2 Pseudo Absence Data</a></li>
+  <li><a href="#environmental-data" id="toc-environmental-data" class="nav-link" data-scroll-target="#environmental-data"><span class="header-section-number">8.3</span> 2.3 Environmental Data</a></li>
+  <li><a href="#combine-species-occurrence-data-and-environmental-variables" id="toc-combine-species-occurrence-data-and-environmental-variables" class="nav-link" data-scroll-target="#combine-species-occurrence-data-and-environmental-variables"><span class="header-section-number">8.4</span> 2.4 Combine species occurrence data and environmental variables</a></li>
   </ul></li>
-  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">3 Model fitting</a>
-  <ul class="collapse">
-  <li><a href="#multicollinearity-and-variable-selection" id="toc-multicollinearity-and-variable-selection" class="nav-link" data-scroll-target="#multicollinearity-and-variable-selection">3.1 <strong>Multicollinearity and Variable Selection</strong></a></li>
-  <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting">3.2 Data splitting</a></li>
-  <li><a href="#model-fitting-1" id="toc-model-fitting-1" class="nav-link" data-scroll-target="#model-fitting-1">3.3 Model fitting</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting"><span class="header-section-number">9</span> 3 Model fitting</a>
+  <ul>
+  <li><a href="#multicollinearity-and-variable-selection" id="toc-multicollinearity-and-variable-selection" class="nav-link" data-scroll-target="#multicollinearity-and-variable-selection"><span class="header-section-number">9.1</span> 3.1 <strong>Multicollinearity and Variable Selection</strong></a></li>
+  <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting"><span class="header-section-number">9.2</span> 3.2 Data splitting</a></li>
+  <li><a href="#model-fitting-1" id="toc-model-fitting-1" class="nav-link" data-scroll-target="#model-fitting-1"><span class="header-section-number">9.3</span> 3.3 Model fitting</a></li>
   </ul></li>
-  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">4. Model evaluation</a>
-  <ul class="collapse">
-  <li><a href="#summary-of-interpretation" id="toc-summary-of-interpretation" class="nav-link" data-scroll-target="#summary-of-interpretation">4.1 Summary of Interpretation</a></li>
-  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">4.2 Cross validation</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation"><span class="header-section-number">10</span> 4. Model evaluation</a>
+  <ul>
+  <li><a href="#summary-of-interpretation" id="toc-summary-of-interpretation" class="nav-link" data-scroll-target="#summary-of-interpretation"><span class="header-section-number">10.1</span> 4.1 Summary of Interpretation</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">10.2</span> 4.2 Cross validation</a></li>
   </ul></li>
-  <li><a href="#mapping-and-interpolation" id="toc-mapping-and-interpolation" class="nav-link" data-scroll-target="#mapping-and-interpolation">5. Mapping and Interpolation</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#mapping-and-interpolation" id="toc-mapping-and-interpolation" class="nav-link" data-scroll-target="#mapping-and-interpolation"><span class="header-section-number">11</span> 5. Mapping and Interpolation</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -269,24 +269,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="species-distribution-analysis---generalised-linear-model-glm" class="level1">
-<h1>Species Distribution Analysis - Generalised Linear Model (GLM)</h1>
+<section id="species-distribution-analysis---generalised-linear-model-glm" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Species Distribution Analysis - Generalised Linear Model (GLM)</h1>
 <p>Author details: Abhimanyu Raj Singh and Xiang Zhao</p>
 <p>Editor details: Dr Sebastian Lopez Marcano</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
 <p>Date: December 2024</p>
 </section>
-<section id="script-information" class="level1">
-<h1>Script information</h1>
+<section id="script-information" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Script information</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to build Species Distribution Models (SDMs) using Generalised Linear Model algorithm.</p>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
 <p>Using <strong>Mountain Ash</strong> (<em>Eucalyptus regnans</em>), a very tall and straight tree species native to Victoria and Tasmania, we will guide you through a standard protocol developed by Zurell et al.&nbsp;(2020) for building species distribution models (SDMs) with one of the most widely used algorithms: the <strong>Generalised Linear Model (GLM)</strong>.</p>
 </section>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
+<section id="objectives" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Objectives</h1>
 <ol type="1">
 <li>Understand a standard protocol of species distribution models.</li>
 <li>Familiarise your with the five main steps of running Generalised Linear Models for a tree species.</li>
@@ -294,8 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Get accustomed to the style of the EcoCommons Notebooks.</li>
 </ol>
 </section>
-<section id="workflow-overview" class="level1">
-<h1>Workflow Overview</h1>
+<section id="workflow-overview" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Workflow Overview</h1>
 <p>Following a standard protocol for species distribution models proposed by Zurell et al., (2020), a R environment set-up step and five main modelling steps are demonstrated in this notebook:</p>
 <table class="caption-top table">
 <colgroup>
@@ -355,11 +355,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please <a href="mailto:support@ecocommons.org.au">contact the EcoCommons</a> team.</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_breaker_nobackgoundcolor.png" class="img-fluid"></p>
 </section>
-<section id="set-up-r-environment-and-packages" class="level1">
-<h1>Set-up: R Environment and Packages</h1>
+<section id="set-up-r-environment-and-packages" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Set-up: R Environment and Packages</h1>
 <p>Some housekeeping before we start. This process might take some time as many packages needed to be installed.</p>
-<section id="s.1-set-the-working-directory-and-create-a-folder-for-data." class="level2">
-<h2 class="anchored" data-anchor-id="s.1-set-the-working-directory-and-create-a-folder-for-data.">S.1 Set the working directory and create a folder for data.</h2>
+<section id="s.1-set-the-working-directory-and-create-a-folder-for-data." class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="s.1-set-the-working-directory-and-create-a-folder-for-data."><span class="header-section-number">6.1</span> S.1 Set the working directory and create a folder for data.</h2>
 <p>Save the Quarto Markdown file (.QMD) to a folder of your choice, and then set the path to your folder as your working directory.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the workspace to the current working directory</span></span>
@@ -396,8 +396,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="s.2-install-and-load-essential-libraries." class="level2">
-<h2 class="anchored" data-anchor-id="s.2-install-and-load-essential-libraries.">S.2 Install and load essential libraries.</h2>
+<section id="s.2-install-and-load-essential-libraries." class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="s.2-install-and-load-essential-libraries."><span class="header-section-number">6.2</span> S.2 Install and load essential libraries.</h2>
 <p>Install and load R packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set CRAN mirror</span></span>
@@ -474,8 +474,8 @@ car is already installed and has been loaded!</code></pre>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::snapshot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="s.3-download-case-study-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="s.3-download-case-study-datasets">S.3 Download case study datasets</h2>
+<section id="s.3-download-case-study-datasets" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="s.3-download-case-study-datasets"><span class="header-section-number">6.3</span> S.3 Download case study datasets</h2>
 <p>We have prepared the following data and uploaded them to our Google Drive for your use:</p>
 <ul>
 <li><p><strong>Species occurrence data:</strong> Shapefile format (.shp)</p></li>
@@ -543,10 +543,10 @@ car is already installed and has been loaded!</code></pre>
 </div>
 </section>
 </section>
-<section id="overview-and-conceptualisation" class="level1">
-<h1>1 Overview and Conceptualisation</h1>
-<section id="taxon-location-data-and-scale" class="level2">
-<h2 class="anchored" data-anchor-id="taxon-location-data-and-scale">1.1 Taxon, location, data and scale</h2>
+<section id="overview-and-conceptualisation" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 1 Overview and Conceptualisation</h1>
+<section id="taxon-location-data-and-scale" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="taxon-location-data-and-scale"><span class="header-section-number">7.1</span> 1.1 Taxon, location, data and scale</h2>
 <p><strong>Taxon:</strong> Mountain Ash (<em>Eucalyptus regnans</em>)</p>
 <p><img src="https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/raw/main/images/mountain_ash.jpeg" class="img-fluid" alt="Mountain Ash, " width="674"></p>
 <p>Photographer: <a href="https://biocache.ala.org.au/occurrences/52a0b6eb-3656-4190-a8d6-ba4846b884a5">Reiner Richter, ALA</a></p>
@@ -622,18 +622,18 @@ Geodetic CRS:  GDA94</code></pre>
 </div>
 </div>
 </section>
-<section id="model-objective" class="level2">
-<h2 class="anchored" data-anchor-id="model-objective">1.2 Model objective</h2>
+<section id="model-objective" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="model-objective"><span class="header-section-number">7.2</span> 1.2 Model objective</h2>
 <p><strong>Explanation:</strong> To conduct detailed analyses of species–environment relationships and test specific hypotheses about the main factors driving species distributions.</p>
 <p><strong>Mapping/interpolating:</strong> To use the estimated species-environment relationships to map the distribution of the targeted species in the same geographic area.</p>
 <p><strong>Prediction in new area:</strong> To forecast or project the estimated species–environment relationships to a different geographic area. <em>(Exercise, data provided)</em></p>
 </section>
 </section>
-<section id="data" class="level1">
-<h1>2. Data</h1>
+<section id="data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 2. Data</h1>
 <p>In this section, details about the species and environmental data, data partitioning and transfer data are provided.</p>
-<section id="biodiversity-data" class="level2">
-<h2 class="anchored" data-anchor-id="biodiversity-data">2.1 Biodiversity data</h2>
+<section id="biodiversity-data" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="biodiversity-data"><span class="header-section-number">8.1</span> 2.1 Biodiversity data</h2>
 <p>Understanding your species is essential. This includes knowing their common names (which may include multiple names) and scientific name to ensure you collect the most comprehensive records available in open-access biodiversity data portals, such as the Atlas of Living Australia (ALA) or the Global Biodiversity Information Facility (GBIF).</p>
 <p>For this exercise, we have prepared a species occurrence data file in CSV format, which was downloaded from ALA. To make it accessible, we have stored this file in the EcoCommons Public Google Drive for you to download and use conveniently.</p>
 <div class="cell">
@@ -702,8 +702,8 @@ Geodetic CRS:  GDA94</code></pre>
 </div>
 </div>
 </section>
-<section id="pseudo-absence-data" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-absence-data">2.2 Pseudo Absence Data</h2>
+<section id="pseudo-absence-data" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="pseudo-absence-data"><span class="header-section-number">8.2</span> 2.2 Pseudo Absence Data</h2>
 <p>Species distribution models typically require both presence and absence data to predict the distribution of a species. However, true absence data—locations where the species is confirmed not to occur—are often unavailable for various reasons. In such cases, pseudo-absence data are used to fill this gap.</p>
 <p>We generated pseudo-absence data using the EcoCommons platform with the following configuration:</p>
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/disk_pseudo_absence.png" class="img-fluid"></p>
@@ -789,8 +789,8 @@ Geodetic CRS:  GDA94</code></pre>
 </div>
 </div>
 </section>
-<section id="environmental-data" class="level2">
-<h2 class="anchored" data-anchor-id="environmental-data">2.3 Environmental Data</h2>
+<section id="environmental-data" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="environmental-data"><span class="header-section-number">8.3</span> 2.3 Environmental Data</h2>
 <p>When selecting environmental variables for a model, it is important to avoid indiscriminately including any available data. Instead, select variables thoughtfully, guided by ecological knowledge and the specific hypotheses being tested.</p>
 <p>As previously mentioned, Mountain Ash thrives in cool, temperate rainforests characterized by high rainfall, deep, well-drained soils, mild temperatures, and high humidity. This species is typically found at altitudes ranging from 200 to 1,000 meters above sea level (Burns et al., 2015). Mountain Ash habitats face two primary forms of disturbance: bushfires, which are the main natural disturbance, and logging, which constitutes the primary human-induced threat (Burns et al., 2015; Nevill et al., 2010).</p>
 <table class="caption-top table">
@@ -983,8 +983,8 @@ Bioclim 10: Mean Temperature of Warmest Quarter</p>
 </div>
 <p>Soil Type Classification: 3 - Dermosol, 4 - Chromosol, 5 - Ferrosol, 7 - Tenosol, 8 - Kandosol,12 - Calcarosol, 13 - Organosol, and 14 - Anthroposol.</p>
 </section>
-<section id="combine-species-occurrence-data-and-environmental-variables" class="level2">
-<h2 class="anchored" data-anchor-id="combine-species-occurrence-data-and-environmental-variables">2.4 Combine species occurrence data and environmental variables</h2>
+<section id="combine-species-occurrence-data-and-environmental-variables" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="combine-species-occurrence-data-and-environmental-variables"><span class="header-section-number">8.4</span> 2.4 Combine species occurrence data and environmental variables</h2>
 <p>We will create a data frame that combines each presence/absence record of Mountain Ash with data from our 15 environmental variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert species occurrence data to terra-compatible SpatVector</span></span>
@@ -1044,10 +1044,10 @@ Bioclim 10: Mean Temperature of Warmest Quarter</p>
 </div>
 </section>
 </section>
-<section id="model-fitting" class="level1">
-<h1>3 Model fitting</h1>
-<section id="multicollinearity-and-variable-selection" class="level2">
-<h2 class="anchored" data-anchor-id="multicollinearity-and-variable-selection">3.1 <strong>Multicollinearity and Variable Selection</strong></h2>
+<section id="model-fitting" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 3 Model fitting</h1>
+<section id="multicollinearity-and-variable-selection" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="multicollinearity-and-variable-selection"><span class="header-section-number">9.1</span> 3.1 <strong>Multicollinearity and Variable Selection</strong></h2>
 <p>Testing for collinearity among continuous variables is an important step in many modeling processes, particularly in species distribution modeling and other regression-based analyses. Codllinearity occurs when two or more predictor variables in a dataset are highly correlated, which can lead to unstable estimates of regression coefficients and make it difficult to interpret the results.</p>
 <p>There are two common methods for testing collinearity among <strong>continuous variables</strong>.</p>
 <p><strong>Correlation matrix.</strong></p>
@@ -1216,8 +1216,8 @@ Fires                                       Fires 1.01</code></pre>
 </div>
 <p>Now, from our 14 continuous variables, we choose above 7 variables and 1 categorical variable Soil_Types to make our final model.</p>
 </section>
-<section id="data-splitting" class="level2">
-<h2 class="anchored" data-anchor-id="data-splitting">3.2 Data splitting</h2>
+<section id="data-splitting" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="data-splitting"><span class="header-section-number">9.2</span> 3.2 Data splitting</h2>
 <p>For cross-validation purposes, we need to leave out some data as testing dataset. There are many strategies of splitting data for cross-validation, like random, k-fold, and leave-one-out etc. Here we will use the easiest one: random splitting.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
@@ -1241,8 +1241,8 @@ Fires                                       Fires 1.01</code></pre>
 </div>
 </div>
 </section>
-<section id="model-fitting-1" class="level2">
-<h2 class="anchored" data-anchor-id="model-fitting-1">3.3 Model fitting</h2>
+<section id="model-fitting-1" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="model-fitting-1"><span class="header-section-number">9.3</span> 3.3 Model fitting</h2>
 <p><strong>Null model:</strong> no explanatory variables or predictors are included.</p>
 <p>It is always helpful to create a null model as a benchmark to assess how the inclusion of explanatory variables improves the model.</p>
 <div class="cell">
@@ -1327,10 +1327,10 @@ Number of Fisher Scoring iterations: 15</code></pre>
 </div>
 </section>
 </section>
-<section id="model-evaluation" class="level1">
-<h1>4. Model evaluation</h1>
-<section id="summary-of-interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="summary-of-interpretation">4.1 Summary of Interpretation</h2>
+<section id="model-evaluation" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 4. Model evaluation</h1>
+<section id="summary-of-interpretation" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="summary-of-interpretation"><span class="header-section-number">10.1</span> 4.1 Summary of Interpretation</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's compare the performance of our model to a null model</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1419,8 +1419,8 @@ glm_model  15 2444.787</code></pre>
 </div>
 </div>
 </section>
-<section id="cross-validation" class="level2">
-<h2 class="anchored" data-anchor-id="cross-validation">4.2 Cross validation</h2>
+<section id="cross-validation" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="cross-validation"><span class="header-section-number">10.2</span> 4.2 Cross validation</h2>
 <p>Now, we use the <strong>testing data</strong> to evaluate the model performance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on the testing data</span></span>
@@ -1578,8 +1578,8 @@ glm_model  15 2444.787</code></pre>
 </div>
 </section>
 </section>
-<section id="mapping-and-interpolation" class="level1">
-<h1>5. Mapping and Interpolation</h1>
+<section id="mapping-and-interpolation" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 5. Mapping and Interpolation</h1>
 <p>If you remember, we started with these point records of mountain ash</p>
 <p><img src="https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/raw/main/images/point_data.png" class="img-fluid" alt="Point data" width="300"></p>
 <p>Now, let’s predict a continuous mapping of the distribution of mountain ash in the central highlands.</p>
@@ -1722,8 +1722,8 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
 </div>
 </div>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
+<section id="references" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> References</h1>
 <p>Burns, E. L., Lindenmayer, D. B., Stein, J., Blanchard, W., McBurney, L., Blair, D., &amp; Banks, S. C. (2015). Ecosystem assessment of mountain ash forest in the C entral H ighlands of V ictoria, south‐eastern A ustralia. <em>Austral Ecology</em>, <em>40</em>(4), 386-399.</p>
 <p>von Takach Dukai, B. (2019). The genetic and demographic impacts of contemporary disturbance regimes in mountain ash forests.</p>
 <p>Nevill, P. G., Bossinger, G., &amp; Ades, P. K. (2010). Phylogeography of the world’s tallest angiosperm, Eucalyptus regnans: evidence for multiple isolated Quaternary refugia. <em>Journal of Biogeography</em>, <em>37</em>(1), 179-192.&nbsp;</p>
