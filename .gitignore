@@ -24,3 +24,5 @@ _freeze/
 
 # Temporary duplicates
 docs/site_libs 2/
+
+*.nc
