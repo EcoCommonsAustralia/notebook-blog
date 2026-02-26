@@ -49,6 +49,7 @@ format:
   html:
     css: styles/ec_html_template.css
     toc: true
+    toc-depth: 3
     include-after-body: footer.html
     include-in-header: files/includes/_msclarity.html
 
