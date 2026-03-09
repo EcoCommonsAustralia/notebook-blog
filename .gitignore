@@ -12,6 +12,7 @@ notebooks/data_prep/data/shorebird_occurrences_AUS.shx
 notebooks/data_prep/imbalanceddata_part1.RData
 notebooks/EC_RF/__MACOSX/._mountain_ash_centralhighlands_RF
 notebooks/raster_format/netcdf_example_data/
+notebooks/raster_format/data/
 
 
 # Quarto
