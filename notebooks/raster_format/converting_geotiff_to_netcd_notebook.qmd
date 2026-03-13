@@ -14,7 +14,7 @@ Date: March 2026
 
 # Script and Data Information
 
-This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a NetCDF (.nc) using the `terra` package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring vector outputs.
+This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a NetCDF (.nc) using the `terra` package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring NetCDF outputs.
 
 # Introduction
 
@@ -36,7 +36,7 @@ Raster datasets represent spatial information as a regular grid of cells, where 
 
 NetCDF (Network Common Data Form) is a widely used format for storing multidimensional scientific data. Environmental datasets such as temperature, humidity, pressure, wind speed, and population density are often distributed in NetCDF format because it supports multiple variables and dimensions (e.g. time, latitude, longitude) within a single file.
 
-## K.3 **Converting raster formats**
+## K.3 Converting raster formats
 
 Converting raster data between formats (e.g. GeoTIFF → NetCDF) is a common preprocessing step that enables compatibility with different software tools, data platforms, and modelling workflows. While GeoTIFF files are widely used in GIS applications, NetCDF is commonly used for storing large environmental datasets that include multiple variables or temporal dimensions. A robust conversion workflow should ensure that key spatial properties—including the coordinate reference system (CRS), spatial extent, and grid resolution—are preserved.
 
@@ -49,7 +49,7 @@ Converting raster data between formats (e.g. GeoTIFF → NetCDF) is a common pre
 
 # Workflow Overview
 
-This notebook follows a simple, linear workflow to convert a GeoTIFF raster to a polygon NetCDF (.nc) format via the following steps:
+This notebook follows a simple, linear workflow to convert a GeoTIFF raster to a NetCDF (.nc) format via the following steps:
 
 -   Step 1: Set up the R environment and load the required packages (`terra`, `sf` and `googledrive`).
 -   Step 2: Define and validate the file path to the input GeoTIFF (.tif) raster.
@@ -104,7 +104,7 @@ and uncomment this line with your updated path:
 
 `tif_file <- "/path_to_your_file`
 
-The example GeoTIFF is a binary prediction of suitable habitat for a modelled bird species. Converting a raster (.tif) to polygons (.nc) is generally recommended for categorical rasters or rasters that have been reclassified into a small number of categories, rather than for continuous prediction rasters (a common output of species distribution modelling).
+The example GeoTIFF is a binary prediction of suitable habitat for a modelled bird species. Converting a raster (.tif) to NetCDF (.nc) is generally recommended for categorical rasters or rasters that have been reclassified into a small number of categories, rather than for continuous prediction rasters (a common output of species distribution modelling).
 
 Note: The input GeoTIFF raster must have a valid Coordinate Reference System (CRS) defined. If the file does not contain CRS information, the conversion will stop.
 
@@ -185,17 +185,16 @@ plot(input_raster, main  = base_name)
 
 ```
 
-# Step 5. Convert raster to polygon and save NetCDF
+# Step 5. Convert raster to NectCDF and save
 
 Now convert the raster to a NetCDF and also save and plot the converted file. By default, the output is written to the same directory as the input raster (.tif) file. We also produce a plot to visually check the GeoTIFF (.tif) to NetCDF (.nc) conversion.
 
-```{r convert_raster_to_polygon}
+```{r convert_raster_to_NetCDF}
 
 # Define output directory (same as input raster)
 out_dir <- dirname(tif_file)
 
 # Build output file name
-base_name <- tools::file_path_sans_ext(basename(tif_file))
 out_file <- file.path(out_dir, paste0(base_name, ".nc"))
 
 # Write raster to NetCDF

@@ -42,6 +42,12 @@ Extract raster layers from NetCDF datasets and export them into GeoTIFF format f
 [Converting GeoTIFF to NetCDF](raster_format/converting_geotiff_to_netcd_notebook.qmd)\
 Transform GeoTIFF rasters into NetCDF format for multidimensional storage and climate modelling workflows.
 
+## 4. Reclassify Raster
+
+[**Reclassify a Continuous Raster**](raster_format/reclass_geotiff_notebook.qmd)
+
+This notebook shows how to use the terra package in R to reclassify a continuous GeoTIFF raster into binary or multi-class habitat suitability maps, visualise the results, and export them as GeoTIFF files for GIS use.
+
 ------------------------------------------------------------------------
 
 ## Need Help?

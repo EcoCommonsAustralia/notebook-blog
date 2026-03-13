@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#k.1-raster-data-structure" id="toc-k.1-raster-data-structure" class="nav-link" data-scroll-target="#k.1-raster-data-structure">K.1 Raster data structure</a></li>
   <li><a href="#k.2-netcdf-data-formats" id="toc-k.2-netcdf-data-formats" class="nav-link" data-scroll-target="#k.2-netcdf-data-formats">K.2 NetCDF data formats</a></li>
-  <li><a href="#k.3-converting-raster-formats" id="toc-k.3-converting-raster-formats" class="nav-link" data-scroll-target="#k.3-converting-raster-formats">K.3 <strong>Converting raster formats</strong></a></li>
+  <li><a href="#k.3-converting-raster-formats" id="toc-k.3-converting-raster-formats" class="nav-link" data-scroll-target="#k.3-converting-raster-formats">K.3 Converting raster formats</a></li>
   </ul></li>
   <li><a href="#notebook-objectives" id="toc-notebook-objectives" class="nav-link" data-scroll-target="#notebook-objectives">Notebook Objectives</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-2.-define-the-path-to-the-input-geotiff-raster-file" id="toc-step-2.-define-the-path-to-the-input-geotiff-raster-file" class="nav-link" data-scroll-target="#step-2.-define-the-path-to-the-input-geotiff-raster-file">Step 2. Define the path to the input GeoTIFF raster file</a></li>
   <li><a href="#step-3.-read-geotiff-raster-into-r" id="toc-step-3.-read-geotiff-raster-into-r" class="nav-link" data-scroll-target="#step-3.-read-geotiff-raster-into-r">Step 3. Read GeoTIFF raster into R</a></li>
   <li><a href="#step-4.-plot-raster" id="toc-step-4.-plot-raster" class="nav-link" data-scroll-target="#step-4.-plot-raster">Step 4. Plot raster</a></li>
-  <li><a href="#step-5.-convert-raster-to-polygon-and-save-netcdf" id="toc-step-5.-convert-raster-to-polygon-and-save-netcdf" class="nav-link" data-scroll-target="#step-5.-convert-raster-to-polygon-and-save-netcdf">Step 5. Convert raster to polygon and save NetCDF</a></li>
+  <li><a href="#step-5.-convert-raster-to-nectcdf-and-save" id="toc-step-5.-convert-raster-to-nectcdf-and-save" class="nav-link" data-scroll-target="#step-5.-convert-raster-to-nectcdf-and-save">Step 5. Convert raster to NectCDF and save</a></li>
   <li><a href="#step-6.-verify-spatial-metadata-after-writing-netcdf" id="toc-step-6.-verify-spatial-metadata-after-writing-netcdf" class="nav-link" data-scroll-target="#step-6.-verify-spatial-metadata-after-writing-netcdf">Step 6. Verify spatial metadata after writing NetCDF</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="script-and-data-information" class="level1">
 <h1>Script and Data Information</h1>
-<p>This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a NetCDF (.nc) using the <code>terra</code> package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring vector outputs.</p>
+<p>This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a NetCDF (.nc) using the <code>terra</code> package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring NetCDF outputs.</p>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>NetCDF (Network Common Data Form) is a widely used format for storing multidimensional scientific data. Environmental datasets such as temperature, humidity, pressure, wind speed, and population density are often distributed in NetCDF format because it supports multiple variables and dimensions (e.g.&nbsp;time, latitude, longitude) within a single file.</p>
 </section>
 <section id="k.3-converting-raster-formats" class="level2">
-<h2 class="anchored" data-anchor-id="k.3-converting-raster-formats">K.3 <strong>Converting raster formats</strong></h2>
+<h2 class="anchored" data-anchor-id="k.3-converting-raster-formats">K.3 Converting raster formats</h2>
 <p>Converting raster data between formats (e.g.&nbsp;GeoTIFF → NetCDF) is a common preprocessing step that enables compatibility with different software tools, data platforms, and modelling workflows. While GeoTIFF files are widely used in GIS applications, NetCDF is commonly used for storing large environmental datasets that include multiple variables or temporal dimensions. A robust conversion workflow should ensure that key spatial properties—including the coordinate reference system (CRS), spatial extent, and grid resolution—are preserved.</p>
 </section>
 </section>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="workflow-overview" class="level1">
 <h1>Workflow Overview</h1>
-<p>This notebook follows a simple, linear workflow to convert a GeoTIFF raster to a polygon NetCDF (.nc) format via the following steps:</p>
+<p>This notebook follows a simple, linear workflow to convert a GeoTIFF raster to a NetCDF (.nc) format via the following steps:</p>
 <ul>
 <li>Step 1: Set up the R environment and load the required packages (<code>terra</code>, <code>sf</code> and <code>googledrive</code>).</li>
 <li>Step 2: Define and validate the file path to the input GeoTIFF (.tif) raster.</li>
@@ -338,7 +338,7 @@ Package loaded successfully: ncdf4 </code></pre>
 <p><code>tif_file &lt;- NULL</code></p>
 <p>and uncomment this line with your updated path:</p>
 <p><code>tif_file &lt;- "/path_to_your_file</code></p>
-<p>The example GeoTIFF is a binary prediction of suitable habitat for a modelled bird species. Converting a raster (.tif) to polygons (.nc) is generally recommended for categorical rasters or rasters that have been reclassified into a small number of categories, rather than for continuous prediction rasters (a common output of species distribution modelling).</p>
+<p>The example GeoTIFF is a binary prediction of suitable habitat for a modelled bird species. Converting a raster (.tif) to NetCDF (.nc) is generally recommended for categorical rasters or rasters that have been reclassified into a small number of categories, rather than for continuous prediction rasters (a common output of species distribution modelling).</p>
 <p>Note: The input GeoTIFF raster must have a valid Coordinate Reference System (CRS) defined. If the file does not contain CRS information, the conversion will stop.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION 1: User-defined local GeoTIFF file</span></span>
@@ -433,25 +433,24 @@ Package loaded successfully: ncdf4 </code></pre>
 </div>
 </div>
 </section>
-<section id="step-5.-convert-raster-to-polygon-and-save-netcdf" class="level1">
-<h1>Step 5. Convert raster to polygon and save NetCDF</h1>
+<section id="step-5.-convert-raster-to-nectcdf-and-save" class="level1">
+<h1>Step 5. Convert raster to NectCDF and save</h1>
 <p>Now convert the raster to a NetCDF and also save and plot the converted file. By default, the output is written to the same directory as the input raster (.tif) file. We also produce a plot to visually check the GeoTIFF (.tif) to NetCDF (.nc) conversion.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define output directory (same as input raster)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>out_dir <span class="ot">&lt;-</span> <span class="fu">dirname</span>(tif_file)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Build output file name</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>base_name <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(tif_file))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>out_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(out_dir, <span class="fu">paste0</span>(base_name, <span class="st">".nc"</span>))</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Write raster to NetCDF</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">writeCDF</span>(</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  input_raster,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> out_file,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"NetCDF written to:</span><span class="sc">\n</span><span class="st">"</span>, out_file, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>out_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(out_dir, <span class="fu">paste0</span>(base_name, <span class="st">".nc"</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write raster to NetCDF</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">writeCDF</span>(</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  input_raster,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> out_file,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"NetCDF written to:</span><span class="sc">\n</span><span class="st">"</span>, out_file, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NetCDF written to:
  /Users/xiangzhaoqcif/dev/notebook-blog/notebooks/raster_format/data/gpw_v4_population_density_rev11_1_deg_layer5.nc </code></pre>
