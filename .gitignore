@@ -18,7 +18,14 @@ notebooks/raster_format/data/
 # Quarto
 _freeze/
 *_cache/
-*_files/
+
+# Ignore all directories ending in _files
+**/*_files/
+
+# But keep those under docs/notebooks
+!docs/notebooks/**/
+!docs/notebooks/**/*_files/
+!docs/notebooks/**/*_files/**
 
 # R
 .Rproj.user/
