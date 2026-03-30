@@ -16,6 +16,12 @@ Date: December 2024
 
 This notebook, developed by the EcoCommons team, showcases how to build Species Distribution Models (SDMs) using Generalised Linear Model algorithm.
 
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| GLM | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb) |
+
 # Introduction
 
 Using **Mountain Ash** (*Eucalyptus regnans*), a very tall and straight tree species native to Victoria and Tasmania, we will guide you through a standard protocol developed by Zurell et al. (2020) for building species distribution models (SDMs) with one of the most widely used algorithms: the **Generalised Linear Model (GLM)**.
@@ -31,39 +37,39 @@ Using **Mountain Ash** (*Eucalyptus regnans*), a very tall and straight tree spe
 
 Following a standard protocol for species distribution models proposed by Zurell et al., (2020), a R environment set-up step and five main modelling steps are demonstrated in this notebook:
 
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step         | Main Step                      | Sub-steps                                                  |
-+==============+================================+============================================================+
-| Set-up       | Set-up                         | S.1 Set up the working directory                           |
-|              |                                |                                                            |
-|              |                                | S.2 Install and load required R packages for this notebook |
-|              |                                |                                                            |
-|              |                                | S.3 Download the case study datasets                       |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 1       | Overview and Conceptualisation | 1.1 Model objective                                        |
-|              |                                |                                                            |
-|              |                                | 1.2 Taxon, location, predictors, scale                     |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 2       | Data                           | 2.1 Biodiversity data                                      |
-|              |                                |                                                            |
-|              |                                | 2.2 Pseudo absence data                                    |
-|              |                                |                                                            |
-|              |                                | 2.3 Environmental data                                     |
-|              |                                |                                                            |
-|              |                                | 2.4 Combine data                                           |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 3       | Model fitting                  | 3.1 Multicollinearity and variable selection               |
-|              |                                |                                                            |
-|              |                                | 3.2 Data splitting                                         |
-|              |                                |                                                            |
-|              |                                | 3.3 Model fitting                                          |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 4       | Evaluation                     | 4.1 Interpretation                                         |
-|              |                                |                                                            |
-|              |                                | 4.2 Cross-valiadation                                      |
-+--------------+--------------------------------+------------------------------------------------------------+
-| Step 5       | Predictions                    | 5.1 Mapping                                                |
-+--------------+--------------------------------+------------------------------------------------------------+
++--------+--------------------------------+------------------------------------------------------------+
+| Step   | Main Step                      | Sub-steps                                                  |
++========+================================+============================================================+
+| Set-up | Set-up                         | S.1 Set up the working directory                           |
+|        |                                |                                                            |
+|        |                                | S.2 Install and load required R packages for this notebook |
+|        |                                |                                                            |
+|        |                                | S.3 Download the case study datasets                       |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 1 | Overview and Conceptualisation | 1.1 Model objective                                        |
+|        |                                |                                                            |
+|        |                                | 1.2 Taxon, location, predictors, scale                     |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 2 | Data                           | 2.1 Biodiversity data                                      |
+|        |                                |                                                            |
+|        |                                | 2.2 Pseudo absence data                                    |
+|        |                                |                                                            |
+|        |                                | 2.3 Environmental data                                     |
+|        |                                |                                                            |
+|        |                                | 2.4 Combine data                                           |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 3 | Model fitting                  | 3.1 Multicollinearity and variable selection               |
+|        |                                |                                                            |
+|        |                                | 3.2 Data splitting                                         |
+|        |                                |                                                            |
+|        |                                | 3.3 Model fitting                                          |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 4 | Evaluation                     | 4.1 Interpretation                                         |
+|        |                                |                                                            |
+|        |                                | 4.2 Cross-valiadation                                      |
++--------+--------------------------------+------------------------------------------------------------+
+| Step 5 | Predictions                    | 5.1 Mapping                                                |
++--------+--------------------------------+------------------------------------------------------------+
 
 In the near future, this material may form part of comprehensive support materials available to EcoCommons users. If you have any corrections or suggestions to improve the efficiency, please [contact the EcoCommons](mailto:support@ecocommons.org.au) team.
 
