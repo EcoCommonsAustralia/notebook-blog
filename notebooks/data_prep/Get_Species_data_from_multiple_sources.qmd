@@ -26,7 +26,7 @@ Date: June 2025
 
 | Notebook | Files | Open in Colab / ARDC Jupyter | DOI |
 |:--:|:--:|:--:|:--:|
-| Get Species Data | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb) |  |
+| Get Species Data | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb) |  |
 
 
 # Introduction

@@ -13,7 +13,7 @@ execute:
 website:
   site-url: https://ecocommonsaustralia.github.io/notebook-blog
   repo-url: https://github.com/EcoCommonsAustralia/notebook-blog
-  favicon: images/EcoCommons Logo.png
+  favicon: images/EcoCommons_Logo_two_circle.png
   navbar:
     left:
       - href: index.qmd
