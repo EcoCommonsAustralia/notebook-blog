@@ -271,3 +271,16 @@ main {
   color: #11aa96;
 }
 
+
+/* Index notebook table: fixed layout with custom column widths */
+.nb-table table {
+  table-layout: fixed;
+  width: 100%;
+}
+.nb-table th:nth-child(1), .nb-table td:nth-child(1) { width: 19%; }
+.nb-table th:nth-child(2), .nb-table td:nth-child(2) { width: 15%; }
+.nb-table th:nth-child(3), .nb-table td:nth-child(3) { width: 19%; }
+.nb-table th:nth-child(4), .nb-table td:nth-child(4) { width: 21%; }
+.nb-table th:nth-child(5), .nb-table td:nth-child(5) { width: 26%; }
+.nb-table td { word-wrap: break-word; overflow-wrap: break-word; }
+.nb-table img { max-width: 100%; height: auto; }
