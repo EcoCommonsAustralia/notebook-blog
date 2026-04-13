@@ -698,3 +698,7 @@ Congratulations, now you have learnt how to:
 3.  Also, you know the resampling methods for both categorical and continuous rasters.
 4.  Crop and mask rasters
 5.  Stack rasters and save stacked rasters.
+
+# How to cite this Notebook
+
+Zhao, X. Y., & Lopez-Marcano, S. (2024). *Species Distribution Analysis - Environmental Data Preparation (Raster)* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19548970>

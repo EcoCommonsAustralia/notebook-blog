@@ -1823,3 +1823,7 @@ Anderson, S. E., Amir, Z., Bruce, T., & Luskin, M. S. (2025). Range‐Wide Camer
 M. Rayan D., M. Linkie, Managing threatened ungulates in logged-primary forest mosaics in Malaysia. *PLOS ONE* **15**, e0243932 (2020).
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
+
+# How to cite this Notebook
+
+Zhao, X. Y., & Amir, Z. (2026). *Single-Species Single-Season Occupancy Model - Practical* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19552244>

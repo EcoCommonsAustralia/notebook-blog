@@ -626,3 +626,7 @@ MacKenzie, D. I., Nichols, J. D., Royle, J. A., Pollock, K. H., Bailey, L., & Hi
 Bailey, L. L., MacKenzie, D. I., & Nichols, J. D. (2014). Advances and applications of occupancy models. *Methods in Ecology and Evolution*, *5*(12), 1269-1279.
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
+
+# How to cite this Notebook
+
+Zhao, X. Y., & Amir, Z. (2025). *Single-Species Single-Season Occupancy Model - Conceptual* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19552238>

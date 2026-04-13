@@ -1173,3 +1173,7 @@ Harwood, Tom (2019): 9s climatology for continental Australia 1976-2005: BIOCLIM
 3 second SRTM Derived Digital Elevation Model (DEM) Version 1.0, Geoscience Australia, 2018, <https://dev.ecat.ga.gov.au/geonetwork/srv/api/records/a05f7892-ef04-7506-e044-00144fdd4fa6>
 
 Searle, R. (2021): Australian Soil Classification Map. Version 1. Terrestrial Ecosystem Research Network. (Dataset). [**https://doi.org/10.25901/edyr-wg85**](https://doi.org/10.25901/edyr-wg85)
+
+# How to cite this Notebook
+
+Singh Chandel, A. R., Zhao, X. Y., & Lopez-Marcano, S. (2024). *Species Distribution Analysis - Generalised Linear Model (GLM)* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19551976>

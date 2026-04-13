@@ -262,3 +262,7 @@ Rivers, M.C., Taylor, L., Brummitt, N.A., Meagher, T.R., Roberts, D.L. and Lugha
 Westgate, M., Kellie, D., Stevenson, M., Newman, P., 2025. galah: Biodiversity Data from the GBIF Node Network. R package version 2.1.1, https://CRAN.R-project.org/package=galah.
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png)
+
+# How to cite this Notebook
+
+Wraith, J., & Lopez-Marcano, S. (2025). *How to determine extent of occurrence (EOO) and area of occupancy (AOO) for a species* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19552073>
