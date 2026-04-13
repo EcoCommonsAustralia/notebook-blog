@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Rasterise vector shapefiles (.shp) into GeoTIFF format for integration with environmental predictors in SDM workflows.">
 
 <title>converting_shapefile_to_geotiff_notebook</title>
 <style>
@@ -64,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -212,7 +214,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#converting-shapefile-.shp-to-geotiff-.tif-format" id="toc-converting-shapefile-.shp-to-geotiff-.tif-format" class="nav-link active" data-scroll-target="#converting-shapefile-.shp-to-geotiff-.tif-format">Converting Shapefile (.shp) to GeoTIFF (.tif) Format</a></li>
-  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a></li>
+  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a>
+  <ul>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
+  </ul></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
   <ul>
@@ -229,6 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-5.-rasterise-shapefile-and-save-as-geotiff" id="toc-step-5.-rasterise-shapefile-and-save-as-geotiff" class="nav-link" data-scroll-target="#step-5.-rasterise-shapefile-and-save-as-geotiff">Step 5. Rasterise shapefile and save as GeoTIFF</a></li>
   <li><a href="#step-6.-verify-spatial-metadata-after-writing-geotiff" id="toc-step-6.-verify-spatial-metadata-after-writing-geotiff" class="nav-link" data-scroll-target="#step-6.-verify-spatial-metadata-after-writing-geotiff">Step 6. Verify spatial metadata after writing GeoTIFF</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#how-to-cite-this-notebook" id="toc-how-to-cite-this-notebook" class="nav-link" data-scroll-target="#how-to-cite-this-notebook">How to cite this Notebook</a></li>
   </ul>
 </nav>
     </div>
@@ -250,6 +256,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="script-and-data-information" class="level1">
 <h1>Script and Data Information</h1>
 <p>This notebook provides a simple, reproducible example of converting a shapefile (.shp) into a GeoTIFF raster (.tif) format using the <code>terra</code> package in R. It is intended as a lightweight template that can be adapted to other vector-based spatial datasets and workflows requiring raster outputs.</p>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Shapefile to GeoTIFF</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -667,6 +692,10 @@ Output raster resolution:</code></pre>
 <p>This notebook demonstrated a simple, reproducible workflow for converting a shapefile (.shp) into a GeoTIFF (.tif) raster using the <code>terra</code> package in R, while explicitly verifying that key spatial metadata including CRS, extent, and resolution were preserved during conversion.</p>
 <p>A companion notebook (link below) demonstrates the reverse workflow, converting a GeoTIFF raster to shapefile format.</p>
 <p><a href="https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_shapefile_notebook.html">Converting GeoTIFF (.tif) to Shapefile (.shp) Format</a></p>
+</section>
+<section id="how-to-cite-this-notebook" class="level1">
+<h1>How to cite this Notebook</h1>
+<p>Newis, R., &amp; Zhao, X. (2026). <em>Converting Shapefile (.shp) to GeoTIFF (.tif) Format</em> (Version 1.0) [Computational notebook]. Zenodo. <a href="https://doi.org/10.5281/zenodo.19379923" class="uri">https://doi.org/10.5281/zenodo.19379923</a></p>
 
 
 </section>
@@ -1272,7 +1301,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

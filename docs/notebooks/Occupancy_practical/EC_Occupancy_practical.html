@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Hands-on application of single-species single-season occupancy modelling to real survey data using the unmarked R package.">
 
-<title>Single-Species Single-Season Occupancy Model - Practical</title>
+<title>ec_occupancy_practical</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -231,6 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#single-species-single-season-occupancy-model---practical" id="toc-single-species-single-season-occupancy-model---practical" class="nav-link active" data-scroll-target="#single-species-single-season-occupancy-model---practical">Single-Species Single-Season Occupancy Model - Practical</a>
   <ul>
   <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#wildlife-observatory-of-australia" id="toc-wildlife-observatory-of-australia" class="nav-link" data-scroll-target="#wildlife-observatory-of-australia">Wildlife Observatory of Australia</a></li>
   <li><a href="#wildobsr-r-package" id="toc-wildobsr-r-package" class="nav-link" data-scroll-target="#wildobsr-r-package">WildObsR R package</a></li>
@@ -272,25 +275,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Single-Species Single-Season Occupancy Model - Practical</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
@@ -306,6 +293,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="script-information">Script information</h2>
 <p>There are two notebooks about Single-Species Single-Season Occupancy Model, one is conceptual (<a href="https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html">click here to learn more</a>), and another is practical. This one is the <strong>practical</strong> notebook which gives a brief introduction to the concepts of Single-Species Single-Season Occupancy Model with some simulated data.</p>
 <p>This notebook, developed by the EcoCommons and WildObs team, showcases how to build Single-Species Single-Season Occupancy Model with camera trapping data with “unmarked” R package (<a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14123">click here to learn more</a>).</p>
+</section>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Occupancy - Practical</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -4205,7 +4211,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

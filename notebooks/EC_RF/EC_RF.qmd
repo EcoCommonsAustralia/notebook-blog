@@ -1,3 +1,7 @@
+---
+description: "Build and compare species distribution models using Random Forest and GLM in R, with evaluation of predictive performance and spatial outputs."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Species Distribution Modelling - Random Forest
@@ -15,6 +19,13 @@ Date: May 2025
 # Script information
 
 This notebook, developed by the EcoCommons team, showcases how to build Species Distribution Models (SDMs) using Random Forest algorithm. It also compares the SDMs generated for the same species using Random Forest and Generalised Linear Models, highlighting their differences in predictive performance and spatial output.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Random Forest | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb) |
+
 
 # Introduction
 
@@ -1018,3 +1029,7 @@ Harwood, Tom (2019): 9s climatology for continental Australia 1976-2005: BIOCLIM
 3 second SRTM Derived Digital Elevation Model (DEM) Version 1.0, Geoscience Australia, 2018, <https://dev.ecat.ga.gov.au/geonetwork/srv/api/records/a05f7892-ef04-7506-e044-00144fdd4fa6>
 
 Searle, R. (2021): Australian Soil Classification Map. Version 1. Terrestrial Ecosystem Research Network. (Dataset). [**https://doi.org/10.25901/edyr-wg85**](https://doi.org/10.25901/edyr-wg85)
+
+# How to cite this Notebook
+
+Zhao, X. Y., & Wraith, J. (2025). *EcoCommons Notebook: Species Distribution Analysis - Random Forest (RF)* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19363916>

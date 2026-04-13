@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Proof-of-concept integration connecting EcoCommons species distribution model outputs with Marxan MaPP for 30% protected area planning scenarios in Queensland.">
 
 <title>ecocommons-marxan-integration-poc</title>
 <style>
@@ -64,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -213,6 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#ecocommons---marxan-mapp-connection" id="toc-ecocommons---marxan-mapp-connection" class="nav-link active" data-scroll-target="#ecocommons---marxan-mapp-connection">EcoCommons -&gt; Marxan MaPP connection</a>
   <ul>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#ecocommons-outputs" id="toc-ecocommons-outputs" class="nav-link" data-scroll-target="#ecocommons-outputs">EcoCommons Outputs</a></li>
   <li><a href="#marxan-mapp-inputs" id="toc-marxan-mapp-inputs" class="nav-link" data-scroll-target="#marxan-mapp-inputs">Marxan MaPP Inputs</a></li>
@@ -244,6 +247,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/EC_section_break.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Marxan Connect</td>
+<td style="text-align: center;"><a href="https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc/blob/main/files/ecocommons-marxan-integration-poc.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Using the Species distribution modeling techniques provided by the EcoCommons Platform (www.ecocommons.org.au), we produced probability distribution maps for the three Queensland endangered species: koala, brush tailed rock-wallaby, and beach stone curlew.</p>
@@ -1363,7 +1390,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

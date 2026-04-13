@@ -1,3 +1,7 @@
+---
+description: "Build species distribution models using Generalised Linear Models (GLM) in R, applied to Australian fauna with EcoCommons environmental predictors."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Species Distribution Analysis - Generalised Linear Model (GLM)
@@ -21,6 +25,7 @@ This notebook, developed by the EcoCommons team, showcases how to build Species 
 | Notebook | Files | Open in Colab / ARDC Jupyter |
 |:--:|:--:|:--:|
 | GLM | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb) |
+
 
 # Introduction
 

@@ -1,3 +1,7 @@
+---
+description: "Rasterise vector shapefiles (.shp) into GeoTIFF format for integration with environmental predictors in SDM workflows."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Converting Shapefile (.shp) to GeoTIFF (.tif) Format
@@ -15,6 +19,13 @@ Date: Feb 2026
 # Script and Data Information
 
 This notebook provides a simple, reproducible example of converting a shapefile (.shp) into a GeoTIFF raster (.tif) format using the `terra` package in R. It is intended as a lightweight template that can be adapted to other vector-based spatial datasets and workflows requiring raster outputs.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Shapefile to GeoTIFF | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_shapefile_to_geotiff_notebook.ipynb) |
+
 
 # Introduction
 
@@ -337,3 +348,7 @@ This notebook demonstrated a simple, reproducible workflow for converting a shap
 A companion notebook (link below) demonstrates the reverse workflow, converting a GeoTIFF raster to shapefile format.
 
 [Converting GeoTIFF (.tif) to Shapefile (.shp) Format](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_shapefile_notebook.html)
+
+# How to cite this Notebook
+
+Newis, R., & Zhao, X. (2026). *Converting Shapefile (.shp) to GeoTIFF (.tif) Format* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19379923>

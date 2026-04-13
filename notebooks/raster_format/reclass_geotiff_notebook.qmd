@@ -1,3 +1,7 @@
+---
+description: "Use the terra R package to reclassify a continuous GeoTIFF raster into binary or multi-class habitat suitability maps."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Reclassifying a GeoTIFF raster
@@ -19,6 +23,13 @@ This notebook provides a simple, reproducible example of reclassifying a continu
 The notebook demonstrates how to convert continuous suitability values into both binary and multi-class suitability maps, visualise the resulting classifications, and export the outputs in GeoTIFF file format for downstream spatial analysis or use in GIS spatial software (e.g. QGIS).
 
 The example GeoTIFF raster used in this notebook is output derived from an SDM using Maxent algorithm. The continuous habitat suitability prediction is for the the Sooty Oystercatcher (*Haematopus fuliginosus*) and the modelling workflow was conducted on the EcoCommons platform. Original occurrence data was obtained from the Atlas of Living Australia (<https://www.ala.org.au>) via the EcoCommons platform.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Reclassify GeoTIFF | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.ipynb) |
+
 
 # Introduction
 
@@ -497,3 +508,7 @@ The workflow included the following steps:
 5.  **Exporting the reclassified rasters** for use in GIS software or further spatial analysis.
 
 Reclassification helps simplify continuous model predictions into categories that may be easier to interpret, communicate, and integrate into decision-making or reporting workflows.
+
+# How to cite this Notebook
+
+Newis, R., & Zhao, X. (2026). *Reclassifying a GeoTIFF Raster* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19379995>

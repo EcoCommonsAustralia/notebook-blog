@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Calculate and visualise species richness and Shannon diversity from ecological survey data, applied to bird survey datasets across multiple sites.">
 
 <title>richness_shannon_notebook</title>
 <style>
@@ -64,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -212,7 +214,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" id="toc-calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data" class="nav-link active" data-scroll-target="#calculating-and-visualising-species-richness-and-shannon-diversity-for-ecological-survey-data">Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</a></li>
-  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a></li>
+  <li><a href="#script-and-data-information" id="toc-script-and-data-information" class="nav-link" data-scroll-target="#script-and-data-information">Script and Data Information</a>
+  <ul>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
+  </ul></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
   <ul>
@@ -253,6 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#how-to-cite-this-notebook" id="toc-how-to-cite-this-notebook" class="nav-link" data-scroll-target="#how-to-cite-this-notebook">How to cite this Notebook</a></li>
   </ul>
 </nav>
     </div>
@@ -276,6 +282,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This notebook, developed by the EcoCommons team, showcases how to calculate, analyse and compare species richness and species diversity (Shannon) across different landscapes and sites for bird survey data. This method can be applied to other animals, plants or biological communities that use a similar surveying method.</p>
 <p><img src="https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/raw/main/images/ph_rosella.jpeg" class="img-fluid"></p>
 <p>Pale-headed Rosella - <em>Platycercus adscitus</em>: Photographer: <a href="https://birdsoftheworld.org/bow/species/pahros1/cur/introduction?media=photos">Chris Murray</a></p>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Species Richness &amp; Diversity</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/richness_shannon_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/richness_shannon_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/richness_shannon_notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -1356,6 +1381,10 @@ Urban_Site3-Urban_Site2   -0.51884773 -1.3213638  0.2836684 0.3167198</code></pr
 <p>Shannon, C. E. (1948). A mathematical theory of communication. <em>Bell System Technical Journal</em>, <em>27</em>(3), 379–423; <em>27</em>(4), 623–656.</p>
 <p>Turner, M. G. (1989). Landscape ecology: the effect of pattern on process.&nbsp;<em>Annual Review of Ecology and Systematics</em>,&nbsp;<em>20</em>, 171–197.&nbsp;https://doi.org/10.1146/annurev.es.20.110189.001131</p>
 <p>Turner, M. G., Gardner, R. H., &amp; O’Neill, R. V. (2001).&nbsp;<em>Landscape Ecology in Theory and Practice: Pattern and Process</em>. Springer.&nbsp;https://doi.org/10.1007/978-1-4419-7402-5</p>
+</section>
+<section id="how-to-cite-this-notebook" class="level1">
+<h1>How to cite this Notebook</h1>
+<p>Newis, R., &amp; Zhao, X. (2025). <em>Calculating and Visualising Species Richness and Shannon Diversity for Ecological Survey Data</em> (Version 1.0) [Computational notebook]. Zenodo. <a href="https://doi.org/10.5281/zenodo.19380030" class="uri">https://doi.org/10.5281/zenodo.19380030</a></p>
 
 
 </section>
@@ -1961,7 +1990,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

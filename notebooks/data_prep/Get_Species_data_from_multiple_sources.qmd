@@ -1,3 +1,7 @@
+---
+description: "Retrieve shorebird occurrence data from GBIF, ALA, and other global biodiversity portals using the spocc R package."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Getting Shorebird Data in Australia Using Global Biodiversity Data Portals via `spocc` R Package
@@ -17,6 +21,13 @@ Date: June 2025
 > -   Ensure you have a **stable internet connection**, as species data is fetched live from biodiversity data portals using `spocc` R package.
 > -   This notebook may take a few minutes when downloading large datasets or installing missing packages.
 > -   Recommended to run in **RStudio** or **Posit Workbench/VS Code** with **Quarto** installed for best experience.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Get Species Data | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/Get_Species_data_from_multiple_sources.ipynb) |
+
 
 # Introduction
 

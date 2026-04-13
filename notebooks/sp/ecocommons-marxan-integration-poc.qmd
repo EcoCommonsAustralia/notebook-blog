@@ -1,3 +1,7 @@
+---
+description: "Proof-of-concept integration connecting EcoCommons species distribution model outputs with Marxan MaPP for 30% protected area planning scenarios in Queensland."
+---
+
 # EcoCommons -\> Marxan MaPP connection
 
 Author: Zhao Xiang, EcoCommons
@@ -5,6 +9,13 @@ Author: Zhao Xiang, EcoCommons
 Date: 2024-10-02
 
 ![](images/EC_section_break.png){fig-align="center"}
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Marxan Connect | <a href="https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc/blob/main/files/ecocommons-marxan-integration-poc.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | N/A |
+
 
 ## Introduction
 

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Build and compare species distribution models using Random Forest and GLM in R, with evaluation of predictive performance and spatial outputs.">
 
 <title>ec_rf</title>
 <style>
@@ -64,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -226,7 +228,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#species-distribution-modelling---random-forest" id="toc-species-distribution-modelling---random-forest" class="nav-link active" data-scroll-target="#species-distribution-modelling---random-forest">Species Distribution Modelling - Random Forest</a></li>
-  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
+  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a>
+  <ul>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
+  </ul></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key concepts</a>
   <ul>
@@ -282,6 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">5. Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#how-to-cite-this-notebook" id="toc-how-to-cite-this-notebook" class="nav-link" data-scroll-target="#how-to-cite-this-notebook">How to cite this Notebook</a></li>
   </ul>
 </nav>
     </div>
@@ -303,6 +309,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="script-information" class="level1">
 <h1>Script information</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to build Species Distribution Models (SDMs) using Random Forest algorithm. It also compares the SDMs generated for the same species using Random Forest and Generalised Linear Models, highlighting their differences in predictive performance and spatial output.</p>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Random Forest</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -1722,6 +1747,10 @@ Need '+proj=longlat +datum=WGS84'</code></pre>
 <p>Harwood, Tom (2019): 9s climatology for continental Australia 1976-2005: BIOCLIM variable suite. v1. CSIRO. Data Collection. <a href="https://doi.org/10.25919/5dce30cad79a8" class="uri">https://doi.org/10.25919/5dce30cad79a8</a></p>
 <p>3 second SRTM Derived Digital Elevation Model (DEM) Version 1.0, Geoscience Australia, 2018, <a href="https://dev.ecat.ga.gov.au/geonetwork/srv/api/records/a05f7892-ef04-7506-e044-00144fdd4fa6" class="uri">https://dev.ecat.ga.gov.au/geonetwork/srv/api/records/a05f7892-ef04-7506-e044-00144fdd4fa6</a></p>
 <p>Searle, R. (2021): Australian Soil Classification Map. Version 1. Terrestrial Ecosystem Research Network. (Dataset). <a href="https://doi.org/10.25901/edyr-wg85"><strong>https://doi.org/10.25901/edyr-wg85</strong></a></p>
+</section>
+<section id="how-to-cite-this-notebook" class="level1">
+<h1>How to cite this Notebook</h1>
+<p>Zhao, X. Y., &amp; Wraith, J. (2025). <em>EcoCommons Notebook: Species Distribution Analysis - Random Forest (RF)</em> (Version 1.0) [Computational notebook]. Zenodo. <a href="https://doi.org/10.5281/zenodo.19363916" class="uri">https://doi.org/10.5281/zenodo.19363916</a></p>
 
 
 </section>
@@ -2327,7 +2356,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

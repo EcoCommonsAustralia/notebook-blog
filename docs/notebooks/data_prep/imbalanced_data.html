@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Two-part guide to handling imbalanced presence-absence datasets in SDMs: background point selection strategies and case weighting approaches.">
 
 <title>imbalanced_data</title>
 <style>
@@ -84,6 +85,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../images/EcoCommons Logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -246,7 +248,10 @@ div.csl-indent {
    
   <ul>
   <li><a href="#part-1-imbalanced-species-data-background-points-and-weighting-methods" id="toc-part-1-imbalanced-species-data-background-points-and-weighting-methods" class="nav-link active" data-scroll-target="#part-1-imbalanced-species-data-background-points-and-weighting-methods"><strong>Part 1: Imbalanced species data, background points, and weighting methods</strong></a></li>
-  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info">Script and data info</a></li>
+  <li><a href="#script-and-data-info" id="toc-script-and-data-info" class="nav-link" data-scroll-target="#script-and-data-info">Script and data info</a>
+  <ul>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
+  </ul></li>
   <li><a href="#abstract-part-1-and-part-2" id="toc-abstract-part-1-and-part-2" class="nav-link" data-scroll-target="#abstract-part-1-and-part-2">Abstract (Part 1 and Part 2)</a></li>
   <li><a href="#objectives-part-1" id="toc-objectives-part-1" class="nav-link" data-scroll-target="#objectives-part-1">Objectives (Part 1)</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
@@ -337,6 +342,30 @@ div.csl-indent {
 <section id="script-and-data-info" class="level1">
 <h1>Script and data info</h1>
 <p>This notebook, developed by the EcoCommons team, showcases how to deal with imbalanced species datasets (presence and absence data) with weighting methods.</p>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Imbalanced Data Part 1</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Imbalanced Data Part 2</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part2.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part2.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part2.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="abstract-part-1-and-part-2" class="level1">
 <h1>Abstract (Part 1 and Part 2)</h1>
@@ -3606,7 +3635,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -1,3 +1,7 @@
+---
+description: "Export GeoTIFF rasters into ASCII (.asc) format for legacy modelling tools or data sharing requirements."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Converting Rasters from GeoTIFF (.tif) to ASCII (.asc) Format
@@ -15,6 +19,13 @@ Date: Feb 2026
 # Script and Data Information
 
 This notebook provides a simple, reproducible example of converting a raster dataset stored as a GeoTIFF (.tif) into an ASCII grid (.asc) format using the `terra` package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| GeoTIFF to ASCII | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotif_to_ascii_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotif_to_ascii_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotif_to_ascii_notebook.ipynb) |
+
 
 # Introduction
 
@@ -280,4 +291,8 @@ A companion notebook (link below) demonstrates the reverse workflow, converting 
 
 [Converting Rasters from ASCII (.asc) to GeoTIFF (.tif) Format](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_ascii_to_geotiff_notebook.html)
 
-# 
+#
+
+# How to cite this Notebook
+
+Newis, R., & Zhao, X. (2026). *Converting Rasters from GeoTIFF (.tif) to ASCII (.asc) Format* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.19379660>

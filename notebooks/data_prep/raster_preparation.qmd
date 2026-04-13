@@ -1,3 +1,7 @@
+---
+description: "Download and process continuous and categorical environmental raster datasets (bioclimatic, land use) for use in species distribution models."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Species Distribution Analysis - Environmental Data Preparation (Raster)
@@ -15,6 +19,13 @@ Date: December 2024
 # Script and data info:
 
 This notebook, developed by the EcoCommons team, showcases how to download, and process both continuous and categorical environmental datasets. The datasets are in the raster format and these are generally used to build Species Distribution Models (SDMs)
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Environmental Data Preparation | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.ipynb) |
+
 
 # Introduction
 

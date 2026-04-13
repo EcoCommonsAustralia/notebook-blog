@@ -1,3 +1,7 @@
+---
+description: "Transform GeoTIFF rasters into NetCDF (.nc) format for multidimensional storage and climate modelling workflows."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Converting GeoTIFF (.tif) to NetCDF (.nc) Format
@@ -15,6 +19,13 @@ Date: March 2026
 # Script and Data Information
 
 This notebook provides a simple, reproducible example of converting a GeoTIFF raster (.tif) into a NetCDF (.nc) using the `terra` package in R. It is intended as a lightweight template that can be adapted to other raster-based spatial datasets and workflows requiring NetCDF outputs.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| GeoTIFF to NetCDF | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.ipynb) |
+
 
 # Introduction
 

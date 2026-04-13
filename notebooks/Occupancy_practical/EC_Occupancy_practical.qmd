@@ -1,5 +1,5 @@
 ---
-title: Single-Species Single-Season Occupancy Model - Practical
+description: "Hands-on application of single-species single-season occupancy modelling to real survey data using the unmarked R package."
 ---
 
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
@@ -23,6 +23,13 @@ Date: Feb 2026
 There are two notebooks about Single-Species Single-Season Occupancy Model, one is conceptual ([click here to learn more](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html)), and another is practical. This one is the **practical** notebook which gives a brief introduction to the concepts of Single-Species Single-Season Occupancy Model with some simulated data.
 
 This notebook, developed by the EcoCommons and WildObs team, showcases how to build Single-Species Single-Season Occupancy Model with camera trapping data with "unmarked" R package ([click here to learn more](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14123)).
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Occupancy - Practical | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb) |
+
 
 ## Introduction
 

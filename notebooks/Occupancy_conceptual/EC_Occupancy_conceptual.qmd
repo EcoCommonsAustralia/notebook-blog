@@ -1,3 +1,7 @@
+---
+description: "Conceptual introduction to single-species single-season occupancy modelling, with simulated data and explanations of detection probability and occupancy estimation."
+---
+
 ![](https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png)
 
 # Single-Species Single-Season Occupancy Model - Conceptual
@@ -19,6 +23,13 @@ Date: October 2025
 There are two notebooks about Single-Species Single-Season Occupancy Model, one is conceptual, and another is practical. This one is the **conceptual** one which gives a brief introduction to the concepts of Single-Species Single-Season Occupancy Model with some simulated data.
 
 This notebook, developed by the EcoCommons and WildObs team, showcases how to build Single-Species Single-Season Occupancy Model with camera trapping data with 'unmarked" R package.
+
+## Other file formats of this notebook
+
+| Notebook | Files | Open in Colab / ARDC Jupyter |
+|:--:|:--:|:--:|
+| Occupancy - Conceptual | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.ipynb) |
+
 
 # Introduction
 
