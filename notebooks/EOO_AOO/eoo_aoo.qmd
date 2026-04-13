@@ -22,9 +22,9 @@ This notebook, developed by the EcoCommons team, showcases how to determine the 
 
 ## Other file formats of this notebook
 
-| Notebook | Files | Open in Colab / ARDC Jupyter |
-|:--:|:--:|:--:|
-| EOO / AOO | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb) |
+| Notebook | Files | Open in Colab / ARDC Jupyter | DOI |
+|:--:|:--:|:--:|:--:|
+| EOO / AOO | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"/></a> <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19552073.svg)](https://doi.org/10.5281/zenodo.19552073) |
 
 
 # Introduction

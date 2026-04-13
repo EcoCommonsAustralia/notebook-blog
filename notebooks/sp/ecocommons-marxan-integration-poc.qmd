@@ -12,9 +12,9 @@ Date: 2024-10-02
 
 ## Other file formats of this notebook
 
-| Notebook | Files | Open in Colab / ARDC Jupyter |
-|:--:|:--:|:--:|
-| Marxan Connect | <a href="https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc/blob/main/files/ecocommons-marxan-integration-poc.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | N/A |
+| Notebook | Files | Open in Colab / ARDC Jupyter | DOI |
+|:--:|:--:|:--:|:--:|
+| Marxan Connect | <a href="https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc/blob/main/files/ecocommons-marxan-integration-poc.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"/></a> | N/A |  |
 
 
 ## Introduction
