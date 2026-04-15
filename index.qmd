@@ -16,24 +16,23 @@ This repository contains examples and tutorials with the objective of mirroring 
 ## 🐨 Ecological Modelling
 :::
 
-::: {.nb-table}
+::: nb-table
 | **notebook** | **notebook file** | **open in Google colab / ARDC Jupyter Notebook Service** | **complementary materials** | **DOI** |
-|:-------------:|:--------:|:-------------:|:-------------:|:---------------------:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | GLM | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_GLM.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://EcoCommonsAustralia.github.io/notebook-blog/notebooks/EC_GLM/EC_GLM.html) | <a href="https://doi.org/10.5281/zenodo.19551976"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19551976.svg" width="200"/></a> |
 | Extent and Area of Occurrence / Occupancy | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/eoo_aoo.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/EOO_AOO/eoo_aoo.html) | <a href="https://doi.org/10.5281/zenodo.19552073"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19552073.svg" width="200"/></a> |
 | Random Forest | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_RF.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/EC_RF/EC_RF.html) | <a href="https://doi.org/10.5281/zenodo.19363916"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19363916.svg" width="200"/></a> |
 | Single-Species Single-Season Occupancy Model - Conceptual | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_conceptual.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html) | <a href="https://doi.org/10.5281/zenodo.19552238"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19552238.svg" width="200"/></a> |
 | Single-Species Single-Season Occupancy Model - Practical | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_Occupancy_practical.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_practical/EC_Occupancy_practical.html) | <a href="https://doi.org/10.5281/zenodo.19552244"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19552244.svg" width="200"/></a> |
-
 :::
 
 ::: {align="center"}
 ## 🌍 Geo/ecological skills
 :::
 
-::: {.nb-table}
+::: nb-table
 | **notebook** | **notebook file** | **open in Google colab / ARDC Jupyter Notebook Service** | **complementary materials** | **DOI** |
-|:-------------:|:--------:|:-------------:|:-------------:|:---------------------:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | Marxan Connect | <a href="https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc/blob/main/files/ecocommons-marxan-integration-poc.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | N/A | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://EcoCommonsAustralia.github.io/notebook-blog/notebooks/sp/ecocommons-marxan-integration-poc.html) | [![GitHub](https://badges.aleen42.com/src/github.svg)](https://github.com/EcoCommonsAustralia/ecocommons-marxan-integration-poc) |
 | Environmental Data Preparation (Raster) | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/raster_preparation.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://EcoCommonsAustralia.github.io/notebook-blog/notebooks/data_prep/raster_preparation.html) | <a href="https://doi.org/10.5281/zenodo.19548970"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19548970.svg" width="200"/></a> |
 | Imbalanced dataset (Part 1) | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/imbalanced_data_part1.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/imbalanced_data.html#part-1-imbalanced-species-data-background-points-and-weighting-methods) | <a href="https://doi.org/10.5281/zenodo.19549126"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19549126.svg" width="200"/></a> |
@@ -47,7 +46,6 @@ This repository contains examples and tutorials with the objective of mirroring 
 | Converting GeoTIFF (.tif) to NetCDF (.nc) Format | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_NetCDF_to_geotiff_notebook.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_NetCDF_to_geotiff_notebook.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_NetCDF_to_geotiff_notebook.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_NetCDF_to_geotiff_notebook.html) | <a href="https://doi.org/10.5281/zenodo.19548851"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19548851.svg" width="200"/></a> |
 | Converting NetCDF (.nc) to GeoTIFF (.tif) Format | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/converting_geotiff_to_netcd_notebook.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_netcd_notebook.html) | <a href="https://doi.org/10.5281/zenodo.19548581"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19548581.svg" width="200"/></a> |
 | Reclassify a Continuous Raster | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/reclass_geotiff_notebook.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/reclass_geotiff_notebook.html) | <a href="https://doi.org/10.5281/zenodo.19379995"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19379995.svg" width="200"/></a> |
-
 :::
 
 ::: {align="center"}
@@ -60,24 +58,90 @@ Welcome to the EcoCommons Notebooks! As ecological and environmental research ad
 
 # Publications used EcoCommons Platform
 
-Reddy, C. S., & Pranathi, G. (2026). In search of survival grounds—Habitat preference analysis and species distribution modelling of critically endangered Jerdon’s Courser, Rhinoptilus bitorquatus. *Spatial Information Research*, *34*(2), 18.
+**EcoCommons used for modelling**
 
-Young, David A., Steve Harwin, and Jamie B. Kirkpatrick. "Regional-scale predictive model identifies restricted nesting habitat of the Grey Goshawk'Tachyspiza novaehollandiae'in Tasmania." *Australian Field Ornithology* 42 (2025): 93-106.
+Chintala, Sudhakar Reddy & Malik, Kritika & Shaik, Vazeed & Sundaram, Reeja. (2026). Identifying Potential Invasion Hotspots of Chromolaena odorata using Species Distribution Models. <https://www.researchgate.net/publication/402883088_Identifying_Potential_Invasion_Hotspots_of_Chromolaena_odorata_using_Species_Distribution_Models>
 
-Bayraktarov, E., Low-Choy, S., Singh, A. R., Beaumont, L. J., Williams, K. J., Baumgartner, J. B., ... & Mackey, B. (2025). EcoCommons Australia virtual laboratories with cloud computing: Meeting diverse user needs for ecological modeling and decision-making. *Environmental Modelling & Software*, *183*, 106255.
+Reddy, C. S., & Pranathi, G. (2026). In search of survival grounds—Habitat preference analysis and species distribution modelling of critically endangered Jerdon’s Courser, Rhinoptilus bitorquatus. *Spatial Information Research*, *34*(2), 18. <https://doi.org/10.1007/s41324-026-00669-w>
 
-Humaida, N., Wahab, L., Saputra, M. H., Kurniawati, F., Atmaja, M. B., Pujiono, E., ... & Wahyuningtyas, R. S. (2025). Species Distribution Model and Conservation of Mentaok (Wrightia javanica) in Indonesia. *Jurnal Manajemen Hutan Tropika*, *31*(1), 1-11.
+Sukmawati, J. G., Helmanto, H., Kurniawan, H., Prasetyo, E., & Humaida, N. (2025, December). Species Distribution Modeling Reveals Autecological Determinants of Vachellia nilotica in Java and the Lesser Sunda Islands. In International Conference on Sustainable Energy: Toward Energy Transition and Net-Zero Emission (ICOSE 2025) (pp. 165-180). Atlantis Press. <https://www.atlantis-press.com/proceedings/icose-25/126019687>
 
-Newton, Peter, et al. "Digital Innovations for City Sustainability Analysis and Decision-Making." *Future Cities Making: Mission-oriented Research for Urban Sustainability Transitions in Australia*. Singapore: Springer Nature Singapore, 2024. 215-240.
+Young, David A., Steve Harwin, and Jamie B. Kirkpatrick. "Regional-scale predictive model identifies restricted nesting habitat of the Grey Goshawk’Tachyspiza novaehollandiae’in Tasmania." *Australian Field Ornithology* 42 (2025): 93-106. <https://doi.org/10.20938/afo42093106>
 
-Norman, Patrick, and Brendan Mackey. "A decision support tool for habitat connectivity in Australia." *Pacific Conservation Biology* 30, no. 5 (2024).
+Bayraktarov, E., Low-Choy, S., Singh, A. R., Beaumont, L. J., Williams, K. J., Baumgartner, J. B., ... & Mackey, B. (2025). EcoCommons Australia virtual laboratories with cloud computing: Meeting diverse user needs for ecological modeling and decision-making. *Environmental Modelling & Software*, *183*, 106255. <https://doi.org/10.1016/j.envsoft.2024.106255>
 
-Isaza-Toro, Estefania, John Josephraj-Selvaraj, and Alan Giraldo. "Geographical distribution model of the fish Coryphaena hippurus (Perciformes: Coryphaenidae) according to climate change in the Pacific Oriental Tropical." *Revista de Biología Tropical* 72, no. 1 (2024).
+Humaida, N., Wahab, L., Saputra, M. H., Kurniawati, F., Atmaja, M. B., Pujiono, E., ... & Wahyuningtyas, R. S. (2025). Species Distribution Model and Conservation of Mentaok (Wrightia javanica) in Indonesia. *Jurnal Manajemen Hutan Tropika*, *31*(1), 1-11. <https://doi.org/10.7226/jtfm.31.1.1>
 
-Torkkola, Janne, Harry Hines, Alienor Chauvenet, and Paul Oliver. "Are species richness and endemism hotspots correlated within a biome? A test case in the fire-impacted subtropical rainforests of Australia." (2024).
+Norman, Patrick, and Brendan Mackey. "A decision support tool for habitat connectivity in Australia." *Pacific Conservation Biology* 30, no. 5 (2024). <https://doi.org/10.1071/pc24008>
 
-Saputra, M. H., Humaida, N., & Hadiyan, Y. (2023). Smart farming: modeling distribution of Xanthomonas campestris pv. oryzae as a leaf blight-causing bacteria in rice plants. In *IOP Conference Series: Earth and Environmental Science* (Vol. 1133, No. 1, p. 012026). IOP Publishing.
+Isaza-Toro, Estefania, John Josephraj-Selvaraj, and Alan Giraldo. "Geographical distribution model of the fish Coryphaena hippurus (Perciformes: Coryphaenidae) according to climate change in the Pacific Oriental Tropical." *Revista de Biología Tropical* 72, no. 1 (2024). <https://doi.org/10.15517/rev.biol.trop..v72i1.42716>
 
-Saputra, M. H., & Humaida, N. (2023, June). Potential future distribution of Scirpophaga incertulas (Walker) in Indonesia. In *IOP Conference Series: Earth and Environmental Science* (Vol. 1182, No. 1, p. 012007). IOP Publishing.
+Torkkola, Janne, Harry Hines, Alienor Chauvenet, and Paul Oliver. "Are species richness and endemism hotspots correlated within a biome? A test case in the fire-impacted subtropical rainforests of Australia." (2024). <https://doi.org/10.21203/rs.3.rs-4249551/v1>
 
-Levett, Kerry, Jonathan Smillie, and Andrew Treloar. "Putting the R into PlatfoRms." *International Journal of Digital Curation* 17, no. 1 (2023): 12-12.
+Saputra, M. H., Humaida, N., & Hadiyan, Y. (2023). Smart farming: modeling distribution of Xanthomonas campestris pv. oryzae as a leaf blight-causing bacteria in rice plants. In *IOP Conference Series: Earth and Environmental Science* (Vol. 1133, No. 1, p. 012026). IOP Publishing. <https://doi.org/10.1088/1755-1315/1133/1/012026>
+
+Saputra, M. H., & Humaida, N. (2023, June). Potential future distribution of Scirpophaga incertulas (Walker) in Indonesia. In *IOP Conference Series: Earth and Environmental Science* (Vol. 1182, No. 1, p. 012007). IOP Publishing. <https://doi.org/10.1088/1755-1315/1182/1/012007>
+
+**EcoCommons used for data**
+
+Brunton, E. A., Brunton, A. J., & Conroy, G. (2025). From safe to stranded: Land use and climate change threaten habitat of iconic Australian macropods. Ecology and Evolution, 15(10), e72236. <https://pmc.ncbi.nlm.nih.gov/articles/PMC12508624/>
+
+Torkkola, Janne, Harry Hines, Alienor Chauvenet, and Paul Oliver. "Are species richness and endemism hotspots correlated within a biome? A test case in the fire-impacted subtropical rainforests of Australia." (2024). <https://doi.org/10.21203/rs.3.rs-4249551/v1>
+
+
+**EcoCommons mentioned**
+
+Rodas Toral, Ricardo Adolfo. Análisis de susceptibilidad a deslizamientos aplicado a grupos socioeconómicos vulnerables, mediante Máxima entropía (MaxEnt), en las parroquias: Cuenca, Nulti, Paccha, El Valle y Turi, del cantón Cuenca. Quito, 2025, 98 p. Tesis (Maestría en Gestión del Riesgo de Desastres). Universidad Andina Simón Bolívar, Sede Ecuador. Área de Gestión. <http://hdl.handle.net/10644/10573>
+
+Newton, Peter, et al. "Digital Innovations for City Sustainability Analysis and Decision-Making." *Future Cities Making: Mission-oriented Research for Urban Sustainability Transitions in Australia*. Singapore: Springer Nature Singapore, 2024. 215-240. <https://doi.org/10.1007/978-981-97-7671-9_10>
+
+Levett, Kerry, Jonathan Smillie, and Andrew Treloar. "Putting the R into PlatfoRms." *International Journal of Digital Curation* 17, no. 1 (2023): 12-12. <https://doi.org/10.2218/ijdc.v17i1.843>
+
+Blair, G. S., Bassett, R., Bastin, L., Beevers, L., Borrajo, M. I., Brown, M., ... & Watkins, J. (2021). The role of digital technologies in responding to the grand challenges of the natural environment: the Windermere Accord. Patterns, 2(1).
+<https://doi.org/10.1016/j.patter.2020.100156>
+
+
+# Publications used BCCVL
+
+**BCCVL used for modelling**
+
+Iryadi, R., Saputra, M. H., SukmawatI, J. G., Hani, A., Swari, K. K. I., Sari, D. A. I., ... & van Etten, E. (2024). Assessing Habitat Suitability for the Invasive Species Lantana camara on Bali Island: A Model Using the Biodiversity and Climate Change Virtual Laboratory (BCCVL). *Journal of Tropical Forest Management/Jurnal Manajemen Hutan Tropika*, *30*(3).\
+[https://doi.org/10.7226/jtfm.30.3.305](#0)
+
+W. Hallgren, F. Santana, S. Low-Choy, Y. Zhao, B. Mackey (2019). Species distribution models can be highly sensitive to algorithm configuration, *Ecological Modelling,408.* [doi.org/10.1016/j.ecolmodel.2019.108719.](https://doi.org/10.1016/j.ecolmodel.2019.108719.)
+
+Taylor, C. M., Keppel, G., Peters, S., Hopkins, G. R., & Kerr, G. D. (2018). Establishment and potential spread of the introduced spotted-thighed frog, Litoria cyclorhyncha (Ranoidea cyclorhynchus), in South Australia. *Transactions of the Royal Society of South Australia, 142*(1), 86-101. [doi:10.1080/03721426.2018.1444911](https://www.tandfonline.com/doi/full/10.1080/03721426.2018.1444911)
+
+Sumoto. S. & van Etten, E. (2017). Species distribution model of invasive alien species Acacia nilotica for Central-Eastern Indonesia using Biodiversity Climate Change Virtual Laboratory (BCCVL). <https://smujo.id/td/article/view/1644>
+
+Mackey, B., Cadman, S., Rogers, N., & Hugh, S. (2017). Assessing the risk to the conservation status of temperate rainforest from exposure to mining, commercial logging, and climate change: a Tasmanian case study. *Biological Conservation, 215*, 19-29. <https://www.sciencedirect.com/science/article/pii/S0006320717305773?via%3Dihub>
+
+Low-Choy, S., & Huijbers, C. (2017). *Experimenting with Modelling via a Virtual Laboratory: Evaluating pseudo-absence strategies to refine a species distribution model*. Paper presented at the 22nd International Congress on Modelling and Simulation, Hobart, Tasmania. <https://www.mssanz.org.au/modsim2017/G8/lowchoy.pdf>
+
+Hallgren, W., Santana, F., Low-Choy, S., Rehn, J., & Mackey, B. (2017). *Sensitivity Analysis to Configuration Option Settings in a Selection of Species Distribution Modelling Algorithms*. Paper presented at the 22nd International Congress on Modelling and Simulation, Hobart, Tasmania. <https://www.mssanz.org.au/modsim2017/A1/hallgren.pdf>
+
+Santana, F., Hallgren, W., Rehn, J., Chiu, L., & Holewa, H. (2017). *Implementing best practices and a workflow for modelling the geospatial distribution of migratory species*. Paper presented at the 22nd International Congress on Modelling and Simulation, Hobart, Tasmania. <https://www.mssanz.org.au/modsim2017/C3/santana.pdf>
+
+Hallgren, W., Beaumont, L., Bowness, A., Chambers, L., Graham, E., Holewa, H., . . . Price, J. (2016). The biodiversity and climate change virtual laboratory: where ecology meets big data. *Environmental Modelling & Software, 76*, 182-186. <https://www.sciencedirect.com/science/article/pii/S1364815215300839?via%3Dihub>
+
+**BCCVL mentioned**
+
+Booth, T. H. (2018a). Species distribution modelling tools and databases to assist managing forests under climate change. *Forest Ecology and Management, 430*, 196-203. <https://www.sciencedirect.com/science/article/pii/S0378112718310879#>
+
+Booth, T. H. (2018b). Why understanding the pioneering and continuing contributions of BIOCLIM to species distribution modelling is important. *Austral Ecology*. <https://onlinelibrary.wiley.com/doi/abs/10.1111/aec.12628>
+
+Langenheim, N., White, M., Barton, J., & Eagleson, S. (2017). Designing with Data for Urban Resilience. In S. Geertman, A. Allan, C. Pettit, & J. Stillwell (Eds.), *Planning Support Science for Smarter Urban Futures* (pp. 113-133). Cham: Springer International Publishing. <https://link.springer.com/chapter/10.1007%2F978-3-319-57819-4_7>
+
+Palmer, R., Dharmawardena, K., & Holewa, H. (2017). *Adapting Enterprise Architecture for eScience.* Paper presented at the e-Science (e-Science), 2017 IEEE 13th International Conference. <https://ieeexplore.ieee.org/abstract/document/8109160/>
+
+Ramalho, C. E., Byrne, M., & Yates, C. J. (2017). A Climate-Oriented Approach to Support Decision-Making for Seed Provenance in Ecological Restoration. *Frontiers in Ecology and Evolution, 5*(95). doi:10.3389/fevo.2017.00095 <https://www.frontiersin.org/articles/10.3389/fevo.2017.00095/full>
+
+Santana, F., Pariente, C. A. B., & Saraiva, A. M. (2017). *Species Distribution Modeling with Scalability: The Case Study of P-GARP, a Parallel Genetic Algorithm for Rule-Set Production.* Paper presented at the Information Reuse and Integration (IRI), 2017 IEEE International Conference. <https://ieeexplore.ieee.org/abstract/document/8102933/>
+
+Wolski, M., Howard, L., & Richardson, J. (2017). The importance of tools in the data lifecycle. *Digital Library Perspectives, 33*(3), 235-252. doi:doi:10.1108/DLP-11-2016-0042 <https://www.emeraldinsight.com/doi/full/10.1108/DLP-11-2016-0042>
+
+Booth, T. H. (2017). Assessing species climatic requirements beyond the realized niche: some lessons mainly from tree species distribution modelling. *Climatic Change, 145*(3), 259-271. doi:10.1007/s10584-017-2107-9 <https://link.springer.com/article/10.1007/s10584-017-2107-9>
+
+Belbin, L., & Williams, K. J. (2016). Towards a national bio-environmental data facility: experiences from the Atlas of Living Australia. *International Journal of Geographical Information Science, 30*(1), 108-125. doi:10.1080/13658816.2015.1077962 <https://www.tandfonline.com/doi/full/10.1080/13658816.2015.1077962?scroll=top&needAccess=true>
+
+La Salle, J., Williams, K. J., & Moritz, C. (2016). Biodiversity analysis in the digital era. *Philosophical Transactions of the Royal Society B: Biological Sciences, 371*(1702). doi:10.1098/rstb.2015.0337 <http://rstb.royalsocietypublishing.org/content/371/1702/20150337>

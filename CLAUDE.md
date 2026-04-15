@@ -38,5 +38,7 @@ quarto render notebooks/<folder>/<file>.qmd
 
 ## Related Repositories
 
-- **[EcoCommonsAustralia/notebooks](https://github.com/EcoCommonsAustralia/notebooks)** — source `.ipynb` and `.qmd` notebook files (upstream).
+- **[EcoCommonsAustralia/notebooks](https://github.com/EcoCommonsAustralia/notebooks)** — the upstream source repo containing all `.ipynb` and `.qmd` notebook files. This blog renders the `.qmd` files from there into HTML. The notebooks repo also maintains `automation/notebooks-table-data.csv`, which stores the `econotebook_blogpost_path` links pointing back to pages on this site.
 - **[EcoCommons-Australia-2024-2026/ec-notebook_site_materials](https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials)** — shared images and the `footer.qmd` source.
+
+**Data flow:** The `notebooks` repo is the source of truth for executable content. This blog renders those `.qmd` files as HTML and publishes them via GitHub Pages. The `notebooks` repo README table links back here using auto-generated EcoNotebook badges.

@@ -271,9 +271,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="related-repositories" class="level2">
 <h2 class="anchored" data-anchor-id="related-repositories">Related Repositories</h2>
 <ul>
-<li><strong><a href="https://github.com/EcoCommonsAustralia/notebooks">EcoCommonsAustralia/notebooks</a></strong> — source <code>.ipynb</code> and <code>.qmd</code> notebook files (upstream).</li>
+<li><strong><a href="https://github.com/EcoCommonsAustralia/notebooks">EcoCommonsAustralia/notebooks</a></strong> — the upstream source repo containing all <code>.ipynb</code> and <code>.qmd</code> notebook files. This blog renders the <code>.qmd</code> files from there into HTML. The notebooks repo also maintains <code>automation/notebooks-table-data.csv</code>, which stores the <code>econotebook_blogpost_path</code> links pointing back to pages on this site.</li>
 <li><strong><a href="https://github.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials">EcoCommons-Australia-2024-2026/ec-notebook_site_materials</a></strong> — shared images and the <code>footer.qmd</code> source.</li>
 </ul>
+<p><strong>Data flow:</strong> The <code>notebooks</code> repo is the source of truth for executable content. This blog renders those <code>.qmd</code> files as HTML and publishes them via GitHub Pages. The <code>notebooks</code> repo README table links back here using auto-generated EcoNotebook badges.</p>
 
 
 </section>
