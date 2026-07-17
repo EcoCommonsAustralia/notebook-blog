@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
 <section id="automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="level1">
 <h1>Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</h1>
-<p>Author details: Dr Renuka Sharma</p>
+<p>Author details: Dr Renuka Sharma, Dr Dax Kellie</p>
 <p>Editor details: TBD</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>Tip:</strong> If you see an error after installing (e.g.&nbsp;a version conflict), please re-run from this cell.</p>
 </blockquote>
-<div id="setup-install" class="cell" data-execution_count="1">
+<div id="setup-install" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install required packages. Harmless pip DEPRECATION / [notice] build messages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># are filtered out for a cleaner log; genuine errors still show.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install pandas galah<span class="op">-</span>python requests speciesnet Pillow <span class="op">--</span>quiet <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="op">|</span> grep <span class="op">-</span>viE <span class="st">"DEPRECATION|^\[notice\]|new release of pip|To update, run"</span> <span class="op">||</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -404,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Import standard libraries and define a utility function used later to manage the image download folder. SpeciesNet-specific imports are deferred to the <strong>Run SpeciesNet</strong> section so that this cell runs quickly even before the model weights are downloaded.</p>
-<div id="imports" class="cell" data-execution_count="2">
+<div id="imports" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
@@ -438,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="configure-galah" class="level3">
 <h3 class="anchored" data-anchor-id="configure-galah">2.1 Configure galah</h3>
 <p><code>galah</code> requires a registered ALA email address to submit download requests. Registration is free at <a href="https://www.ala.org.au/">ala.org.au</a>. Replace the placeholder email below with your own. You can also change the <code>taxa</code> list to any species you are interested in — use the scientific (Latin) name.</p>
-<div id="configure-galah" class="cell" data-execution_count="3">
+<div id="configure-galah" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> galah</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -470,7 +470,7 @@ Querying 2 species:
 <section id="check-record-counts" class="level3">
 <h3 class="anchored" data-anchor-id="check-record-counts">2.2 Check record counts</h3>
 <p>Before fetching full metadata, it is worth checking how many image records exist for your taxa and geographic filter. This is a fast call that does not trigger a download — it gives you a sense of dataset size so you can decide whether to narrow your filters further. The cell below returns a count broken down by media type.</p>
-<div id="cell-check-record-counts" class="cell" data-execution_count="4">
+<div id="cell-check-record-counts" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>galah.atlas_counts(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    taxa<span class="op">=</span>taxa,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    filters<span class="op">=</span>[<span class="st">'stateProvince=Queensland'</span>],</span>
@@ -508,7 +508,7 @@ Querying 2 species:
 <blockquote class="blockquote">
 <p><strong>Note for Google Colab users:</strong> ALA’s download service occasionally blocks requests from cloud provider IP addresses, returning a <code>JSONDecodeError</code> or <code>403 Forbidden</code>. If you encounter this, try re-running the cell. If it persists, run this cell locally, save the result with <code>media_df.to_csv("media_df.csv")</code>, then upload that file to Colab and load it with <code>media_df = pd.read_csv("media_df.csv")</code>.</p>
 </blockquote>
-<div id="cell-fetch-image-metadata" class="cell" data-execution_count="5">
+<div id="cell-fetch-image-metadata" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>media_df <span class="op">=</span> galah.atlas_media(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    taxa<span class="op">=</span>taxa,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    filters<span class="op">=</span>[<span class="st">"stateProvince=Queensland"</span>, <span class="st">"year=2023"</span>, <span class="st">"month=1"</span>],  <span class="co"># narrow filters = faster</span></span>
@@ -659,7 +659,7 @@ Querying 2 species:
 <section id="inspect-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="inspect-the-data">2.4 Inspect the data</h3>
 <p>Before filtering, take a look at what data resources and species came back. ALA aggregates records from many different providers, and the quality and type of images varies considerably between them. Knowing which datasets are present lets you make an informed decision about which ones to keep.</p>
-<div id="inspect-data" class="cell" data-execution_count="6">
+<div id="inspect-data" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columns:"</span>, media_df.columns.tolist())</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Unique data resources:"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dr <span class="kw">in</span> media_df[<span class="st">'dataResourceName'</span>].unique():</span>
@@ -684,7 +684,7 @@ Unique scientific names:
 <h3 class="anchored" data-anchor-id="filter-to-camera-trap-datasets">2.5 Filter to camera-trap datasets</h3>
 <p>Not all ALA image records are equally suitable for SpeciesNet. The model was trained on camera-trap images and performs best on that type of photograph. Field photos, museum specimens, or heavily cropped images can produce unreliable predictions. Here we restrict the data to records from the <a href="https://collections.ala.org.au/public/show/dr33008">Wildlife Observatories of Australia (WildObs)</a> dataset, which contains high-quality, labelled camera-trap images, and keep only our two target species.</p>
 <p>Update <code>values_to_keep</code> with the dataset names you saw in the previous cell, and adjust <code>target_species</code> to match your taxa of interest.</p>
-<div id="cell-filter-camera-trap-datasets" class="cell" data-execution_count="7">
+<div id="cell-filter-camera-trap-datasets" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_to_keep <span class="op">=</span> [</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Camera trap surveys in Queensland's Wet Tropics 2022-2023"</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Monitoring many landscapes in VIC-NSW border to assess impacts of 2019-20 gigafires on wildlife diel activity"</span>,</span>
@@ -840,7 +840,7 @@ Unique scientific names:
 <section id="select-a-sample" class="level3">
 <h3 class="anchored" data-anchor-id="select-a-sample">2.6 Select a sample</h3>
 <p>Running SpeciesNet on hundreds of images can take a long time, especially without a GPU. For now, we randomly select a small subset to keep things manageable. Once you are comfortable with the workflow, you can increase <code>N_IMAGES</code> or remove the sampling step entirely to process the full filtered dataset. Setting <code>random_state=42</code> ensures the same images are chosen every time you run the cell, which is useful for reproducibility.</p>
-<div id="cell-select-sample" class="cell" data-execution_count="8">
+<div id="cell-select-sample" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>N_IMAGES <span class="op">=</span> <span class="dv">6</span>  <span class="co"># number of images to download</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> filtered_df.sample(<span class="bu">min</span>(N_IMAGES, <span class="bu">len</span>(filtered_df)), random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -909,7 +909,7 @@ Unique scientific names:
 <section id="download-images" class="level3">
 <h3 class="anchored" data-anchor-id="download-images">2.7 Download images</h3>
 <p>Now we download the actual image files from their ALA-hosted URLs and save them to the <code>EC_images</code> folder. The folder is cleared at the start of each run so that images from a previous run do not accumulate. Each file is named after its DataFrame row index (e.g.&nbsp;<code>144.jpg</code>), making it straightforward to trace a prediction back to the original metadata record.</p>
-<div id="download-images" class="cell" data-execution_count="9">
+<div id="download-images" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>image_folder <span class="op">=</span> Path(<span class="st">"EC_images"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>empty_directory(image_folder)   <span class="co"># clears the folder (or creates it if new)</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -940,7 +940,7 @@ Done. 6 images saved to 'EC_images'.</code></pre>
 <section id="preview-the-images" class="level3">
 <h3 class="anchored" data-anchor-id="preview-the-images">2.8 Preview the images</h3>
 <p>Before running the model, display the downloaded images as a grid to confirm they look as expected. This is a good moment to spot any blank frames, setup photos, or corrupted files that might produce unreliable predictions and should be excluded before analysis.</p>
-<div id="cell-preview-images" class="cell" data-execution_count="10">
+<div id="cell-preview-images" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>image_paths <span class="op">=</span> <span class="bu">sorted</span>(image_folder.glob(<span class="st">"*.jpg"</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(image_paths)<span class="sc">}</span><span class="ss"> images."</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -984,7 +984,7 @@ Done. 6 images saved to 'EC_images'.</code></pre>
 <section id="load-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="load-libraries">3.2 Load libraries</h3>
 <p>Import the SpeciesNet library and define a small helper function that prints predictions in a readable format. We also print the available models — <code>DEFAULT_MODEL</code> is the recommended choice for most use cases.</p>
-<div id="load-libraries" class="cell" data-execution_count="11">
+<div id="load-libraries" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1018,7 +1018,7 @@ Supported models: ['kaggle:google/speciesnet/pyTorch/v4.0.3a/1', 'kaggle:google/
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SpeciesNet(DEFAULT_MODEL, cache_dir<span class="op">=</span><span class="st">"/content/drive/MyDrive/speciesnet_cache"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </blockquote>
-<div id="load-model" class="cell" data-execution_count="12">
+<div id="load-model" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SpeciesNet(DEFAULT_MODEL)          <span class="co"># geofencing ON  (default)</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = SpeciesNet(DEFAULT_MODEL, geofence=False)  # uncomment to disable geofencing</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model loaded."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1030,7 +1030,7 @@ Supported models: ['kaggle:google/speciesnet/pyTorch/v4.0.3a/1', 'kaggle:google/
 <section id="run-predictions" class="level3">
 <h3 class="anchored" data-anchor-id="run-predictions">3.4 Run predictions</h3>
 <p>Pass the image folder to <code>model.predict()</code>. SpeciesNet will find every <code>.jpg</code>, <code>.jpeg</code>, and <code>.png</code> file in the folder, run the detector and classifier on each one, and return a dictionary of results — one entry per image.</p>
-<div id="run-predictions" class="cell" data-execution_count="13">
+<div id="run-predictions" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(folders<span class="op">=</span>[image_folder])</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>print_predictions(predictions_dict)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># display(JSON(predictions_dict))  # uncomment for the full verbose output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1059,7 +1059,7 @@ UUID; Class; Order; Family; Genus; Species; Common name</code></pre>
 <section id="run-on-specific-files" class="level3">
 <h3 class="anchored" data-anchor-id="run-on-specific-files">3.5 Run on specific files</h3>
 <p>Instead of a whole folder, you can pass a list of specific file paths. This is useful when you want to quickly test the model on a single image or a hand-picked selection without re-processing the entire folder.</p>
-<div id="run-on-specific-files" class="cell" data-execution_count="14">
+<div id="run-on-specific-files" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>image_paths <span class="op">=</span> <span class="bu">sorted</span>(</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    p <span class="cf">for</span> p <span class="kw">in</span> image_folder.iterdir()</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p.suffix.lower() <span class="kw">in</span> [<span class="st">".jpg"</span>, <span class="st">".jpeg"</span>, <span class="st">".png"</span>]</span>
@@ -1078,7 +1078,7 @@ UUID; Class; Order; Family; Genus; Species; Common name</code></pre>
 <h3 class="anchored" data-anchor-id="visualise-results">3.6 Visualise results</h3>
 <p>The cell below displays each image with its predictions overlaid. Where the detector found an animal, a red bounding box is drawn around it. The detector’s confidence score appears in the top-left corner of the box (e.g.&nbsp;<code>animal: 0.94</code>), and the classifier’s species label with its confidence score is shown in the bottom-right corner (e.g.&nbsp;<code>wild boar: 0.93</code>).</p>
 <p>Where the detector found nothing — which can happen with blurry, fast-moving, or partially visible animals — the classifier’s prediction is shown as a banner at the bottom of the image. The classifier still runs on the full image in these cases, so a species label is always produced.</p>
-<div id="visualise-results" class="cell" data-execution_count="15">
+<div id="visualise-results" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> ImageDraw, ImageFont</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run SpeciesNet on all images in the folder</span></span>
@@ -1208,7 +1208,7 @@ Prediction: d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;su
 <section id="run-the-classifier-only" class="level3">
 <h3 class="anchored" data-anchor-id="run-the-classifier-only">3.8 Run the classifier only</h3>
 <p>SpeciesNet’s detector and classifier can be called independently. <code>model.classify()</code> runs only the classifier on the full image, skipping detection entirely. This is faster and still produces a species label, but gives no information about where the animal is located in the frame. It is useful for large-scale screening where location is not needed.</p>
-<div id="classifier-only" class="cell" data-execution_count="16">
+<div id="classifier-only" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classifier only — no bounding boxes, just species labels for the full image</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.classify(filepaths<span class="op">=</span>[image_paths[<span class="dv">0</span>], image_paths[<span class="dv">1</span>]])</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1232,7 +1232,7 @@ Prediction: d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;su
 <section id="run-the-detector-only" class="level3">
 <h3 class="anchored" data-anchor-id="run-the-detector-only">3.9 Run the detector only</h3>
 <p><code>model.detect()</code> runs only the detector. It returns bounding boxes and confidence scores for any animals found, but does not identify the species — each detection is simply labelled <code>"animal"</code>. This is useful for quickly checking occupancy (is an animal present?) or filtering blank frames, without the computational overhead of species classification.</p>
-<div id="detector-only" class="cell" data-execution_count="17">
+<div id="detector-only" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detector only — returns bounding boxes with confidence scores, no species labels</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.detect(filepaths<span class="op">=</span>[image_paths[<span class="dv">0</span>], image_paths[<span class="dv">1</span>]])</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1310,7 +1310,7 @@ Prediction: d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;su
 </tbody>
 </table>
 <p>Supplying a country code is strongly recommended when working with a known study region — it meaningfully reduces false positives for species that could not plausibly occur there.</p>
-<div id="run-with-geofencing" class="cell" data-execution_count="18">
+<div id="run-with-geofencing" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    instances_dict<span class="op">=</span>{</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"instances"</span>: [</span>
