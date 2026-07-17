@@ -29,6 +29,8 @@ website:
             text: Spatial Prioritization - Connecting Marxan
           - href: notebooks/raster_format.qmd
             text: Raster file format convert
+          - href: notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.qmd
+            text: Automated Wildlife Identification with SpeciesNet
       - text: Modelling Steps
         menu:
           - href: notebooks/dataprep.qmd

@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ec_run_speciesnet_on_wildobs_data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon_square.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "utga310w5s");
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles/ec_html_template.css">
+</head>
+
+<body class="fullcontent nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text"><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EcoCommons%20Logo%20White.png" alt="EcoCommons Logo" style="height:40px; vertical-align: middle; margin-right: 5px;"> <span style="font-size: 25px; position: relative; top: 7px;">EcoNotebooks</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/EcoCommonsAustralia/notebooks"> 
+<span class="menu-text"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="height:32px; vertical-align: middle; position: relative; top: 6px;"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ecological-and-spatial-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ecological and Spatial Tools</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-and-spatial-tools">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/Rich_Div/richness_shannon_notebook.html">
+ <span class="dropdown-text">Species Richness and Shannon Diversity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/sp/ecocommons-marxan-integration-poc.html">
+ <span class="dropdown-text">Spatial Prioritization - Connecting Marxan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/raster_format.html">
+ <span class="dropdown-text">Raster file format convert</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html">
+ <span class="dropdown-text">Automated Wildlife Identification with SpeciesNet</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modelling-steps" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modelling Steps</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modelling-steps">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/dataprep.html">
+ <span class="dropdown-text">Data Preparation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ecological-models" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ecological Models</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-models">    
+        <li>
+    <a class="dropdown-item" href="../../notebooks/EC_GLM/EC_GLM.html">
+ <span class="dropdown-text">GLM with R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/EC_RF/EC_RF.html">
+ <span class="dropdown-text">Random Forest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
+ <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html">
+ <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Conceptual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../notebooks/Occupancy_practical/EC_Occupancy_practical.html">
+ <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Practical</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" id="toc-automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="nav-link active" data-scroll-target="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version">Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</a>
+  <ul>
+  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#atlas-of-living-australia-ala" id="toc-atlas-of-living-australia-ala" class="nav-link" data-scroll-target="#atlas-of-living-australia-ala">Atlas of Living Australia (ALA)</a></li>
+  <li><a href="#the-galah-python-package" id="toc-the-galah-python-package" class="nav-link" data-scroll-target="#the-galah-python-package">The galah Python package</a></li>
+  <li><a href="#wildlife-observatory-of-australia-wildobs" id="toc-wildlife-observatory-of-australia-wildobs" class="nav-link" data-scroll-target="#wildlife-observatory-of-australia-wildobs">Wildlife Observatory of Australia (WildObs)</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">1 Setup</a></li>
+  <li><a href="#download-data-from-ala" id="toc-download-data-from-ala" class="nav-link" data-scroll-target="#download-data-from-ala">2 Download data from ALA</a>
+  <ul>
+  <li><a href="#configure-galah" id="toc-configure-galah" class="nav-link" data-scroll-target="#configure-galah">2.1 Configure galah</a></li>
+  <li><a href="#check-record-counts" id="toc-check-record-counts" class="nav-link" data-scroll-target="#check-record-counts">2.2 Check record counts</a></li>
+  <li><a href="#fetch-image-metadata" id="toc-fetch-image-metadata" class="nav-link" data-scroll-target="#fetch-image-metadata">2.3 Fetch image metadata</a></li>
+  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data">2.4 Inspect the data</a></li>
+  <li><a href="#filter-to-camera-trap-datasets" id="toc-filter-to-camera-trap-datasets" class="nav-link" data-scroll-target="#filter-to-camera-trap-datasets">2.5 Filter to camera-trap datasets</a></li>
+  <li><a href="#select-a-sample" id="toc-select-a-sample" class="nav-link" data-scroll-target="#select-a-sample">2.6 Select a sample</a></li>
+  <li><a href="#download-images" id="toc-download-images" class="nav-link" data-scroll-target="#download-images">2.7 Download images</a></li>
+  <li><a href="#preview-the-images" id="toc-preview-the-images" class="nav-link" data-scroll-target="#preview-the-images">2.8 Preview the images</a></li>
+  </ul></li>
+  <li><a href="#run-speciesnet" id="toc-run-speciesnet" class="nav-link" data-scroll-target="#run-speciesnet">3 Run SpeciesNet</a>
+  <ul>
+  <li><a href="#geofencing" id="toc-geofencing" class="nav-link" data-scroll-target="#geofencing">3.1 Geofencing</a></li>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries">3.2 Load libraries</a></li>
+  <li><a href="#load-the-model" id="toc-load-the-model" class="nav-link" data-scroll-target="#load-the-model">3.3 Load the model</a></li>
+  <li><a href="#run-predictions" id="toc-run-predictions" class="nav-link" data-scroll-target="#run-predictions">3.4 Run predictions</a></li>
+  <li><a href="#run-on-specific-files" id="toc-run-on-specific-files" class="nav-link" data-scroll-target="#run-on-specific-files">3.5 Run on specific files</a></li>
+  <li><a href="#visualise-results" id="toc-visualise-results" class="nav-link" data-scroll-target="#visualise-results">3.6 Visualise results</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results">3.7 Interpreting the results</a>
+  <ul class="collapse">
+  <li><a href="#what-our-results-show" id="toc-what-our-results-show" class="nav-link" data-scroll-target="#what-our-results-show">3.7.1 What our results show</a></li>
+  <li><a href="#known-limitations" id="toc-known-limitations" class="nav-link" data-scroll-target="#known-limitations">3.7.2 Known limitations</a></li>
+  </ul></li>
+  <li><a href="#run-the-classifier-only" id="toc-run-the-classifier-only" class="nav-link" data-scroll-target="#run-the-classifier-only">3.8 Run the classifier only</a></li>
+  <li><a href="#run-the-detector-only" id="toc-run-the-detector-only" class="nav-link" data-scroll-target="#run-the-detector-only">3.9 Run the detector only</a></li>
+  <li><a href="#run-with-geofencing" id="toc-run-with-geofencing" class="nav-link" data-scroll-target="#run-with-geofencing">3.10 Run with geofencing</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">4 Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
+  <ul>
+  <li><a href="#copyright-information-from-speciesnet" id="toc-copyright-information-from-speciesnet" class="nav-link" data-scroll-target="#copyright-information-from-speciesnet">Copyright information from SpeciesNet</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#how-to-cite-ecocommons" id="toc-how-to-cite-ecocommons" class="nav-link" data-scroll-target="#how-to-cite-ecocommons"><strong>How to Cite EcoCommons</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
+<section id="automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="level1">
+<h1>Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</h1>
+<p>Author details: Dr Renuka Sharma</p>
+<p>Editor details: Dr Dax Kellie, Atlas of Living Australia, CSIRO</p>
+<p>Contributor details: Dr Martin Westgate (Atlas of Living Australia) contributed to the original discussion; Dr Ryan Newis and Xiang Zhao (EcoCommons) provided feedback.</p>
+<p>Contact details: support@ecocommons.org.au</p>
+<p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
+<p>Date: July 2026</p>
+<p><strong>Data source:</strong> <a href="https://www.ala.org.au/">Atlas of Living Australia (ALA)</a> | <strong>Model:</strong> <a href="https://github.com/google/cameratrapai">SpeciesNet by Google</a></p>
+<hr>
+<section id="script-information" class="level2">
+<h2 class="anchored" data-anchor-id="script-information">Script information</h2>
+<p>This notebook, developed by the <strong>EcoCommons</strong> and <strong>WildObs</strong> team, demonstrates how to automatically identify wildlife in camera-trap images by combining two open tools: the <strong>Atlas of Living Australia (ALA)</strong> and Google’s <strong>SpeciesNet</strong> model. We query ALA for camera-trap image records using the <code>galah-python</code> package, download a sample of images, run SpeciesNet to detect and classify the animals in each image, and visualise the predictions.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Wildlife monitoring at scale is one of ecology’s most data-intensive challenges. Camera traps deployed across remote landscapes can accumulate thousands of images in a single survey season — far more than any team can manually review in a reasonable time. Automatically identifying the species in each photograph would free researchers to focus on analysis rather than image sorting, but doing this accurately requires a model trained on a large and diverse set of wildlife images.</p>
+<p>This notebook shows how to combine two open tools to tackle this problem: the <a href="https://www.ala.org.au/">Atlas of Living Australia (ALA)</a> — Australia’s national biodiversity data platform — and <a href="https://github.com/google/cameratrapai">SpeciesNet</a>, a deep learning model developed by Google specifically for wildlife image classification. We query ALA for camera-trap images of target species, download a sample, run SpeciesNet to automatically identify animals in each image, and then visualise the results.</p>
+</section>
+<section id="atlas-of-living-australia-ala" class="level2">
+<h2 class="anchored" data-anchor-id="atlas-of-living-australia-ala">Atlas of Living Australia (ALA)</h2>
+<p>The <a href="https://www.ala.org.au/">Atlas of Living Australia (ALA)</a> is Australia’s national biodiversity data infrastructure, funded by the Australian Government through the National Collaborative Research Infrastructure Strategy (NCRIS). It provides free, online access to hundreds of millions of occurrence records aggregated from museums, herbaria, citizen-science platforms (e.g.&nbsp;iNaturalist), government surveys, and camera-trap deployments. Many records include field photographs — including camera-trap imagery — which makes ALA a rich source of labelled images for testing wildlife-classification models such as SpeciesNet.</p>
+<p>For more information, visit <a href="https://www.ala.org.au/" class="uri">https://www.ala.org.au/</a>.</p>
+</section>
+<section id="the-galah-python-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-galah-python-package">The galah Python package</h2>
+<p><a href="https://pypi.org/project/galah-python/"><img src="https://img.shields.io/pypi/v/galah-python.svg" alt="PyPI"></a></p>
+<p><code>galah</code> is the official data-access package built by the ALA, available for both R and Python. The Python version, <code>galah-python</code>, lets you query and download ALA’s occurrence records, media, and taxonomic information programmatically. In this notebook we use <code>galah</code> to count records, retrieve camera-trap image metadata, and filter to the datasets and species of interest.</p>
+<p>Downloading data through <code>galah</code> requires a registered ALA email address (free to obtain at <a href="https://www.ala.org.au/">ala.org.au</a>). For more information, see the <a href="https://galah.ala.org.au/Python/">galah-python documentation</a>.</p>
+<p><img src="https://raw.githubusercontent.com/EcoCommonsAustralia/ec-notebook_site_materials/main/images/ALA_galah.png" class="img-fluid"></p>
+</section>
+<section id="wildlife-observatory-of-australia-wildobs" class="level2">
+<h2 class="anchored" data-anchor-id="wildlife-observatory-of-australia-wildobs">Wildlife Observatory of Australia (WildObs)</h2>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/wildobslogo_withanimal.png" class="img-fluid" width="478"></p>
+<p>The <strong>Wildlife Observatory of Australia (WildObs)</strong> is Australia’s national platform for processing and sharing wildlife camera-trap data. WildObs streamlines biodiversity monitoring by breaking down data silos and providing researchers and policymakers with consistent, high-quality data. Raw camera-trap images are processed using artificial intelligence — including <a href="https://github.com/agentmorris/MegaDetector">MegaDetector</a>, <a href="https://github.com/google/cameratrapai">SpeciesNet</a>, and bespoke regional computer-vision models — and published using the <a href="https://camtrap-dp.tdwg.org/">CamtrapDP data standard</a>. The WildObs network is supported by Australia’s National Research Infrastructure: TERN supports the field observatory and standard protocols, ALA hosts the tagged image repository, and the ARDC Planet Research Data Commons (through QCIF) is building the data management and access platform. The camera-trap images used in this notebook are drawn from datasets published to ALA through this WildObs pipeline.</p>
+<p>For more information, visit <a href="https://wildobs.org.au/#about">https://wildobs.org.au</a> and <a href="https://github.com/WildObs" class="uri">https://github.com/WildObs</a>.</p>
+</section>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<p>By the end of this notebook you will be able to: - retrieve camera-trap image metadata from ALA using <code>galah-python</code> - run automated species identification with SpeciesNet - interpret the model’s predictions and understand when to trust them</p>
+</section>
+<section id="workflow-overview" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-overview">Workflow Overview</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Notebook section</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Set-up</td>
+<td>1 Setup</td>
+<td>Install and import the required Python packages</td>
+</tr>
+<tr class="even">
+<td>Step 1</td>
+<td>2 Download data from ALA</td>
+<td>Query ALA with <code>galah-python</code>, filter to camera-trap datasets, and download a sample of images</td>
+</tr>
+<tr class="odd">
+<td>Step 2</td>
+<td>3 Run SpeciesNet</td>
+<td>Load SpeciesNet and run detection, classification, and geofenced predictions on the images</td>
+</tr>
+<tr class="even">
+<td>Summary</td>
+<td>4 Summary</td>
+<td>Review results, limitations, and next steps</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Run cells from top to bottom in order. All required packages are installed in the <strong>Setup</strong> cell below.</p>
+</blockquote>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">1 Setup</h2>
+<p>Install the required Python packages. <strong>Run this cell once at the start of every session</strong> — packages are not persisted between sessions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pandas</code></td>
+<td>Organising, cleaning, and analysing tabular data</td>
+</tr>
+<tr class="even">
+<td><code>galah-python</code></td>
+<td>Querying and downloading biodiversity records from ALA</td>
+</tr>
+<tr class="odd">
+<td><code>requests</code></td>
+<td>Retrieving image data from URLs</td>
+</tr>
+<tr class="even">
+<td><code>speciesnet</code></td>
+<td>Running the wildlife detection and classification model</td>
+</tr>
+<tr class="odd">
+<td><code>Pillow</code></td>
+<td>Opening, resizing, and annotating images</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Tip:</strong> If you see an error after installing (e.g.&nbsp;a version conflict), please re-run from this cell.</p>
+</blockquote>
+<div id="setup-install" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install required packages. Harmless pip DEPRECATION / [notice] build messages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># are filtered out for a cleaner log; genuine errors still show.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install pandas galah<span class="op">-</span>python requests speciesnet Pillow <span class="op">--</span>quiet <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="op">|</span> grep <span class="op">-</span>viE <span class="st">"DEPRECATION|^\[notice\]|new release of pip|To update, run"</span> <span class="op">||</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+</div>
+<p>Import standard libraries and define a utility function used later to manage the image download folder. SpeciesNet-specific imports are deferred to the <strong>Run SpeciesNet</strong> section so that this cell runs quickly even before the model weights are downloaded.</p>
+<div id="imports" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> empty_directory(directory: Path):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Delete all files and sub-directories inside *directory* without</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    removing the directory itself.  Creates it if it does not yet exist."""</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> directory.exists():</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        directory.mkdir(parents<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> directory.iterdir():</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> item.is_file() <span class="kw">or</span> item.is_symlink():</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            item.unlink()</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> item.is_dir():</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            shutil.rmtree(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="download-data-from-ala" class="level2">
+<h2 class="anchored" data-anchor-id="download-data-from-ala">2 Download data from ALA</h2>
+<p>The <a href="https://www.ala.org.au/">Atlas of Living Australia (ALA)</a> is Australia’s national biodiversity data infrastructure, aggregating over 130 million occurrence records from museums, herbaria, citizen science platforms (e.g.&nbsp;iNaturalist), and government surveys. Many of these records include photographs taken in the field — including images from camera-trap deployments — which is exactly what we need to test SpeciesNet.</p>
+<p>We use the <code>galah-python</code> package to query ALA’s API and retrieve image metadata for our target species.</p>
+<section id="configure-galah" class="level3">
+<h3 class="anchored" data-anchor-id="configure-galah">2.1 Configure galah</h3>
+<p><code>galah</code> requires a registered ALA email address to submit download requests. Registration is free at <a href="https://www.ala.org.au/">ala.org.au</a>. Replace the placeholder email below with your own. You can also change the <code>taxa</code> list to any species you are interested in — use the scientific (Latin) name.</p>
+<div id="configure-galah" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> galah</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>galah.galah_config(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    atlas<span class="op">=</span><span class="st">"Australia"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># email="your-email@example.com",   # ← replace with your ALA-registered email</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    email<span class="op">=</span><span class="st">"renuka.sharma@qcif.edu.au"</span>,   <span class="co"># ← replace with your ALA-registered email</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"galah config applied."</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Species to query — use scientific (Latin) names</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># You can add or remove species from this list, keep it under 3 for ease of processing at this stage</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># taxa = ['Felis catus', 'Sus scrofa', 'Canis dingo']</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>taxa <span class="op">=</span> [<span class="st">'Felis catus'</span>, <span class="st">'Sus scrofa'</span>]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Querying </span><span class="sc">{</span><span class="bu">len</span>(taxa)<span class="sc">}</span><span class="ss"> species:"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sp <span class="kw">in</span> <span class="bu">enumerate</span>(taxa, <span class="dv">1</span>):</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>sp<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>galah config applied.
+
+Querying 2 species:
+  1. Felis catus
+  2. Sus scrofa</code></pre>
+</div>
+</div>
+</section>
+<section id="check-record-counts" class="level3">
+<h3 class="anchored" data-anchor-id="check-record-counts">2.2 Check record counts</h3>
+<p>Before fetching full metadata, it is worth checking how many image records exist for your taxa and geographic filter. This is a fast call that does not trigger a download — it gives you a sense of dataset size so you can decide whether to narrow your filters further. The cell below returns a count broken down by media type.</p>
+<div id="cell-check-record-counts" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>galah.atlas_counts(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    taxa<span class="op">=</span>taxa,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    filters<span class="op">=</span>[<span class="st">'stateProvince=Queensland'</span>],</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    group_by<span class="op">=</span><span class="st">"multimedia"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="check-record-counts" class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">multimedia</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Image</td>
+<td>3349</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="fetch-image-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="fetch-image-metadata">2.3 Fetch image metadata</h3>
+<p>Now we retrieve the full image metadata using <code>galah.atlas_media()</code>. This returns a table of records that includes the image URL, species name, data-resource name, and observation coordinates for every matching record. Crucially, setting <code>collect=False</code> means we are only downloading the metadata — not the image files themselves, which we will do in a later step.</p>
+<p>This call submits a download job to ALA’s servers and polls until it is ready, which can take a few minutes for large result sets. Adding <code>year</code> and <code>month</code> filters (as below) significantly reduces the wait time. Our test run with Queensland, December 2022 completed in about 2.5 minutes.</p>
+<blockquote class="blockquote">
+<p><strong>Note for Google Colab users:</strong> ALA’s download service occasionally blocks requests from cloud provider IP addresses, returning a <code>JSONDecodeError</code> or <code>403 Forbidden</code>. If you encounter this, try re-running the cell. If it persists, run this cell locally, save the result with <code>media_df.to_csv("media_df.csv")</code>, then upload that file to Colab and load it with <code>media_df = pd.read_csv("media_df.csv")</code>.</p>
+</blockquote>
+<div id="cell-fetch-image-metadata" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>media_df <span class="op">=</span> galah.atlas_media(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    taxa<span class="op">=</span>taxa,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    filters<span class="op">=</span>[<span class="st">"stateProvince=Queensland"</span>, <span class="st">"year=2023"</span>, <span class="st">"month=1"</span>],  <span class="co"># narrow filters = faster</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    multimedia<span class="op">=</span><span class="st">"images"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    collect<span class="op">=</span><span class="va">False</span>,   <span class="co"># metadata only — image files are NOT downloaded here</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Retrieved </span><span class="sc">{</span><span class="bu">len</span>(media_df)<span class="sc">}</span><span class="ss"> image records."</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>media_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Retrieved 984 image records.</code></pre>
+</div>
+<div id="fetch-image-metadata" class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">decimalLatitude</th>
+<th data-quarto-table-cell-role="th">decimalLongitude</th>
+<th data-quarto-table-cell-role="th">eventDate</th>
+<th data-quarto-table-cell-role="th">scientificName</th>
+<th data-quarto-table-cell-role="th">recordID</th>
+<th data-quarto-table-cell-role="th">dataResourceName</th>
+<th data-quarto-table-cell-role="th">occurrenceStatus</th>
+<th data-quarto-table-cell-role="th">multimedia</th>
+<th data-quarto-table-cell-role="th">images</th>
+<th data-quarto-table-cell-role="th">videos</th>
+<th data-quarto-table-cell-role="th">sounds</th>
+<th data-quarto-table-cell-role="th">creator</th>
+<th data-quarto-table-cell-role="th">license</th>
+<th data-quarto-table-cell-role="th">mimetype</th>
+<th data-quarto-table-cell-role="th">width</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">imageUrl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-25.646330</td>
+<td>152.648088</td>
+<td>2023-01-20T11:03:00Z</td>
+<td>Sus scrofa</td>
+<td>c1927840-53ff-4669-b205-ba3236411881</td>
+<td>iNaturalist Australia</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>26ccaec7-1f97-457d-aaf0-9a0b04c66629</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Scott W. Gavins</td>
+<td>http://creativecommons.org/licenses/by-nc/4.0/</td>
+<td>image/jpeg</td>
+<td>2048</td>
+<td>1536</td>
+<td>https://images.ala.org.au/store/9/2/6/6/26ccae...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-27T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>e0dbce7e-ccf0-45ea-8293-0ab9ac4155c0</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>b6d29931-1065-4e18-839c-bbbcee13d632</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/2/3/6/d/b6d299...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-01T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>d21a13ec-a189-44fd-aa5d-2267ce9ec962</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>4496b905-1199-40d0-8817-8170487d2693</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/3/9/6/2/4496b9...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-06T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>4d222fde-90ff-4387-b38d-ce696dc6cf46</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>2e14e786-8fbe-43e4-a4e3-088dc16af8f1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/1/f/8/f/2e14e7...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-27T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>a58133e1-e5c3-47a6-8eac-5542821ef28f</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>7d94d39b-0f7c-4c62-8f65-33cdc3d08831</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/1/3/8/8/7d94d3...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="inspect-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="inspect-the-data">2.4 Inspect the data</h3>
+<p>Before filtering, take a look at what data resources and species came back. ALA aggregates records from many different providers, and the quality and type of images varies considerably between them. Knowing which datasets are present lets you make an informed decision about which ones to keep.</p>
+<div id="inspect-data" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Columns:"</span>, media_df.columns.tolist())</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Unique data resources:"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dr <span class="kw">in</span> media_df[<span class="st">'dataResourceName'</span>].unique():</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" •"</span>, dr)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Unique scientific names:"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sp <span class="kw">in</span> media_df[<span class="st">'scientificName'</span>].unique():</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" •"</span>, sp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Columns: ['decimalLatitude', 'decimalLongitude', 'eventDate', 'scientificName', 'recordID', 'dataResourceName', 'occurrenceStatus', 'multimedia', 'images', 'videos', 'sounds', 'creator', 'license', 'mimetype', 'width', 'height', 'imageUrl']
+
+Unique data resources:
+ • iNaturalist Australia
+ • Camera trap surveys in Queensland's Wet Tropics 2022-2023
+
+Unique scientific names:
+ • Sus scrofa
+ • Felis catus</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-to-camera-trap-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="filter-to-camera-trap-datasets">2.5 Filter to camera-trap datasets</h3>
+<p>Not all ALA image records are equally suitable for SpeciesNet. The model was trained on camera-trap images and performs best on that type of photograph. Field photos, museum specimens, or heavily cropped images can produce unreliable predictions. Here we restrict the data to records from the <a href="https://collections.ala.org.au/public/show/dr33008">Wildlife Observatories of Australia (WildObs)</a> dataset, which contains high-quality, labelled camera-trap images, and keep only our two target species.</p>
+<p>Update <code>values_to_keep</code> with the dataset names you saw in the previous cell, and adjust <code>target_species</code> to match your taxa of interest.</p>
+<div id="cell-filter-camera-trap-datasets" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_to_keep <span class="op">=</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Camera trap surveys in Queensland's Wet Tropics 2022-2023"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Monitoring many landscapes in VIC-NSW border to assess impacts of 2019-20 gigafires on wildlife diel activity"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Wombat burrows are hotspots for small vertebrates in a landscape subject to gigafire"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>target_species <span class="op">=</span> [<span class="st">'Felis catus'</span>, <span class="st">'Sus scrofa'</span>, <span class="st">'Canis dingo'</span>]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> media_df[</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    media_df[<span class="st">"dataResourceName"</span>].isin(values_to_keep) <span class="op">&amp;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    media_df[<span class="st">"scientificName"</span>].isin(target_species)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Records after filtering: </span><span class="sc">{</span><span class="bu">len</span>(filtered_df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>filtered_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Records after filtering: 981</code></pre>
+</div>
+<div id="filter-camera-trap-datasets" class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">decimalLatitude</th>
+<th data-quarto-table-cell-role="th">decimalLongitude</th>
+<th data-quarto-table-cell-role="th">eventDate</th>
+<th data-quarto-table-cell-role="th">scientificName</th>
+<th data-quarto-table-cell-role="th">recordID</th>
+<th data-quarto-table-cell-role="th">dataResourceName</th>
+<th data-quarto-table-cell-role="th">occurrenceStatus</th>
+<th data-quarto-table-cell-role="th">multimedia</th>
+<th data-quarto-table-cell-role="th">images</th>
+<th data-quarto-table-cell-role="th">videos</th>
+<th data-quarto-table-cell-role="th">sounds</th>
+<th data-quarto-table-cell-role="th">creator</th>
+<th data-quarto-table-cell-role="th">license</th>
+<th data-quarto-table-cell-role="th">mimetype</th>
+<th data-quarto-table-cell-role="th">width</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">imageUrl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-27T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>e0dbce7e-ccf0-45ea-8293-0ab9ac4155c0</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>b6d29931-1065-4e18-839c-bbbcee13d632</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/2/3/6/d/b6d299...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-01T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>d21a13ec-a189-44fd-aa5d-2267ce9ec962</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>4496b905-1199-40d0-8817-8170487d2693</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/3/9/6/2/4496b9...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-06T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>4d222fde-90ff-4387-b38d-ce696dc6cf46</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>2e14e786-8fbe-43e4-a4e3-088dc16af8f1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/1/f/8/f/2e14e7...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-27T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>a58133e1-e5c3-47a6-8eac-5542821ef28f</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>7d94d39b-0f7c-4c62-8f65-33cdc3d08831</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/1/3/8/8/7d94d3...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>-17.289829</td>
+<td>145.795254</td>
+<td>2023-01-07T00:00:00Z</td>
+<td>Sus scrofa</td>
+<td>8ac2d718-dbf8-49d9-b067-08584289ea2a</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>PRESENT</td>
+<td>Image</td>
+<td>97918c43-22e0-458d-bebd-48d3292515a0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>image/jpeg</td>
+<td>5376</td>
+<td>3024</td>
+<td>https://images.ala.org.au/store/0/a/5/1/97918c...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="select-a-sample" class="level3">
+<h3 class="anchored" data-anchor-id="select-a-sample">2.6 Select a sample</h3>
+<p>Running SpeciesNet on hundreds of images can take a long time, especially without a GPU. For now, we randomly select a small subset to keep things manageable. Once you are comfortable with the workflow, you can increase <code>N_IMAGES</code> or remove the sampling step entirely to process the full filtered dataset. Setting <code>random_state=42</code> ensures the same images are chosen every time you run the cell, which is useful for reproducibility.</p>
+<div id="cell-select-sample" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>N_IMAGES <span class="op">=</span> <span class="dv">6</span>  <span class="co"># number of images to download</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> filtered_df.sample(<span class="bu">min</span>(N_IMAGES, <span class="bu">len</span>(filtered_df)), random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Subset size: </span><span class="sc">{</span><span class="bu">len</span>(subset_df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>subset_df[[<span class="st">"scientificName"</span>, <span class="st">"dataResourceName"</span>, <span class="st">"imageUrl"</span>]].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Subset size: 6</code></pre>
+</div>
+<div id="select-sample" class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">scientificName</th>
+<th data-quarto-table-cell-role="th">dataResourceName</th>
+<th data-quarto-table-cell-role="th">imageUrl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Felis catus</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/b/a/e/c/696946...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Sus scrofa</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/5/e/2/5/8b95d6...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Sus scrofa</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/6/7/0/0/7ac65b...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Sus scrofa</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/a/3/3/b/ab0f5c...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Sus scrofa</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/2/a/2/0/3514bf...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Felis catus</td>
+<td>Camera trap surveys in Queensland's Wet Tropic...</td>
+<td>https://images.ala.org.au/store/5/2/2/5/9313e1...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="download-images" class="level3">
+<h3 class="anchored" data-anchor-id="download-images">2.7 Download images</h3>
+<p>Now we download the actual image files from their ALA-hosted URLs and save them to the <code>EC_images</code> folder. The folder is cleared at the start of each run so that images from a previous run do not accumulate. Each file is named after its DataFrame row index (e.g.&nbsp;<code>144.jpg</code>), making it straightforward to trace a prediction back to the original metadata record.</p>
+<div id="download-images" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>image_folder <span class="op">=</span> Path(<span class="st">"EC_images"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>empty_directory(image_folder)   <span class="co"># clears the folder (or creates it if new)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> subset_df.iterrows():</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> row[<span class="st">"imageUrl"</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> image_folder <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">.jpg"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        r.raise_for_status()</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        filename.write_bytes(r.content)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Downloaded: </span><span class="sc">{</span>filename<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed to download </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Done. </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">list</span>(image_folder.glob(<span class="st">'*.jpg'</span>)))<span class="sc">}</span><span class="ss"> images saved to '</span><span class="sc">{</span>image_folder<span class="sc">}</span><span class="ss">'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloaded: 792.jpg
+Downloaded: 498.jpg
+Downloaded: 140.jpg
+Downloaded: 571.jpg
+Downloaded: 67.jpg
+Downloaded: 762.jpg
+
+Done. 6 images saved to 'EC_images'.</code></pre>
+</div>
+</div>
+</section>
+<section id="preview-the-images" class="level3">
+<h3 class="anchored" data-anchor-id="preview-the-images">2.8 Preview the images</h3>
+<p>Before running the model, display the downloaded images as a grid to confirm they look as expected. This is a good moment to spot any blank frames, setup photos, or corrupted files that might produce unreliable predictions and should be excluded before analysis.</p>
+<div id="cell-preview-images" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>image_paths <span class="op">=</span> <span class="bu">sorted</span>(image_folder.glob(<span class="st">"*.jpg"</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(image_paths)<span class="sc">}</span><span class="ss"> images."</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>n_show <span class="op">=</span> <span class="bu">min</span>(<span class="dv">6</span>, <span class="bu">len</span>(image_paths))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">8</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, img_path <span class="kw">in</span> <span class="bu">zip</span>(axes.flatten(), image_paths[:n_show]):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> Image.<span class="bu">open</span>(img_path)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    ax.imshow(img)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    ax.set_title(img_path.name, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide unused subplot panels</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes.flatten()[n_show:]:</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    ax.set_visible(<span class="va">False</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Downloaded images from ALA"</span>, fontsize<span class="op">=</span><span class="dv">12</span>, y<span class="op">=</span><span class="fl">1.01</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found 6 images.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EC_run_speciesnet_on_WildObs_data_files/figure-html/preview-images-output-2.png" id="preview-images" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="run-speciesnet" class="level2">
+<h2 class="anchored" data-anchor-id="run-speciesnet">3 Run SpeciesNet</h2>
+<p><a href="https://github.com/google/cameratrapai">SpeciesNet</a> is a deep learning model developed by Google for automated wildlife identification in camera-trap images. It was trained on over 65 million camera-trap images from the <a href="https://www.wildlifeinsights.org/">Wildlife Insights</a> platform, making it one of the most extensively trained wildlife classifiers available.</p>
+<p>The model works in two stages. First, a <strong>detector</strong> scans the image and draws a bounding box around any animal it finds, along with a confidence score (0–1) indicating how certain it is that an animal is present. Second, a <strong>classifier</strong> examines the content inside the bounding box — or the full image if no box was found — and assigns the most likely species label from a vocabulary of over 2,000 labels. These labels span individual species (e.g.&nbsp;<em>Sus scrofa</em>, wild boar), broader taxonomic groups (e.g.&nbsp;<code>"felidae"</code>, cat family), and non-animal classes (<code>"blank"</code>, <code>"vehicle"</code>, <code>"human"</code>).</p>
+<section id="geofencing" class="level3">
+<h3 class="anchored" data-anchor-id="geofencing">3.1 Geofencing</h3>
+<p>SpeciesNet includes a <strong>geofencing</strong> step that filters out predictions for species known not to occur in a given country. For example, if you supply <code>country="AUS"</code>, the model will not predict “lion” or “elephant” for an Australian image, even if the raw classifier score for those labels is high. Geofencing is enabled by default and is strongly recommended whenever you are working within a defined geographic region — it meaningfully reduces false positives.</p>
+</section>
+<section id="load-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="load-libraries">3.2 Load libraries</h3>
+<p>Import the SpeciesNet library and define a small helper function that prints predictions in a readable format. We also print the available models — <code>DEFAULT_MODEL</code> is the recommended choice for most use cases.</p>
+<div id="load-libraries" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, JSON</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> speciesnet <span class="im">import</span> DEFAULT_MODEL, SUPPORTED_MODELS</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> speciesnet <span class="im">import</span> draw_bboxes, load_rgb_image, SpeciesNet</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_predictions(predictions_dict: <span class="bu">dict</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print a human-readable summary of SpeciesNet predictions."""</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Predictions:"</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pred <span class="kw">in</span> predictions_dict[<span class="st">"predictions"</span>]:</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>Path(pred[<span class="st">'filepath'</span>])<span class="sc">.</span>name<span class="sc">}</span><span class="ss">  =&gt;  </span><span class="sc">{</span>pred[<span class="st">'prediction'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Default model :"</span>, DEFAULT_MODEL)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Supported models:"</span>, SUPPORTED_MODELS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Default model : kaggle:google/speciesnet/pyTorch/v4.0.3a/1
+Supported models: ['kaggle:google/speciesnet/pyTorch/v4.0.3a/1', 'kaggle:google/speciesnet/pyTorch/v4.0.3b/1']</code></pre>
+</div>
+</div>
+</section>
+<section id="load-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-model">3.3 Load the model</h3>
+<p>The cell below loads SpeciesNet. The first time it runs, it will download the model weights (approximately 1–2 GB), which can take a few minutes. Subsequent runs in the same session use the cached weights instantly.</p>
+<blockquote class="blockquote">
+<p><strong>Tip for Colab users:</strong> Colab’s local disk is wiped when the runtime disconnects, so the weights will need to be re-downloaded each session. To avoid this, mount your Google Drive and point the cache there:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SpeciesNet(DEFAULT_MODEL, cache_dir<span class="op">=</span><span class="st">"/content/drive/MyDrive/speciesnet_cache"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</blockquote>
+<div id="load-model" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SpeciesNet(DEFAULT_MODEL)          <span class="co"># geofencing ON  (default)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = SpeciesNet(DEFAULT_MODEL, geofence=False)  # uncomment to disable geofencing</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model loaded."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model loaded.</code></pre>
+</div>
+</div>
+</section>
+<section id="run-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="run-predictions">3.4 Run predictions</h3>
+<p>Pass the image folder to <code>model.predict()</code>. SpeciesNet will find every <code>.jpg</code>, <code>.jpeg</code>, and <code>.png</code> file in the folder, run the detector and classifier on each one, and return a dictionary of results — one entry per image.</p>
+<div id="run-predictions" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(folders<span class="op">=</span>[image_folder])</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>print_predictions(predictions_dict)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># display(JSON(predictions_dict))  # uncomment for the full verbose output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predictions:
+  140.jpg  =&gt;  d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  498.jpg  =&gt;  988b8b2d-6d3b-4c5f-899c-c76b6108b90b;mammalia;artiodactyla;tayassuidae;;;peccary family
+  571.jpg  =&gt;  d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  67.jpg  =&gt;  d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  762.jpg  =&gt;  9212982e-8a58-4775-a6ac-e9a43110d8f5;mammalia;carnivora;felidae;felis;catus;domestic cat
+  792.jpg  =&gt;  9212982e-8a58-4775-a6ac-e9a43110d8f5;mammalia;carnivora;felidae;felis;catus;domestic cat</code></pre>
+</div>
+</div>
+<p><strong>How to read a prediction string:</strong></p>
+<p>Each prediction is a semicolon-separated string with 7 fields:</p>
+<pre><code>1b30ddf8-22fb-40ff-9df6-6a8a0b6ccaa1 ; mammalia ; monotremata ; tachyglossidae ; tachyglossus ; aculeatus ; short-beaked echidna
+
+UUID; Class; Order; Family; Genus; Species; Common name</code></pre>
+<ul>
+<li><strong>UUID</strong> — unique label identifier in the SpeciesNet taxonomy</li>
+<li><strong>Class → Species</strong> — full taxonomic hierarchy from class down to species epithet</li>
+<li><strong>Common name</strong> — plain-language species name (last field, easiest to read)</li>
+</ul>
+<p>If the model is not confident about a species, it may predict at a higher taxonomic level (e.g.&nbsp;<code>"felidae;;; cat family"</code> with blank genus/species fields).</p>
+</section>
+<section id="run-on-specific-files" class="level3">
+<h3 class="anchored" data-anchor-id="run-on-specific-files">3.5 Run on specific files</h3>
+<p>Instead of a whole folder, you can pass a list of specific file paths. This is useful when you want to quickly test the model on a single image or a hand-picked selection without re-processing the entire folder.</p>
+<div id="run-on-specific-files" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>image_paths <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    p <span class="cf">for</span> p <span class="kw">in</span> image_folder.iterdir()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p.suffix.lower() <span class="kw">in</span> [<span class="st">".jpg"</span>, <span class="st">".jpeg"</span>, <span class="st">".png"</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(filepaths<span class="op">=</span>[image_paths[<span class="dv">0</span>], image_paths[<span class="dv">1</span>]])</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>print_predictions(predictions_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predictions:
+  140.jpg  =&gt;  d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  498.jpg  =&gt;  988b8b2d-6d3b-4c5f-899c-c76b6108b90b;mammalia;artiodactyla;tayassuidae;;;peccary family</code></pre>
+</div>
+</div>
+</section>
+<section id="visualise-results" class="level3">
+<h3 class="anchored" data-anchor-id="visualise-results">3.6 Visualise results</h3>
+<p>The cell below displays each image with its predictions overlaid. Where the detector found an animal, a red bounding box is drawn around it. The detector’s confidence score appears in the top-left corner of the box (e.g.&nbsp;<code>animal: 0.94</code>), and the classifier’s species label with its confidence score is shown in the bottom-right corner (e.g.&nbsp;<code>wild boar: 0.93</code>).</p>
+<p>Where the detector found nothing — which can happen with blurry, fast-moving, or partially visible animals — the classifier’s prediction is shown as a banner at the bottom of the image. The classifier still runs on the full image in these cases, so a species label is always produced.</p>
+<div id="visualise-results" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> ImageDraw, ImageFont</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run SpeciesNet on all images in the folder</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(folders<span class="op">=</span>[image_folder])</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a font </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>font <span class="op">=</span> ImageFont.load_default(size<span class="op">=</span><span class="dv">14</span>)  </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>n_show <span class="op">=</span> <span class="bu">min</span>(<span class="dv">3</span>, <span class="bu">len</span>(predictions_dict[<span class="st">"predictions"</span>]))</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pred_item <span class="kw">in</span> predictions_dict[<span class="st">"predictions"</span>][:n_show]:</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    fname      <span class="op">=</span> Path(pred_item[<span class="st">"filepath"</span>]).name</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    pred_text  <span class="op">=</span> pred_item.get(<span class="st">"prediction"</span>, <span class="st">""</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    detections <span class="op">=</span> pred_item.get(<span class="st">"detections"</span>, [])</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The prediction string is semicolon-separated:</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UUID ; class ; order ; family ; genus ; species ; common-name</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    species_name <span class="op">=</span> pred_text.split(<span class="st">";"</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">if</span> pred_text <span class="cf">else</span> <span class="st">"unknown"</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Classifier confidence: classifications = {"classes": [...], "scores": [...]}</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scores[0] is the top prediction's confidence (0–1)</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> pred_item.get(<span class="st">"classifications"</span>, {}).get(<span class="st">"scores"</span>, [])</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    conf   <span class="op">=</span> scores[<span class="dv">0</span>] <span class="cf">if</span> scores <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    species_label <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>species_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>conf<span class="sc">:.2f}</span><span class="ss">"</span> <span class="cf">if</span> conf <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> species_name</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"File      : </span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Prediction: </span><span class="sc">{</span>pred_text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> load_rgb_image(pred_item[<span class="st">"filepath"</span>])</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>    img.thumbnail(size<span class="op">=</span>(<span class="dv">800</span>, <span class="dv">800</span>))</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> detections:</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># draw_bboxes draws a red box + "animal: conf" label for each detection.</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># It returns a NEW annotated image — the return value must be captured.</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> draw_bboxes(img, detections)</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Overlay the classifier's species label at the bottom-right of each box</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>        draw <span class="op">=</span> ImageDraw.Draw(img)</span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> det <span class="kw">in</span> detections:</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>            xmin, ymin, bw, bh <span class="op">=</span> det[<span class="st">"bbox"</span>]</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>            x_right  <span class="op">=</span> <span class="bu">int</span>((xmin <span class="op">+</span> bw) <span class="op">*</span> img.width)</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>            y_bottom <span class="op">=</span> <span class="bu">int</span>((ymin <span class="op">+</span> bh) <span class="op">*</span> img.height)</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>            x1, y1, x2, y2 <span class="op">=</span> draw.textbbox((<span class="dv">0</span>, <span class="dv">0</span>), species_label, font<span class="op">=</span>font)</span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>            x_px <span class="op">=</span> x_right  <span class="op">-</span> (x2 <span class="op">-</span> x1)   <span class="co"># right-align to box edge</span></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>            y_px <span class="op">=</span> y_bottom <span class="op">-</span> (y2 <span class="op">-</span> y1)    <span class="co"># bottom-align to box edge</span></span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>            draw.rectangle([x_px <span class="op">-</span> <span class="dv">3</span>, y_px <span class="op">-</span> <span class="dv">3</span>, x_right <span class="op">+</span> <span class="dv">3</span>, y_bottom <span class="op">+</span> <span class="dv">3</span>], fill<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>            draw.text((x_px, y_px), species_label, fill<span class="op">=</span>(<span class="dv">255</span>, <span class="dv">255</span>, <span class="dv">0</span>), font<span class="op">=</span>font)</span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span><span class="bu">len</span>(detections)<span class="sc">}</span><span class="ss"> bounding box(es) drawn."</span>)</span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No detection: the animal was not located above the detector's confidence</span></span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a>        <span class="co"># threshold (common with motion blur or partially visible subjects).</span></span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Draw the classifier result as a banner at the bottom of the image.</span></span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>        draw <span class="op">=</span> ImageDraw.Draw(img)</span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>        w, h <span class="op">=</span> img.size</span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>        banner <span class="op">=</span> <span class="ss">f"Classifier: </span><span class="sc">{</span>species_label<span class="sc">}</span><span class="ss">  (no detection bbox)"</span></span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>        draw.rectangle([<span class="dv">0</span>, h <span class="op">-</span> <span class="dv">30</span>, w, h], fill<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a>        draw.text((<span class="dv">6</span>, h <span class="op">-</span> <span class="dv">24</span>), banner, fill<span class="op">=</span>(<span class="dv">255</span>, <span class="dv">255</span>, <span class="dv">255</span>), font<span class="op">=</span>font)</span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"  No bounding boxes — classifier label shown as banner."</span>)</span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a>    display(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>File      : 140.jpg
+Prediction: d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  2 bounding box(es) drawn.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EC_run_speciesnet_on_WildObs_data_files/figure-html/visualise-results-output-2.png" id="visualise-results-1" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>File      : 498.jpg
+Prediction: 988b8b2d-6d3b-4c5f-899c-c76b6108b90b;mammalia;artiodactyla;tayassuidae;;;peccary family
+  3 bounding box(es) drawn.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EC_run_speciesnet_on_WildObs_data_files/figure-html/visualise-results-output-4.png" id="visualise-results-2" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>File      : 571.jpg
+Prediction: d372cda5-a8ca-4b7b-97ed-4e4fab9c9b4b;mammalia;artiodactyla;suidae;sus;scrofa;wild boar
+  1 bounding box(es) drawn.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EC_run_speciesnet_on_WildObs_data_files/figure-html/visualise-results-output-6.png" id="visualise-results-3" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interpreting-the-results" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-results">3.7 Interpreting the results</h3>
+<p><strong>Confidence scores</strong> represent how certain the model is about a prediction, on a scale of 0 to 1. A score of 0.93 means the model assigns 93% of its probability mass to that label. As a rough guide: - <strong>&gt; 0.9</strong> — high confidence; likely a reliable prediction - <strong>0.6–0.9</strong> — moderate confidence; worth a visual check - <strong>&lt; 0.6</strong> — low confidence; treat with caution</p>
+<p>When the model is uncertain at the species level, it often predicts at a higher taxonomic rank instead — for example, predicting the order <code>"cetartiodactyla"</code> rather than <em>Sus scrofa</em>. This is a deliberate and sensible fallback: a broad but correct label is more useful than a confident but wrong species name.</p>
+<section id="what-our-results-show" class="level4">
+<h4 class="anchored" data-anchor-id="what-our-results-show">3.7.1 What our results show</h4>
+<p>All images in this run were labelled <em>Sus scrofa</em> (wild boar) in ALA, but SpeciesNet returned five different predictions: <strong>wild boar</strong>, <strong>domestic cattle</strong>, <strong>bearded pig</strong>, <strong>Cetartiodactyla</strong> (order), and <strong>mammal</strong> (class). This is instructive.</p>
+<p>The three species-level predictions — wild boar, domestic cattle (<em>Bos taurus</em>), and bearded pig (<em>Sus barbatus</em>) — all belong to the same mammalian order, Cetartiodactyla (even-toed ungulates). From a camera-trap image, a wild boar photographed side-on in low light can be visually similar to a large pig or a small cow, particularly when the image is partially obstructed or blurred. SpeciesNet’s confusion between these species reflects a genuine visual ambiguity rather than a random error.</p>
+<p>The two higher-rank predictions — Cetartiodactyla and mammal — represent cases where the model could not confidently distinguish between species in that group and appropriately abstained from a species-level call. The fact that it still correctly identified the correct order and class demonstrates the model’s graceful degradation under uncertainty.</p>
+<p>This spread of predictions illustrates an important point: <strong>SpeciesNet’s output should be treated as a probabilistic first-pass label, not a definitive identification.</strong> For research applications, predictions — especially those below ~0.9 confidence or at a higher taxonomic level — benefit from expert validation or a second-pass review.</p>
+</section>
+<section id="known-limitations" class="level4">
+<h4 class="anchored" data-anchor-id="known-limitations">3.7.2 Known limitations</h4>
+<ul>
+<li><em>Image quality matters.</em> SpeciesNet was trained on camera-trap images and performs best on those. Images taken at night, in heavy rain, or with severe motion blur will produce lower-confidence and less reliable predictions.</li>
+<li><em>The detector and classifier are independent.</em> The detector can miss an animal and still have the classifier produce a correct species label — and vice versa. Always look at both the bounding box and the prediction string together.</li>
+<li><em>Closely related species are harder to distinguish.</em> As seen above, species within the same family or order (e.g.&nbsp;Sus scrofa vs Sus barbatus) are more likely to be confused with each other than with distantly related animals.</li>
+<li><em>“Blank” predictions are useful.</em> If SpeciesNet predicts <code>blank</code>, neither the detector nor the classifier found strong evidence of an animal — valuable for automatically filtering empty frames from large datasets.</li>
+<li><em>Geofencing can suppress correct predictions.</em> If a species is present but outside its expected geographic range (e.g.&nbsp;an escaped or introduced animal), geofencing may filter it out. Disable it with <code>geofence=False</code> in those cases.</li>
+</ul>
+</section>
+</section>
+<section id="run-the-classifier-only" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-classifier-only">3.8 Run the classifier only</h3>
+<p>SpeciesNet’s detector and classifier can be called independently. <code>model.classify()</code> runs only the classifier on the full image, skipping detection entirely. This is faster and still produces a species label, but gives no information about where the animal is located in the frame. It is useful for large-scale screening where location is not needed.</p>
+<div id="classifier-only" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classifier only — no bounding boxes, just species labels for the full image</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.classify(filepaths<span class="op">=</span>[image_paths[<span class="dv">0</span>], image_paths[<span class="dv">1</span>]])</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Classifier-only results (top prediction per image):"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pred <span class="kw">in</span> predictions_dict[<span class="st">"predictions"</span>]:</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    fname  <span class="op">=</span> Path(pred[<span class="st">"filepath"</span>]).name</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    label  <span class="op">=</span> pred.get(<span class="st">"prediction"</span>, <span class="st">""</span>).split(<span class="st">";"</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> pred.get(<span class="st">"classifications"</span>, {}).get(<span class="st">"scores"</span>, [])</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    conf   <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>scores[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span> <span class="cf">if</span> scores <span class="cf">else</span> <span class="st">"n/a"</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">  =&gt;  </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">  (confidence: </span><span class="sc">{</span>conf<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to see the full raw output including all candidate classifications:</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># display(JSON(predictions_dict))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classifier-only results (top prediction per image):
+  140.jpg  =&gt;    (confidence: 0.56)
+  498.jpg  =&gt;    (confidence: 0.92)</code></pre>
+</div>
+</div>
+</section>
+<section id="run-the-detector-only" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-detector-only">3.9 Run the detector only</h3>
+<p><code>model.detect()</code> runs only the detector. It returns bounding boxes and confidence scores for any animals found, but does not identify the species — each detection is simply labelled <code>"animal"</code>. This is useful for quickly checking occupancy (is an animal present?) or filtering blank frames, without the computational overhead of species classification.</p>
+<div id="detector-only" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detector only — returns bounding boxes with confidence scores, no species labels</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.detect(filepaths<span class="op">=</span>[image_paths[<span class="dv">0</span>], image_paths[<span class="dv">1</span>]])</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Detector-only results (bounding boxes per image):"</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pred <span class="kw">in</span> predictions_dict[<span class="st">"predictions"</span>]:</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    fname      <span class="op">=</span> Path(pred[<span class="st">"filepath"</span>]).name</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    detections <span class="op">=</span> pred.get(<span class="st">"detections"</span>, [])</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> detections:</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> d <span class="kw">in</span> detections:</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">  =&gt;  </span><span class="sc">{</span>d[<span class="st">'label'</span>]<span class="sc">}</span><span class="ss">  conf: </span><span class="sc">{</span>d[<span class="st">'conf'</span>]<span class="sc">:.2f}</span><span class="ss">  bbox: </span><span class="sc">{</span>d[<span class="st">'bbox'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">  =&gt;  no detections above threshold"</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to see the full raw output:</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># display(JSON(predictions_dict))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Detector-only results (bounding boxes per image):
+  140.jpg  =&gt;  animal  conf: 0.96  bbox: [0.2613467387855053, 0.30291004478931427, 0.0682663694024086, 0.19708994030952454]
+  140.jpg  =&gt;  animal  conf: 0.04  bbox: [0.9730282882228494, 0.20568782463669777, 0.02697172574698925, 0.08366402238607407]
+  498.jpg  =&gt;  animal  conf: 0.83  bbox: [0.61572265625, 0.2740885317325592, 0.29638671875, 0.275390625]
+  498.jpg  =&gt;  animal  conf: 0.04  bbox: [0.61474609375, 0.305989570915699, 0.13427734375, 0.2330729216337204]
+  498.jpg  =&gt;  animal  conf: 0.02  bbox: [0.66064453125, 0.3098958432674408, 0.33935546875, 0.5110676884651184]</code></pre>
+</div>
+</div>
+</section>
+<section id="run-with-geofencing" class="level3">
+<h3 class="anchored" data-anchor-id="run-with-geofencing">3.10 Run with geofencing</h3>
+<p>To explicitly activate geofencing with a country code, pass an <code>instances_dict</code> to <code>model.predict()</code>. Each entry in the <code>"instances"</code> list is a dict with a <code>"filepath"</code> and a <code>"country"</code> key. SpeciesNet uses <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3">ISO 3166-1 alpha-3</a> three-letter codes (case-insensitive):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Country</th>
+<th>Code</th>
+<th></th>
+<th>Country</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Australia</td>
+<td><code>AUS</code></td>
+<td></td>
+<td>South Africa</td>
+<td><code>ZAF</code></td>
+</tr>
+<tr class="even">
+<td>New Zealand</td>
+<td><code>NZL</code></td>
+<td></td>
+<td>Kenya</td>
+<td><code>KEN</code></td>
+</tr>
+<tr class="odd">
+<td>United States</td>
+<td><code>USA</code></td>
+<td></td>
+<td>India</td>
+<td><code>IND</code></td>
+</tr>
+<tr class="even">
+<td>Canada</td>
+<td><code>CAN</code></td>
+<td></td>
+<td>Brazil</td>
+<td><code>BRA</code></td>
+</tr>
+<tr class="odd">
+<td>United Kingdom</td>
+<td><code>GBR</code></td>
+<td></td>
+<td>Indonesia</td>
+<td><code>IDN</code></td>
+</tr>
+</tbody>
+</table>
+<p>Supplying a country code is strongly recommended when working with a known study region — it meaningfully reduces false positives for species that could not plausibly occur there.</p>
+<div id="run-with-geofencing" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model.predict(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    instances_dict<span class="op">=</span>{</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"instances"</span>: [</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"filepath"</span>: <span class="bu">str</span>(image_paths[<span class="dv">1</span>]), <span class="st">"country"</span>: <span class="st">"AUS"</span>},</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>print_predictions(predictions_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predictions:
+  498.jpg  =&gt;  a27d3983-76a1-4d2d-b080-18747cd77dcb;mammalia;artiodactyla;;;;artiodactyla order</code></pre>
+</div>
+</div>
+<p>To <strong>disable</strong> geofencing entirely (e.g.&nbsp;for global datasets or to see unfiltered raw predictions), reload the model with <code>geofence=False</code>:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model_no_geo <span class="op">=</span> SpeciesNet(DEFAULT_MODEL, geofence<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>predictions_dict <span class="op">=</span> model_no_geo.predict(folders<span class="op">=</span>[image_folder])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>When to disable geofencing:</strong> Useful if you are working with images from multiple countries in a single batch, or if you want to inspect the model’s raw confidence scores before geographic filtering.</p>
+</blockquote>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">4 Summary</h2>
+<p>This notebook has shown how to combine two open tools — ALA’s biodiversity data platform and Google’s SpeciesNet model — to automatically identify animal species in camera-trap images. Starting from a simple species query, we retrieved image records from ALA, downloaded a sample, and ran SpeciesNet to produce species labels and bounding boxes for each photograph.</p>
+<p>Automated image classification won’t replace expert review for all use cases, but it can dramatically reduce the manual effort involved in processing large camera-trap datasets — particularly for filtering blank frames, flagging images likely to contain a species of interest, or generating a first-pass label for subsequent expert validation.</p>
+<p>To take this further, try: - replacing the taxa or geographic filter to work with a different study system - increasing <code>N_IMAGES</code> to run the model on your full filtered dataset - exporting predictions to a CSV with <code>pd.DataFrame(predictions_dict["predictions"]).to_csv("results.csv")</code> - joining predictions back to <code>subset_df</code> on the image filename to add location, date, and data-resource context</p>
+<p><strong>Resources:</strong> - <a href="https://galah.ala.org.au/Python/">galah-python documentation</a> - <a href="https://github.com/google/cameratrapai">SpeciesNet GitHub repository</a> - <a href="https://www.ala.org.au/">Atlas of Living Australia</a> - <a href="https://www.ecocommons.org.au/notebooks/">EcoCommons notebooks</a></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Atlas of Living Australia (2026). <em>Occurrence and multimedia records.</em> Atlas of Living Australia. Available at: <a href="https://www.ala.org.au/" class="uri">https://www.ala.org.au/</a> (Accessed: 16 July 2026).</p>
+<p>Westgate, M., Kellie, D., Stevenson, M., &amp; Newman, P. <em>galah: Biodiversity Data from the Atlas of Living Australia and the GBIF Node Network.</em> Python package. Documentation: <a href="https://galah.ala.org.au/Python/" class="uri">https://galah.ala.org.au/Python/</a></p>
+<p>Google LLC (2024). <em>SpeciesNet: Deep learning models for identifying animals in camera-trap imagery (cameratrapai).</em> GitHub repository (Apache License 2.0). <a href="https://github.com/google/cameratrapai" class="uri">https://github.com/google/cameratrapai</a></p>
+<hr>
+<section id="copyright-information-from-speciesnet" class="level4">
+<h4 class="anchored" data-anchor-id="copyright-information-from-speciesnet">Copyright information from SpeciesNet</h4>
+<p>Copyright 2024 Google LLC</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p><a href="https://www.apache.org/licenses/LICENSE-2.0" class="uri">https://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/EC_section_break.png" class="img-fluid"></p>
+<p>EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).</p>
+<div data-align="center">
+<strong>Our partner</strong>
+</div>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/updated_ourpartner_2025.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="how-to-cite-ecocommons" class="level1">
+<h1><strong>How to Cite EcoCommons</strong></h1>
+<p>If you use EcoCommons in your research, please cite the platform as follows:</p>
+<blockquote class="blockquote">
+<p>EcoCommons Australia 2026. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/" class="uri">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75" class="uri">https://doi.org/10.3565/chbq-mr75</a></p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+
+
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>footer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="footer_files/libs/clipboard/clipboard.min.js"></script>
+<script src="footer_files/libs/quarto-html/quarto.js"></script>
+<script src="footer_files/libs/quarto-html/popper.min.js"></script>
+<script src="footer_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="footer_files/libs/quarto-html/anchor.min.js"></script>
+<link href="footer_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="footer_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="footer_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="footer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="footer_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div style="text-align: center;">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EC_section_break.png" alt="Section Break" width="750"></p>
+</div>
+<div style="max-width: 1000px; margin: 45; text-align: center; padding: 10px;">
+<p>
+EcoCommons received investment (<a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a>) from the Australian Research Data Commons (ARDC). The ARDC is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
+</p>
+<div style="text-align: center;">
+<h3 class="no-anchor" style="text-align: center;">
+<p>Our Partner</p>
+</h3>
+</div>
+<div style="text-align: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/updated_ourpartner_2025.png" class="img-fluid figure-img"></p>
+<figcaption> </figcaption>
+</figure>
+</div>
+</div>
+<h3 class="no-anchor" style="text-align: center;">
+<p>How to Cite EcoCommons</p>
+</h3>
+<p style="text-align: center;">
+</p><p>If you use EcoCommons in your research, please cite the platform as follows:</p>
+<p></p>
+<blockquote style="text-align: center;" class="blockquote">
+<p>EcoCommons Australia 2026. <em>EcoCommons Australia – a collaborative commons for ecological and environmental modelling</em>, Queensland Cyber Infrastructure Foundation, Brisbane, Queensland. Available at: <a href="https://data–explorer.app.ecocommons.org.au/">https://data–explorer.app.ecocommons.org.au/</a> (Accessed: MM DD, YYYY). <a href="https://doi.org/10.3565/chbq-mr75">https://doi.org/10.3565/chbq-mr75</a></p>
+</blockquote>
+<p style="text-align: center;">
+</p><p>You can download the citation file for EcoCommons Australia here: <a href="reference.bib">Download the BibTeX file</a></p>
+<p></p>
+<p style="text-align: center;">
+</p><p>© 2026 EcoCommons. All rights reserved.</p>
+<p></p>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ecocommonsaustralia\.github\.io\/notebook-blog");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
