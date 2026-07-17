@@ -135,12 +135,14 @@ We use the `galah-python` package to query ALA's API and retrieve image metadata
 
 ```{python}
 #| label: configure-galah
+import os
 import galah
 
+# Replace with your own ALA-registered email, or set the ALA_EMAIL environment
+# variable before running. Registration is free at https://www.ala.org.au/
 galah.galah_config(
     atlas="Australia",
-    # email="your-email@example.com",   # ← replace with your ALA-registered email
-    email="renuka.sharma@qcif.edu.au",   # ← replace with your ALA-registered email
+    email=os.environ.get("ALA_EMAIL", "your-email@example.com"),
 )
 print("galah config applied.")
 
