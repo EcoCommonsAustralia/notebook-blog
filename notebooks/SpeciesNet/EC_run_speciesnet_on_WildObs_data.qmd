@@ -63,12 +63,12 @@ By the end of this notebook you will be able to:
 
 ## Workflow Overview
 
-| Stage | Notebook section | What happens |
-|---|---|---|
-| Set-up | 1 Setup | Install and import the required Python packages |
-| Step 1 | 2 Download data from ALA | Query ALA with `galah-python`, filter to camera-trap datasets, and download a sample of images |
-| Step 2 | 3 Run SpeciesNet | Load SpeciesNet and run detection, classification, and geofenced predictions on the images |
-| Summary | 4 Summary | Review results, limitations, and next steps |
+| Notebook section | What happens |
+|---|---|
+| 1 Setup | Install and import the required Python packages |
+| 2 Download data from ALA | Query ALA with `galah-python`, filter to camera-trap datasets, and download a sample of images |
+| 3 Run SpeciesNet | Load SpeciesNet and run detection, classification, and geofenced predictions on the images |
+| 4 Summary | Review results, limitations, and next steps |
 
 > **Note:** Run cells from top to bottom in order. All required packages are installed in the **Setup** cell below.
 
@@ -173,7 +173,7 @@ galah.atlas_counts(
 
 Now we retrieve the full image metadata using `galah.atlas_media()`. This returns a table of records that includes the image URL, species name, data-resource name, and observation coordinates for every matching record. Crucially, setting `collect=False` means we are only downloading the metadata — not the image files themselves, which we will do in a later step.
 
-This call submits a download job to ALA's servers and polls until it is ready, which can take a few minutes for large result sets. Adding `year` and `month` filters (as below) significantly reduces the wait time. Our test run with Queensland, December 2022 completed in about 2.5 minutes.
+This call submits a download job to ALA's servers and polls until it is ready, which can take anywhere from under a minute to well over ten minutes depending on how many records match your filters. Adding `year` and `month` filters (as below) significantly reduces the wait time — as a reference point, filtering to a single Australian state, year, and month typically completes in two to three minutes.
 
 > **Note for Google Colab users:** ALA's download service occasionally blocks requests from cloud provider IP addresses, returning a `JSONDecodeError` or `403 Forbidden`. If you encounter this, try re-running the cell. If it persists, run this cell locally, save the result with `media_df.to_csv("media_df.csv")`, then upload that file to Colab and load it with `media_df = pd.read_csv("media_df.csv")`.
 
@@ -207,7 +207,7 @@ for sp in media_df['scientificName'].unique():
 
 ### 2.5 Filter to camera-trap datasets
 
-Not all ALA image records are equally suitable for SpeciesNet. The model was trained on camera-trap images and performs best on that type of photograph. Field photos, museum specimens, or heavily cropped images can produce unreliable predictions. Here we restrict the data to records from the [Wildlife Observatories of Australia (WildObs)](https://collections.ala.org.au/public/show/dr33008) dataset, which contains high-quality, labelled camera-trap images, and keep only our two target species.
+Not all ALA image records are equally suitable for SpeciesNet. The model was trained on camera-trap images and performs best on that type of photograph. Field photos, museum specimens, or heavily cropped images can produce unreliable predictions. Here we restrict the data to records from the [Wildlife Observatories of Australia (WildObs)](https://collections.ala.org.au/public/show/dr33008) dataset, which contains high-quality, labelled camera-trap images, and keep only the target species of interest.
 
 Update `values_to_keep` with the dataset names you saw in the previous cell, and adjust `target_species` to match your taxa of interest.
 
@@ -390,7 +390,7 @@ print_predictions(predictions_dict)
 
 ### 3.6 Visualise results
 
-The cell below displays each image with its predictions overlaid. Where the detector found an animal, a red bounding box is drawn around it. The detector's confidence score appears in the top-left corner of the box (e.g. `animal: 0.94`), and the classifier's species label with its confidence score is shown in the bottom-right corner (e.g. `wild boar: 0.93`).
+The cell below displays each image with its predictions overlaid. Where the detector found an animal, a red bounding box is drawn around it. The detector's confidence score appears in the top-left corner of the box (e.g. `animal: 0.88`), and the classifier's species label with its confidence score is shown in the bottom-right corner (e.g. `domestic cat: 0.93`). The exact labels and scores you see will depend on your images and taxa.
 
 Where the detector found nothing — which can happen with blurry, fast-moving, or partially visible animals — the classifier's prediction is shown as a banner at the bottom of the image. The classifier still runs on the full image in these cases, so a species label is always produced.
 
@@ -470,21 +470,21 @@ for pred_item in predictions_dict["predictions"][:n_show]:
 
 When the model is uncertain at the species level, it often predicts at a higher taxonomic rank instead — for example, predicting the order `"cetartiodactyla"` rather than *Sus scrofa*. This is a deliberate and sensible fallback: a broad but correct label is more useful than a confident but wrong species name.
 
-#### 3.7.1 What our results show
+#### 3.7.1 Understanding the range of predictions you may see
 
-All images in this run were labelled *Sus scrofa* (wild boar) in ALA, but SpeciesNet returned five different predictions: **wild boar**, **domestic cattle**, **bearded pig**, **Cetartiodactyla** (order), and **mammal** (class). This is instructive.
+Even when all images in a batch share the same ALA species label, SpeciesNet may return a spread of different predictions. For example, a set of *Sus scrofa* (wild boar) images might yield species-level labels such as **wild boar**, **domestic cattle**, or **bearded pig**, alongside higher-rank predictions like **Cetartiodactyla** (order) or **mammal** (class). Your results will vary depending on which species you query and the quality of the images retrieved.
 
-The three species-level predictions — wild boar, domestic cattle (*Bos taurus*), and bearded pig (*Sus barbatus*) — all belong to the same mammalian order, Cetartiodactyla (even-toed ungulates). From a camera-trap image, a wild boar photographed side-on in low light can be visually similar to a large pig or a small cow, particularly when the image is partially obstructed or blurred. SpeciesNet's confusion between these species reflects a genuine visual ambiguity rather than a random error.
+Species-level mismatches like these often reflect genuine visual ambiguity rather than random error. Animals within the same family or order — for instance, wild boar, bearded pig (*Sus barbatus*), and domestic cattle (*Bos taurus*) — all belong to Cetartiodactyla (even-toed ungulates) and can look strikingly similar in a camera-trap photograph, especially when the image is blurry, partially obstructed, or taken in low light at night.
 
-The two higher-rank predictions — Cetartiodactyla and mammal — represent cases where the model could not confidently distinguish between species in that group and appropriately abstained from a species-level call. The fact that it still correctly identified the correct order and class demonstrates the model's graceful degradation under uncertainty.
+Higher-rank predictions — such as an order or class label instead of a species name — indicate that the model could not confidently distinguish between species in that group and chose to abstain from a species-level call. This is a deliberate design choice: returning a broad but correct label (e.g. `"cetartiodactyla"`) is more useful than a confident but wrong species name.
 
-This spread of predictions illustrates an important point: **SpeciesNet's output should be treated as a probabilistic first-pass label, not a definitive identification.** For research applications, predictions — especially those below ~0.9 confidence or at a higher taxonomic level — benefit from expert validation or a second-pass review.
+Taken together, this range of outputs illustrates an important point: **SpeciesNet's predictions should be treated as a probabilistic first-pass label, not a definitive identification.** Predictions below ~0.9 confidence, or those returned at a higher taxonomic level than species, are best treated as candidates for expert validation or a second-pass review.
 
 #### 3.7.2 Known limitations
 
 - *Image quality matters.* SpeciesNet was trained on camera-trap images and performs best on those. Images taken at night, in heavy rain, or with severe motion blur will produce lower-confidence and less reliable predictions.
 - *The detector and classifier are independent.* The detector can miss an animal and still have the classifier produce a correct species label — and vice versa. Always look at both the bounding box and the prediction string together.
-- *Closely related species are harder to distinguish.* As seen above, species within the same family or order (e.g. Sus scrofa vs Sus barbatus) are more likely to be confused with each other than with distantly related animals.
+- *Closely related species are harder to distinguish.* Species within the same family or order (e.g. *Sus scrofa* vs *Sus barbatus*) are more likely to be confused with each other than with distantly related animals, because they share similar body shapes and colouring.
 - *"Blank" predictions are useful.* If SpeciesNet predicts `blank`, neither the detector nor the classifier found strong evidence of an animal — valuable for automatically filtering empty frames from large datasets.
 - *Geofencing can suppress correct predictions.* If a species is present but outside its expected geographic range (e.g. an escaped or introduced animal), geofencing may filter it out. Disable it with `geofence=False` in those cases.
 
