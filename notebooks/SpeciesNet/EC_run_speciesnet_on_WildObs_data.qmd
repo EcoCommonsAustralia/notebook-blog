@@ -8,8 +8,6 @@ jupyter: eco_env
 
 Author details: Dr Renuka Sharma, Dr Dax Kellie
 
-Editor details: TBD
-
 Contact details: support@ecocommons.org.au
 
 Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/
@@ -66,7 +64,7 @@ By the end of this notebook you will be able to:
 | Notebook section | What happens |
 |---|---|
 | 1 Setup | Install and import the required Python packages |
-| 2 Download data from ALA | Query ALA with `galah-python`, filter to camera-trap datasets, and download a sample of images |
+| 2 Download WildObs data from ALA | Query ALA with `galah-python`, filter to WildObs camera-trap datasets, and download a sample of images |
 | 3 Run SpeciesNet | Load SpeciesNet and run detection, classification, and geofenced predictions on the images |
 | 4 Summary | Review results, limitations, and next steps |
 
@@ -123,7 +121,7 @@ def empty_directory(directory: Path):
             shutil.rmtree(item)
 ```
 
-## 2 Download data from ALA
+## 2 Download WildObs data from ALA
 
 The [Atlas of Living Australia (ALA)](https://www.ala.org.au/) is Australia's national biodiversity data infrastructure, aggregating over 130 million occurrence records from museums, herbaria, citizen science platforms (e.g. iNaturalist), and government surveys. Many of these records include photographs taken in the field — including images from camera-trap deployments — which is exactly what we need to test SpeciesNet.
 

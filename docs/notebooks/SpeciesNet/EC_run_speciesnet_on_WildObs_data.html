@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">1 Setup</a></li>
-  <li><a href="#download-data-from-ala" id="toc-download-data-from-ala" class="nav-link" data-scroll-target="#download-data-from-ala">2 Download data from ALA</a>
+  <li><a href="#download-wildobs-data-from-ala" id="toc-download-wildobs-data-from-ala" class="nav-link" data-scroll-target="#download-wildobs-data-from-ala">2 Download WildObs data from ALA</a>
   <ul>
   <li><a href="#configure-galah" id="toc-configure-galah" class="nav-link" data-scroll-target="#configure-galah">2.1 Configure galah</a></li>
   <li><a href="#check-record-counts" id="toc-check-record-counts" class="nav-link" data-scroll-target="#check-record-counts">2.2 Check record counts</a></li>
@@ -273,7 +273,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="level1">
 <h1>Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</h1>
 <p>Author details: Dr Renuka Sharma, Dr Dax Kellie</p>
-<p>Editor details: TBD</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
 <p>Date: July 2026</p>
@@ -329,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Install and import the required Python packages</td>
 </tr>
 <tr class="even">
-<td>2 Download data from ALA</td>
-<td>Query ALA with <code>galah-python</code>, filter to camera-trap datasets, and download a sample of images</td>
+<td>2 Download WildObs data from ALA</td>
+<td>Query ALA with <code>galah-python</code>, filter to WildObs camera-trap datasets, and download a sample of images</td>
 </tr>
 <tr class="odd">
 <td>3 Run SpeciesNet</td>
@@ -419,8 +418,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            shutil.rmtree(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="download-data-from-ala" class="level2">
-<h2 class="anchored" data-anchor-id="download-data-from-ala">2 Download data from ALA</h2>
+<section id="download-wildobs-data-from-ala" class="level2">
+<h2 class="anchored" data-anchor-id="download-wildobs-data-from-ala">2 Download WildObs data from ALA</h2>
 <p>The <a href="https://www.ala.org.au/">Atlas of Living Australia (ALA)</a> is Australia’s national biodiversity data infrastructure, aggregating over 130 million occurrence records from museums, herbaria, citizen science platforms (e.g.&nbsp;iNaturalist), and government surveys. Many of these records include photographs taken in the field — including images from camera-trap deployments — which is exactly what we need to test SpeciesNet.</p>
 <p>We use the <code>galah-python</code> package to query ALA’s API and retrieve image metadata for our target species.</p>
 <section id="configure-galah" class="level3">
