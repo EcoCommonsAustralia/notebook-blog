@@ -6,7 +6,7 @@ jupyter: eco_env
 
 # Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)
 
-Author details: Dr Renuka Sharma, Dr Dax Kellie
+Author details: Dr Renuka Sharma
 
 Editor details: Xiang Zhao
 
