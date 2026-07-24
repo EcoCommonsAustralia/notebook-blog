@@ -599,6 +599,10 @@ Westgate, M., Kellie, D., Stevenson, M., & Newman, P. *galah: Biodiversity Data 
 
 Google LLC (2024). *SpeciesNet: Deep learning models for identifying animals in camera-trap imagery (cameratrapai).* GitHub repository (Apache License 2.0). <https://github.com/google/cameratrapai>
 
+## How to cite this Notebook
+
+Sharma, R., & Zhao, X. Y. (2026). *Automated wildlife identification from ALA camera-trap images using SpeciesNet* (Version 1.0) \[Computational notebook\]. Zenodo. <https://doi.org/10.5281/zenodo.21522834>
+
 ---
 #### Copyright information from SpeciesNet
 
