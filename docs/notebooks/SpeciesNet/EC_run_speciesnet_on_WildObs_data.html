@@ -200,6 +200,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="../../notebooks/sdm_agreement/EC_sdm_agreement.html"> 
+<span class="menu-text">SDM Agreement Unit Tests</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -219,9 +223,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" id="toc-automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="nav-link active" data-scroll-target="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version">Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</a>
+  <li><a href="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet" id="toc-automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet" class="nav-link active" data-scroll-target="#automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet">Automated wildlife identification from ALA camera-trap images using SpeciesNet</a>
   <ul>
   <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a></li>
+  <li><a href="#other-file-formats-of-this-notebook" id="toc-other-file-formats-of-this-notebook" class="nav-link" data-scroll-target="#other-file-formats-of-this-notebook">Other file formats of this notebook</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#atlas-of-living-australia-ala" id="toc-atlas-of-living-australia-ala" class="nav-link" data-scroll-target="#atlas-of-living-australia-ala">Atlas of Living Australia (ALA)</a></li>
   <li><a href="#the-galah-python-package" id="toc-the-galah-python-package" class="nav-link" data-scroll-target="#the-galah-python-package">The galah Python package</a></li>
@@ -273,8 +278,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
-<section id="automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet-draft-version" class="level1">
-<h1>Automated wildlife identification from ALA camera-trap images using SpeciesNet (Draft version)</h1>
+<section id="automated-wildlife-identification-from-ala-camera-trap-images-using-speciesnet" class="level1">
+<h1>Automated wildlife identification from ALA camera-trap images using SpeciesNet</h1>
 <p>Author details: Dr Renuka Sharma</p>
 <p>Editor details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
@@ -285,6 +290,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="script-information" class="level2">
 <h2 class="anchored" data-anchor-id="script-information">Script information</h2>
 <p>This notebook, developed by the <strong>EcoCommons</strong> and <strong>WildObs</strong> team, demonstrates how to automatically identify wildlife in camera-trap images by combining two open tools: the <strong>Atlas of Living Australia (ALA)</strong> and Google’s <strong>SpeciesNet</strong> model. We query ALA for camera-trap image records using the <code>galah-python</code> package, download a sample of images, run SpeciesNet to detect and classify the animals in each image, and visualise the predictions.</p>
+</section>
+<section id="other-file-formats-of-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="other-file-formats-of-this-notebook">Other file formats of this notebook</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notebook</th>
+<th style="text-align: center;">Files</th>
+<th style="text-align: center;">Open in Colab / ARDC Jupyter</th>
+<th style="text-align: center;">DOI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">SpeciesNet</td>
+<td style="text-align: center;"><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.ipynb"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/jupyter_notebook.png" width="120"></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.qmd"><img src="https://raw.githubusercontent.com/ecocommonsaustralia/notebooks/main/assets/quartomd.png" width="120"></a></td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Colab"></a></td>
+<td style="text-align: center;"><a href="https://doi.org/10.5281/zenodo.21522834"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21522834.svg" width="200"></a></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
