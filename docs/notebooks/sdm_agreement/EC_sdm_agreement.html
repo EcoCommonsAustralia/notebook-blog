@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Cross-validating EcoCommons SDM outputs against reference implementations — a dashboard of the scientific-agreement unit tests that guard every species distribution model algorithm on the EcoCommons platform.">
 
-<title>about</title>
+<title>ec_sdm_agreement</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon_square.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon_square.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
-<link rel="stylesheet" href="styles/ec_html_template.css">
+<link rel="stylesheet" href="../../styles/ec_html_template.css">
 </head>
 
 <body class="fullcontent nav-fixed">
@@ -92,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text"><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site_materials/main/images/EcoCommons%20Logo%20White.png" alt="EcoCommons Logo" style="height:40px; vertical-align: middle; margin-right: 5px;"> <span style="font-size: 25px; position: relative; top: 7px;">EcoNotebooks</span></span></a>
   </li>  
   <li class="nav-item">
@@ -107,19 +108,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-and-spatial-tools">    
         <li>
-    <a class="dropdown-item" href="./notebooks/Rich_Div/richness_shannon_notebook.html">
+    <a class="dropdown-item" href="../../notebooks/Rich_Div/richness_shannon_notebook.html">
  <span class="dropdown-text">Species Richness and Shannon Diversity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/sp/ecocommons-marxan-integration-poc.html">
+    <a class="dropdown-item" href="../../notebooks/sp/ecocommons-marxan-integration-poc.html">
  <span class="dropdown-text">Spatial Prioritization - Connecting Marxan</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/raster_format.html">
+    <a class="dropdown-item" href="../../notebooks/raster_format.html">
  <span class="dropdown-text">Raster file format convert</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html">
+    <a class="dropdown-item" href="../../notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html">
  <span class="dropdown-text">Automated Wildlife Identification with SpeciesNet</span></a>
   </li>  
     </ul>
@@ -130,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-modelling-steps">    
         <li>
-    <a class="dropdown-item" href="./notebooks/dataprep.html">
+    <a class="dropdown-item" href="../../notebooks/dataprep.html">
  <span class="dropdown-text">Data Preparation</span></a>
   </li>  
     </ul>
@@ -141,33 +142,33 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ecological-models">    
         <li>
-    <a class="dropdown-item" href="./notebooks/EC_GLM/EC_GLM.html">
+    <a class="dropdown-item" href="../../notebooks/EC_GLM/EC_GLM.html">
  <span class="dropdown-text">GLM with R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/EC_RF/EC_RF.html">
+    <a class="dropdown-item" href="../../notebooks/EC_RF/EC_RF.html">
  <span class="dropdown-text">Random Forest</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/EOO_AOO/eoo_aoo.html">
+    <a class="dropdown-item" href="../../notebooks/EOO_AOO/eoo_aoo.html">
  <span class="dropdown-text">Extent and Area of Ocurrence / Occupancy</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html">
+    <a class="dropdown-item" href="../../notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html">
  <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Conceptual</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/Occupancy_practical/EC_Occupancy_practical.html">
+    <a class="dropdown-item" href="../../notebooks/Occupancy_practical/EC_Occupancy_practical.html">
  <span class="dropdown-text">Single-Species Single-Season Occupancy Model - Practical</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./notebooks/sdm_agreement/EC_sdm_agreement.html"> 
+    <a class="nav-link active" href="../../notebooks/sdm_agreement/EC_sdm_agreement.html" aria-current="page"> 
 <span class="menu-text">SDM Agreement Unit Tests</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -186,18 +187,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#our-team" id="toc-our-team" class="nav-link active" data-scroll-target="#our-team">Our team</a>
+  <li><a href="#cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development" id="toc-cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development" class="nav-link active" data-scroll-target="#cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development">Cross-validating EcoCommons SDM outputs against reference implementations (on development)</a></li>
+  <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a>
   <ul>
-  <li><a href="#dr-jenna-wraith" id="toc-dr-jenna-wraith" class="nav-link" data-scroll-target="#dr-jenna-wraith">Dr Jenna Wraith</a></li>
-  <li><a href="#rob-cosgrove" id="toc-rob-cosgrove" class="nav-link" data-scroll-target="#rob-cosgrove">Rob Cosgrove</a></li>
-  <li><a href="#abhimanyu-raj-singh" id="toc-abhimanyu-raj-singh" class="nav-link" data-scroll-target="#abhimanyu-raj-singh">Abhimanyu Raj Singh</a></li>
-  <li><a href="#dr-ryan-newis" id="toc-dr-ryan-newis" class="nav-link" data-scroll-target="#dr-ryan-newis">Dr Ryan Newis</a></li>
-  <li><a href="#dr-renuka-sharma" id="toc-dr-renuka-sharma" class="nav-link" data-scroll-target="#dr-renuka-sharma">Dr Renuka Sharma</a></li>
-  <li><a href="#xiang-zhao" id="toc-xiang-zhao" class="nav-link" data-scroll-target="#xiang-zhao">Xiang Zhao</a></li>
-  <li><a href="#nauman-khattak" id="toc-nauman-khattak" class="nav-link" data-scroll-target="#nauman-khattak">Nauman Khattak</a></li>
-  <li><a href="#michael-mallon" id="toc-michael-mallon" class="nav-link" data-scroll-target="#michael-mallon">Michael Mallon</a></li>
-  <li><a href="#angelo-maynes" id="toc-angelo-maynes" class="nav-link" data-scroll-target="#angelo-maynes">Angelo Maynes</a></li>
-  <li><a href="#ooroosa-ali" id="toc-ooroosa-ali" class="nav-link" data-scroll-target="#ooroosa-ali">Ooroosa Ali</a></li>
+  <li><a href="#overview-all-10-tests" id="toc-overview-all-10-tests" class="nav-link" data-scroll-target="#overview-all-10-tests">Overview — all 10 tests</a></li>
+  <li><a href="#model-configurations-nsw14-suite" id="toc-model-configurations-nsw14-suite" class="nav-link" data-scroll-target="#model-configurations-nsw14-suite">Model configurations (nsw14 suite)</a>
+  <ul>
+  <li><a href="#benchmark-references" id="toc-benchmark-references" class="nav-link" data-scroll-target="#benchmark-references">Benchmark references</a></li>
+  </ul></li>
+  <li><a href="#prediction-maps" id="toc-prediction-maps" class="nav-link" data-scroll-target="#prediction-maps">Prediction maps</a>
+  <ul>
+  <li><a href="#existing-test-benchmark-predictions" id="toc-existing-test-benchmark-predictions" class="nav-link" data-scroll-target="#existing-test-benchmark-predictions">Existing-test benchmark predictions</a></li>
+  <li><a href="#nsw14-valavi-continuous-suitability-real-nsw-rasters" id="toc-nsw14-valavi-continuous-suitability-real-nsw-rasters" class="nav-link" data-scroll-target="#nsw14-valavi-continuous-suitability-real-nsw-rasters">nsw14 (Valavi) continuous suitability — real NSW rasters</a></li>
+  </ul></li>
+  <li><a href="#agreement-analysis" id="toc-agreement-analysis" class="nav-link" data-scroll-target="#agreement-analysis">Agreement analysis</a>
+  <ul>
+  <li><a href="#ecocommons-vs-benchmark-every-test" id="toc-ecocommons-vs-benchmark-every-test" class="nav-link" data-scroll-target="#ecocommons-vs-benchmark-every-test">EcoCommons vs benchmark — every test</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -208,78 +215,388 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="our-team" class="level2">
-<h2 class="anchored" data-anchor-id="our-team">Our team</h2>
-<p><img src="images/our_team.jpeg" class="img-fluid"></p>
-<section id="dr-jenna-wraith" class="level3">
-<h3 class="anchored" data-anchor-id="dr-jenna-wraith">Dr Jenna Wraith</h3>
-<p><strong>Head of Sustainable Futures, Program Manager, Principal Data Scientist</strong></p>
-<p>Jenna is a Conservation Scientist specialising in ecological modelling, species distribution modelling and using biodiversity data to inform policy. As an Adjunct Research Fellow at the Australian Rivers Institute, she uses spatial analyses and conservation planning to drive environmental strategies. Her work bridges science and technology, advancing biodiversity conservation and ecological research. In her free time, you can find Jenna growing food and flowers in the garden, hiking or getting crafty.</p>
+<p><img src="https://raw.githubusercontent.com/EcoCommons-Australia-2024-2026/ec-notebook_site/main/images/notebooks_banner_withframe.png" class="img-fluid"></p>
+<section id="cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development" class="level1">
+<h1>Cross-validating EcoCommons SDM outputs against reference implementations (on development)</h1>
+<p>Author details: Xiang Zhao</p>
+<p>Contact details: support@ecocommons.org.au</p>
+<p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
+<p>Date: July 2026</p>
 </section>
-<section id="rob-cosgrove" class="level3">
-<h3 class="anchored" data-anchor-id="rob-cosgrove">Rob Cosgrove</h3>
-<p><strong>Senior Development Engineer</strong></p>
-<p>Rob is a Senior Development Engineer with extensive experience developing specialised software in higher education and research, having worked for over 20 years across a range of disciplines and technologies at Griffith University and the University of Melbourne. Rob is the technical lead for the Biosecurity Commons project and is also a contributor to the EcoCommons project.</p>
+<section id="script-information" class="level1">
+<h1>Script information</h1>
+<p>This page documents the scientific-agreement unit tests that guard every species distribution model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and compares it against an independent reference implementation — the algorithm’s own R package, or Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data.</p>
+<p>Every SDM agreement test in the EcoCommons R package (<code>tests/testthat/test-sdm_projection_agreement.R</code>) runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm’s own R package, or Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data.</p>
+<section id="overview-all-10-tests" class="level2">
+<h2 class="anchored" data-anchor-id="overview-all-10-tests">Overview — all 10 tests</h2>
+<p><strong>Existing tests</strong> — benchmark is the <em>same engine</em> EcoCommons uses (reproducibility / self-consistency), asserted on <strong>Pearson</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Algorithm</th>
+<th>Species</th>
+<th>EcoCommons engine</th>
+<th>Benchmark</th>
+<th>Metric</th>
+<th>Threshold</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Maxent</td>
+<td><em>Bradypus variegatus</em></td>
+<td>maxent.jar</td>
+<td>maxent.jar <code>_avg</code></td>
+<td>Pearson</td>
+<td>0.90</td>
+<td><strong>0.987</strong> ✓</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Bioclim</td>
+<td><em>Bradypus variegatus</em></td>
+<td><code>dismo::bioclim</code></td>
+<td>dismo bioclim</td>
+<td>Pearson</td>
+<td>0.90</td>
+<td><strong>0.980</strong> ✓</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>GLM</td>
+<td><em>Bradypus variegatus</em></td>
+<td>biomod2 GLM</td>
+<td>biomod2 GLM</td>
+<td>Pearson</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>RF</td>
+<td><em>Bradypus variegatus</em></td>
+<td>biomod2 RF</td>
+<td>biomod2 RF</td>
+<td>Pearson</td>
+<td>0.99</td>
+<td><strong>0.998</strong> ✓</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>BRT</td>
+<td><em>Anguilla australis</em></td>
+<td><code>dismo::gbm.step</code> (unit weights)</td>
+<td>dismo gbm.step (unit weights)</td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>0.985</strong> ✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>New nsw14 tests</strong> — benchmark is Valavi et al.&nbsp;(2021)’s <em>independent</em> config (cross-implementation). After aligning weighting + rescaling, EcoCommons matches Valavi in <strong>magnitude</strong> for <strong>all five</strong>, so every one asserts <strong>Pearson</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Algorithm</th>
+<th>Species</th>
+<th>EcoCommons engine</th>
+<th>Valavi reference</th>
+<th>Metric</th>
+<th>Threshold</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td>GLM</td>
+<td><code>nsw14</code> (NSW bird)</td>
+<td>biomod2 GLM <em>(rescale off)</em></td>
+<td><code>gam::step.Gam</code></td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>0.975</strong> ✓</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>MaxEnt</td>
+<td><code>nsw14</code></td>
+<td>maxent.jar</td>
+<td><code>dismo::maxent</code></td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>0.989</strong> ✓</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>RF</td>
+<td><code>nsw14</code></td>
+<td>biomod2 RF <em>(rescale off)</em></td>
+<td><code>randomForest</code></td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>0.986</strong> ✓</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>MARS</td>
+<td><code>nsw14</code></td>
+<td>biomod2 <code>earth</code> <em>(rescale off)</em></td>
+<td><code>earth</code> (glm=binomial, down-weighted)</td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>1.000</strong> ✓</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>BRT</td>
+<td><code>nsw14</code></td>
+<td><code>dismo::gbm.step</code> <em>(test mocks down-weighting)</em></td>
+<td>gbm.step (down-weighted)</td>
+<td>Pearson</td>
+<td>0.95</td>
+<td><strong>1.000</strong> ✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>All 10 pass — 0 failures.</strong></p>
+<p><strong>Calibration alignment</strong> — every EcoCommons↔︎reference gap turned out to be <strong>weighting or rescaling, never the underlying learner</strong>:</p>
+<ul>
+<li><strong>RF, GLM</strong> — <code>rescale_all_models = false</code>: RF Pearson <strong>0.89 → 0.99</strong>, GLM <strong>0.96 → 0.98</strong>.</li>
+<li><strong>MARS</strong> — biomod2 fits <code>earth(glm=binomial, weights=prevalence)</code>; the benchmark uses the same background down-weighting: <strong>0.72 → 1.00</strong>. (Earlier thought to be an unfixable wrapper difference — it was just the missing weights.)</li>
+<li><strong>BRT</strong> — Valavi down-weights the background; EcoCommons <strong>production uses unit weights</strong> (down-weighting is <em>proposed, not applied</em>). The nsw14 BRT test <strong>mocks</strong> the internal weighting to down-weight — matching Valavi’s config (Pearson <strong>1.000</strong>) — while the Anguilla BRT test keeps exercising the real unit-weight path (0.985).</li>
+</ul>
+<p>Species: <em>Bradypus variegatus</em> (three-toed sloth, South America); <em>Anguilla australis</em> (short-finned eel, NZ); <code>nsw14</code> (anonymised NSW diurnal bird, Valavi/NCEAS).</p>
 </section>
-<section id="abhimanyu-raj-singh" class="level3">
-<h3 class="anchored" data-anchor-id="abhimanyu-raj-singh">Abhimanyu Raj Singh</h3>
-<p><strong>Data Ecologist</strong></p>
-<p>Abhimanyu is a Zoologist who metamorphosed into an Environmental Scientist focused on terrestrial ecology and species behaviour/interactions. His MS majors are in environmental protection as well as climate change adaptation. He was an Environmental Field Officer in Sydney Basin, working with local councils and national parks on threatened and invasive species management. As a Functional Analyst, he facilitates platform testing strategies, provides user support, and assists with ecological and climate change modelling-based use cases/learning material/workshops for the EcoCommons platform.</p>
+<section id="model-configurations-nsw14-suite" class="level2">
+<h2 class="anchored" data-anchor-id="model-configurations-nsw14-suite">Model configurations (nsw14 suite)</h2>
+<p><strong>Shared setup:</strong> species <code>nsw14</code> (315 presences from <code>disPo</code> + background), 11 continuous NSW predictors (<code>cti, disturb, mi, rainann, raindq, rugged, soildepth, soilfert, solrad, tempann, topo</code>), <code>random_seed = 0</code>, deduplicated to one record per raster cell (8190 points).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>EcoCommons (test config)</th>
+<th>Valavi reference (benchmark)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GLM</strong></td>
+<td>biomod2 GLM — <code>type=quadratic</code>, <code>test=AIC</code> (stepwise both directions), <code>family=binomial</code>, <strong><code>rescale_all_models=false</code></strong></td>
+<td><code>glm</code> → <code>gam::step.Gam</code> — per-var scope {drop / linear / <code>poly(,2)</code>}, AIC both directions, background down-weighted, normalised</td>
+</tr>
+<tr class="even">
+<td><strong>MaxEnt</strong></td>
+<td>maxent.jar — autofeature (L+Q+P+H), <code>betamultiplier=1</code>, <code>maximumiterations=500</code>, cloglog</td>
+<td><code>dismo::maxent</code> (maxent.jar) — <code>args="nothreshold"</code>, cloglog, not normalised</td>
+</tr>
+<tr class="odd">
+<td><strong>RF</strong></td>
+<td>biomod2 RF — classification, <code>ntree=500</code>, <code>mtry=default</code>, <code>nodesize=5</code>, <strong><code>rescale_all_models=false</code></strong></td>
+<td><code>randomForest</code> — classification, <code>ntree=500</code>, <code>type="prob"</code></td>
+</tr>
+<tr class="even">
+<td><strong>MARS</strong></td>
+<td>biomod2 <code>earth</code> — <code>type=simple</code> (degree 1), <code>penalty=2</code>, <code>thresh=0.001</code>, <code>pmethod=backward</code>, <code>glm=binomial</code>, prevalence-weighted, <strong><code>rescale_all_models=false</code></strong></td>
+<td><code>earth</code> — <code>degree=1</code>, <code>pmethod=backward</code>, <code>glm=binomial</code>, background down-weighted (matched to biomod2)</td>
+</tr>
+<tr class="odd">
+<td><strong>BRT</strong></td>
+<td><code>dismo::gbm.step</code> — <code>tree.complexity=5</code>, <code>learning.rate=0.001</code>, <code>bag.fraction=0.75</code>, <code>n.folds=5</code>, <code>n.trees=50</code>, <code>max.trees=10000</code>, <code>family=bernoulli</code>, <strong>unit weights (test mocks down-weighting)</strong></td>
+<td><code>dismo::gbm.step</code> — same hyper-parameters, background down-weighted, normalised</td>
+</tr>
+</tbody>
+</table>
+<p><em>Bold = the calibration settings that were aligned. BRT uses Valavi’s exact hyper-parameters; the test mocks background down-weighting so it reproduces Valavi (<code>best.trees</code> 4350 = 4350) without changing EcoCommons’ shipped unit-weight default. GLM is the only algorithm that can’t be config-matched — biomod2 GLM and <code>gam::step.Gam</code> are different engines.</em></p>
+<p><em>The <strong>continuous suitability maps</strong> further below use Valavi’s <strong>original Appendix S2</strong> configs (e.g.&nbsp;MARS = caret-tuned <code>earth</code>, <code>nprune</code> 2–20) — that’s why they reproduce Valavi’s published CSV points, whereas the benchmarks here are tuned to match EcoCommons.</em></p>
+<section id="benchmark-references" class="level3">
+<h3 class="anchored" data-anchor-id="benchmark-references">Benchmark references</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Benchmark</th>
+<th>Method paper</th>
+<th>Engine / tool</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GLM</strong></td>
+<td>McCullagh &amp; Nelder (1989); Hastie &amp; Tibshirani (1990) <code>step.Gam</code></td>
+<td>biomod2 GLM (EC) / <code>gam::step.Gam</code> (Valavi)</td>
+</tr>
+<tr class="even">
+<td><strong>MaxEnt</strong></td>
+<td>Phillips, Anderson &amp; Schapire (2006); Phillips &amp; Dudík (2008)</td>
+<td>maxent.jar via <code>dismo</code></td>
+</tr>
+<tr class="odd">
+<td><strong>RF</strong></td>
+<td>Breiman (2001)</td>
+<td><code>randomForest</code></td>
+</tr>
+<tr class="even">
+<td><strong>MARS</strong></td>
+<td>Friedman (1991)</td>
+<td><code>earth</code></td>
+</tr>
+<tr class="odd">
+<td><strong>BRT</strong></td>
+<td>Elith, Leathwick &amp; Hastie (2008)</td>
+<td><code>dismo::gbm.step</code></td>
+</tr>
+<tr class="even">
+<td><strong>Bioclim</strong></td>
+<td>Nix (1986); Booth et al.&nbsp;(2014)</td>
+<td><code>dismo::bioclim</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Background down-weighting</strong></td>
+<td>Elith et al.&nbsp;(2008); Valavi et al.&nbsp;(2021)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>nsw14 species + rasters (NCEAS)</strong></td>
+<td>Elith et al.&nbsp;(2020)</td>
+<td><code>disdat</code> / OSF <code>kwc4v</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Valavi reference configs</strong></td>
+<td>Valavi et al.&nbsp;(2021)</td>
+<td>Appendix S2</td>
+</tr>
+<tr class="even">
+<td><strong>EcoCommons SDM platform</strong></td>
+<td>Thuiller et al.&nbsp;(2009) <code>biomod2</code>; Hijmans et al.&nbsp;<code>dismo</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="dr-ryan-newis" class="level3">
-<h3 class="anchored" data-anchor-id="dr-ryan-newis">Dr Ryan Newis</h3>
-<p><strong>Data Scientist (Ecological Modelling)</strong></p>
-<p>Ryan joined QCIF in 2024 as a Software Developer and R Specialist, with a focus on developing an ‘Integrated Ecological Data Service’ for State of Environment reporting in Queensland and working on the EcoCommons platform. His research background encompasses various aspects of the environmental sciences including landscape ecology, ecological network analysis, chemical ecology and pollination biology and ecology. His PhD studies focused on critical but unexplored aspects of stingless bee foraging ecology and colony propagation. When not entrenched in scientific exploration, you can find Ryan in the mountains somewhere searching for secret waterfalls and adding to his birding list.</p>
 </section>
-<section id="dr-renuka-sharma" class="level3">
-<h3 class="anchored" data-anchor-id="dr-renuka-sharma">Dr Renuka Sharma</h3>
-<p><strong>Data Scientist (Computer Vision &amp; Ecological Modelling)</strong></p>
-<p>Renuka is a Data Scientist specializing in Computer Vision and Multi-modal Sensing, and she has worked on developing behavior recognition systems for animal welfare and elderly care. Her PhD in Computer Vision centered on anomaly detection in images and included an industrial collaboration with Woodside, where she designed a corrosion detection system. Over the years, Renuka has worked extensively with diverse datasets and is now eager to apply her expertise in Computer Vision to the field of Ecology through the EcoCommons projects. In her free time, Renuka enjoys reading and exploring nature through walks and hikes.</p>
+<section id="prediction-maps" class="level2">
+<h2 class="anchored" data-anchor-id="prediction-maps">Prediction maps</h2>
+<section id="existing-test-benchmark-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="existing-test-benchmark-predictions">Existing-test benchmark predictions</h3>
+<p><img src="images/existing_benchmark_maps.png" class="img-fluid"></p>
+<p><em>Bradypus (South America): Maxent, Bioclim, GLM, RF. Anguilla BRT is on a fabricated one-cell-per-site grid (scattered pixels), so its “map” is not geographically meaningful — only its per-site predictions are.</em></p>
 </section>
-<section id="xiang-zhao" class="level3">
-<h3 class="anchored" data-anchor-id="xiang-zhao">Xiang Zhao</h3>
-<p><strong>Software Developer &amp; R Specialist</strong></p>
-<p>Xiang Zhao (Zhao) joined QCIF in 2024 as a Software Developer and R Specialist, focusing on maintaining and developing ecological algorithms for the EcoCommons Platform. During his MPhil at QUT, he utilized spatial mapping, modeling, statistics, and optimization algorithms to study historical biodiversity survey patterns in terrestrial Antarctica, proposing an optimal survey design for future research. At QUT, he also tutors in GIS and Environmental Planning units, leveraging his expertise in GIS and cartography.</p>
-<p>Zhao spent two years traveling across Australia as a backpacker. Prior to this, he worked on a conservation project in Southwest China aimed at protecting giant panda habitats from the threat of free-ranging livestock. This project earned him the BirdLife International Young Conservation Leaders Award.</p>
+<section id="nsw14-valavi-continuous-suitability-real-nsw-rasters" class="level3">
+<h3 class="anchored" data-anchor-id="nsw14-valavi-continuous-suitability-real-nsw-rasters">nsw14 (Valavi) continuous suitability — real NSW rasters</h3>
+<p><img src="images/valavi_nsw14_continuous_maps_fullres_50k.png" class="img-fluid"></p>
+<p><em>Each algorithm fitted on <code>nsw14</code> with Valavi’s exact configs and predicted onto the real NSW environmental grid (from OSF). All agree on where suitable habitat is — the eastern escarpment / north-east coast.</em></p>
+<p><strong>These maps reproduce Valavi’s published predictions.</strong> Extracting each raster band at Valavi’s 702 evaluation sites and correlating with the original <code>Models_prediction/*.csv</code>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>model</th>
+<th>Pearson</th>
+<th>Spearman</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GLM</td>
+<td>1.0000</td>
+<td>1.0000</td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="even">
+<td>MaxEnt</td>
+<td>1.0000</td>
+<td>1.0000</td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="odd">
+<td>BRT</td>
+<td>1.0000</td>
+<td>1.0000</td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="even">
+<td>MARS</td>
+<td>0.9976</td>
+<td>0.9980</td>
+<td>near-perfect</td>
+</tr>
+<tr class="odd">
+<td>RF</td>
+<td>0.9922</td>
+<td>0.9296</td>
+<td>high (RF vote-fraction ties lower Spearman)</td>
+</tr>
+<tr class="even">
+<td>MaxNet</td>
+<td>0.9855</td>
+<td>0.9845</td>
+<td>high (<code>glmnet</code> version drift)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/maps_vs_valavi_csv.png" class="img-fluid"></p>
+<p><em>Raster value at each of the 702 evaluation sites (y) vs Valavi’s published CSV prediction (x); dashed = 1:1. GLM/MaxEnt/BRT lie exactly on the line; MARS/RF/MaxNet show only small stochastic/version scatter. This works because <code>disEnv</code> — the values Valavi predicted their points on — is itself sampled from these NSW rasters, so the raster value at each site is the value Valavi used.</em></p>
 </section>
-<section id="nauman-khattak" class="level3">
-<h3 class="anchored" data-anchor-id="nauman-khattak">Nauman Khattak</h3>
-<p><strong>Software Engineer</strong></p>
-<p>Nauman Khattak&nbsp;is a Full Stack Software Developer at QCIF, contributing to the development of digital research infrastructure through his work on the EcoCommons project. His role involves designing and implementing scalable, user-friendly solutions that support environmental research and modelling.</p>
-<p>With over seven years in the IT and software industry, he has developed web and mobile applications across sectors including hospitality, retail, healthcare, and telecommunications. His expertise spans backend and frontend development, system architecture, design, integration, and automation, with proficiency in PHP, Python, Java, JavaScript frameworks, and low-level languages such as Assembly, C, and C++. He also brings experience in mobile app development, and has worked with both relational and non-relational databases, alongside various cloud technologies.</p>
-<p>Before joining QCIF, Nauman played key roles in startups and tech firms, where he developed intelligent systems, CRM platforms, and integrated infrastructure solutions. His background includes co-founding multiple products, working in multicultural teams, and driving innovation through agile methodologies and user-focused design.</p>
-<p>At QCIF, Nauman brings a passion for automation, intelligent systems, and creating seamless user experiences to support environmental research outcomes.</p>
 </section>
-<section id="michael-mallon" class="level3">
-<h3 class="anchored" data-anchor-id="michael-mallon">Michael Mallon</h3>
-<p><strong>Senior Software Developer</strong></p>
-<p>Michael has joined QCIF as a Senior Software Developer. He is no stranger to QCIF, having worked for over a decade with the Research Computing Centre at The University of Queensland as a System Administrator. His focus was on supporting the infrastructure for QRIScloud.<br>
-<br>
-He obtained both a Bachelor of Science (Hons) in Physics and a Bachelor of Engineering (Hons) in software engineering from The University of Queensland. His thesis for Physics involved the hypersonic test facility at UQ where he investigated fluid flow imaging techniques using high-speed cameras. His Engineering thesis involved building tools for interacting with the OptiPortal (a distributed tiled display system).<br>
-<br>
-Michael is passionate about helping researchers get the most out of digital infrastructure. Parallel filesystems, cloud platforms and high-performance computing systems are all tools that Michael has helped researchers navigate. He’s passionate about solving problems with code; be that in python, C/C++ or even a wicked bash 1-liner with way too much sed|awk|grep.<br>
-<br>
-In his spare time, he enjoys sudoku, coffee, fantasy/sci fi books, and video games with good stories.</p>
+<section id="agreement-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="agreement-analysis">Agreement analysis</h2>
+<section id="ecocommons-vs-benchmark-every-test" class="level3">
+<h3 class="anchored" data-anchor-id="ecocommons-vs-benchmark-every-test">EcoCommons vs benchmark — every test</h3>
+<p><img src="images/ec_vs_benchmarks_all.png" class="img-fluid"></p>
+<p><em>Top row: existing tests. Bottom row: nsw14 vs Valavi. After aligning weighting (BRT + MARS) and turning rescaling off (RF/GLM), <strong>all ten panels sit on the 1:1 line</strong> — magnitude </em>and* ranking agree across the board.*</p>
 </section>
-<section id="angelo-maynes" class="level3">
-<h3 class="anchored" data-anchor-id="angelo-maynes">Angelo Maynes</h3>
-<p><strong>Software Developer - Full Stack</strong></p>
-<p>Angelo joined QCIF as a Full Stack Software Developer in 2025 after extensive experience in software engineering across backend, frontend, DevOps, and cloud, with strong Kubernetes, Docker and microservices expertise.<br>
-<br>
-He obtained Bachelors degree in Computer Science where he a had thesis in helping young kids with speech impairment to visualise the mouth sagittal section as words are uttered.<br>
-<br>
-He is passionate in developing highly scalable and event-driven applications using several tools including gRPC and protobuf in various cloud environments. He is interested in emerging tech adoption and delivering high-performance custom enterprise software across several type of industries.<br>
-<br>
-Outside of work, Angelo likes to hang out with friends either to play badminton, go out camping, hiking or off-road driving.</p>
 </section>
-<section id="ooroosa-ali" class="level3">
-<h3 class="anchored" data-anchor-id="ooroosa-ali">Ooroosa Ali</h3>
-<p><strong>Software Tester</strong></p>
-<p>Ooroosa joined QCIF as a Software Tester after gaining three and a half years of experience in the same role. Her expertise lies in Functional, End-to-End, and Regression testing across multiple platforms, including mobile and web applications.&nbsp;<br>
-<br>
-She holds a Bachelor’s degree in Computer Science and Electronics from Mysore University, India. Ooroosa is passionate about learning new technologies, designing and executing test cases, identifying critical bugs, and applying SDLC and Agile methodologies to ensure exceptional software quality.&nbsp;<br>
-<br>
-Outside of work, she enjoys hiking and experimenting with cooking.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>Booth, T.H., Nix, H.A., Busby, J.R. &amp; Hutchinson, M.F. (2014).</strong> BIOCLIM: the first species distribution modelling package, its early applications and relevance to most current MaxEnt studies. <em>Diversity and Distributions</em> 20: 1–9.</li>
+<li><strong>Breiman, L. (2001).</strong> Random forests. <em>Machine Learning</em> 45: 5–32.</li>
+<li><strong>Elith, J., Leathwick, J.R. &amp; Hastie, T. (2008).</strong> A working guide to boosted regression trees. <em>Journal of Animal Ecology</em> 77: 802–813.</li>
+<li><strong>Elith, J., Graham, C.H., Valavi, R., Abegg, M., Bruce, C., Ford, A., Guisan, A., Hijmans, R.J., Huettmann, F., Lohmann, L.G., Loiselle, B.A., Moritz, C., Overton, J.McC., Peterson, A.T., Phillips, S., Richardson, K., Williams, S., Wiser, S.K., Wohlgemuth, T. &amp; Zimmermann, N.E. (2020).</strong> Presence-only and presence-absence data for comparing species distribution modeling methods. <em>Biodiversity Informatics</em> 15: 69–80. (NCEAS data; distributed via the <code>disdat</code> R package and OSF project <code>kwc4v</code>.)</li>
+<li><strong>Friedman, J.H. (1991).</strong> Multivariate adaptive regression splines. <em>The Annals of Statistics</em> 19: 1–67.</li>
+<li><strong>Hastie, T.J. &amp; Tibshirani, R.J. (1990).</strong> <em>Generalized Additive Models.</em> Chapman &amp; Hall. (<code>gam::step.Gam</code> stepwise selection.)</li>
+<li><strong>Hijmans, R.J., Phillips, S., Leathwick, J. &amp; Elith, J.</strong> <code>dismo</code>: Species Distribution Modeling. R package. (<code>gbm.step</code>, <code>maxent</code>, <code>bioclim</code>.)</li>
+<li><strong>McCullagh, P. &amp; Nelder, J.A. (1989).</strong> <em>Generalized Linear Models</em>, 2nd edn. Chapman &amp; Hall.</li>
+<li><strong>Nix, H.A. (1986).</strong> A biogeographic analysis of Australian elapid snakes. In: <em>Atlas of Elapid Snakes of Australia</em> (ed.&nbsp;R. Longmore), pp.&nbsp;4–15. Australian Government Publishing Service.</li>
+<li><strong>Phillips, S.J., Anderson, R.P. &amp; Schapire, R.E. (2006).</strong> Maximum entropy modeling of species geographic distributions. <em>Ecological Modelling</em> 190: 231–259.</li>
+<li><strong>Phillips, S.J. &amp; Dudík, M. (2008).</strong> Modeling of species distributions with Maxent: new extensions and a comprehensive evaluation. <em>Ecography</em> 31: 161–175.</li>
+<li><strong>Thuiller, W., Lafourcade, B., Engler, R. &amp; Araújo, M.B. (2009).</strong> BIOMOD – a platform for ensemble forecasting of species distributions. <em>Ecography</em> 32: 369–373. (<code>biomod2</code> R package.)</li>
+<li><strong>Valavi, R., Guillera-Arroita, G., Lahoz-Monfort, J.J. &amp; Elith, J. (2021).</strong> Predictive performance of presence-only species distribution models: a benchmark study with reproducible code. <em>Ecological Monographs</em> 92(1): e01486. (Appendix S1/S2 configurations; <code>Models_prediction</code> per-species outputs.)</li>
+</ul>
 
 
 </section>

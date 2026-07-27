@@ -47,6 +47,8 @@ website:
             text: Single-Species Single-Season Occupancy Model - Conceptual
           - href: notebooks/Occupancy_practical/EC_Occupancy_practical.qmd
             text: Single-Species Single-Season Occupancy Model - Practical
+      - href: notebooks/sdm_agreement/EC_sdm_agreement.qmd
+        text: SDM Agreement Unit Tests
       - href: about.qmd
         text: About
 

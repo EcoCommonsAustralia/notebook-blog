@@ -13,71 +13,75 @@
     <lastmod>2026-04-13T11:15:34.422Z</lastmod>
   </url>
   <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_practical/EC_Occupancy_practical.html</loc>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/sdm_agreement/EC_sdm_agreement.html</loc>
+    <lastmod>2026-07-26T23:59:12.557Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/imbalanced_data.html</loc>
     <lastmod>2026-04-13T11:15:34.421Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/raster_preparation.html</loc>
-    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_netcd_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/reclass_geotiff_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_ascii_to_geotiff_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_NetCDF_to_geotiff_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html</loc>
-    <lastmod>2026-07-21T02:56:33.170Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html</loc>
-    <lastmod>2026-04-13T11:15:34.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/index.html</loc>
-    <lastmod>2026-04-17T02:36:27.713Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/about.html</loc>
-    <lastmod>2026-02-26T01:28:18.892Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/sp/ecocommons-marxan-integration-poc.html</loc>
-    <lastmod>2026-04-13T10:57:39.835Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/dataprep.html</loc>
-    <lastmod>2026-02-26T01:20:39.212Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotif_to_ascii_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_shapefile_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_shapefile_to_geotiff_notebook.html</loc>
-    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
   </url>
   <url>
     <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/Get_Species_data_from_multiple_sources.html</loc>
     <lastmod>2026-04-13T11:05:57.881Z</lastmod>
   </url>
   <url>
-    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/imbalanced_data.html</loc>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_shapefile_to_geotiff_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_shapefile_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotif_to_ascii_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/dataprep.html</loc>
+    <lastmod>2026-02-26T01:20:39.212Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/sp/ecocommons-marxan-integration-poc.html</loc>
+    <lastmod>2026-04-13T10:57:39.835Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/about.html</loc>
+    <lastmod>2026-02-26T01:28:18.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/index.html</loc>
+    <lastmod>2026-04-17T02:36:27.713Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_conceptual/EC_Occupancy_conceptual.html</loc>
+    <lastmod>2026-04-13T11:15:34.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html</loc>
+    <lastmod>2026-07-24T03:46:41.318Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_NetCDF_to_geotiff_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_ascii_to_geotiff_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/reclass_geotiff_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.419Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/raster_format/converting_geotiff_to_netcd_notebook.html</loc>
+    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/data_prep/raster_preparation.html</loc>
+    <lastmod>2026-04-13T11:15:34.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ecocommonsaustralia.github.io/notebook-blog/notebooks/Occupancy_practical/EC_Occupancy_practical.html</loc>
     <lastmod>2026-04-13T11:15:34.421Z</lastmod>
   </url>
   <url>
