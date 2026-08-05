@@ -27,6 +27,16 @@ This repository contains examples and tutorials with the objective of mirroring 
 :::
 
 ::: {align="center"}
+## 📷 Computer Vision
+:::
+
+::: nb-table
+| **notebook** | **notebook file** | **open in Google colab / ARDC Jupyter Notebook Service** | **complementary materials** | **DOI** |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Automated Wildlife Identification with SpeciesNet | <a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.ipynb"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/jupyter_notebook.png" width="80%"/></a><br><a href="https://github.com/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.qmd"><img src="https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/quartomd.png" width="80%"/></a> | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecocommonsaustralia/notebooks/blob/main/notebooks/EC_run_speciesnet_on_WildObs_data.ipynb) | [![EcoNotebooks Blog](https://github.com/ecocommonsaustralia/notebooks/raw/main/assets/notebook_icon.png)](https://ecocommonsaustralia.github.io/notebook-blog/notebooks/SpeciesNet/EC_run_speciesnet_on_WildObs_data.html) | <a href="https://doi.org/10.5281/zenodo.21522834"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21522834.svg" width="200"/></a> |
+:::
+
+::: {align="center"}
 ## 🌍 Geo/ecological skills
 :::
 
@@ -59,6 +69,10 @@ Welcome to the EcoCommons Notebooks! As ecological and environmental research ad
 # Publications used EcoCommons Platform
 
 **EcoCommons used for modelling**
+
+Arumugam, K., Mitra, A., Vijayaraghavalu, S. S., & Palani, S. G. (2026). Integrated Environmental Intelligence: Water Security. Remote Sensing, Machine Learning and Conservation Strategies for Sustainable Development. Biodiversity Conservation Foundation, Trichy, India, 3.
+
+Toombs, N., Chapman, S., Ma, S., Trancoso, R., Mackey, B., Wraith, J., Norman, P., Owens, D., Bhatt, T., & Singh, A. R. (2026). Downscaled projections of bioclimatic indices for species distribution modelling in Australia—a case study for the greater glider. *Environmental Research: Climate*, *5*(3), 035019.
 
 Chintala, Sudhakar Reddy & Malik, Kritika & Shaik, Vazeed & Sundaram, Reeja. (2026). Identifying Potential Invasion Hotspots of Chromolaena odorata using Species Distribution Models. <https://www.researchgate.net/publication/402883088_Identifying_Potential_Invasion_Hotspots_of_Chromolaena_odorata_using_Species_Distribution_Models>
 
