@@ -103,6 +103,8 @@ Torkkola, Janne, Harry Hines, Alienor Chauvenet, and Paul Oliver. "Are species r
 
 **EcoCommons mentioned**
 
+UN Biodiversity Lab (2026). *Australian mammal species distributions.* Accessed 7 August 2026. <https://unbiodiversitylab.org>. <https://doi.org/10.34892/95Q9-MP91>
+
 Rodas Toral, Ricardo Adolfo. Análisis de susceptibilidad a deslizamientos aplicado a grupos socioeconómicos vulnerables, mediante Máxima entropía (MaxEnt), en las parroquias: Cuenca, Nulti, Paccha, El Valle y Turi, del cantón Cuenca. Quito, 2025, 98 p. Tesis (Maestría en Gestión del Riesgo de Desastres). Universidad Andina Simón Bolívar, Sede Ecuador. Área de Gestión. <http://hdl.handle.net/10644/10573>
 
 Newton, Peter, et al. "Digital Innovations for City Sustainability Analysis and Decision-Making." *Future Cities Making: Mission-oriented Research for Urban Sustainability Transitions in Australia*. Singapore: Springer Nature Singapore, 2024. 215-240. <https://doi.org/10.1007/978-981-97-7671-9_10>
