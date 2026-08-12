@@ -190,6 +190,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development" id="toc-cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development" class="nav-link active" data-scroll-target="#cross-validating-ecocommons-sdm-outputs-against-reference-implementations-on-development">Cross-validating EcoCommons SDM outputs against reference implementations (on development)</a></li>
   <li><a href="#script-information" id="toc-script-information" class="nav-link" data-scroll-target="#script-information">Script information</a>
   <ul>
+  <li><a href="#algorithm-coverage" id="toc-algorithm-coverage" class="nav-link" data-scroll-target="#algorithm-coverage">Algorithm coverage</a></li>
   <li><a href="#overview-all-16-tests" id="toc-overview-all-16-tests" class="nav-link" data-scroll-target="#overview-all-16-tests">Overview — all 16 tests</a></li>
   <li><a href="#model-configurations-nsw14-suite" id="toc-model-configurations-nsw14-suite" class="nav-link" data-scroll-target="#model-configurations-nsw14-suite">Model configurations (nsw14 suite)</a>
   <ul>
@@ -198,7 +199,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#geographic-spatial-only-models" id="toc-geographic-spatial-only-models" class="nav-link" data-scroll-target="#geographic-spatial-only-models">Geographic (spatial-only) models</a>
   <ul>
   <li><a href="#two-references-both-checked" id="toc-two-references-both-checked" class="nav-link" data-scroll-target="#two-references-both-checked">Two references, both checked</a></li>
-  <li><a href="#the-circles-caveat" id="toc-the-circles-caveat" class="nav-link" data-scroll-target="#the-circles-caveat">The Circles caveat</a></li>
   </ul></li>
   <li><a href="#prediction-maps" id="toc-prediction-maps" class="nav-link" data-scroll-target="#prediction-maps">Prediction maps</a>
   <ul>
@@ -239,6 +239,129 @@ ul.task-list li input[type="checkbox"] {
 <h1>Script information</h1>
 <p>This page documents the scientific-agreement unit tests that guard every species distribution model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and compares it against an independent reference implementation — the algorithm’s own R package, Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data, or the reference implementations in Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (the <code>dismo</code> vignette).</p>
 <p>Every SDM agreement test in the EcoCommons R package (<code>tests/testthat/test-sdm_projection_agreement.R</code>) runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm’s own R package, or Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data.</p>
+<section id="algorithm-coverage" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-coverage">Algorithm coverage</h2>
+<p>EcoCommons ships <strong>19 species-distribution / geographic algorithms</strong>. <strong>12 are currently guarded by a scientific-agreement unit test; 7 are not yet.</strong></p>
+<table class="table table-sm caption-top" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Family</th>
+<th data-quarto-table-cell-role="th">Algorithm</th>
+<th data-quarto-table-cell-role="th">EcoCommons engine</th>
+<th data-quarto-table-cell-role="th">Sci Unit Test?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="9" style="vertical-align: middle"><code>biomod2</code> SDMs</td>
+<td>GLM</td>
+<td><code>stats::glm</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td>GAM</td>
+<td><code>mgcv::gam</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td>RF</td>
+<td><code>randomForest</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td>MARS</td>
+<td><code>earth</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td>GBM</td>
+<td><code>gbm</code></td>
+<td>❌ not yet</td>
+</tr>
+<tr class="even">
+<td>CTA</td>
+<td><code>rpart</code></td>
+<td>❌ not yet</td>
+</tr>
+<tr class="odd">
+<td>FDA</td>
+<td><code>mda</code></td>
+<td>❌ not yet</td>
+</tr>
+<tr class="even">
+<td>ANN</td>
+<td><code>nnet</code></td>
+<td>❌ not yet</td>
+</tr>
+<tr class="odd">
+<td>SRE</td>
+<td><code>biomod2</code> (envelope)</td>
+<td>❌ not yet</td>
+</tr>
+<tr class="even">
+<td rowspan="3" style="vertical-align: middle"><code>dismo</code> SDMs</td>
+<td>MaxEnt</td>
+<td>maxent.jar</td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td>BRT</td>
+<td><code>dismo::gbm.step</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td>Bioclim</td>
+<td><code>dismo::bioclim</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td rowspan="5" style="vertical-align: middle">Geographic<br>
+(spatial-only)</td>
+<td>GeoDist</td>
+<td><code>dismo::geoDist</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td>Convex Hull</td>
+<td><code>dismo::convHull</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td>Circles</td>
+<td><code>dismo::circles</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td>GeoIDW</td>
+<td><code>dismo::geoIDW</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="odd">
+<td>Voronoi Hull</td>
+<td><code>dismo::voronoiHull</code></td>
+<td>✅ tested</td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="vertical-align: middle">Niche / match</td>
+<td>Range bagging</td>
+<td><code>ecospat</code>-style range bagging</td>
+<td>❌ not yet</td>
+</tr>
+<tr class="odd">
+<td>Climatch</td>
+<td>climate-matching</td>
+<td>❌ not yet</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tested (12):</strong> GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles, GeoIDW, Voronoi Hull. <strong>Not yet covered (7):</strong> GBM, CTA, FDA, ANN, SRE, Range bagging, Climatch. <em>(The <code>speciestrait_*</code> / <code>traitdiff_*</code> trait-difference functions are out of scope here — they are not species-distribution models.)</em></p>
+</section>
 <section id="overview-all-16-tests" class="level2">
 <h2 class="anchored" data-anchor-id="overview-all-16-tests">Overview — all 16 tests</h2>
 <p>Every test runs a real EcoCommons projection and scores it against a reference implementation on <strong>Pearson</strong> correlation of predicted suitability.</p>
@@ -390,7 +513,7 @@ ul.task-list li input[type="checkbox"] {
 <td>dismo circles</td>
 <td>Presence footprint</td>
 <td>—</td>
-<td><em>env-dependent ⚠</em></td>
+<td><strong>identical</strong> ✓</td>
 </tr>
 <tr class="odd">
 <td>15</td>
@@ -414,7 +537,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><strong>15 of 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000; Circles is environment-dependent (see the geographic-models section below).</strong></p>
+<p><strong>All 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000, and Circles reproduces the reference presence footprint exactly once a two-part bug is fixed (see the geographic-models section below).</strong></p>
 <p>Rows 12–16 are the <strong>geographic (spatial-only) models</strong> — they predict from the geographic location of occurrences, not from environmental predictors — so their reference is the algorithm’s own <code>dismo</code> function as taught in Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (Chapter 13).</p>
 <p><strong>Calibration alignment</strong> — every EcoCommons↔︎reference gap turned out to be <strong>weighting or rescaling, never the underlying learner</strong>:</p>
 <ul>
@@ -699,18 +822,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td>Circles</td>
-<td><em>environment-dependent</em></td>
-<td>see below</td>
+<td><em>footprint identical</em></td>
+<td>binary — presence inside circles</td>
 </tr>
 </tbody>
 </table>
 <p>Four of the five are <strong>implementation-identical</strong> — EcoCommons is a thin, faithful wrapper over the <code>dismo</code> engine, exactly as intended.</p>
 <p><img src="images/geo_models_ec_vs_benchmark.png" class="img-fluid"></p>
-<p><em>Each row is one geographic model, <code>dismo</code> reference (left) vs the EcoCommons projection (right), over the </em>Bradypus variegatus* range; white points are the occurrence records the model was fitted on. Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull, Circles, Voronoi Hull) show presence (green) vs absence (grey). For GeoDist, Convex Hull, GeoIDW and Voronoi Hull the two columns are visually indistinguishable (Pearson r = 1.000). The Circles EcoCommons panel is blank because the platform’s projection step returned an all-<code>NA</code> raster under the local <code>dismo 1.3.16</code> / <code>terra 1.9.11</code> — a package-version artifact, not a model difference (see below).*</p>
-</section>
-<section id="the-circles-caveat" class="level3">
-<h3 class="anchored" data-anchor-id="the-circles-caveat">The Circles caveat</h3>
-<p><code>EC_modelling_circles</code> calls the same <code>dismo::circles</code> engine as the reference, so the <em>model</em> is identical by construction. However, on a local machine running <code>dismo 1.3.16</code> / <code>terra 1.9.11</code> the platform’s projection step wrote an <strong>all-<code>NA</code> raster</strong> (the dissolved-polygon <code>predict()</code> returns no in-mask cells), which makes a cell-by-cell correlation undefined. This is precisely the package-version-drift failure mode the <em>Reproducibility</em> section below warns about: geographic benchmarks must be regenerated and tested <strong>inside the pinned CI container</strong> (<code>dismo 1.3-9</code>), not on an ad-hoc laptop. The Circles row is therefore marked environment-dependent pending a run in the pinned image, rather than reported as a spurious score.</p>
+<p><em>Each row is one geographic model, <code>dismo</code> reference (left) vs the EcoCommons projection (right), over the </em>Bradypus variegatus* range; white points are the occurrence records the model was fitted on. Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull, Circles, Voronoi Hull) show presence (green) vs absence (grey). For every model the two columns are visually indistinguishable — GeoDist, Convex Hull, GeoIDW and Voronoi Hull agree at Pearson r = 1.000, and Circles reproduces the reference presence footprint exactly.*</p>
 </section>
 </section>
 <section id="prediction-maps" class="level2">
@@ -783,6 +902,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="ecocommons-vs-benchmark-every-test">EcoCommons vs benchmark — every test</h3>
 <p><img src="images/ec_vs_benchmarks_all.png" class="img-fluid"></p>
 <p><em>Single-species tests (Bradypus / Anguilla) and nsw14 vs Valavi, grouped by algorithm. After aligning weighting (BRT + MARS + GAM) and turning rescaling off (RF/GLM), <strong>all eleven panels sit on the 1:1 line</strong> — magnitude </em>and* ranking agree across the board.*</p>
+<p><img src="images/ec_vs_benchmarks_geo.png" class="img-fluid"></p>
+<p><em>The five geographic (spatial-only) models (tests 12–16), EcoCommons projection (y) vs the <code>dismo</code> reference on identical inputs (x). Continuous models (GeoDist, GeoIDW) collapse onto the 1:1 line (<strong>Pearson r = 1.000</strong>); the binary models (Convex Hull, Circles, Voronoi Hull) match cell-for-cell (<strong>agreement = 1.000</strong>, jittered so the 0/0 and 1/1 clusters are visible). Circles is shown after its fix. Every geographic model is an exact match to its <code>dismo</code> reference.</em></p>
 </section>
 </section>
 <section id="reproducibility-benchmark-provenance" class="level2">

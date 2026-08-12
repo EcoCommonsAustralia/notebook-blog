@@ -26,6 +26,43 @@ Every SDM agreement test in the EcoCommons R package (`tests/testthat/test-sdm_p
 runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm's own R
 package, or Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data.
 
+## Algorithm coverage
+
+EcoCommons ships **19 species-distribution / geographic algorithms**. **12 are currently guarded by
+a scientific-agreement unit test; 7 are not yet.**
+
+```{=html}
+<table class="table table-sm">
+<thead><tr><th>Family</th><th>Algorithm</th><th>EcoCommons engine</th><th>Sci Unit Test?</th></tr></thead>
+<tbody>
+<tr><td rowspan="9" style="vertical-align:middle"><code>biomod2</code> SDMs</td><td>GLM</td><td><code>stats::glm</code></td><td>✅ tested</td></tr>
+<tr><td>GAM</td><td><code>mgcv::gam</code></td><td>✅ tested</td></tr>
+<tr><td>RF</td><td><code>randomForest</code></td><td>✅ tested</td></tr>
+<tr><td>MARS</td><td><code>earth</code></td><td>✅ tested</td></tr>
+<tr><td>GBM</td><td><code>gbm</code></td><td>❌ not yet</td></tr>
+<tr><td>CTA</td><td><code>rpart</code></td><td>❌ not yet</td></tr>
+<tr><td>FDA</td><td><code>mda</code></td><td>❌ not yet</td></tr>
+<tr><td>ANN</td><td><code>nnet</code></td><td>❌ not yet</td></tr>
+<tr><td>SRE</td><td><code>biomod2</code> (envelope)</td><td>❌ not yet</td></tr>
+<tr><td rowspan="3" style="vertical-align:middle"><code>dismo</code> SDMs</td><td>MaxEnt</td><td>maxent.jar</td><td>✅ tested</td></tr>
+<tr><td>BRT</td><td><code>dismo::gbm.step</code></td><td>✅ tested</td></tr>
+<tr><td>Bioclim</td><td><code>dismo::bioclim</code></td><td>✅ tested</td></tr>
+<tr><td rowspan="5" style="vertical-align:middle">Geographic<br>(spatial-only)</td><td>GeoDist</td><td><code>dismo::geoDist</code></td><td>✅ tested</td></tr>
+<tr><td>Convex Hull</td><td><code>dismo::convHull</code></td><td>✅ tested</td></tr>
+<tr><td>Circles</td><td><code>dismo::circles</code></td><td>✅ tested</td></tr>
+<tr><td>GeoIDW</td><td><code>dismo::geoIDW</code></td><td>✅ tested</td></tr>
+<tr><td>Voronoi Hull</td><td><code>dismo::voronoiHull</code></td><td>✅ tested</td></tr>
+<tr><td rowspan="2" style="vertical-align:middle">Niche / match</td><td>Range bagging</td><td><code>ecospat</code>-style range bagging</td><td>❌ not yet</td></tr>
+<tr><td>Climatch</td><td>climate-matching</td><td>❌ not yet</td></tr>
+</tbody>
+</table>
+```
+
+**Tested (12):** GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles, GeoIDW,
+Voronoi Hull. **Not yet covered (7):** GBM, CTA, FDA, ANN, SRE, Range bagging, Climatch. *(The
+`speciestrait_*` / `traitdiff_*` trait-difference functions are out of scope here — they are not
+species-distribution models.)*
+
 ## Overview — all 16 tests
 
 Every test runs a real EcoCommons projection and scores it against a reference implementation on **Pearson** correlation of predicted suitability.
@@ -49,15 +86,16 @@ Every test runs a real EcoCommons projection and scores it against a reference i
 <tr><td>11</td><td style="font-weight:600">Bioclim</td><td><em>Bradypus variegatus</em></td><td><code>dismo::bioclim</code></td><td>dismo bioclim</td><td>Pearson</td><td>0.90</td><td><strong>0.980</strong> ✓</td></tr>
 <tr><td>12</td><td style="font-weight:600">GeoDist</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoDist</code></td><td>dismo geoDist (book config)</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
 <tr><td>13</td><td style="font-weight:600">Convex Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::convHull</code></td><td>dismo convHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td></tr>
-<tr><td>14</td><td style="font-weight:600">Circles</td><td><em>Bradypus variegatus</em></td><td><code>dismo::circles</code></td><td>dismo circles</td><td>Presence footprint</td><td>—</td><td><em>env-dependent ⚠</em></td></tr>
+<tr><td>14</td><td style="font-weight:600">Circles</td><td><em>Bradypus variegatus</em></td><td><code>dismo::circles</code></td><td>dismo circles</td><td>Presence footprint</td><td>—</td><td><strong>identical</strong> ✓</td></tr>
 <tr><td>15</td><td style="font-weight:600">GeoIDW</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoIDW</code></td><td>dismo geoIDW</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
 <tr><td>16</td><td style="font-weight:600">Voronoi Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::voronoiHull</code></td><td>dismo voronoiHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
 </tbody>
 </table>
 ```
 
-**15 of 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000;
-Circles is environment-dependent (see the geographic-models section below).**
+**All 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000, and
+Circles reproduces the reference presence footprint exactly once a two-part bug is fixed (see the
+geographic-models section below).**
 
 Rows 12–16 are the **geographic (spatial-only) models** — they predict from the geographic
 location of occurrences, not from environmental predictors — so their reference is the algorithm's
@@ -166,7 +204,7 @@ the prediction rasters.
 | Convex Hull | **Pearson 1.0000** | binary — TSS 1.000 |
 | GeoIDW | **Pearson 1.0000** | identical (RMSE 0) |
 | Voronoi Hull | **Pearson 1.0000** | identical (RMSE 0) |
-| Circles | *environment-dependent* | see below |
+| Circles | *footprint identical* | binary — presence inside circles |
 
 Four of the five are **implementation-identical** — EcoCommons is a thin, faithful wrapper over the
 `dismo` engine, exactly as intended.
@@ -176,22 +214,9 @@ Four of the five are **implementation-identical** — EcoCommons is a thin, fait
 *Each row is one geographic model, `dismo` reference (left) vs the EcoCommons projection (right),
 over the *Bradypus variegatus* range; white points are the occurrence records the model was fitted
 on. Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull,
-Circles, Voronoi Hull) show presence (green) vs absence (grey). For GeoDist, Convex Hull, GeoIDW and
-Voronoi Hull the two columns are visually indistinguishable (Pearson r = 1.000). The Circles
-EcoCommons panel is blank because the platform's projection step returned an all-`NA` raster under
-the local `dismo 1.3.16` / `terra 1.9.11` — a package-version artifact, not a model difference (see
-below).*
-
-### The Circles caveat
-
-`EC_modelling_circles` calls the same `dismo::circles` engine as the reference, so the *model* is
-identical by construction. However, on a local machine running `dismo 1.3.16` / `terra 1.9.11` the
-platform's projection step wrote an **all-`NA` raster** (the dissolved-polygon `predict()` returns
-no in-mask cells), which makes a cell-by-cell correlation undefined. This is precisely the
-package-version-drift failure mode the *Reproducibility* section below warns about: geographic
-benchmarks must be regenerated and tested **inside the pinned CI container** (`dismo 1.3-9`), not on
-an ad-hoc laptop. The Circles row is therefore marked environment-dependent pending a run in the
-pinned image, rather than reported as a spurious score.
+Circles, Voronoi Hull) show presence (green) vs absence (grey). For every model the two columns are
+visually indistinguishable — GeoDist, Convex Hull, GeoIDW and Voronoi Hull agree at Pearson r =
+1.000, and Circles reproduces the reference presence footprint exactly.*
 
 ## Prediction maps
 
@@ -249,6 +274,14 @@ per-model, Pearson view of this table.
 *Single-species tests (Bradypus / Anguilla) and nsw14 vs Valavi, grouped by algorithm. After
 aligning weighting (BRT + MARS + GAM) and turning rescaling off (RF/GLM), **all eleven panels sit on
 the 1:1 line** — magnitude *and* ranking agree across the board.*
+
+![](images/ec_vs_benchmarks_geo.png)
+
+*The five geographic (spatial-only) models (tests 12–16), EcoCommons projection (y) vs the `dismo`
+reference on identical inputs (x). Continuous models (GeoDist, GeoIDW) collapse onto the 1:1 line
+(**Pearson r = 1.000**); the binary models (Convex Hull, Circles, Voronoi Hull) match cell-for-cell
+(**agreement = 1.000**, jittered so the 0/0 and 1/1 clusters are visible). Circles is shown after
+its fix. Every geographic model is an exact match to its `dismo` reference.*
 
 ## Reproducibility & benchmark provenance
 
