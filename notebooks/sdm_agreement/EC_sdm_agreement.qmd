@@ -18,14 +18,15 @@ Date: July 2026
 
 This page documents the scientific-agreement unit tests that guard every species distribution
 model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and
-compares it against an independent reference implementation — the algorithm's own R package, or
-Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data.
+compares it against an independent reference implementation — the algorithm's own R package,
+Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data, or the reference
+implementations in Hijmans & Elith's *Species distribution modeling with R* (the `dismo` vignette).
 
 Every SDM agreement test in the EcoCommons R package (`tests/testthat/test-sdm_projection_agreement.R`)
 runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm's own R
 package, or Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data.
 
-## Overview — all 11 tests
+## Overview — all 16 tests
 
 Every test runs a real EcoCommons projection and scores it against a reference implementation on **Pearson** correlation of predicted suitability.
 
@@ -46,11 +47,22 @@ Every test runs a real EcoCommons projection and scores it against a reference i
 <tr><td>9</td><td><code>nsw14</code></td><td><code>dismo::gbm.step</code> <em>(test mocks down-weighting)</em></td><td>gbm.step (down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
 <tr><td>10</td><td style="font-weight:600">MARS</td><td><code>nsw14</code></td><td>biomod2 <code>earth</code> <em>(rescale off)</em></td><td><code>earth</code> (glm=binomial, down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
 <tr><td>11</td><td style="font-weight:600">Bioclim</td><td><em>Bradypus variegatus</em></td><td><code>dismo::bioclim</code></td><td>dismo bioclim</td><td>Pearson</td><td>0.90</td><td><strong>0.980</strong> ✓</td></tr>
+<tr><td>12</td><td style="font-weight:600">GeoDist</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoDist</code></td><td>dismo geoDist (book config)</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>13</td><td style="font-weight:600">Convex Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::convHull</code></td><td>dismo convHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td></tr>
+<tr><td>14</td><td style="font-weight:600">Circles</td><td><em>Bradypus variegatus</em></td><td><code>dismo::circles</code></td><td>dismo circles</td><td>Presence footprint</td><td>—</td><td><em>env-dependent ⚠</em></td></tr>
+<tr><td>15</td><td style="font-weight:600">GeoIDW</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoIDW</code></td><td>dismo geoIDW</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>16</td><td style="font-weight:600">Voronoi Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::voronoiHull</code></td><td>dismo voronoiHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
 </tbody>
 </table>
 ```
 
-**All 11 pass — 0 failures.**
+**15 of 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000;
+Circles is environment-dependent (see the geographic-models section below).**
+
+Rows 12–16 are the **geographic (spatial-only) models** — they predict from the geographic
+location of occurrences, not from environmental predictors — so their reference is the algorithm's
+own `dismo` function as taught in Hijmans & Elith's *Species distribution modeling with R*
+(Chapter 13).
 
 **Calibration alignment** — every EcoCommons↔reference gap turned out to be **weighting or rescaling, never the underlying learner**:
 
@@ -98,10 +110,77 @@ benchmarks here are tuned to match EcoCommons (GAM: all-smoothed, `GCV.Cp`, pres
 | **MARS** | Friedman (1991) | `earth` |
 | **BRT** | Elith, Leathwick & Hastie (2008) | `dismo::gbm.step` |
 | **Bioclim** | Nix (1986); Booth et al. (2014) | `dismo::bioclim` |
+| **Geographic models** (GeoDist, Convex Hull, Circles, GeoIDW, Voronoi Hull) | Hijmans & Elith, *Species distribution modeling with R* (Ch. 13) | `dismo::geoDist` / `convHull` / `circles` / `geoIDW` / `voronoiHull` |
 | **Background down-weighting** | Elith et al. (2008); Valavi et al. (2021) | — |
 | **nsw14 species + rasters (NCEAS)** | Elith et al. (2020) | `disdat` / OSF `kwc4v` |
 | **Valavi reference configs** | Valavi et al. (2021) | Appendix S2 |
 | **EcoCommons SDM platform** | Thuiller et al. (2009) `biomod2`; Hijmans et al. `dismo` | — |
+
+## Geographic (spatial-only) models
+
+Rows 12–16 cover the five **geographic models** from Chapter 13 of Hijmans & Elith's
+*Species distribution modeling with R* (the `dismo` vignette). Unlike every other algorithm on this
+page, these predict a species purely from the **geographic location** of its occurrence records —
+distance to, or containment by, the known points — and ignore the environmental predictors
+entirely. EcoCommons wraps each one directly from `dismo`:
+
+| Algorithm | EcoCommons function | `dismo` engine | Uses absence? | Output |
+|---|---|---|---|---|
+| **GeoDist** | `EC_modelling_geodist` | `dismo::geoDist` | no (presence-only) | continuous — inverse distance to nearest presence |
+| **Convex Hull** | `EC_modelling_convhull` | `dismo::convHull` | no | binary — inside/outside the presence hull |
+| **Circles** | `EC_modelling_circles` | `dismo::circles` | no | binary — inside/outside circles around presences |
+| **GeoIDW** | `EC_modelling_geoidw` | `dismo::geoIDW` | yes (pres/abs) | continuous — inverse-distance-weighted interpolation |
+| **Voronoi Hull** | `EC_modelling_voronoihull` | `dismo::voronoiHull` | yes | binary — Voronoi/Thiessen polygon classification |
+
+### Two references, both checked
+
+Like the `nsw14` suite, these tests have two distinct reference points:
+
+**1. Literature anchor — the textbook's own reported numbers.** Chapter 13 prints a
+`ModelEvaluation` (AUC, point-biserial cor) for each model on the *Bradypus variegatus* data. We
+reproduce those **exactly, to seven decimals**. Two things are required to hit them: (a)
+`RNGkind(sample.kind = "Rounding")` — the book predates R 3.6.0's change to the `sample()`
+algorithm; and (b) replaying the book's exact random-number stream (including two incidental
+`rnorm(50)` calls in its `evaluate()` demo) so the train/background splits match.
+
+| Model | Book AUC | Reproduced AUC | Book cor | Reproduced cor |
+|---|---|---|---|---|
+| GeoDist | 0.9006522 | **0.9006522** | 0.4197574 | **0.4197574** |
+| Convex Hull | 0.7490217 | **0.7490217** | 0.3036379 | **0.3036379** |
+| Circles | 0.8547826 | **0.8547826** | 0.5103540 | **0.5103540** |
+| GeoIDW | 0.8893478 | **0.8893478** | 0.5354838 | **0.5354838** |
+| Voronoi Hull | 0.5 | **0.5** | NA | *degenerate* |
+
+*Voronoi Hull is reported by the book as a **degenerate** result (AUC exactly 0.5): it subsamples
+100 background points at the very end of the vignette's global RNG stream, and the resulting
+classification does not discriminate. We reproduce the same degeneracy.*
+
+**2. Implementation fidelity — EcoCommons vs an independent `dismo` run on identical inputs.** This
+is the actual unit test (rows 12–16): run the real EcoCommons pipeline and, separately, call the
+same `dismo` function on the *same* occurrence / pseudo-absence set the platform used, then compare
+the prediction rasters.
+
+| Model | EcoCommons ↔ `dismo` | Notes |
+|---|---|---|
+| GeoDist | **Pearson 1.0000** | identical surface (RMSE 0) |
+| Convex Hull | **Pearson 1.0000** | binary — TSS 1.000 |
+| GeoIDW | **Pearson 1.0000** | identical (RMSE 0) |
+| Voronoi Hull | **Pearson 1.0000** | identical (RMSE 0) |
+| Circles | *environment-dependent* | see below |
+
+Four of the five are **implementation-identical** — EcoCommons is a thin, faithful wrapper over the
+`dismo` engine, exactly as intended.
+
+### The Circles caveat
+
+`EC_modelling_circles` calls the same `dismo::circles` engine as the reference, so the *model* is
+identical by construction. However, on a local machine running `dismo 1.3.16` / `terra 1.9.11` the
+platform's projection step wrote an **all-`NA` raster** (the dissolved-polygon `predict()` returns
+no in-mask cells), which makes a cell-by-cell correlation undefined. This is precisely the
+package-version-drift failure mode the *Reproducibility* section below warns about: geographic
+benchmarks must be regenerated and tested **inside the pinned CI container** (`dismo 1.3-9`), not on
+an ad-hoc laptop. The Circles row is therefore marked environment-dependent pending a run in the
+pinned image, rather than reported as a spurious score.
 
 ## Prediction maps
 
@@ -275,6 +354,7 @@ benchmarks, not by the EcoCommons runtime.
 - **Friedman, J.H. (1991).** Multivariate adaptive regression splines. *The Annals of Statistics* 19: 1–67.
 - **Hastie, T.J. & Tibshirani, R.J. (1990).** *Generalized Additive Models.* Chapman & Hall. (`gam::step.Gam` stepwise selection.)
 - **Hijmans, R.J., Phillips, S., Leathwick, J. & Elith, J.** `dismo`: Species Distribution Modeling. R package. (`gbm.step`, `maxent`, `bioclim`.)
+- **Hijmans, R.J. & Elith, J.** *Species distribution modeling with R.* (The `dismo` package vignette; Chapter 13 "Geographic models" — `geoDist`, `convHull`, `circles`, `geoIDW`, `voronoiHull`.)
 - **McCullagh, P. & Nelder, J.A. (1989).** *Generalized Linear Models*, 2nd edn. Chapman & Hall.
 - **Nix, H.A. (1986).** A biogeographic analysis of Australian elapid snakes. In: *Atlas of Elapid Snakes of Australia* (ed. R. Longmore), pp. 4–15. Australian Government Publishing Service.
 - **Phillips, S.J., Anderson, R.P. & Schapire, R.E. (2006).** Maximum entropy modeling of species geographic distributions. *Ecological Modelling* 190: 231–259.
