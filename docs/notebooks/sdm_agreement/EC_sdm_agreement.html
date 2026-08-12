@@ -705,6 +705,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Four of the five are <strong>implementation-identical</strong> — EcoCommons is a thin, faithful wrapper over the <code>dismo</code> engine, exactly as intended.</p>
+<p><img src="images/geo_models_ec_vs_benchmark.png" class="img-fluid"></p>
+<p><em>Each row is one geographic model, <code>dismo</code> reference (left) vs the EcoCommons projection (right), over the </em>Bradypus variegatus* range; white points are the occurrence records the model was fitted on. Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull, Circles, Voronoi Hull) show presence (green) vs absence (grey). For GeoDist, Convex Hull, GeoIDW and Voronoi Hull the two columns are visually indistinguishable (Pearson r = 1.000). The Circles EcoCommons panel is blank because the platform’s projection step returned an all-<code>NA</code> raster under the local <code>dismo 1.3.16</code> / <code>terra 1.9.11</code> — a package-version artifact, not a model difference (see below).*</p>
 </section>
 <section id="the-circles-caveat" class="level3">
 <h3 class="anchored" data-anchor-id="the-circles-caveat">The Circles caveat</h3>
