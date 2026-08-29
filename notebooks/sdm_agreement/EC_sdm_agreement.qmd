@@ -12,24 +12,29 @@ Contact details: support\@ecocommons.org.au
 
 Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/
 
-Date: July 2026
+Updated date: 25 August 2026
 
 # Script information
 
 This page documents the scientific-agreement unit tests that guard every species distribution
 model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and
 compares it against an independent reference implementation — the algorithm's own R package,
-Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data, or the reference
-implementations in Hijmans & Elith's *Species distribution modeling with R* (the `dismo` vignette).
+Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data, the reference
+implementations in Hijmans & Elith's *Species distribution modeling with R* (the `dismo` vignette),
+or our verbatim reproduction of Guisan, Thuiller & Zimmermann's *Habitat Suitability and Distribution
+Models* (2017) on the *Vulpes vulpes* data (for SRE, FDA, ANN and GBM).
 
 Every SDM agreement test in the EcoCommons R package (`tests/testthat/test-sdm_projection_agreement.R`)
 runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm's own R
-package, or Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data.
+package, Valavi et al. (2021)'s published benchmark on the NCEAS `nsw14` data, or our HSDM (Guisan et
+al. 2017) *Vulpes vulpes* reproduction.
 
 ## Algorithm coverage
 
-EcoCommons ships **19 species-distribution / geographic algorithms**. **12 are currently guarded by
-a scientific-agreement unit test; 7 are not yet.**
+EcoCommons ships **19 species-distribution / geographic algorithms**. **16 are guarded by a
+scientific-agreement unit test (SRE, FDA, ANN and GBM newly added against the HSDM *Vulpes vulpes*
+reproduction — ANN as a 50× ensemble, a deliberate change from the book's single fit); 3 are not yet
+covered.**
 
 ```{=html}
 <table class="table table-sm">
@@ -39,11 +44,11 @@ a scientific-agreement unit test; 7 are not yet.**
 <tr><td>GAM</td><td><code>mgcv::gam</code></td><td>✅ tested</td></tr>
 <tr><td>RF</td><td><code>randomForest</code></td><td>✅ tested</td></tr>
 <tr><td>MARS</td><td><code>earth</code></td><td>✅ tested</td></tr>
-<tr><td>GBM</td><td><code>gbm</code></td><td>❌ not yet</td></tr>
+<tr><td>GBM</td><td><code>gbm</code></td><td>✅ tested</td></tr>
 <tr><td>CTA</td><td><code>rpart</code></td><td>❌ not yet</td></tr>
-<tr><td>FDA</td><td><code>mda</code></td><td>❌ not yet</td></tr>
-<tr><td>ANN</td><td><code>nnet</code></td><td>❌ not yet</td></tr>
-<tr><td>SRE</td><td><code>biomod2</code> (envelope)</td><td>❌ not yet</td></tr>
+<tr><td>FDA</td><td><code>mda</code></td><td>✅ tested</td></tr>
+<tr><td>ANN</td><td><code>nnet</code></td><td>✅ tested</td></tr>
+<tr><td>SRE</td><td><code>biomod2</code> (envelope)</td><td>✅ tested</td></tr>
 <tr><td rowspan="3" style="vertical-align:middle"><code>dismo</code> SDMs</td><td>MaxEnt</td><td>maxent.jar</td><td>✅ tested</td></tr>
 <tr><td>BRT</td><td><code>dismo::gbm.step</code></td><td>✅ tested</td></tr>
 <tr><td>Bioclim</td><td><code>dismo::bioclim</code></td><td>✅ tested</td></tr>
@@ -58,14 +63,14 @@ a scientific-agreement unit test; 7 are not yet.**
 </table>
 ```
 
-**Tested (12):** GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles, GeoIDW,
-Voronoi Hull. **Not yet covered (7):** GBM, CTA, FDA, ANN, SRE, Range bagging, Climatch. *(The
-`speciestrait_*` / `traitdiff_*` trait-difference functions are out of scope here — they are not
+**Sci-unit-tested (16):** GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles,
+GeoIDW, Voronoi Hull, SRE, FDA, ANN, and GBM. **Not yet covered (3):** CTA, Range bagging, Climatch.
+*(The `speciestrait_*` / `traitdiff_*` trait-difference functions are out of scope here — they are not
 species-distribution models.)*
 
-## Overview — all 16 tests
+## Overview — all tests, grouped by model family
 
-Every test runs a real EcoCommons projection and scores it against a reference implementation on **Pearson** correlation of predicted suitability.
+Every test runs a real EcoCommons projection and scores it against a reference implementation on **Pearson** correlation of predicted suitability. Rows are grouped by algorithm family (Profile · Machine Learning · Statistical · Geographic); the three algorithms not yet covered (Climatch-lite, Range Bagging, CTA) are shown in their family for completeness.
 
 ```{=html}
 <table class="table table-sm">
@@ -73,27 +78,41 @@ Every test runs a real EcoCommons projection and scores it against a reference i
 <tr><th>#</th><th>Algorithm</th><th>Species</th><th>EcoCommons engine</th><th>Reference benchmark</th><th>Metric</th><th>Threshold</th><th>Result</th></tr>
 </thead>
 <tbody>
-<tr><td>1</td><td rowspan="2" style="vertical-align:middle;font-weight:600">GLM</td><td><em>Bradypus variegatus</em></td><td>biomod2 GLM</td><td>biomod2 GLM</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>2</td><td><code>nsw14</code> (NSW bird)</td><td>biomod2 GLM <em>(rescale off)</em></td><td><code>gam::step.Gam</code></td><td>Pearson</td><td>0.95</td><td><strong>0.975</strong> ✓</td></tr>
-<tr><td>3</td><td style="font-weight:600">GAM</td><td><code>nsw14</code></td><td>biomod2 <code>GAM_mgcv</code> <em>(rescale off)</em></td><td><code>mgcv::gam</code> (all-smoothed, presence up-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>4</td><td rowspan="2" style="vertical-align:middle;font-weight:600">MaxEnt</td><td><em>Bradypus variegatus</em></td><td>maxent.jar</td><td>maxent.jar <code>_avg</code></td><td>Pearson</td><td>0.90</td><td><strong>0.987</strong> ✓</td></tr>
-<tr><td>5</td><td><code>nsw14</code></td><td>maxent.jar</td><td><code>dismo::maxent</code></td><td>Pearson</td><td>0.95</td><td><strong>0.989</strong> ✓</td></tr>
-<tr><td>6</td><td rowspan="2" style="vertical-align:middle;font-weight:600">RF</td><td><em>Bradypus variegatus</em></td><td>biomod2 RF</td><td>biomod2 RF</td><td>Pearson</td><td>0.99</td><td><strong>0.998</strong> ✓</td></tr>
-<tr><td>7</td><td><code>nsw14</code></td><td>biomod2 RF <em>(rescale off)</em></td><td><code>randomForest</code></td><td>Pearson</td><td>0.95</td><td><strong>0.986</strong> ✓</td></tr>
-<tr><td>8</td><td rowspan="2" style="vertical-align:middle;font-weight:600">BRT</td><td><em>Anguilla australis</em></td><td><code>dismo::gbm.step</code> (unit weights)</td><td>dismo gbm.step (unit weights)</td><td>Pearson</td><td>0.95</td><td><strong>0.985</strong> ✓</td></tr>
-<tr><td>9</td><td><code>nsw14</code></td><td><code>dismo::gbm.step</code> <em>(test mocks down-weighting)</em></td><td>gbm.step (down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>10</td><td style="font-weight:600">MARS</td><td><code>nsw14</code></td><td>biomod2 <code>earth</code> <em>(rescale off)</em></td><td><code>earth</code> (glm=binomial, down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>11</td><td style="font-weight:600">Bioclim</td><td><em>Bradypus variegatus</em></td><td><code>dismo::bioclim</code></td><td>dismo bioclim</td><td>Pearson</td><td>0.90</td><td><strong>0.980</strong> ✓</td></tr>
-<tr><td>12</td><td style="font-weight:600">GeoDist</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoDist</code></td><td>dismo geoDist (book config)</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>13</td><td style="font-weight:600">Convex Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::convHull</code></td><td>dismo convHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td></tr>
-<tr><td>14</td><td style="font-weight:600">Circles</td><td><em>Bradypus variegatus</em></td><td><code>dismo::circles</code></td><td>dismo circles</td><td>Presence footprint</td><td>—</td><td><strong>identical</strong> ✓</td></tr>
-<tr><td>15</td><td style="font-weight:600">GeoIDW</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoIDW</code></td><td>dismo geoIDW</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
-<tr><td>16</td><td style="font-weight:600">Voronoi Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::voronoiHull</code></td><td>dismo voronoiHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td colspan="8" style="background:#eef0f6;font-weight:700">Profile Models</td></tr>
+<tr><td>1</td><td style="font-weight:600">BIOCLIM</td><td><em>Bradypus variegatus</em></td><td><code>dismo::bioclim</code></td><td>dismo bioclim</td><td>Pearson</td><td>0.90</td><td><strong>0.980</strong> ✓</td></tr>
+<tr><td>—</td><td style="font-weight:600">Climatch-lite</td><td>—</td><td>climate-matching</td><td>—</td><td>—</td><td>—</td><td>❌ not yet</td></tr>
+<tr><td>—</td><td style="font-weight:600">Range Bagging</td><td>—</td><td><code>ecospat</code>-style range bagging</td><td>—</td><td>—</td><td>—</td><td>❌ not yet</td></tr>
+<tr><td>2</td><td style="font-weight:600">Surface Range Envelope (SRE)</td><td><em>Vulpes vulpes</em></td><td>biomod2 <code>bm_SRE</code></td><td>HSDM (Guisan et al. 2017) reproduction</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+
+<tr><td colspan="8" style="background:#eef0f6;font-weight:700">Machine Learning Models</td></tr>
+<tr><td>3</td><td style="font-weight:600">Artificial Neural Network (ANN)</td><td><em>Vulpes vulpes</em></td><td>biomod2 <code>nnet</code> <em>(50× ensemble)</em></td><td>HSDM reproduction <em>(50× ensemble)</em></td><td>Pearson</td><td>0.95</td><td><strong>0.996</strong> ✓</td></tr>
+<tr><td>4</td><td rowspan="2" style="vertical-align:middle;font-weight:600">Boosted Regression Tree (BRT)</td><td><em>Anguilla australis</em></td><td><code>dismo::gbm.step</code> (unit weights)</td><td>dismo gbm.step (unit weights)</td><td>Pearson</td><td>0.95</td><td><strong>0.985</strong> ✓</td></tr>
+<tr><td>5</td><td><code>nsw14</code></td><td><code>dismo::gbm.step</code> <em>(test mocks down-weighting)</em></td><td>gbm.step (down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>—</td><td style="font-weight:600">Classification Tree (CTA)</td><td>—</td><td><code>rpart</code></td><td>—</td><td>—</td><td>—</td><td>❌ not yet</td></tr>
+<tr><td>6</td><td style="font-weight:600">Generalized Boosting Model (GBM)</td><td><em>Vulpes vulpes</em></td><td>biomod2 <code>gbm</code> <em>(book config)</em></td><td>HSDM reproduction</td><td>Pearson</td><td>0.99</td><td><strong>0.999</strong> ✓</td></tr>
+<tr><td>7</td><td rowspan="2" style="vertical-align:middle;font-weight:600">Maxent</td><td><em>Bradypus variegatus</em></td><td>maxent.jar</td><td>maxent.jar <code>_avg</code></td><td>Pearson</td><td>0.90</td><td><strong>0.987</strong> ✓</td></tr>
+<tr><td>8</td><td><code>nsw14</code></td><td>maxent.jar</td><td><code>dismo::maxent</code></td><td>Pearson</td><td>0.95</td><td><strong>0.989</strong> ✓</td></tr>
+<tr><td>9</td><td rowspan="2" style="vertical-align:middle;font-weight:600">Random Forest (RF)</td><td><em>Bradypus variegatus</em></td><td>biomod2 RF</td><td>biomod2 RF</td><td>Pearson</td><td>0.99</td><td><strong>0.998</strong> ✓</td></tr>
+<tr><td>10</td><td><code>nsw14</code></td><td>biomod2 RF <em>(rescale off)</em></td><td><code>randomForest</code></td><td>Pearson</td><td>0.95</td><td><strong>0.986</strong> ✓</td></tr>
+
+<tr><td colspan="8" style="background:#eef0f6;font-weight:700">Statistical Models</td></tr>
+<tr><td>11</td><td style="font-weight:600">Flexible Discriminant Analysis (FDA)</td><td><em>Vulpes vulpes</em></td><td>biomod2 <code>mda</code> (MARS)</td><td>HSDM reproduction</td><td>Pearson</td><td>0.99</td><td><strong>0.999</strong> ✓</td></tr>
+<tr><td>12</td><td style="font-weight:600">Generalized Additive Model (GAM)</td><td><code>nsw14</code></td><td>biomod2 <code>GAM_mgcv</code> <em>(rescale off)</em></td><td><code>mgcv::gam</code> (all-smoothed, presence up-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>13</td><td rowspan="2" style="vertical-align:middle;font-weight:600">Generalized Linear Model (GLM)</td><td><em>Bradypus variegatus</em></td><td>biomod2 GLM</td><td>biomod2 GLM</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>14</td><td><code>nsw14</code> (NSW bird)</td><td>biomod2 GLM <em>(rescale off)</em></td><td><code>gam::step.Gam</code></td><td>Pearson</td><td>0.95</td><td><strong>0.975</strong> ✓</td></tr>
+<tr><td>15</td><td style="font-weight:600">Multivariate Adaptive Regression Splines (MARS)</td><td><code>nsw14</code></td><td>biomod2 <code>earth</code> <em>(rescale off)</em></td><td><code>earth</code> (glm=binomial, down-weighted)</td><td>Pearson</td><td>0.95</td><td><strong>1.000</strong> ✓</td></tr>
+
+<tr><td colspan="8" style="background:#eef0f6;font-weight:700">Geographic Models</td></tr>
+<tr><td>16</td><td style="font-weight:600">Circles</td><td><em>Bradypus variegatus</em></td><td><code>dismo::circles</code></td><td>dismo circles</td><td>Presence footprint</td><td>—</td><td><strong>identical</strong> ✓</td></tr>
+<tr><td>17</td><td style="font-weight:600">Convex Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::convHull</code></td><td>dismo convHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td></tr>
+<tr><td>18</td><td style="font-weight:600">Geographic Distance (GeoDist)</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoDist</code></td><td>dismo geoDist (book config)</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>19</td><td style="font-weight:600">Inverse-Distance Weighted (GeoIDW)</td><td><em>Bradypus variegatus</em></td><td><code>dismo::geoIDW</code></td><td>dismo geoIDW</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
+<tr><td>20</td><td style="font-weight:600">Voronoi Hull</td><td><em>Bradypus variegatus</em></td><td><code>dismo::voronoiHull</code></td><td>dismo voronoiHull</td><td>Pearson</td><td>0.99</td><td><strong>1.000</strong> ✓</td></tr>
 </tbody>
 </table>
 ```
 
-**All 16 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000, and
+**All 20 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000, and
 Circles reproduces the reference presence footprint exactly once a two-part bug is fixed (see the
 geographic-models section below).**
 
@@ -389,9 +408,195 @@ base image rather than via `renv`, so they take whatever the CI image provides a
 generation time. `gam` / `mgcv` are used only to build the GLM / GAM `.tif`
 benchmarks, not by the EcoCommons runtime.
 
+## Cross–R-version reproducibility: the four "not-yet-tested" `biomod2` learners (SRE · FDA · ANN · GBM)
+
+The algorithm-coverage table above lists **SRE, FDA, ANN and GBM** as *not yet* guarded by a
+scientific-agreement test. As a first step toward covering them — and as a controlled study of
+*what actually breaks reproducibility* — we reproduced all four exactly as taught in Guisan,
+Thuiller & Zimmermann's *Habitat Suitability and Distribution Models* (2017; the public `hsdm`
+companion code), then re-ran each one under the book's **original 2017 software** and under a
+**current** stack, and diffed the predictions cell-by-cell.
+
+**Setup.** Species *Vulpes vulpes* (red fox); the book's `mammals_and_bioclim_table` (8,542 global
+grid cells, 4,203 presences / 4,339 absences at 1.5°); four predictors `bio3, bio7, bio11, bio12`.
+Model calls are the book's verbatim configurations (`biomod2::sre`; `mda::fda(method = mars)`;
+`nnet`, size 6 / decay 0.001; `gbm`, bernoulli / 10 000 trees / depth 3 / shrinkage 0.01 /
+10-fold CV), same `set.seed(555)`. The "old" environment is a pinned Docker image; the "new" one is
+current CRAN.
+
+| Component | Old environment (Docker) | Current environment |
+|---|---|---|
+| R | **3.4.1** (2017-06-30) | 4.5.0 (2025) |
+| SRE | biomod2 **3.3-7** `sre()` verbatim | biomod2 4.2-2 `bm_SRE` |
+| FDA | **mda 0.4-9** | mda 0.5-5 |
+| ANN | **nnet 7.3-12** | nnet 7.3-20 |
+| GBM | **gbm 2.1.3** | gbm 2.2.3 |
+
+**Result — reproducibility tracks determinism.**
+
+| Algorithm | Nature | Cross-version agreement | Verdict |
+|---|---|---|---|
+| SRE | deterministic envelope | 100% cells identical | **exact** |
+| FDA | deterministic (MARS) | Pearson **1.0000** | **exact** |
+| ANN — single fit | stochastic (random init) | Pearson **0.945** | diverges |
+| ANN — 15× ensemble | stochastic, averaged | Pearson **0.997** | largely fixed |
+| GBM | stochastic (bagging + CV) | Pearson **0.9997** | near-identical |
+
+![](images/hsdm_xversion_agreement.png)
+
+*Each row is one model: predicted suitability under R 3.4.1 (left) vs R 4.5.0 (middle) — sharing a
+suitability scale, with observed occurrences as rings (red = presence, grey = absence) — and the
+agreement scatter (right): old (x) vs new (y), dashed 1:1 line, Pearson r, dots coloured by observed
+status. SRE and FDA reproduce to the bit; a single ANN drifts into a "leaf"-shaped cloud; averaging
+15 ANN fits pulls it back onto the diagonal; GBM barely moves. Styling matches the paired figures
+above.*
+
+**Why does ANN diverge — didn't we hold the configuration fixed?** We did: identical data,
+hyper-parameters and seed produced *bit-identical initial weights* in both versions. A 2×2
+experiment crossing the R build with the `nnet` version isolates the cause:
+
+| Comparison | Only thing that differs | Pearson r |
+|---|---|---|
+| same R 3.4.1; `nnet` 7.3-12 → 7.3-20 | package source | **1.000000 (bit-identical)** |
+| same `nnet` 7.3-20; R 3.4.1 → 4.6.1 (both Linux / gcc) | R build | 0.940 |
+| same `nnet` 7.3-20 / R 4.x; Linux·gcc → macOS·clang·arm64 | compiler + CPU | 0.951 |
+
+The `nnet` *package version* is **not** the cause (bit-identical). The divergence comes from the
+**compiled floating-point environment** — R build, C compiler, CPU architecture (FMA), and the
+system `libm` (`exp`/`log` inside the logistic output units) each perturb the arithmetic at the
+~10⁻¹⁵ level. Because `nnet` minimises a **non-convex** loss by BFGS and never reaches a unique
+optimum, those perturbations **compound into different local minima** (final loss 565 vs 572 from
+the identical start). The *magnitude* of the disagreement follows the Bernoulli variance `p(1−p)` —
+the derivative of the logistic output — peaking at suitability ≈ 0.5 and vanishing at the saturated
+extremes, which is exactly the "leaf" shape.
+
+![](images/hsdm_ann_leaf.png)
+
+*ANN cross-version scatter (the "leaf") and mean disagreement by suitability band; disagreement is
+~13× larger near p = 0.5 than at 0/1, tracking p(1−p).*
+
+**This is the same reproducibility story the benchmark-provenance section tells, pushed to its
+logical end.** There, tree-ensembles (`gbm`) drift across versions while `randomForest` / `earth` /
+`maxent.jar` stay stable; here, an *unaveraged* neural network is the least reproducible learner of
+the four, and the two mitigations are precisely the ones already in use on the platform:
+
+1. **Pin the environment.** A fixed container makes the result bit-identical — confirmed by the old
+   `biomod2 3.3-7` `sre()` matching the modern `bm_SRE` on **8,542 / 8,542** cells, and by re-running
+   the *same* `nnet` source in the *same* image (r = 1.000000).
+2. **Ensemble.** Averaging 15 ANN fits recovers **r = 0.997** without pinning anything — which is
+   why GBM, an ensemble by construction, barely drifts.
+
+SRE and FDA need neither: a single deterministic quantity has one answer in any environment. The
+full reproduction (verbatim code, performance, prediction/response-curve figures) and the Docker
+harness live in the `hsdm` companion repository.
+
+## Methods — metrics for reproduction performance
+
+Every agreement test runs a real EcoCommons projection and compares it, **cell by cell over the
+prediction grid**, against an independent benchmark (for the HSDM suite, our verbatim reproduction of
+the book). We score the two rasters with two complementary correlation metrics, and read the *shape*
+of their scatter to diagnose *how* they (dis)agree.
+
+### Two metrics {-}
+
+- **Pearson correlation** — agreement on the **absolute** predicted values. It reaches 1.0 only if
+  the two surfaces are related by a straight line, so it penalises any difference in scale or
+  probability calibration. This is the strict headline metric, used where both engines are on the
+  same 0–1 scale (as on the balanced HSDM *Vulpes* data).
+- **Spearman rank correlation** — agreement on the **ordering** of cells. It reaches 1.0 whenever the
+  two surfaces rank every cell the same way, *regardless of the value scale*; it is invariant to any
+  monotonic transform (rescaling, a different sigmoid/posterior calibration, etc.).
+
+**Why both.** For an SDM the ecologically meaningful quantity is usually the **ranking** of
+suitability — which places are more suitable, where a threshold falls — not the absolute probability
+scale. So a high Spearman with a lower Pearson means *"same science, different scale"*: a benign
+recalibration, not a scientific disagreement. We report Pearson where the scales match and lean on
+Spearman when a monotonic scale difference would otherwise understate an exact match.
+
+### Reading the agreement scatter {-}
+
+Plotting benchmark (x) against EcoCommons (y) makes the *kind* of agreement visible:
+
+| Scatter shape | Meaning | Example |
+|---|---|---|
+| **Straight line on the 1:1 diagonal** | exact agreement (Pearson ≈ Spearman ≈ 1) | SRE |
+| **Clean S-curve, no scatter** | *deterministic* monotonic rescaling — identical ranking (Spearman = 1), slightly different value scale; benign | FDA (r_s = 1.000, r = 0.999) |
+| **Lens / "almond" cloud** | *stochastic* disagreement — genuine run-to-run noise, widest in the uncertain mid-range (~0.5) and pinched where predictions saturate (0/1), tracking *p(1 − p)* | GBM (thin), ANN (fat) |
+
+The S-curve and the almond are two faces of the same sigmoid output transform: the S is its
+noiseless skeleton (a pure rescaling), the almond is that skeleton smeared by stochastic noise. A
+**fat** almond means large noise (a single ANN's random weight initialisation → different local
+minima); GBM's per-tree bagging almond is by contrast **negligible** — averaged over 10,000 trees,
+almost nothing survives — so once its config is matched GBM's scatter is essentially a straight line.
+
+### Deterministic vs stochastic learners {-}
+
+This taxonomy sets the achievable ceiling:
+
+- **Deterministic** — **SRE** (quantile envelope) and **FDA** (MARS) compute a single fixed answer, so
+  any correct implementation reproduces them to Pearson/Spearman ≈ 1 (FDA's tiny S is a rank-preserving
+  wrapper hairline, not a disagreement).
+- **Stochastic** — **GBM** (bagging) and **ANN** (random weight init) carry irreducible noise, but they
+  land in very different places. **GBM reproduces to ~0.999 with a single fit** *once its config is
+  matched*: its per-tree bagging noise is already averaged away by the 10,000-tree ensemble, so almost
+  nothing survives. (Its earlier 0.955 was a *config mismatch* — the benchmark used the book's GBM
+  settings while EcoCommons fell back to biomod2's defaults — not bagging noise; pinning the config
+  fixes it.) A **single** ANN fit is the opposite: it does *no* internal averaging, so it lands in a
+  different local minimum every time and reproduces only to ~0.81 — which is why we test ANN as a **50×
+  ensemble** (→ 0.996). The general rule: *averaging turns a non-reproducible stochastic learner into a
+  reproducible one* — GBM does it internally (10k trees), we do it explicitly for ANN (50 nets).
+
+Per-algorithm pass thresholds reflect this: **0.99** for SRE, FDA and GBM, and **0.95** for the ANN
+ensemble.
+
+## EcoCommons agreement on the HSDM data (SRE · FDA · ANN · GBM)
+
+The cross-version work above validates the *reference* implementation. The final step closes the
+loop: does **EcoCommons itself** reproduce that reference? We converted the book's *Vulpes vulpes*
+data into EcoCommons input fixtures (4,203 presences / 4,339 absences on the 1.5° global grid, with
+`bio3/bio7/bio11/bio12`), ran EcoCommons' own SRE / FDA / ANN / GBM, and scored each projection
+against **our verbatim reproduction of Guisan, Thuiller & Zimmermann (2017)** — i.e. the benchmark is
+*the projection we made*, not a frozen EcoCommons snapshot. These are now `testthat` agreement tests
+in the EcoCommons R package (`test-sdm_projection_agreement.R`, `hsdm_*` specs).
+
+| Algorithm | Engine | Nature | Pearson | Spearman | Result |
+|---|---|---|---|---|---|
+| **SRE** | `biomod2` (envelope) | deterministic | **1.000** | **1.000** | ✅ exact |
+| **FDA** | `mda` (MARS) | deterministic | **0.999** | **1.000** | ✅ exact |
+| **GBM** | `gbm` | stochastic (bagging) | **0.999** | **0.999** | ✅ exact |
+| **ANN** | `nnet` | stochastic — **50× ensemble** † | **0.996** | **0.993** | ✅ reproduced |
+
+::: {.callout-note title="† ANN is changed from the book — and why"}
+The book fits a **single** ANN. But a single neural network is not a reproducible object: its
+non-convex training lands in an **arbitrary local minimum** set by the random starting weights, and
+across seeds the model quality swings wildly (**AUC 0.73–0.97 on this data**). Two independent
+implementations therefore never match — the book's ANN and EcoCommons' ANN agree only at **Pearson
+≈ 0.81**, and neither is even reproducible run-to-run.
+
+So for ANN we deliberately **change the configuration to an ensemble**: fit **50 networks, each on a
+different random 80/20 split, and average them** (EcoCommons' native `nb_run_eval = 50`). Averaging
+converges to the stable *expected* prediction — a well-defined, reproducible target. The payoff:
+EcoCommons' 50-net ensemble reproduces our 50-net ensemble at **Pearson 0.996**, and the EcoCommons
+ensemble is itself reproducible run-to-run at **0.999** (a single fit was neither). This is a
+strictly *better* model than the book's single fit, and it moves ANN from "the fragile outlier" into
+the reproducible column. *You cannot reproduce one coin flip; you can reproduce the average of 50.*
+:::
+
+![](images/ec_hsdm_vulpes_agreement.png)
+
+*Each row is one algorithm: our HSDM reproduction (left) vs the EcoCommons projection (middle), over
+the global* Vulpes vulpes *range, and the site-level agreement (right) — our value at each cell (x)
+against EcoCommons' (y), with the 1:1 line and Pearson r. All four scatters collapse onto the 1:1
+line and the map columns are visually indistinguishable. On the balanced Vulpes presence/absence with
+the book's verbatim configuration both engines sit on the same 0–1 scale, so Pearson (not just rank)
+is high. **ANN is the 50× ensemble** (changed from the book — see the note above): a single ANN fit
+would open into a noisy cloud (Pearson ≈ 0.81, an arbitrary local minimum), but averaging 50 fits
+converges to a stable, reproducible surface that EcoCommons reproduces to Pearson 0.996.*
+
 ## References
 
 - **Booth, T.H., Nix, H.A., Busby, J.R. & Hutchinson, M.F. (2014).** BIOCLIM: the first species distribution modelling package, its early applications and relevance to most current MaxEnt studies. *Diversity and Distributions* 20: 1–9.
+- **Guisan, A., Thuiller, W. & Zimmermann, N.E. (2017).** *Habitat Suitability and Distribution Models: With Applications in R.* Cambridge University Press. (SRE / FDA / ANN / GBM reproduction and the cross–R-version experiment; companion `hsdm` code.)
 - **Breiman, L. (2001).** Random forests. *Machine Learning* 45: 5–32.
 - **Elith, J., Leathwick, J.R. & Hastie, T. (2008).** A working guide to boosted regression trees. *Journal of Animal Ecology* 77: 802–813.
 - **Elith, J., Graham, C.H., Valavi, R., Abegg, M., Bruce, C., Ford, A., Guisan, A., Hijmans, R.J., Huettmann, F., Lohmann, L.G., Loiselle, B.A., Moritz, C., Overton, J.McC., Peterson, A.T., Phillips, S., Richardson, K., Williams, S., Wiser, S.K., Wohlgemuth, T. & Zimmermann, N.E. (2020).** Presence-only and presence-absence data for comparing species distribution modeling methods. *Biodiversity Informatics* 15: 69–80. (NCEAS data; distributed via the `disdat` R package and OSF project `kwc4v`.)
