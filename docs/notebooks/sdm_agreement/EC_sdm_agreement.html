@@ -216,14 +216,20 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#why-regenerating-in-the-same-environment-is-safe" id="toc-why-regenerating-in-the-same-environment-is-safe" class="nav-link" data-scroll-target="#why-regenerating-in-the-same-environment-is-safe">Why regenerating in the same environment is safe</a></li>
   <li><a href="#reproducibility-environment-pinned-package-versions" id="toc-reproducibility-environment-pinned-package-versions" class="nav-link" data-scroll-target="#reproducibility-environment-pinned-package-versions">Reproducibility environment — pinned package versions</a></li>
   </ul></li>
-  <li><a href="#crossr-version-reproducibility-the-four-not-yet-tested-biomod2-learners-sre-fda-ann-gbm" id="toc-crossr-version-reproducibility-the-four-not-yet-tested-biomod2-learners-sre-fda-ann-gbm" class="nav-link" data-scroll-target="#crossr-version-reproducibility-the-four-not-yet-tested-biomod2-learners-sre-fda-ann-gbm">Cross–R-version reproducibility: the four “not-yet-tested” <code>biomod2</code> learners (SRE · FDA · ANN · GBM)</a></li>
+  <li><a href="#crossr-version-reproducibility-eight-biomod2-learners-across-r-3.4.1-4.5.0" id="toc-crossr-version-reproducibility-eight-biomod2-learners-across-r-3.4.1-4.5.0" class="nav-link" data-scroll-target="#crossr-version-reproducibility-eight-biomod2-learners-across-r-3.4.1-4.5.0">Cross–R-version reproducibility: eight <code>biomod2</code> learners across R 3.4.1 → 4.5.0</a></li>
   <li><a href="#methods-metrics-for-reproduction-performance" id="toc-methods-metrics-for-reproduction-performance" class="nav-link" data-scroll-target="#methods-metrics-for-reproduction-performance">Methods — metrics for reproduction performance</a>
   <ul>
   <li><a href="#two-metrics" id="toc-two-metrics" class="nav-link" data-scroll-target="#two-metrics">Two metrics</a></li>
   <li><a href="#reading-the-agreement-scatter" id="toc-reading-the-agreement-scatter" class="nav-link" data-scroll-target="#reading-the-agreement-scatter">Reading the agreement scatter</a></li>
   <li><a href="#deterministic-vs-stochastic-learners" id="toc-deterministic-vs-stochastic-learners" class="nav-link" data-scroll-target="#deterministic-vs-stochastic-learners">Deterministic vs stochastic learners</a></li>
   </ul></li>
-  <li><a href="#ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm" id="toc-ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm" class="nav-link" data-scroll-target="#ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm">EcoCommons agreement on the HSDM data (SRE · FDA · ANN · GBM)</a></li>
+  <li><a href="#ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm" id="toc-ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm" class="nav-link" data-scroll-target="#ecocommons-agreement-on-the-hsdm-data-sre-fda-ann-gbm">EcoCommons agreement on the HSDM data (SRE · FDA · ANN · GBM)</a>
+  <ul>
+  <li><a href="#the-deterministic-batch-glm-gam-mars-cta" id="toc-the-deterministic-batch-glm-gam-mars-cta" class="nav-link" data-scroll-target="#the-deterministic-batch-glm-gam-mars-cta">The deterministic batch (GLM · GAM · MARS · CTA)</a>
+  <ul class="collapse">
+  <li><a href="#why-cta-clusters-the-tree-and-its-response-curves" id="toc-why-cta-clusters-the-tree-and-its-response-curves" class="nav-link" data-scroll-target="#why-cta-clusters-the-tree-and-its-response-curves">Why CTA clusters — the tree and its response curves</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -241,15 +247,15 @@ ul.task-list li input[type="checkbox"] {
 <p>Author details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
-<p>Updated date: 25 August 2026</p>
+<p>Updated date: 8 September 2026</p>
 </section>
 <section id="script-information" class="level1">
 <h1>Script information</h1>
-<p>This page documents the scientific-agreement unit tests that guard every species distribution model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and compares it against an independent reference implementation — the algorithm’s own R package, Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data, the reference implementations in Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (the <code>dismo</code> vignette), or our verbatim reproduction of Guisan, Thuiller &amp; Zimmermann’s <em>Habitat Suitability and Distribution Models</em> (2017) on the <em>Vulpes vulpes</em> data (for SRE, FDA, ANN and GBM).</p>
+<p>This page documents the scientific-agreement unit tests that guard every species distribution model (SDM) algorithm on the EcoCommons platform. Each test runs a real EcoCommons projection and compares it against an independent reference implementation — the algorithm’s own R package, Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data, the reference implementations in Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (the <code>dismo</code> vignette), or our verbatim reproduction of Guisan, Thuiller &amp; Zimmermann’s <em>Habitat Suitability and Distribution Models</em> (2017) on the <em>Vulpes vulpes</em> data (for SRE, FDA, ANN, GBM, GLM, GAM, MARS and CTA).</p>
 <p>Every SDM agreement test in the EcoCommons R package (<code>tests/testthat/test-sdm_projection_agreement.R</code>) runs a real EcoCommons projection and compares it to a reference benchmark — the algorithm’s own R package, Valavi et al.&nbsp;(2021)’s published benchmark on the NCEAS <code>nsw14</code> data, or our HSDM (Guisan et al.&nbsp;2017) <em>Vulpes vulpes</em> reproduction.</p>
 <section id="algorithm-coverage" class="level2">
 <h2 class="anchored" data-anchor-id="algorithm-coverage">Algorithm coverage</h2>
-<p>EcoCommons ships <strong>19 species-distribution / geographic algorithms</strong>. <strong>16 are guarded by a scientific-agreement unit test (SRE, FDA, ANN and GBM newly added against the HSDM <em>Vulpes vulpes</em> reproduction — ANN as a 50× ensemble, a deliberate change from the book’s single fit); 3 are not yet covered.</strong></p>
+<p>EcoCommons ships <strong>19 species-distribution / geographic algorithms</strong>. <strong>17 are guarded by a scientific-agreement unit test (SRE, FDA, ANN, GBM, GLM, GAM, MARS and CTA covered against the HSDM <em>Vulpes vulpes</em> reproduction — ANN as a 50× ensemble, a deliberate change from the book’s single fit); 2 are not yet covered.</strong></p>
 <table class="table table-sm caption-top" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 25%">
@@ -295,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>CTA</td>
 <td><code>rpart</code></td>
-<td>❌ not yet</td>
+<td>✅ tested</td>
 </tr>
 <tr class="odd">
 <td>FDA</td>
@@ -368,11 +374,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><strong>Sci-unit-tested (16):</strong> GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles, GeoIDW, Voronoi Hull, SRE, FDA, ANN, and GBM. <strong>Not yet covered (3):</strong> CTA, Range bagging, Climatch. <em>(The <code>speciestrait_*</code> / <code>traitdiff_*</code> trait-difference functions are out of scope here — they are not species-distribution models.)</em></p>
+<p><strong>Sci-unit-tested (17):</strong> GLM, GAM, RF, MARS, MaxEnt, BRT, Bioclim, GeoDist, Convex Hull, Circles, GeoIDW, Voronoi Hull, SRE, FDA, ANN, GBM, and CTA. <strong>Not yet covered (2):</strong> Range bagging, Climatch. <em>(The <code>speciestrait_*</code> / <code>traitdiff_*</code> trait-difference functions are out of scope here — they are not species-distribution models.)</em></p>
 </section>
 <section id="overview-all-tests-grouped-by-model-family" class="level2">
 <h2 class="anchored" data-anchor-id="overview-all-tests-grouped-by-model-family">Overview — all tests, grouped by model family</h2>
-<p>Every test runs a real EcoCommons projection and scores it against a reference implementation on <strong>Pearson</strong> correlation of predicted suitability. Rows are grouped by algorithm family (Profile · Machine Learning · Statistical · Geographic); the three algorithms not yet covered (Climatch-lite, Range Bagging, CTA) are shown in their family for completeness.</p>
+<p>Every test runs a real EcoCommons projection and scores it against a reference implementation on <strong>Pearson</strong> (or <strong>Spearman</strong> rank, for tie-heavy CTA) correlation of predicted suitability. Rows are grouped by algorithm family (Profile · Machine Learning · Statistical · Geographic); the two algorithms not yet covered (Climatch-lite, Range Bagging) are shown in their family for completeness.</p>
 <table class="table table-sm caption-top" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -463,17 +469,17 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="even">
-<td>—</td>
+<td>6</td>
 <td style="font-weight: 600">Classification Tree (CTA)</td>
-<td>—</td>
-<td><code>rpart</code></td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>❌ not yet</td>
+<td><em>Vulpes vulpes</em></td>
+<td>biomod2 <code>rpart</code> <em>(xval=10)</em></td>
+<td>HSDM reproduction</td>
+<td>Spearman</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="odd">
-<td>6</td>
+<td>7</td>
 <td style="font-weight: 600">Generalized Boosting Model (GBM)</td>
 <td><em>Vulpes vulpes</em></td>
 <td>biomod2 <code>gbm</code> <em>(book config)</em></td>
@@ -483,7 +489,7 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>0.999</strong> ✓</td>
 </tr>
 <tr class="even">
-<td>7</td>
+<td>8</td>
 <td rowspan="2" style="vertical-align: middle; font-weight: 600">Maxent</td>
 <td><em>Bradypus variegatus</em></td>
 <td>maxent.jar</td>
@@ -493,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>0.987</strong> ✓</td>
 </tr>
 <tr class="odd">
-<td>8</td>
+<td>9</td>
 <td><code>nsw14</code></td>
 <td>maxent.jar</td>
 <td><code>dismo::maxent</code></td>
@@ -502,7 +508,7 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>0.989</strong> ✓</td>
 </tr>
 <tr class="even">
-<td>9</td>
+<td>10</td>
 <td rowspan="2" style="vertical-align: middle; font-weight: 600">Random Forest (RF)</td>
 <td><em>Bradypus variegatus</em></td>
 <td>biomod2 RF</td>
@@ -512,7 +518,7 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>0.998</strong> ✓</td>
 </tr>
 <tr class="odd">
-<td>10</td>
+<td>11</td>
 <td><code>nsw14</code></td>
 <td>biomod2 RF <em>(rescale off)</em></td>
 <td><code>randomForest</code></td>
@@ -524,7 +530,7 @@ ul.task-list li input[type="checkbox"] {
 <td colspan="8" style="background: #eef0f6; font-weight: 700">Statistical Models</td>
 </tr>
 <tr class="odd">
-<td>11</td>
+<td>12</td>
 <td style="font-weight: 600">Flexible Discriminant Analysis (FDA)</td>
 <td><em>Vulpes vulpes</em></td>
 <td>biomod2 <code>mda</code> (MARS)</td>
@@ -534,8 +540,8 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>0.999</strong> ✓</td>
 </tr>
 <tr class="even">
-<td>12</td>
-<td style="font-weight: 600">Generalized Additive Model (GAM)</td>
+<td>13</td>
+<td rowspan="2" style="vertical-align: middle; font-weight: 600">Generalized Additive Model (GAM)</td>
 <td><code>nsw14</code></td>
 <td>biomod2 <code>GAM_mgcv</code> <em>(rescale off)</em></td>
 <td><code>mgcv::gam</code> (all-smoothed, presence up-weighted)</td>
@@ -544,8 +550,17 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="odd">
-<td>13</td>
-<td rowspan="2" style="vertical-align: middle; font-weight: 600">Generalized Linear Model (GLM)</td>
+<td>14</td>
+<td><em>Vulpes vulpes</em></td>
+<td>biomod2 <code>GAM_mgcv</code> <em>(default <code>s()</code>)</em></td>
+<td>HSDM reproduction</td>
+<td>Pearson</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td rowspan="3" style="vertical-align: middle; font-weight: 600">Generalized Linear Model (GLM)</td>
 <td><em>Bradypus variegatus</em></td>
 <td>biomod2 GLM</td>
 <td>biomod2 GLM</td>
@@ -553,8 +568,8 @@ ul.task-list li input[type="checkbox"] {
 <td>0.99</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
-<tr class="even">
-<td>14</td>
+<tr class="odd">
+<td>16</td>
 <td><code>nsw14</code> (NSW bird)</td>
 <td>biomod2 GLM <em>(rescale off)</em></td>
 <td><code>gam::step.Gam</code></td>
@@ -562,9 +577,18 @@ ul.task-list li input[type="checkbox"] {
 <td>0.95</td>
 <td><strong>0.975</strong> ✓</td>
 </tr>
+<tr class="even">
+<td>17</td>
+<td><em>Vulpes vulpes</em></td>
+<td>biomod2 GLM <em>(linear/logit)</em></td>
+<td>HSDM reproduction</td>
+<td>Pearson</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
+</tr>
 <tr class="odd">
-<td>15</td>
-<td style="font-weight: 600">Multivariate Adaptive Regression Splines (MARS)</td>
+<td>18</td>
+<td rowspan="2" style="vertical-align: middle; font-weight: 600">Multivariate Adaptive Regression Splines (MARS)</td>
 <td><code>nsw14</code></td>
 <td>biomod2 <code>earth</code> <em>(rescale off)</em></td>
 <td><code>earth</code> (glm=binomial, down-weighted)</td>
@@ -573,10 +597,19 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="even">
-<td colspan="8" style="background: #eef0f6; font-weight: 700">Geographic Models</td>
+<td>19</td>
+<td><em>Vulpes vulpes</em></td>
+<td>biomod2 <code>earth</code> <em>(degree 1)</em></td>
+<td>HSDM reproduction <em>(<code>Mars_int1</code>)</em></td>
+<td>Pearson</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="odd">
-<td>16</td>
+<td colspan="8" style="background: #eef0f6; font-weight: 700">Geographic Models</td>
+</tr>
+<tr class="even">
+<td>20</td>
 <td style="font-weight: 600">Circles</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::circles</code></td>
@@ -585,8 +618,8 @@ ul.task-list li input[type="checkbox"] {
 <td>—</td>
 <td><strong>identical</strong> ✓</td>
 </tr>
-<tr class="even">
-<td>17</td>
+<tr class="odd">
+<td>21</td>
 <td style="font-weight: 600">Convex Hull</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::convHull</code></td>
@@ -595,8 +628,8 @@ ul.task-list li input[type="checkbox"] {
 <td>0.99</td>
 <td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td>
 </tr>
-<tr class="odd">
-<td>18</td>
+<tr class="even">
+<td>22</td>
 <td style="font-weight: 600">Geographic Distance (GeoDist)</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::geoDist</code></td>
@@ -605,8 +638,8 @@ ul.task-list li input[type="checkbox"] {
 <td>0.99</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
-<tr class="even">
-<td>19</td>
+<tr class="odd">
+<td>23</td>
 <td style="font-weight: 600">Inverse-Distance Weighted (GeoIDW)</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::geoIDW</code></td>
@@ -615,8 +648,8 @@ ul.task-list li input[type="checkbox"] {
 <td>0.99</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
-<tr class="odd">
-<td>20</td>
+<tr class="even">
+<td>24</td>
 <td style="font-weight: 600">Voronoi Hull</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::voronoiHull</code></td>
@@ -1134,10 +1167,10 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Generation-only, <strong>not</strong> pinned in the lock:</em> <code>gam::step.Gam</code> (GLM benchmark), <code>mgcv::gam</code> (GAM benchmark) and <code>rJava</code> (MaxEnt/JVM) are installed on top of the base image rather than via <code>renv</code>, so they take whatever the CI image provides at generation time. <code>gam</code> / <code>mgcv</code> are used only to build the GLM / GAM <code>.tif</code> benchmarks, not by the EcoCommons runtime.</p>
 </section>
 </section>
-<section id="crossr-version-reproducibility-the-four-not-yet-tested-biomod2-learners-sre-fda-ann-gbm" class="level2">
-<h2 class="anchored" data-anchor-id="crossr-version-reproducibility-the-four-not-yet-tested-biomod2-learners-sre-fda-ann-gbm">Cross–R-version reproducibility: the four “not-yet-tested” <code>biomod2</code> learners (SRE · FDA · ANN · GBM)</h2>
-<p>The algorithm-coverage table above lists <strong>SRE, FDA, ANN and GBM</strong> as <em>not yet</em> guarded by a scientific-agreement test. As a first step toward covering them — and as a controlled study of <em>what actually breaks reproducibility</em> — we reproduced all four exactly as taught in Guisan, Thuiller &amp; Zimmermann’s <em>Habitat Suitability and Distribution Models</em> (2017; the public <code>hsdm</code> companion code), then re-ran each one under the book’s <strong>original 2017 software</strong> and under a <strong>current</strong> stack, and diffed the predictions cell-by-cell.</p>
-<p><strong>Setup.</strong> Species <em>Vulpes vulpes</em> (red fox); the book’s <code>mammals_and_bioclim_table</code> (8,542 global grid cells, 4,203 presences / 4,339 absences at 1.5°); four predictors <code>bio3, bio7, bio11, bio12</code>. Model calls are the book’s verbatim configurations (<code>biomod2::sre</code>; <code>mda::fda(method = mars)</code>; <code>nnet</code>, size 6 / decay 0.001; <code>gbm</code>, bernoulli / 10 000 trees / depth 3 / shrinkage 0.01 / 10-fold CV), same <code>set.seed(555)</code>. The “old” environment is a pinned Docker image; the “new” one is current CRAN.</p>
+<section id="crossr-version-reproducibility-eight-biomod2-learners-across-r-3.4.1-4.5.0" class="level2">
+<h2 class="anchored" data-anchor-id="crossr-version-reproducibility-eight-biomod2-learners-across-r-3.4.1-4.5.0">Cross–R-version reproducibility: eight <code>biomod2</code> learners across R 3.4.1 → 4.5.0</h2>
+<p>All eight HSDM learners are guarded by scientific-agreement tests (the <em>Vulpes vulpes</em> rows above). Getting there began as a controlled study of <em>what actually breaks reproducibility</em>: we reproduced each one exactly as taught in Guisan, Thuiller &amp; Zimmermann’s <em>Habitat Suitability and Distribution Models</em> (2017; the public <code>hsdm</code> companion code), then re-ran it under the book’s <strong>original 2017 software</strong> and under a <strong>current</strong> stack, and diffed the predictions cell-by-cell. The first four (SRE · FDA · ANN · GBM) came first; the deterministic batch (GLM · GAM · MARS · CTA) was added later, each under period-correct 2017 packages (<code>stats</code> base, <code>mgcv 1.8-17</code>, <code>earth 4.5.1</code>, <code>rpart 4.1-11</code>).</p>
+<p><strong>Setup.</strong> Species <em>Vulpes vulpes</em> (red fox); the book’s <code>mammals_and_bioclim_table</code> (8,542 global grid cells, 4,203 presences / 4,339 absences at 1.5°); four predictors <code>bio3, bio7, bio11, bio12</code>. Model calls are the book’s verbatim configurations (<code>biomod2::sre</code>; <code>mda::fda(method = mars)</code>; <code>nnet</code>, size 6 / decay 0.001; <code>gbm</code>, bernoulli / 10 000 trees / depth 3 / shrinkage 0.01 / 10-fold CV; <code>glm</code> logit; <code>mgcv::gam</code> default <code>s()</code>; <code>earth</code> degree 1 logit; <code>rpart</code> <code>method="class"</code>, xval 10), same <code>set.seed(555)</code> where stochastic. The “old” environment is a pinned Docker image (<code>rocker/r-ver:3.4.1</code>); the “new” one is current CRAN.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1172,6 +1205,26 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>gbm 2.1.3</strong></td>
 <td>gbm 2.2.3</td>
 </tr>
+<tr class="even">
+<td>GLM</td>
+<td><code>stats::glm</code> (base <strong>3.4.1</strong>)</td>
+<td><code>stats::glm</code> (base 4.5.0)</td>
+</tr>
+<tr class="odd">
+<td>GAM</td>
+<td><strong>mgcv 1.8-17</strong></td>
+<td>mgcv 1.9-4</td>
+</tr>
+<tr class="even">
+<td>MARS</td>
+<td><strong>earth 4.5.1</strong></td>
+<td>earth 5.3.5</td>
+</tr>
+<tr class="odd">
+<td>CTA</td>
+<td><strong>rpart 4.1-11</strong></td>
+<td>rpart 4.1-24</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Result — reproducibility tracks determinism.</strong></p>
@@ -1198,10 +1251,34 @@ ul.task-list li input[type="checkbox"] {
 <td><strong>exact</strong></td>
 </tr>
 <tr class="even">
+<td>GLM</td>
+<td>deterministic (IRLS)</td>
+<td>Pearson <strong>1.0000</strong> (max Δ 6×10⁻¹⁵)</td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="odd">
+<td>CTA</td>
+<td>deterministic tree</td>
+<td><strong>8542/8542 cells identical</strong></td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="even">
+<td>MARS</td>
+<td>deterministic (earth)</td>
+<td>Pearson <strong>1.0000</strong> (max Δ 1×10⁻¹³)</td>
+<td><strong>exact</strong></td>
+</tr>
+<tr class="odd">
 <td>FDA</td>
 <td>deterministic (MARS)</td>
 <td>Pearson <strong>1.0000</strong></td>
 <td><strong>exact</strong></td>
+</tr>
+<tr class="even">
+<td>GAM</td>
+<td>deterministic (penalised)</td>
+<td>Pearson <strong>0.99995</strong> (max Δ 0.05)</td>
+<td>tiny drift (mgcv version)</td>
 </tr>
 <tr class="odd">
 <td>ANN — single fit</td>
@@ -1223,49 +1300,9 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<p><strong>The deterministic batch confirms the pattern — with one instructive exception.</strong> GLM, MARS and CTA are bit-identical across the eight-year gap (differences at the 10⁻¹³–10⁻¹⁵ floating-point floor; CTA reproduces every one of 8,542 cells <em>exactly</em>). GAM is the outlier: still deterministic, but it drifted by up to 0.05 (Pearson 0.99995) — not from randomness, but because <code>mgcv</code>’s smoothing changed between 1.8-17 (2017) and 1.9-4 (2025). That is the key distinction from ANN: <strong>CTA/GLM/MARS reproduce because the algorithm is fixed; GAM’s small drift is a deliberate implementation change, not the compiled-environment noise that makes a single ANN diverge.</strong></p>
 <p><img src="images/hsdm_xversion_agreement.png" class="img-fluid"></p>
-<p><em>Each row is one model: predicted suitability under R 3.4.1 (left) vs R 4.5.0 (middle) — sharing a suitability scale, with observed occurrences as rings (red = presence, grey = absence) — and the agreement scatter (right): old (x) vs new (y), dashed 1:1 line, Pearson r, dots coloured by observed status. SRE and FDA reproduce to the bit; a single ANN drifts into a “leaf”-shaped cloud; averaging 15 ANN fits pulls it back onto the diagonal; GBM barely moves. Styling matches the paired figures above.</em></p>
-<p><strong>Why does ANN diverge — didn’t we hold the configuration fixed?</strong> We did: identical data, hyper-parameters and seed produced <em>bit-identical initial weights</em> in both versions. A 2×2 experiment crossing the R build with the <code>nnet</code> version isolates the cause:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Comparison</th>
-<th>Only thing that differs</th>
-<th>Pearson r</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>same R 3.4.1; <code>nnet</code> 7.3-12 → 7.3-20</td>
-<td>package source</td>
-<td><strong>1.000000 (bit-identical)</strong></td>
-</tr>
-<tr class="even">
-<td>same <code>nnet</code> 7.3-20; R 3.4.1 → 4.6.1 (both Linux / gcc)</td>
-<td>R build</td>
-<td>0.940</td>
-</tr>
-<tr class="odd">
-<td>same <code>nnet</code> 7.3-20 / R 4.x; Linux·gcc → macOS·clang·arm64</td>
-<td>compiler + CPU</td>
-<td>0.951</td>
-</tr>
-</tbody>
-</table>
-<p>The <code>nnet</code> <em>package version</em> is <strong>not</strong> the cause (bit-identical). The divergence comes from the <strong>compiled floating-point environment</strong> — R build, C compiler, CPU architecture (FMA), and the system <code>libm</code> (<code>exp</code>/<code>log</code> inside the logistic output units) each perturb the arithmetic at the ~10⁻¹⁵ level. Because <code>nnet</code> minimises a <strong>non-convex</strong> loss by BFGS and never reaches a unique optimum, those perturbations <strong>compound into different local minima</strong> (final loss 565 vs 572 from the identical start). The <em>magnitude</em> of the disagreement follows the Bernoulli variance <code>p(1−p)</code> — the derivative of the logistic output — peaking at suitability ≈ 0.5 and vanishing at the saturated extremes, which is exactly the “leaf” shape.</p>
-<p><img src="images/hsdm_ann_leaf.png" class="img-fluid"></p>
-<p><em>ANN cross-version scatter (the “leaf”) and mean disagreement by suitability band; disagreement is ~13× larger near p = 0.5 than at 0/1, tracking p(1−p).</em></p>
-<p><strong>This is the same reproducibility story the benchmark-provenance section tells, pushed to its logical end.</strong> There, tree-ensembles (<code>gbm</code>) drift across versions while <code>randomForest</code> / <code>earth</code> / <code>maxent.jar</code> stay stable; here, an <em>unaveraged</em> neural network is the least reproducible learner of the four, and the two mitigations are precisely the ones already in use on the platform:</p>
-<ol type="1">
-<li><strong>Pin the environment.</strong> A fixed container makes the result bit-identical — confirmed by the old <code>biomod2 3.3-7</code> <code>sre()</code> matching the modern <code>bm_SRE</code> on <strong>8,542 / 8,542</strong> cells, and by re-running the <em>same</em> <code>nnet</code> source in the <em>same</em> image (r = 1.000000).</li>
-<li><strong>Ensemble.</strong> Averaging 15 ANN fits recovers <strong>r = 0.997</strong> without pinning anything — which is why GBM, an ensemble by construction, barely drifts.</li>
-</ol>
-<p>SRE and FDA need neither: a single deterministic quantity has one answer in any environment. The full reproduction (verbatim code, performance, prediction/response-curve figures) and the Docker harness live in the <code>hsdm</code> companion repository.</p>
+<p><em>All eight learners (nine rows — ANN appears as both a single fit and a 15× ensemble), ordered by the determinism story. Each row is one model: predicted suitability under R 3.4.1 (left) vs R 4.5.0 (middle) — sharing a suitability scale, with observed occurrences as rings (red = presence, grey = absence) — and the agreement scatter (right): old (x) vs new (y), dashed 1:1 line, Pearson r, dots coloured by observed status. SRE, GLM, CTA, MARS and FDA reproduce to the bit (tight diagonals); GAM drifts only slightly (mgcv version change); a single ANN drifts into a “leaf”-shaped cloud; averaging 15 ANN fits pulls it back onto the diagonal; GBM barely moves. Styling matches the paired figures above.</em></p>
 </section>
 <section id="methods-metrics-for-reproduction-performance" class="level2">
 <h2 class="anchored" data-anchor-id="methods-metrics-for-reproduction-performance">Methods — metrics for reproduction performance</h2>
@@ -1397,6 +1434,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><img src="images/ec_hsdm_vulpes_agreement.png" class="img-fluid"></p>
 <p><em>Each row is one algorithm: our HSDM reproduction (left) vs the EcoCommons projection (middle), over the global</em> Vulpes vulpes <em>range, and the site-level agreement (right) — our value at each cell (x) against EcoCommons’ (y), with the 1:1 line and Pearson r. All four scatters collapse onto the 1:1 line and the map columns are visually indistinguishable. On the balanced Vulpes presence/absence with the book’s verbatim configuration both engines sit on the same 0–1 scale, so Pearson (not just rank) is high. <strong>ANN is the 50× ensemble</strong> (changed from the book — see the note above): a single ANN fit would open into a noisy cloud (Pearson ≈ 0.81, an arbitrary local minimum), but averaging 50 fits converges to a stable, reproducible surface that EcoCommons reproduces to Pearson 0.996.</em></p>
+<section id="the-deterministic-batch-glm-gam-mars-cta" class="level3">
+<h3 class="anchored" data-anchor-id="the-deterministic-batch-glm-gam-mars-cta">The deterministic batch (GLM · GAM · MARS · CTA)</h3>
+<p>The four regression / classification learners the book teaches on the fox — <strong>GLM</strong> (§10.2), <strong>GAM</strong> (§10.3), <strong>MARS</strong> (§10.4) and <strong>CTA</strong> (§11.2) — have no randomness in the fit, so the book’s bare call is an exact reproducible target. Each reproduces to <strong>Pearson 1.000</strong> once the JSON pins biomod2 to the book’s configuration. (The one snag was MARS: biomod2 encodes interactions through the model formula, not <code>earth</code>’s own <code>degree=</code> argument, so its exposed MARS matches the book’s <em>degree-1</em> <code>Mars_int1</code>, not the degree-2 <code>Mars_int2</code>.)</p>
+<p><img src="images/ec_hsdm_vulpes_deterministic.png" class="img-fluid"></p>
+<p><em>Same layout as above, for the deterministic batch. GLM/GAM/MARS produce smooth suitability surfaces; CTA is a classification tree, so its map is piecewise-constant (a few discrete bands) and its scatter is a staircase of point-clusters — both sitting exactly on the 1:1 line. All four collapse to <strong>Pearson 1.000</strong> (CTA scored on Spearman rank, as its ties make Pearson brittle): EcoCommons reproduces the book’s projections cell-for-cell.</em></p>
+<section id="why-cta-clusters-the-tree-and-its-response-curves" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="why-cta-clusters-the-tree-and-its-response-curves">Why CTA clusters — the tree and its response curves</h4>
+<p>CTA’s stepped map and clustered scatter are not an artifact: a classification tree partitions the predictors into a finite set of <strong>leaf nodes</strong>, and every cell in a leaf gets the <em>same</em> predicted probability. This tree has <strong>8 leaves</strong>, so across all 8,542 cells CTA emits only <strong>8 distinct values</strong> (vs ~7,000–8,400 for GLM/GAM/MARS) — which is exactly why its scatter collapses to an 8-point staircase and why it reproduces cell-for-cell across R versions.</p>
+<p><img src="images/hsdm_cta_tree.png" class="img-fluid"></p>
+<p><em>The fitted <code>rpart</code> tree (book Fig 11.1 equivalent). Each box gives the predicted class, the (absence, presence) probabilities, and the share of data in the node. The root split <code>bio3 ≥ 45</code> (isothermality) separates tropical cells (→ absence) from the rest; deeper splits on <code>bio3</code>, <code>bio7</code> and <code>bio12</code> carve out the temperate northern-hemisphere fox range. The 8 leaves are the 8 distinct prediction values.</em></p>
+<p><img src="images/hsdm_cta_response.png" class="img-fluid"></p>
+<p><em>Response curves (book Fig 11.3 equivalent): predicted P(presence) as each predictor sweeps its range with the others held at their mean. The curves are <strong>step functions</strong> whose jumps sit at the tree’s split thresholds — a “window” of suitability in <code>bio3</code> (~14–45), one step in <code>bio7</code>, a sharp step at low <code>bio12</code>, and a flat <code>bio11</code> (no split on that variable is reached along this path).</em></p>
+</section>
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
