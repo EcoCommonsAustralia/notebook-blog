@@ -202,7 +202,15 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#geographic-spatial-only-models" id="toc-geographic-spatial-only-models" class="nav-link" data-scroll-target="#geographic-spatial-only-models">Geographic (spatial-only) models</a>
   <ul>
-  <li><a href="#two-references-both-checked" id="toc-two-references-both-checked" class="nav-link" data-scroll-target="#two-references-both-checked">Two references, both checked</a></li>
+  <li><a href="#anchored-to-the-book" id="toc-anchored-to-the-book" class="nav-link" data-scroll-target="#anchored-to-the-book">Anchored to the book</a></li>
+  <li><a href="#model-by-model-the-books-figure-our-benchmark-and-ecocommons" id="toc-model-by-model-the-books-figure-our-benchmark-and-ecocommons" class="nav-link" data-scroll-target="#model-by-model-the-books-figure-our-benchmark-and-ecocommons">Model by model: the book’s figure, our benchmark and EcoCommons</a>
+  <ul class="collapse">
+  <li><a href="#geodist" id="toc-geodist" class="nav-link" data-scroll-target="#geodist">GeoDist</a></li>
+  <li><a href="#convex-hull" id="toc-convex-hull" class="nav-link" data-scroll-target="#convex-hull">Convex Hull</a></li>
+  <li><a href="#circles" id="toc-circles" class="nav-link" data-scroll-target="#circles">Circles</a></li>
+  <li><a href="#geoidw" id="toc-geoidw" class="nav-link" data-scroll-target="#geoidw">GeoIDW</a></li>
+  <li><a href="#voronoi-hull" id="toc-voronoi-hull" class="nav-link" data-scroll-target="#voronoi-hull">Voronoi Hull</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#prediction-maps" id="toc-prediction-maps" class="nav-link" data-scroll-target="#prediction-maps">Prediction maps</a>
   <ul>
@@ -251,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Author details: Xiang Zhao</p>
 <p>Contact details: support@ecocommons.org.au</p>
 <p>Copyright statement: This script is the product of the EcoCommons platform. Please refer to the EcoCommons website for more details: https://www.ecocommons.org.au/</p>
-<p>Updated date: 8 September 2026</p>
+<p>Updated date: 19 November 2026</p>
 </section>
 <section id="script-information" class="level1">
 <h1>Script information</h1>
@@ -617,29 +625,29 @@ ul.task-list li input[type="checkbox"] {
 <td style="font-weight: 600">Circles</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::circles</code></td>
-<td>dismo circles</td>
-<td>Presence footprint</td>
-<td>—</td>
-<td><strong>identical</strong> ✓</td>
+<td>Book Ch. 13 (<code>dismo::circles</code>)</td>
+<td>Footprint Jaccard (land)</td>
+<td>0.99</td>
+<td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="odd">
 <td>21</td>
 <td style="font-weight: 600">Convex Hull</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::convHull</code></td>
-<td>dismo convHull</td>
+<td>Book Ch. 13 (<code>dismo::convHull</code>)</td>
 <td>Pearson</td>
-<td>0.99</td>
-<td><strong>1.000</strong> ✓ <em>(TSS 1.000)</em></td>
+<td>0.999</td>
+<td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="even">
 <td>22</td>
 <td style="font-weight: 600">Geographic Distance (GeoDist)</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::geoDist</code></td>
-<td>dismo geoDist (book config)</td>
+<td>Book Ch. 13 (<code>dismo::geoDist</code>)</td>
 <td>Pearson</td>
-<td>0.99</td>
+<td>0.999</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="odd">
@@ -647,9 +655,9 @@ ul.task-list li input[type="checkbox"] {
 <td style="font-weight: 600">Inverse-Distance Weighted (GeoIDW)</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::geoIDW</code></td>
-<td>dismo geoIDW</td>
+<td>Book Ch. 13 (<code>dismo::geoIDW</code>)</td>
 <td>Pearson</td>
-<td>0.99</td>
+<td>0.999</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
 <tr class="even">
@@ -657,15 +665,15 @@ ul.task-list li input[type="checkbox"] {
 <td style="font-weight: 600">Voronoi Hull</td>
 <td><em>Bradypus variegatus</em></td>
 <td><code>dismo::voronoiHull</code></td>
-<td>dismo voronoiHull</td>
+<td>Book Ch. 13 method <em>(different 100-point sample)</em></td>
 <td>Pearson</td>
-<td>0.99</td>
+<td>0.999</td>
 <td><strong>1.000</strong> ✓</td>
 </tr>
 </tbody>
 </table>
-<p><strong>All 20 pass — geoDist/convHull/geoIDW/voronoiHull reproduce the reference to Pearson 1.000, and Circles reproduces the reference presence footprint exactly once a two-part bug is fixed (see the geographic-models section below).</strong></p>
-<p>Rows 12–16 are the <strong>geographic (spatial-only) models</strong> — they predict from the geographic location of occurrences, not from environmental predictors — so their reference is the algorithm’s own <code>dismo</code> function as taught in Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (Chapter 13).</p>
+<p><strong>All pass. Of the geographic models, geoDist, convHull and geoIDW reproduce the book to Pearson 1.000, Circles reproduces its presence footprint exactly on land, and voronoiHull reproduces its benchmark (the book’s method with our own 100-point sample) to Pearson 1.000 (see the geographic-models section below).</strong></p>
+<p>Rows 20–24 are the <strong>geographic (spatial-only) models</strong> — they predict from the geographic location of occurrences, not from environmental predictors — so their reference is the book itself: the <code>dismo</code> calls in Chapter 13 of Hijmans &amp; Elith’s <em>Species distribution modeling with R</em>, run on the book’s own training points.</p>
 <p><strong>Calibration alignment</strong> — every EcoCommons↔︎reference gap turned out to be <strong>weighting or rescaling, never the underlying learner</strong>:</p>
 <ul>
 <li><strong>RF, GLM</strong> — <code>rescale_all_models = false</code>: RF Pearson <strong>0.89 → 0.99</strong>, GLM <strong>0.96 → 0.98</strong>.</li>
@@ -808,7 +816,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="geographic-spatial-only-models" class="level2">
 <h2 class="anchored" data-anchor-id="geographic-spatial-only-models">Geographic (spatial-only) models</h2>
-<p>Rows 12–16 cover the five <strong>geographic models</strong> from Chapter 13 of Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (the <code>dismo</code> vignette). Unlike every other algorithm on this page, these predict a species purely from the <strong>geographic location</strong> of its occurrence records — distance to, or containment by, the known points — and ignore the environmental predictors entirely. EcoCommons wraps each one directly from <code>dismo</code>:</p>
+<p>Rows 20–24 cover the five <strong>geographic models</strong> from Chapter 13 of Hijmans &amp; Elith’s <em>Species distribution modeling with R</em> (the <code>dismo</code> vignette). Unlike every other algorithm on this page, these predict a species purely from the <strong>geographic location</strong> of its occurrence records — distance to, or containment by, the known points — and ignore the environmental predictors entirely. EcoCommons wraps each one directly from <code>dismo</code>:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -864,10 +872,10 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="two-references-both-checked" class="level3">
-<h3 class="anchored" data-anchor-id="two-references-both-checked">Two references, both checked</h3>
-<p>Like the <code>nsw14</code> suite, these tests have two distinct reference points:</p>
-<p><strong>1. Literature anchor — the textbook’s own reported numbers.</strong> Chapter 13 prints a <code>ModelEvaluation</code> (AUC, point-biserial cor) for each model on the <em>Bradypus variegatus</em> data. We reproduce those <strong>exactly, to seven decimals</strong>. Two things are required to hit them: (a) <code>RNGkind(sample.kind = "Rounding")</code> — the book predates R 3.6.0’s change to the <code>sample()</code> algorithm; and (b) replaying the book’s exact random-number stream (including two incidental <code>rnorm(50)</code> calls in its <code>evaluate()</code> demo) so the train/background splits match.</p>
+<section id="anchored-to-the-book" class="level3">
+<h3 class="anchored" data-anchor-id="anchored-to-the-book">Anchored to the book</h3>
+<p>These tests are anchored directly to the literature: the benchmark is the book’s own result, and EcoCommons is run on the book’s own training points.</p>
+<p><strong>1. The benchmark reproduces the book.</strong> Chapter 13 prints a <code>ModelEvaluation</code> (AUC, point-biserial cor) for each model on the <em>Bradypus variegatus</em> data. We reproduce those <strong>exactly, to seven decimals</strong>. Two things are required to hit them: (a) <code>RNGkind(sample.kind = "Rounding")</code> — the book predates R 3.6.0’s change to the <code>sample()</code> algorithm; and (b) replaying the book’s exact random-number stream (including two incidental <code>rnorm(50)</code> calls in its <code>evaluate()</code> demo) so the train/background splits match.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -916,47 +924,93 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><em>Voronoi Hull is reported by the book as a <strong>degenerate</strong> result (AUC exactly 0.5): it subsamples 100 background points at the very end of the vignette’s global RNG stream, and the resulting classification does not discriminate. We reproduce the same degeneracy.</em></p>
-<p><strong>2. Implementation fidelity — EcoCommons vs an independent <code>dismo</code> run on identical inputs.</strong> This is the actual unit test (rows 12–16): run the real EcoCommons pipeline and, separately, call the same <code>dismo</code> function on the <em>same</em> occurrence / pseudo-absence set the platform used, then compare the prediction rasters.</p>
+<p><em>Known limitation — Voronoi Hull: we can’t replicate the book’s exact sample of 100 absences.</em> The book fits voronoiHull on <code>va &lt;- data.frame(back_train[sample(nrow(back_train), 100), ])</code>, and which 100 points that <code>sample()</code> call picks depends on every random number used earlier in the book (maxent’s internal background draw, three <code>randomForest</code> fits, <code>ksvm</code>). Replaying those with current package versions gives a different sample. Our voronoiHull benchmark therefore uses the book’s method with a different random sample, and its map differs from the book’s figure. The book’s AUC can’t confirm the sample: voronoiHull is <strong>degenerate</strong> here (AUC ≈ 0.5) for any sample. The other four models’ maps match the book’s figures.</p>
+<p><strong>2. The unit test — EcoCommons on the book’s training points.</strong> This is the actual unit test (rows 20–24): the real EcoCommons pipeline is fed the book’s exact training points — 93 presences, plus 375 absences for GeoIDW and 100 for Voronoi Hull, supplied as <strong>true absences</strong> so EcoCommons draws no pseudo-absences of its own — and its projection is compared with the book benchmark.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Model</th>
-<th>EcoCommons ↔︎ <code>dismo</code></th>
+<th>EcoCommons ↔︎ benchmark</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>GeoDist</td>
-<td><strong>Pearson 1.0000</strong></td>
-<td>identical surface (RMSE 0)</td>
+<td><strong>Pearson 1.000</strong></td>
+<td>identical surface</td>
 </tr>
 <tr class="even">
 <td>Convex Hull</td>
-<td><strong>Pearson 1.0000</strong></td>
-<td>binary — TSS 1.000</td>
-</tr>
-<tr class="odd">
-<td>GeoIDW</td>
-<td><strong>Pearson 1.0000</strong></td>
-<td>identical (RMSE 0)</td>
-</tr>
-<tr class="even">
-<td>Voronoi Hull</td>
-<td><strong>Pearson 1.0000</strong></td>
-<td>identical (RMSE 0)</td>
+<td><strong>Pearson 1.000</strong></td>
+<td>identical</td>
 </tr>
 <tr class="odd">
 <td>Circles</td>
-<td><em>footprint identical</em></td>
-<td>binary — presence inside circles</td>
+<td><strong>footprint Jaccard 1.000</strong> (on land)</td>
+<td><code>EC_modelling_circles</code> doesn’t mask to land, so its circles over the sea are left out</td>
+</tr>
+<tr class="even">
+<td>GeoIDW</td>
+<td><strong>Pearson 1.000</strong></td>
+<td>identical surface</td>
+</tr>
+<tr class="odd">
+<td>Voronoi Hull</td>
+<td><strong>Pearson 1.000</strong> vs its benchmark</td>
+<td>identical where both have a value; benchmark uses our 100-point sample</td>
 </tr>
 </tbody>
 </table>
-<p>Four of the five are <strong>implementation-identical</strong> — EcoCommons is a thin, faithful wrapper over the <code>dismo</code> engine, exactly as intended.</p>
+<p>All five reproduce their benchmark exactly. GeoIDW and Voronoi Hull get their presences and absences from <code>EC_format_biomod2</code>, EcoCommons’ only pseudo-absence generator, which formats the data for biomod2. For the environmental models it keeps only <strong>one record per grid cell</strong> (<code>filter.raster = TRUE</code>), because records in the same cell carry identical environmental values. For the geographic models every record is a distinct location, so GeoIDW and Voronoi Hull now call it with <code>filter.raster = FALSE</code> and keep all 93 presences. Before this change, the thinning dropped 16 of the 93 presences (and 2 of the 375 absences), and the two models agreed at only 0.992 and 0.998.</p>
+<p>Two setup details matter for this test. The modelling region must cover the full extent of the climate layers: the book draws its background points across all of it, and a smaller region silently drops absences (an earlier fixture lost 95 of the 375). And the tests run in the CI image (<code>biomod2</code> 4.2.2).</p>
 <p><img src="images/geo_models_ec_vs_benchmark.png" class="img-fluid"></p>
-<p><em>Each row is one geographic model, <code>dismo</code> reference (left) vs the EcoCommons projection (right), over the </em>Bradypus variegatus* range; white points are the occurrence records the model was fitted on. Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull, Circles, Voronoi Hull) show presence (green) vs absence (grey). For every model the two columns are visually indistinguishable — GeoDist, Convex Hull, GeoIDW and Voronoi Hull agree at Pearson r = 1.000, and Circles reproduces the reference presence footprint exactly.*</p>
+<p><em>Each row is one geographic model, the benchmark (left) vs the EcoCommons projection (right), over the </em>Bradypus variegatus* range; white points are the 93 training presences and red crosses the absences (GeoIDW, Voronoi Hull). Continuous models (GeoDist, GeoIDW) use a percentile colour stretch; binary models (Convex Hull, Circles, Voronoi Hull) show presence (green) vs absence (grey). With no thinning, every map matches its benchmark. The thin white line in the EcoCommons Voronoi Hull map is 13 empty cells along a Voronoi border: <code>dismo::voronoiHull</code> leaves them empty when it predicts onto the full extent of the climate layers, as EcoCommons does, but not on the book’s cropped grid.*</p>
+</section>
+<section id="model-by-model-the-books-figure-our-benchmark-and-ecocommons" class="level3">
+<h3 class="anchored" data-anchor-id="model-by-model-the-books-figure-our-benchmark-and-ecocommons">Model by model: the book’s figure, our benchmark and EcoCommons</h3>
+<p>For each model below, the first image is the figure printed in the book (Hijmans &amp; Elith, <em>Species distribution modeling with R</em>, 9 January 2016, Chapter 13). The second row has three panels, all drawn with the book’s colour scale (<code>rev(terrain.colors())</code>):</p>
+<ol type="1">
+<li><strong>Our stored benchmark</strong>: the book’s <code>dismo</code> call, which the unit test compares against.</li>
+<li><strong>EcoCommons</strong>: the <code>EC_modelling_*</code> projection from the full pipeline, fitted on the same points.</li>
+<li><strong>The book’s point overlay</strong>: <code>points(pres_train, pch='+')</code> (93 training presences) and <code>points(backg_train, pch='-')</code> (800 background points), as the book draws on every map. No model is fitted on <code>backg_train</code>.</li>
+</ol>
+<p>On the first two panels, <strong>+</strong> marks the 93 training presences and red <strong>×</strong> the absences each model is fitted on (375 for GeoIDW, 100 for Voronoi Hull).</p>
+<section id="geodist" class="level4">
+<h4 class="anchored" data-anchor-id="geodist">GeoDist</h4>
+<p><img src="images/geo_geodist_book.png" class="img-fluid" style="width:75.0%"></p>
+<p><img src="images/geo_geodist_panels.png" class="img-fluid"></p>
+<p><em>The book’s raw surface and presence/absence map (p.&nbsp;66), then ours. Raw inverse-distance values (5e-07 to 1.7e-04) are never rescaled to 0–1, so the surface is nearly white except right at each presence, as in the book. EcoCommons is identical (Pearson 1.000).</em></p>
+</section>
+<section id="convex-hull" class="level4">
+<h4 class="anchored" data-anchor-id="convex-hull">Convex Hull</h4>
+<p><img src="images/geo_convhull_book.png" class="img-fluid" style="width:75.0%"></p>
+<p><img src="images/geo_convhull_panels.png" class="img-fluid"></p>
+<p><em>The book’s figure (p.&nbsp;67), then ours: one convex polygon around the 93 training presences, reaching south-east to the Espírito Santo record. EcoCommons is identical.</em></p>
+</section>
+<section id="circles" class="level4">
+<h4 class="anchored" data-anchor-id="circles">Circles</h4>
+<p><img src="images/geo_circles_book.png" class="img-fluid" style="width:75.0%"></p>
+<p><img src="images/geo_circles_panels.png" class="img-fluid"></p>
+<p><em>The book’s figure (p.&nbsp;68), then ours. EcoCommons draws the same circles; the blue cells are 132 cells over the sea that <code>EC_modelling_circles</code> keeps because it doesn’t mask to land. On land the two footprints are identical (Jaccard 1.000).</em></p>
+</section>
+<section id="geoidw" class="level4">
+<h4 class="anchored" data-anchor-id="geoidw">GeoIDW</h4>
+<p><img src="images/geo_geoidw_book.png" class="img-fluid" style="width:75.0%"></p>
+<p><img src="images/geo_geoidw_panels.png" class="img-fluid"></p>
+<p><em>The book’s raw surface and presence/absence map (p.&nbsp;69), then ours: hotspots at the presences, pulled towards 0 near the 375 absences. Our presence/absence cut-off is 0.0603, the same as the book’s “max TPR+TNR at 0.0602782”. With no thinning, EcoCommons is identical (Pearson 1.000).</em></p>
+</section>
+<section id="voronoi-hull" class="level4">
+<h4 class="anchored" data-anchor-id="voronoi-hull">Voronoi Hull</h4>
+<p><img src="images/geo_voronoihull_book.png" class="img-fluid" style="width:75.0%"></p>
+<p><img src="images/geo_voronoihull_panels.png" class="img-fluid"></p>
+<p><em>The book’s figure (p.&nbsp;70), then ours. <strong>Our benchmark doesn’t reproduce the book’s map</strong>: the book fits on a random 100 of the 375 background points, and its exact sample can’t be replicated (see the known limitation above), so our benchmark uses the book’s method with our own 100-point sample. EcoCommons matches that benchmark on every cell where both have a value (Pearson 1.000); the white line is the 13 empty cells explained above.</em></p>
+</section>
 </section>
 </section>
 <section id="prediction-maps" class="level2">
@@ -1030,7 +1084,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/ec_vs_benchmarks_all.png" class="img-fluid"></p>
 <p><em>Single-species tests (Bradypus / Anguilla) and nsw14 vs Valavi, grouped by algorithm. After aligning weighting (BRT + MARS + GAM) and turning rescaling off (RF/GLM), <strong>all eleven panels sit on the 1:1 line</strong> — magnitude </em>and* ranking agree across the board.*</p>
 <p><img src="images/ec_vs_benchmarks_geo.png" class="img-fluid"></p>
-<p><em>The five geographic (spatial-only) models (tests 12–16), EcoCommons projection (y) vs the <code>dismo</code> reference on identical inputs (x). Continuous models (GeoDist, GeoIDW) collapse onto the 1:1 line (<strong>Pearson r = 1.000</strong>); the binary models (Convex Hull, Circles, Voronoi Hull) match cell-for-cell (<strong>agreement = 1.000</strong>, jittered so the 0/0 and 1/1 clusters are visible). Circles is shown after its fix. Every geographic model is an exact match to its <code>dismo</code> reference.</em></p>
+<p><em>The five geographic (spatial-only) models (tests 20–24), EcoCommons projection (y) vs the book benchmark (x), both fitted on the book’s training points. GeoDist and GeoIDW collapse onto the 1:1 line (<strong>Pearson r = 1.000</strong>) and Convex Hull, Circles and Voronoi Hull match cell-for-cell (<strong>agreement = 1.000</strong>; Circles compared on land; binary panels jittered so the 0/0 and 1/1 clusters are visible).</em></p>
 </section>
 </section>
 <section id="reproducibility-benchmark-provenance" class="level2">
