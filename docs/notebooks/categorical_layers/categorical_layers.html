@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -271,8 +305,89 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Resamples with nearest-neighbour.</strong> When a categorical layer is brought to the model resolution, EcoCommons uses nearest-neighbour resampling, so every cell keeps a real class code instead of an averaged value that matches no class.</li>
 <li><strong>Stops early for algorithms that cannot use categories.</strong> Bioclim, the Surface Range Envelope (SRE) and the geographic models (Circles, Convex Hull, Geographic Distance, Inverse Distance Weighted and Voronoi Hull) cannot handle categorical predictors. If one is included, the run stops at the start with a message saying so, rather than failing later.</li>
 <li><strong>Removes empty and one-cell classes in the training area.</strong> After the layers are cropped to the training region, classes that no longer occur there are removed. A class that covers only a single cell is also removed, with a warning, because it can break the projection step.</li>
-<li><strong>Masks classes the model never saw when projecting.</strong> For the biomod2 algorithms (GLM, GAM, RF, MARS, GBM, CTA, FDA and ANN), EcoCommons compares the classes in the projection layer with the classes present in the training data before projecting. Classes with no training data are dropped from the projection layer, so those cells get no prediction and appear blank on the map. The run log lists which classes were dropped. Without this step, the projection fails with an error, because the model cannot predict for a class it has never seen.</li>
+<li><strong>Masks classes the model never saw when projecting.</strong> For the biomod2 algorithms (GLM, GAM, RF, MARS, GBM, CTA, FDA and ANN), EcoCommons compares the classes in the projection layer with the classes present in the training data before projecting. From EC-R 1.4.12, cells of classes with no training points are set to NA in the projection layer (the class list itself is kept), and the run log lists the masked classes. These areas are left blank in the map rather than given an invented prediction. Without this step, the projection fails with an error, because the model cannot predict for a class it has never seen.</li>
 </ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Case study: a random forest run that crashed on unsampled vegetation classes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The job.</strong> A random forest (RF) model for the Spotted-tailed Quoll used one categorical layer, Broad Vegetation Groups at 250 m (“Broad veg group_categorical_250m”), plus five continuous soil and terrain layers.</p>
+<ul>
+<li>The layer has 14 classes. Callitris woodland covered a single cell and was removed before modelling (check 4, with its own warning).</li>
+<li>The other 13 classes went into the model, and <code>randomForest</code> recorded all 13 as the levels of the factor.</li>
+<li>Only 10 of those classes had training points. Wetlands, Water and Plantation had none.</li>
+<li>Before projecting, the old version of check 5 deleted every class the training points didn’t use, leaving 10 levels. <code>randomForest</code> needs the same number of levels as at training. With 10 instead of 13, it stopped with <em>“Type of predictors in new data do not match that of the training data”</em>.</li>
+</ul>
+<p><strong>What happens to the 13 classes</strong></p>
+<p><img src="images/rf_levels_13_classes.png" class="img-fluid" alt="The 13 vegetation classes at three stages. At training, 10 classes have points and 3 do not. The old check deleted the 3 unsampled levels, leaving 10, and RF crashed. The fix keeps all 13 levels and sets the cells of the 3 unsampled classes to NA, and every algorithm works."></p>
+<p><strong>Why the deletion was there, and why simply keeping the levels fails.</strong> We tested all nine biomod2 algorithms that go through this step (biomod2 4.2-2) on a synthetic 13-class raster with three unsampled classes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Algorithm</th>
+<th style="text-align: center;">Old: delete levels</th>
+<th style="text-align: center;">Keep levels, no masking</th>
+<th style="text-align: center;">Fix: keep levels, NA cells</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">RF</td>
+<td style="text-align: center;">✗ crashes</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GLM</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗ “factor veg has new levels”</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GAM</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗ “number of items to replace”</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GBM, CTA, ANN, FDA, MARS</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The deletion was originally added for GLM. Removing it outright would have traded the RF crash for GLM and GAM crashes.</li>
+<li>The fix gives the same map GLM and GAM already produced (the three classes’ cells are blank), and RF gets the 13 levels it expects.</li>
+<li>MaxEnt, Bioclim and the geographic models don’t go through this step.</li>
+</ul>
+<p><strong>The change.</strong> The helper now masks cells instead of deleting levels:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>EC_mask_unused_levels <span class="ot">&lt;-</span> <span class="cf">function</span>(raster, model_levels, name) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  raster_labels <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">levels</span>(raster)[[<span class="dv">1</span>]][[<span class="dv">2</span>]]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  used_labels <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">as.character</span>(<span class="fu">droplevels</span>(model_levels)))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  levels_to_mask <span class="ot">&lt;-</span> raster_labels[<span class="sc">!</span>raster_labels <span class="sc">%in%</span> used_labels]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(levels_to_mask) <span class="sc">==</span> <span class="dv">0</span>) <span class="fu">return</span>(raster)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"In raster layer "</span>, name, <span class="st">", the following level(s) were not present "</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">"in the model data; their cells are set to NA for projection:</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste</span>(levels_to_mask, <span class="at">collapse =</span> <span class="st">", "</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">mask</span>(raster, raster <span class="sc">%in%</span> levels_to_mask, <span class="at">maskvalues =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>The modelling lesson.</strong> Three of the 13 classes had no points at all, which is the “many classes, few points” problem this page is about. Merging classes or using more pseudo-absences (sections 1 and 3 of <a href="#what-practitioners-usually-do">What practitioners usually do</a>) would have avoided the blank areas. For a ground-dwelling quoll, leaving open water blank is reasonable anyway.</p>
+</div>
+</div>
 <p>The last check is a safety net, not a modelling fix. If a large part of your map is blank, the categorical layer has too many classes for your data, and the approaches below are the real fix.</p>
 </section>
 <section id="what-practitioners-usually-do" class="level1">
